@@ -219,6 +219,6 @@ chmod +x *.sh
 
 ---
 
-**Repository**: https://github.com/Snorplee/trumpstein-timeline  
-**Issues**: https://github.com/Snorplee/trumpstein-timeline/issues  
+**Repository**: https://github.com/snorplee/trumpstein-timeline  
+**Issues**: https://github.com/snorplee/trumpstein-timeline/issues  
 **Last Updated**: August 20, 2025

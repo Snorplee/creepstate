@@ -7,7 +7,7 @@
 set -e
 
 echo "🔧 Setting up GitHub Issues for Trump-Epstein Timeline Project"
-echo "Repository: https://github.com/Snorplee/trumpstein-timeline"
+echo "Repository: https://github.com/snorplee/trumpstein-timeline"
 echo ""
 
 # Check if gh CLI is available and authenticated
@@ -803,7 +803,7 @@ echo ""
 echo "🏷️  Labels Created: 20 labels for comprehensive categorization"
 echo "🎯 Milestones Created: 4 milestones with target dates"
 echo ""
-echo "🔗 View all issues: https://github.com/Snorplee/trumpstein-timeline/issues"
+echo "🔗 View all issues: https://github.com/snorplee/trumpstein-timeline/issues"
 echo "📋 Project board: Consider creating a project board for visual tracking"
 echo ""
 echo "Next Steps:"

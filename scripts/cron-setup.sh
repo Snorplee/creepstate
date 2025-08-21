@@ -3,7 +3,7 @@
 # Setup automated fact-checking and container updates
 # Runs fact-checker every 4 hours, auto-update daily
 
-SCRIPT_DIR="/mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline/scripts"
+SCRIPT_DIR="/mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline/scripts"
 
 # Create log directories
 sudo mkdir -p /var/log

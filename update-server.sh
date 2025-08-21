@@ -13,7 +13,7 @@ BACKUP_DIR="/opt/backups/trumpstein-timeline"
 CONTAINER_NAME="trumpstein-timeline"
 PORT="8847"
 LOG_FILE="/var/log/trumpstein-timeline.log"
-GITHUB_REPO="https://github.com/Snorplee/trumpstein-timeline.git"
+GITHUB_REPO="https://github.com/snorplee/trumpstein-timeline.git"
 NOTIFICATION_EMAIL="admin@investigation.org"  # Update with actual email
 
 # Colors for output

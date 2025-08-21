@@ -16,7 +16,7 @@ mkdir -p "$REPORT_DIR"
 log "Generating verification report..."
 
 # Run fact-checker
-python3 /mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline/scripts/fact-checker.py
+python3 /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline/scripts/fact-checker.py
 
 # Copy latest verification data
 if [ -f "/tmp/fact-check-report.json" ]; then

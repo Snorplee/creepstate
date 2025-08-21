@@ -6,7 +6,7 @@ This guide provides complete instructions for setting up an automated, secure, a
 
 ```bash
 # Clone the repository
-git clone https://github.com/Snorplee/trumpstein-timeline.git
+git clone https://github.com/snorplee/trumpstein-timeline.git
 cd trumpstein-timeline
 
 # Run full installation (requires root)
@@ -63,8 +63,8 @@ sudo mkdir -p /opt/trumpstein-timeline
 cd /opt/trumpstein-timeline
 
 # Download scripts
-wget https://raw.githubusercontent.com/Snorplee/trumpstein-timeline/main/update-server.sh
-wget https://raw.githubusercontent.com/Snorplee/trumpstein-timeline/main/health-check.sh
+wget https://raw.githubusercontent.com/snorplee/trumpstein-timeline/main/update-server.sh
+wget https://raw.githubusercontent.com/snorplee/trumpstein-timeline/main/health-check.sh
 chmod +x *.sh
 ```
 

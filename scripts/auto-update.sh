@@ -111,7 +111,7 @@ rebuild_container() {
     docker rm "$CONTAINER_NAME" || true
     
     # Rebuild image
-    cd /mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline
+    cd /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline
     docker build -t "$IMAGE_NAME" .
     
     # Start new container

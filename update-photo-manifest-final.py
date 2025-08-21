@@ -19,7 +19,7 @@ def check_image_validity(filepath):
         return {"valid": False, "width": 0, "height": 0}
 
 def main():
-    base_path = Path("/mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline")
+    base_path = Path("/mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline")
     people_path = base_path / "images" / "people"
     manifest_path = base_path / "images" / "photo-manifest.json"
     

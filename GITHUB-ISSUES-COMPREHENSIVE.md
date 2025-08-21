@@ -268,7 +268,7 @@ The script will:
 
 ### Manual Verification
 After running the script:
-1. Visit: https://github.com/Snorplee/trumpstein-timeline/issues
+1. Visit: https://github.com/snorplee/trumpstein-timeline/issues
 2. Verify all issues are created correctly
 3. Check labels and milestones are properly assigned
 4. Consider creating a project board for visual tracking

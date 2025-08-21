@@ -75,7 +75,7 @@ docker rm trumpstein-timeline
 
 ### Step 2: Build New Container with Emergency Fixes
 ```bash
-cd /mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline
+cd /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline
 docker build -t trumpstein-timeline:v2.1.4-emergency .
 ```
 

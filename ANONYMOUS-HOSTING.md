@@ -106,7 +106,7 @@ sudo fail2ban install
 
 ```bash
 # 1. Clone via Tor
-torsocks git clone https://github.com/Snorplee/trumpstein-timeline.git
+torsocks git clone https://github.com/snorplee/trumpstein-timeline.git
 
 # 2. Deploy with security
 ./update-server.sh install

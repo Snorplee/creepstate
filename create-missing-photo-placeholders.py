@@ -81,7 +81,7 @@ def create_placeholder_image(person_id, category, name, flag, color_hex, output_
 
 def main():
     """Create placeholders for missing people"""
-    base_path = Path("/mnt/c/Users/Snorplee/Documents/Dropbox/apps/trumpstein-timeline")
+    base_path = Path("/mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline")
     people_path = base_path / "images" / "people"
     
     # Define missing people who need placeholders
