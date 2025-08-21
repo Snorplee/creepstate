@@ -219,6 +219,6 @@ chmod +x *.sh
 
 ---
 
-**Repository**: https://github.com/Snorplee/CreepState  
-**Issues**: https://github.com/Snorplee/CreepState/issues  
+**Repository**: https://github.com/Snorplee/creepstate  
+**Issues**: https://github.com/Snorplee/creepstate/issues  
 **Last Updated**: August 20, 2025

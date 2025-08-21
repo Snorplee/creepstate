@@ -32,8 +32,8 @@ echo.
 REM Check if we're in the right directory
 if not exist "index.html" (
     echo ERROR: index.html not found in current directory
-    echo Please run this script from the trumpstein-timeline directory
-    echo Usage: cd \path\to\trumpstein-timeline ^&^& run-local.bat [port]
+    echo Please run this script from the creepstate-timeline directory
+    echo Usage: cd \path\to\creepstate-timeline ^&^& run-local.bat [port]
     pause
     exit /b 1
 )

@@ -1,7 +1,7 @@
 -- Flight Data Import Script
 -- Imports CSV flight data into PostgreSQL database
 
-\c trumpstein_flights_db;
+\c creepstate_flights_db;
 
 -- Create temporary table for CSV import
 CREATE TEMP TABLE temp_flight_import (

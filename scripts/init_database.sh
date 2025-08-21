@@ -5,12 +5,12 @@
 
 set -e
 
-echo "🔄 Initializing Trumpstein Flight Logs Database..."
+echo "🔄 Initializing creepstate Flight Logs Database..."
 
 # Database connection parameters
 DB_HOST=${DATABASE_HOST:-postgres}
 DB_PORT=${DATABASE_PORT:-5432}
-DB_NAME=${DATABASE_NAME:-trumpstein_flights_db}
+DB_NAME=${DATABASE_NAME:-creepstate_flights_db}
 DB_USER=${DATABASE_USER:-flight_admin}
 DB_PASSWORD=${DATABASE_PASSWORD:-secure_admin_pass_2024!}
 

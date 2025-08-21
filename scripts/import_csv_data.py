@@ -504,7 +504,7 @@ def main():
     db_config = {
         'host': os.getenv('DATABASE_HOST', 'localhost'),
         'port': os.getenv('DATABASE_PORT', 5432),
-        'database': os.getenv('DATABASE_NAME', 'trumpstein_flights_db'),
+        'database': os.getenv('DATABASE_NAME', 'creepstate_flights_db'),
         'user': os.getenv('DATABASE_USER', 'flight_admin'),
         'password': os.getenv('DATABASE_PASSWORD', 'secure_admin_pass_2024!')
     }

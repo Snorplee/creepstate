@@ -13,7 +13,7 @@ BACKUP_DIR="/opt/backups/creepstate"
 CONTAINER_NAME="creepstate"
 PORT="8847"
 LOG_FILE="/var/log/creepstate.log"
-GITHUB_REPO="https://github.com/Snorplee/CreepState.git"
+GITHUB_REPO="https://github.com/Snorplee/creepstate.git"
 NOTIFICATION_EMAIL="admin@investigation.org"  # Update with actual email
 
 # Colors for output
@@ -411,15 +411,15 @@ setup_cron() {
     log "Setting up cron jobs..."
     
     # Create cron script
-    cat > "/usr/local/bin/trumpstein-update" << EOF
+    cat > "/usr/local/bin/creepstate-update" << EOF
 #!/bin/bash
 $0 update
 EOF
     
-    chmod +x "/usr/local/bin/trumpstein-update"
+    chmod +x "/usr/local/bin/creepstate-update"
     
     # Add cron jobs
-    (crontab -l 2>/dev/null; echo "0 2 * * * /usr/local/bin/trumpstein-update") | crontab -
+    (crontab -l 2>/dev/null; echo "0 2 * * * /usr/local/bin/creepstate-update") | crontab -
     (crontab -l 2>/dev/null; echo "0 6,12,18 * * * $0 monitor") | crontab -
     
     log "Cron jobs configured"

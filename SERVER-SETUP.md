@@ -6,7 +6,7 @@ This guide provides complete instructions for setting up an automated, secure, a
 
 ```bash
 # Clone the repository
-git clone https://github.com/Snorplee/CreepState.git
+git clone https://github.com/Snorplee/creepstate.git
 cd creepstate
 
 # Run full installation (requires root)

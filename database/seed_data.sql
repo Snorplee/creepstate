@@ -1,7 +1,7 @@
--- Seed data for Trumpstein Flight Logs Database
+-- Seed data for creepstate Flight Logs Database
 -- Initial reference data and key entities
 
-\c trumpstein_flights_db;
+\c creepstate_flights_db;
 
 -- Insert major aircraft from Epstein fleet
 INSERT INTO flight_data.aircraft (tail_number, model, manufacturer, owner_entity, aircraft_type, max_passengers, registration_country, notes) VALUES

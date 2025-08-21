@@ -1,4 +1,4 @@
--- Trumpstein Flight Logs Database Schema
+-- creepstate Flight Logs Database Schema
 -- Comprehensive PostgreSQL schema for investigative analysis
 
 -- Enable UUID extension
@@ -10,13 +10,13 @@ CREATE ROLE flight_reader WITH LOGIN PASSWORD 'secure_reader_pass_2024!';
 CREATE ROLE flight_analyst WITH LOGIN PASSWORD 'secure_analyst_pass_2024!';
 
 -- Create database
-CREATE DATABASE trumpstein_flights_db
+CREATE DATABASE creepstate_flights_db
     OWNER flight_admin
     ENCODING 'UTF8'
     LC_COLLATE = 'en_US.utf8'
     LC_CTYPE = 'en_US.utf8';
 
-\c trumpstein_flights_db;
+\c creepstate_flights_db;
 
 -- Create schemas for organization
 CREATE SCHEMA flight_data;

@@ -57,7 +57,7 @@ This guide shows how to install the Trump-Epstein Timeline investigation on any 
 #### Quick Docker Run
 ```bash
 # Clone repository
-git clone https://github.com/Snorplee/CreepState.git
+git clone https://github.com/Snorplee/creepstate.git
 cd creepstate
 
 # Build and run

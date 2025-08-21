@@ -106,7 +106,7 @@ sudo fail2ban install
 
 ```bash
 # 1. Clone via Tor
-torsocks git clone https://github.com/Snorplee/CreepState.git
+torsocks git clone https://github.com/Snorplee/creepstate.git
 
 # 2. Deploy with security
 ./update-server.sh install
@@ -127,14 +127,14 @@ sudo apt install tor
 sudo nano /etc/tor/torrc
 
 # Add to torrc:
-HiddenServiceDir /var/lib/tor/trumpstein/
+HiddenServiceDir /var/lib/tor/creepstate/
 HiddenServicePort 80 127.0.0.1:8847
 
 # Restart Tor
 sudo systemctl restart tor
 
 # Get your .onion address
-sudo cat /var/lib/tor/trumpstein/hostname
+sudo cat /var/lib/tor/creepstate/hostname
 ```
 
 **Advantages:**

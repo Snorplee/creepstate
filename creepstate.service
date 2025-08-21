@@ -1,6 +1,6 @@
 [Unit]
 Description=Trump-Epstein Timeline Investigation Service
-Documentation=https://github.com/user/trumpstein-timeline
+Documentation=https://github.com/user/creepstate-timeline
 After=docker.service
 Requires=docker.service
 
@@ -8,9 +8,9 @@ Requires=docker.service
 Type=notify
 User=root
 Group=root
-ExecStart=/opt/trumpstein-timeline/update-server.sh monitor
-ExecReload=/opt/trumpstein-timeline/update-server.sh deploy
-ExecStop=/bin/bash -c 'docker stop trumpstein-timeline || true'
+ExecStart=/opt/creepstate-timeline/update-server.sh monitor
+ExecReload=/opt/creepstate-timeline/update-server.sh deploy
+ExecStop=/bin/bash -c 'docker stop creepstate-timeline || true'
 Restart=on-failure
 RestartSec=10
 TimeoutStartSec=300
@@ -20,7 +20,7 @@ TimeoutStopSec=120
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/opt/trumpstein-timeline /var/log /opt/backups
+ReadWritePaths=/opt/creepstate-timeline /var/log /opt/backups
 PrivateDevices=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
@@ -33,7 +33,7 @@ Environment=DOCKER_HOST=unix:///var/run/docker.sock
 # Logging
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=trumpstein-timeline
+SyslogIdentifier=creepstate-timeline
 
 [Install]
 WantedBy=multi-user.target

@@ -1,4 +1,4 @@
-# Trumpstein Timeline PostgreSQL Database System
+# creepstate Timeline PostgreSQL Database System
 
 ## 🔍 Overview
 
@@ -65,7 +65,7 @@ docker-compose logs -f
 # Database Configuration
 DATABASE_HOST=postgres
 DATABASE_PORT=5432
-DATABASE_NAME=trumpstein_flights_db
+DATABASE_NAME=creepstate_flights_db
 DATABASE_USER=flight_admin
 DATABASE_PASSWORD=secure_admin_pass_2024!
 
@@ -270,10 +270,10 @@ erDiagram
 ### Regular Tasks
 ```bash
 # Update database statistics
-docker-compose exec postgres psql -U flight_admin -d trumpstein_flights_db -c "ANALYZE;"
+docker-compose exec postgres psql -U flight_admin -d creepstate_flights_db -c "ANALYZE;"
 
 # Backup database
-docker-compose exec postgres pg_dump -U flight_admin trumpstein_flights_db > backup.sql
+docker-compose exec postgres pg_dump -U flight_admin creepstate_flights_db > backup.sql
 
 # Check database health
 curl http://localhost:8847/api/health
