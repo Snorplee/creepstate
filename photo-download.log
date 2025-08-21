@@ -1,0 +1,88 @@
+2025-08-20 22:56:05,756 - INFO - Starting Trump-Epstein Investigation Photo Download Process
+2025-08-20 22:56:05,757 - INFO - Base path: /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline
+2025-08-20 22:56:07,409 - INFO - Found 19 people without photos
+2025-08-20 22:56:07,409 - INFO - Processing 1/19: Vladimir Putin
+2025-08-20 22:56:07,410 - INFO - Processing Vladimir Putin (Priority 3)
+2025-08-20 22:56:10,047 - INFO - Successfully downloaded photo for Vladimir Putin: vladimir-putin.jpg
+2025-08-20 22:56:10,048 - INFO - ✓ Downloaded 1 photo(s) for Vladimir Putin
+2025-08-20 22:56:10,689 - INFO - Processing 2/19: Matt Gaetz
+2025-08-20 22:56:10,690 - INFO - Processing Matt Gaetz (Priority 3)
+2025-08-20 22:56:11,456 - WARNING - Downloaded invalid image for Matt Gaetz, removed
+2025-08-20 22:56:11,922 - WARNING - Downloaded invalid image for Matt Gaetz, removed
+2025-08-20 22:56:12,844 - INFO - Would create placeholder for Matt Gaetz with color #FF4500
+2025-08-20 22:56:12,844 - WARNING - ✗ No photos found for Matt Gaetz
+2025-08-20 22:56:14,851 - INFO - Processing 3/19: Ehud Barak
+2025-08-20 22:56:14,852 - INFO - Processing Ehud Barak (Priority 3)
+2025-08-20 22:56:16,513 - INFO - Successfully downloaded photo for Ehud Barak: ehud-barak.jpg
+2025-08-20 22:56:16,514 - INFO - ✓ Downloaded 1 photo(s) for Ehud Barak
+2025-08-20 22:56:18,514 - INFO - Processing 4/19: Alex Acosta
+2025-08-20 22:56:18,515 - INFO - Processing Alex Acosta (Priority 3)
+2025-08-20 22:56:19,973 - INFO - Would create placeholder for Alex Acosta with color #FF4500
+2025-08-20 22:56:19,973 - WARNING - ✗ No photos found for Alex Acosta
+2025-08-20 22:56:21,983 - INFO - Processing 5/19: Crown Prince Mohammed bin Salman
+2025-08-20 22:56:21,984 - INFO - Processing Crown Prince Mohammed bin Salman (Priority 4)
+2025-08-20 22:56:22,778 - INFO - Successfully downloaded photo for Crown Prince Mohammed bin Salman: mohammed-bin-salman.jpg
+2025-08-20 22:56:22,779 - INFO - ✓ Downloaded 1 photo(s) for Crown Prince Mohammed bin Salman
+2025-08-20 22:56:24,780 - INFO - Processing 6/19: Les Wexner
+2025-08-20 22:56:24,781 - INFO - Processing Les Wexner (Priority 5)
+2025-08-20 22:56:26,359 - INFO - Would create placeholder for Les Wexner with color #4ECDC4
+2025-08-20 22:56:26,359 - WARNING - ✗ No photos found for Les Wexner
+2025-08-20 22:56:28,363 - INFO - Processing 7/19: Glenn Dubin
+2025-08-20 22:56:28,363 - INFO - Processing Glenn Dubin (Priority 5)
+2025-08-20 22:56:30,111 - INFO - Would create placeholder for Glenn Dubin with color #4ECDC4
+2025-08-20 22:56:30,112 - WARNING - ✗ No photos found for Glenn Dubin
+2025-08-20 22:56:32,116 - INFO - Processing 8/19: Leon Black
+2025-08-20 22:56:32,117 - INFO - Processing Leon Black (Priority 5)
+2025-08-20 22:56:33,979 - INFO - Would create placeholder for Leon Black with color #4ECDC4
+2025-08-20 22:56:33,980 - WARNING - ✗ No photos found for Leon Black
+2025-08-20 22:56:35,981 - INFO - Processing 9/19: Kimbal Musk
+2025-08-20 22:56:35,982 - INFO - Processing Kimbal Musk (Priority 5)
+2025-08-20 22:56:37,420 - INFO - Would create placeholder for Kimbal Musk with color #4ECDC4
+2025-08-20 22:56:37,421 - WARNING - ✗ No photos found for Kimbal Musk
+2025-08-20 22:56:38,019 - INFO - Processing 10/19: Steven Pinker
+2025-08-20 22:56:38,020 - INFO - Processing Steven Pinker (Priority 6)
+2025-08-20 22:56:38,966 - INFO - Successfully downloaded photo for Steven Pinker: steven-pinker.jpg
+2025-08-20 22:56:38,967 - INFO - ✓ Downloaded 1 photo(s) for Steven Pinker
+2025-08-20 22:56:40,969 - INFO - Processing 11/19: George Church
+2025-08-20 22:56:40,970 - INFO - Processing George Church (Priority 6)
+2025-08-20 22:56:42,887 - INFO - Successfully downloaded photo for George Church: george-church.jpg
+2025-08-20 22:56:42,888 - INFO - ✓ Downloaded 1 photo(s) for George Church
+2025-08-20 22:56:44,895 - INFO - Processing 12/19: Marvin Minsky
+2025-08-20 22:56:44,895 - INFO - Processing Marvin Minsky (Priority 6)
+2025-08-20 22:56:47,444 - INFO - Would create placeholder for Marvin Minsky with color #45B7D1
+2025-08-20 22:56:47,445 - WARNING - ✗ No photos found for Marvin Minsky
+2025-08-20 22:56:49,448 - INFO - Processing 13/19: Mick Jagger
+2025-08-20 22:56:49,449 - INFO - Processing Mick Jagger (Priority 7)
+2025-08-20 22:56:53,740 - INFO - Successfully downloaded photo for Mick Jagger: mick-jagger.jpg
+2025-08-20 22:56:53,741 - INFO - ✓ Downloaded 1 photo(s) for Mick Jagger
+2025-08-20 22:56:55,744 - INFO - Processing 14/19: Kevin Spacey
+2025-08-20 22:56:55,745 - INFO - Processing Kevin Spacey (Priority 7)
+2025-08-20 22:56:57,458 - INFO - Would create placeholder for Kevin Spacey with color #FF69B4
+2025-08-20 22:56:57,459 - WARNING - ✗ No photos found for Kevin Spacey
+2025-08-20 22:56:59,462 - INFO - Processing 15/19: Woody Allen
+2025-08-20 22:56:59,463 - INFO - Processing Woody Allen (Priority 7)
+2025-08-20 22:57:00,418 - INFO - Successfully downloaded photo for Woody Allen: woody-allen.jpg
+2025-08-20 22:57:00,419 - INFO - ✓ Downloaded 1 photo(s) for Woody Allen
+2025-08-20 22:57:02,443 - INFO - Processing 16/19: Chris Tucker
+2025-08-20 22:57:02,444 - INFO - Processing Chris Tucker (Priority 7)
+2025-08-20 22:57:04,191 - INFO - Would create placeholder for Chris Tucker with color #FF69B4
+2025-08-20 22:57:04,192 - WARNING - ✗ No photos found for Chris Tucker
+2025-08-20 22:57:06,200 - INFO - Processing 17/19: Michael Wolff
+2025-08-20 22:57:06,200 - INFO - Processing Michael Wolff (Priority 7)
+2025-08-20 22:57:06,604 - INFO - Would create placeholder for Michael Wolff with color #FF69B4
+2025-08-20 22:57:06,605 - WARNING - ✗ No photos found for Michael Wolff
+2025-08-20 22:57:08,607 - INFO - Processing 18/19: Jean-Luc Brunel
+2025-08-20 22:57:08,608 - INFO - Processing Jean-Luc Brunel (Priority 8)
+2025-08-20 22:57:10,250 - INFO - Would create placeholder for Jean-Luc Brunel with color #8B0000
+2025-08-20 22:57:10,250 - WARNING - ✗ No photos found for Jean-Luc Brunel
+2025-08-20 22:57:12,252 - INFO - Processing 19/19: Sarah Kellen
+2025-08-20 22:57:12,253 - INFO - Processing Sarah Kellen (Priority 8)
+2025-08-20 22:57:13,796 - INFO - Would create placeholder for Sarah Kellen with color #8B0000
+2025-08-20 22:57:13,796 - WARNING - ✗ No photos found for Sarah Kellen
+2025-08-20 22:57:18,536 - INFO - 
+=== DOWNLOAD SUMMARY ===
+2025-08-20 22:57:18,536 - INFO - People processed: 19
+2025-08-20 22:57:18,537 - INFO - Photos downloaded: 7
+2025-08-20 22:57:18,537 - INFO - Failed downloads: 12
+2025-08-20 22:57:18,538 - INFO - Success rate: 36.8%
+2025-08-20 22:57:18,539 - INFO - Manifest updated: /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline/images/photo-manifest.json
