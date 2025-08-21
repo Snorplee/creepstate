@@ -7,7 +7,7 @@ A complete timeline and analysis platform documenting the Trump-Epstein network 
 [![Version](https://img.shields.io/badge/version-2.1.4--stable-blue.svg)](./version.js)
 [![Docker](https://img.shields.io/badge/docker-ready-green.svg)](./Dockerfile)
 [![License](https://img.shields.io/badge/license-Public%20Domain-green.svg)](./LICENSE)
-[![Issues](https://img.shields.io/github/issues/snorplee/trumpstein-timeline.svg)](https://github.com/snorplee/trumpstein-timeline/issues)
+[![Issues](https://img.shields.io/github/issues/snorplee/creepstate.svg)](https://github.com/Snorplee/CreepState/issues)
 
 ---
 
@@ -63,8 +63,8 @@ A complete timeline and analysis platform documenting the Trump-Epstein network 
 
 ```bash
 # Clone the repository
-git clone https://github.com/snorplee/trumpstein-timeline.git
-cd trumpstein-timeline
+git clone https://github.com/Snorplee/CreepState.git
+cd creepstate
 
 # Production deployment (port 8847)
 ./run-local.sh          # Linux/Mac
@@ -82,16 +82,16 @@ run-local.bat          # Windows
 
 ```bash
 # Build the container
-docker build -t trumpstein-timeline .
+docker build -t creepstate .
 
 # Run production server
-docker run -d --name trumpstein-timeline -p 8847:80 trumpstein-timeline
+docker run -d --name creepstate -p 8847:80 creepstate
 
 # Run with auto-updates (requires fact-checking system)
-docker run -d --name trumpstein-timeline \
+docker run -d --name creepstate \
   -p 8847:80 \
   -v $(pwd)/scripts:/scripts \
-  trumpstein-timeline
+  creepstate
 
 # Access at: http://localhost:8847
 ```

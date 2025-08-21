@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download timeline images script
-# Run this from the trumpstein-timeline directory
+# Run this from the creepstate directory
 
 echo "Creating images directory..."
 mkdir -p images

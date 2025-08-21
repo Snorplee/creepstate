@@ -500,7 +500,7 @@ def main():
     if len(sys.argv) > 1:
         base_path = sys.argv[1]
     else:
-        base_path = "/mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline"
+        base_path = "."
     
     downloader = PhotoDownloader(base_path)
     

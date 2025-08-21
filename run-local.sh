@@ -8,7 +8,7 @@ set -e
 # Configuration
 PORT=${1:-8847}
 HOST="127.0.0.1"  # Localhost only for security
-LOG_FILE="/tmp/trumpstein-timeline-local.log"
+LOG_FILE="/tmp/creepstate-local.log"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -125,8 +125,8 @@ main() {
     # Check if we're in the right directory
     if [ ! -f "index.html" ]; then
         error "index.html not found in current directory"
-        error "Please run this script from the trumpstein-timeline directory"
-        info "Usage: cd /path/to/trumpstein-timeline && ./run-local.sh [port]"
+        error "Please run this script from the creepstate directory"
+        info "Usage: cd /path/to/creepstate && ./run-local.sh [port]"
         exit 1
     fi
     

@@ -6,9 +6,9 @@
 set -e
 
 # Configuration
-CONTAINER_NAME="trumpstein-timeline"
+CONTAINER_NAME="creepstate"
 APP_PORT="8847"
-LOG_FILE="/var/log/trumpstein-timeline-health.log"
+LOG_FILE="/var/log/creepstate-health.log"
 ALERT_EMAIL="admin@investigation.org"
 WEBHOOK_URL=""  # Add Slack/Discord webhook URL if needed
 

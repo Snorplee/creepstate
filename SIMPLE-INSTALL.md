@@ -10,7 +10,7 @@ This guide shows how to install the Trump-Epstein Timeline investigation on any 
 1. Fork this repository to your GitHub account
 2. Go to Settings → Pages
 3. Select "Deploy from a branch" → main branch
-4. Your site will be available at `https://yourusername.github.io/trumpstein-timeline`
+4. Your site will be available at `https://yourusername.github.io/creepstate`
 
 #### Netlify (Free)
 1. Sign up at [netlify.com](https://netlify.com)
@@ -57,12 +57,12 @@ This guide shows how to install the Trump-Epstein Timeline investigation on any 
 #### Quick Docker Run
 ```bash
 # Clone repository
-git clone https://github.com/snorplee/trumpstein-timeline.git
-cd trumpstein-timeline
+git clone https://github.com/Snorplee/CreepState.git
+cd creepstate
 
 # Build and run
-docker build -t trumpstein-timeline .
-docker run -d -p 8847:80 --name trumpstein-timeline trumpstein-timeline
+docker build -t creepstate .
+docker run -d -p 8847:80 --name creepstate creepstate
 
 # Access at http://localhost:8847
 ```
@@ -70,7 +70,7 @@ docker run -d -p 8847:80 --name trumpstein-timeline trumpstein-timeline
 #### Docker with Custom Domain
 ```bash
 # Run on port 80
-docker run -d -p 80:80 --name trumpstein-timeline trumpstein-timeline
+docker run -d -p 80:80 --name creepstate creepstate
 
 # Access at http://yourdomain.com
 ```

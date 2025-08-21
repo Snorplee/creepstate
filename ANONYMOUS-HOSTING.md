@@ -106,7 +106,7 @@ sudo fail2ban install
 
 ```bash
 # 1. Clone via Tor
-torsocks git clone https://github.com/snorplee/trumpstein-timeline.git
+torsocks git clone https://github.com/Snorplee/CreepState.git
 
 # 2. Deploy with security
 ./update-server.sh install
@@ -254,7 +254,7 @@ sudo poweroff
 
 # 2. Data destruction
 sudo shred -vfz -n 7 /var/log/*
-sudo rm -rf /opt/trumpstein-timeline
+sudo rm -rf /opt/creepstate
 ```
 
 ### Identity Burn Procedure

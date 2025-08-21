@@ -8,12 +8,12 @@
 set -e
 
 # Configuration
-PROJECT_DIR="/opt/trumpstein-timeline"
-BACKUP_DIR="/opt/backups/trumpstein-timeline"
-CONTAINER_NAME="trumpstein-timeline"
+PROJECT_DIR="/opt/creepstate"
+BACKUP_DIR="/opt/backups/creepstate"
+CONTAINER_NAME="creepstate"
 PORT="8847"
-LOG_FILE="/var/log/trumpstein-timeline.log"
-GITHUB_REPO="https://github.com/snorplee/trumpstein-timeline.git"
+LOG_FILE="/var/log/creepstate.log"
+GITHUB_REPO="https://github.com/Snorplee/CreepState.git"
 NOTIFICATION_EMAIL="admin@investigation.org"  # Update with actual email
 
 # Colors for output
@@ -284,7 +284,7 @@ deploy_container() {
     
     # Build new image
     log "Building new Docker image..."
-    docker build -t trumpstein-timeline .
+    docker build -t creepstate .
     
     # Run new container
     log "Starting new container..."
@@ -292,7 +292,7 @@ deploy_container() {
         --name "$CONTAINER_NAME" \
         --restart unless-stopped \
         -p "$PORT:80" \
-        trumpstein-timeline
+        creepstate
     
     # Wait for container to be ready
     sleep 10
@@ -318,7 +318,7 @@ setup_ssl() {
     log "Setting up SSL certificate for $domain..."
     
     # Create nginx config
-    cat > "/etc/nginx/sites-available/trumpstein-timeline" << EOF
+    cat > "/etc/nginx/sites-available/creepstate" << EOF
 server {
     listen 80;
     server_name $domain;
@@ -334,7 +334,7 @@ server {
 EOF
 
     # Enable site
-    ln -sf "/etc/nginx/sites-available/trumpstein-timeline" "/etc/nginx/sites-enabled/"
+    ln -sf "/etc/nginx/sites-available/creepstate" "/etc/nginx/sites-enabled/"
     
     # Test nginx config
     nginx -t
@@ -391,7 +391,7 @@ monitor_system() {
 setup_logrotate() {
     log "Setting up log rotation..."
     
-    cat > "/etc/logrotate.d/trumpstein-timeline" << EOF
+    cat > "/etc/logrotate.d/creepstate" << EOF
 $LOG_FILE {
     daily
     missingok

@@ -8,7 +8,7 @@ The Trump-Epstein Timeline is now optimized for static hosting with zero databas
 #### Option 1: Simple File Server
 ```bash
 # Navigate to the project directory
-cd trumpstein-timeline
+cd creepstate
 
 # Start a local server for testing
 python3 -m http.server 8080
@@ -63,7 +63,7 @@ docker-compose up --build -d
 ### Static Site Components
 
 ```
-trumpstein-timeline/
+creepstate/
 ├── index.html              # Main homepage (optimized)
 ├── static-data.js          # Offline data system
 ├── sw.js                   # Service worker for caching
@@ -144,7 +144,7 @@ For maximum privacy and whistleblower protection:
 #### 1. **Tor Hidden Service**
 ```bash
 # Add to /etc/tor/torrc
-HiddenServiceDir /var/lib/tor/trumpstein-timeline/
+HiddenServiceDir /var/lib/tor/creepstate/
 HiddenServicePort 80 127.0.0.1:8080
 
 # Restart Tor

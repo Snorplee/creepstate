@@ -8,7 +8,7 @@ set -e
 # Configuration for development
 PORT=8845
 HOST="127.0.0.1"
-LOG_FILE="/tmp/trumpstein-timeline-dev.log"
+LOG_FILE="/tmp/creepstate-dev.log"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -42,7 +42,7 @@ echo ""
 # Check if we're in the right directory
 if [ ! -f "index.html" ]; then
     echo "❌ ERROR: index.html not found in current directory"
-    echo "Please run this script from the trumpstein-timeline directory"
+    echo "Please run this script from the creepstate directory"
     exit 1
 fi
 

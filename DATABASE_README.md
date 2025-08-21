@@ -55,7 +55,7 @@ docker-compose logs -f
 - **Database Direct**: localhost:5432
 
 ### 3. Default Credentials
-- **PgAdmin**: admin@trumpstein-timeline.local / secure_pgadmin_pass_2024!
+- **PgAdmin**: admin@creepstate.local / secure_pgadmin_pass_2024!
 - **Database**: flight_admin / secure_admin_pass_2024!
 
 ## 🔧 Configuration
@@ -301,19 +301,19 @@ docker-compose logs postgres
 **API Not Responding**
 ```bash
 # Check API server logs
-docker-compose logs trumpstein-timeline
+docker-compose logs creepstate
 
 # Restart API server
-docker-compose restart trumpstein-timeline
+docker-compose restart creepstate
 ```
 
 **Import Failed**
 ```bash
 # Check import logs
-docker-compose exec trumpstein-timeline tail -f /flight_import.log
+docker-compose exec creepstate tail -f /flight_import.log
 
 # Re-run import manually
-docker-compose exec trumpstein-timeline python3 /app/scripts/import_csv_data.py
+docker-compose exec creepstate python3 /app/scripts/import_csv_data.py
 ```
 
 ## 📚 Additional Resources

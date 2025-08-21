@@ -69,27 +69,27 @@
 
 ### Step 1: Stop Current Container
 ```bash
-docker stop trumpstein-timeline
-docker rm trumpstein-timeline
+docker stop creepstate
+docker rm creepstate
 ```
 
 ### Step 2: Build New Container with Emergency Fixes
 ```bash
-cd /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline
-docker build -t trumpstein-timeline:v2.1.4-emergency .
+cd ./creepstate
+docker build -t creepstate:v2.1.4-emergency .
 ```
 
 ### Step 3: Deploy with Emergency Configuration
 ```bash
 docker run -d \
-  --name trumpstein-timeline \
+  --name creepstate \
   --restart unless-stopped \
   -p 8847:80 \
   --health-cmd="curl -f http://localhost/ || exit 1" \
   --health-interval=30s \
   --health-timeout=3s \
   --health-retries=3 \
-  trumpstein-timeline:v2.1.4-emergency
+  creepstate:v2.1.4-emergency
 ```
 
 ### Step 4: Immediate Verification
@@ -98,7 +98,7 @@ docker run -d \
 sleep 10
 
 # Check container health
-docker ps | grep trumpstein-timeline
+docker ps | grep creepstate
 
 # Verify emergency timeline loads
 curl -I http://localhost:8847/
@@ -113,7 +113,7 @@ curl -s http://localhost:8847/ | grep "v2.1.4"
 
 ### Critical Checks (Run Immediately)
 - [ ] Container starts successfully (`docker ps`)
-- [ ] Health check passes (`docker inspect --format='{{.State.Health.Status}}' trumpstein-timeline`)
+- [ ] Health check passes (`docker inspect --format='{{.State.Health.Status}}' creepstate`)
 - [ ] Main page loads (`curl http://localhost:8847/`)
 - [ ] Version tracking visible (check page footer)
 - [ ] Emergency timeline activates if API fails
@@ -123,7 +123,7 @@ curl -s http://localhost:8847/ | grep "v2.1.4"
 ### Version Verification Commands
 ```bash
 # Check version in container logs
-docker logs trumpstein-timeline | grep "v2.1.4"
+docker logs creepstate | grep "v2.1.4"
 
 # Verify version.js is accessible
 curl http://localhost:8847/version.js | head -5
@@ -153,7 +153,7 @@ curl -I http://localhost:8847/timeline-comprehensive.xml
 **Solutions**:
 1. Check Dockerfile syntax: `docker build -t test .`
 2. Verify all files exist: `ls -la *.html *.js *.xml`
-3. Check logs: `docker logs trumpstein-timeline`
+3. Check logs: `docker logs creepstate`
 
 ### Issue: Version Not Updating
 **Symptoms**: Still seeing old version numbers
@@ -174,10 +174,10 @@ curl -I http://localhost:8847/timeline-comprehensive.xml
 ### Issue: Changes Not Deployed
 **Symptoms**: Old content still visible
 **Solutions**:
-1. Ensure container rebuild: `docker build --no-cache -t trumpstein-timeline:v2.1.4-emergency .`
-2. Stop old container: `docker stop trumpstein-timeline && docker rm trumpstein-timeline`
+1. Ensure container rebuild: `docker build --no-cache -t creepstate:v2.1.4-emergency .`
+2. Stop old container: `docker stop creepstate && docker rm creepstate`
 3. Clear nginx cache by restarting container
-4. Check file timestamps in container: `docker exec trumpstein-timeline ls -la /usr/share/nginx/html/`
+4. Check file timestamps in container: `docker exec creepstate ls -la /usr/share/nginx/html/`
 
 ---
 
@@ -206,22 +206,22 @@ curl -s http://localhost:8847/ | grep "Emergency Timeline Mode"
 ### Container Security
 ```bash
 # Check running processes
-docker exec trumpstein-timeline ps aux
+docker exec creepstate ps aux
 
 # Verify nginx user
-docker exec trumpstein-timeline id nginx
+docker exec creepstate id nginx
 
 # Check exposed ports
-docker port trumpstein-timeline
+docker port creepstate
 ```
 
 ### File Permissions
 ```bash
 # Check HTML file permissions in container
-docker exec trumpstein-timeline ls -la /usr/share/nginx/html/*.html
+docker exec creepstate ls -la /usr/share/nginx/html/*.html
 
 # Verify configuration files
-docker exec trumpstein-timeline ls -la /etc/nginx/conf.d/
+docker exec creepstate ls -la /etc/nginx/conf.d/
 ```
 
 ---
@@ -240,13 +240,13 @@ echo "*/5 * * * * /path/to/health-check.sh >> /var/log/timeline-health.log 2>&1"
 ### Log Monitoring
 ```bash
 # Watch container logs
-docker logs -f trumpstein-timeline
+docker logs -f creepstate
 
 # Monitor nginx access logs
-docker exec trumpstein-timeline tail -f /var/log/nginx/access.log
+docker exec creepstate tail -f /var/log/nginx/access.log
 
 # Check error logs
-docker exec trumpstein-timeline tail -f /var/log/nginx/error.log
+docker exec creepstate tail -f /var/log/nginx/error.log
 ```
 
 ---
@@ -302,22 +302,22 @@ docker exec trumpstein-timeline tail -f /var/log/nginx/error.log
 
 ### If Deployment Fails:
 1. **Check this document first** - Common issues covered
-2. **Review container logs**: `docker logs trumpstein-timeline`
+2. **Review container logs**: `docker logs creepstate`
 3. **Test emergency timeline**: Should work even if API fails
 4. **Rollback option**: Restart previous container version
 
 ### Quick Rollback (If Needed):
 ```bash
 # Stop current container
-docker stop trumpstein-timeline
+docker stop creepstate
 
 # Start previous version (if available)
-docker run -d --name trumpstein-timeline -p 8847:80 trumpstein-timeline:previous
+docker run -d --name creepstate -p 8847:80 creepstate:previous
 
 # Or rebuild from previous commit
 git checkout HEAD~1
-docker build -t trumpstein-timeline:rollback .
-docker run -d --name trumpstein-timeline -p 8847:80 trumpstein-timeline:rollback
+docker build -t creepstate:rollback .
+docker run -d --name creepstate -p 8847:80 creepstate:rollback
 ```
 
 ---

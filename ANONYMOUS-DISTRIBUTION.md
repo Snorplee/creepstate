@@ -32,7 +32,7 @@
 curl -sSL https://ipfs.io/install.sh | sh
 
 # Add your timeline to IPFS
-ipfs add -r /path/to/trumpstein-timeline
+ipfs add -r /path/to/creepstate
 
 # Get permanent hash (example)
 # QmXkY1Bd2Wb4ppyqyXmEXmFKqhvqx8YjsXJ7uAGC9o6i2z
@@ -51,7 +51,7 @@ ipfs add -r /path/to/trumpstein-timeline
 #### BitTorrent Distribution
 ```bash
 # Create torrent file
-mktorrent -a udp://tracker.openbittorrent.com:80 trumpstein-timeline.zip
+mktorrent -a udp://tracker.openbittorrent.com:80 creepstate.zip
 
 # Upload to anonymous torrent sites:
 # - The Pirate Bay (via Tor)

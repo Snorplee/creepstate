@@ -9,8 +9,8 @@
 #### Python Simple Server
 ```bash
 # Clone your private repo locally
-git clone https://github.com/snorplee/trumpstein-timeline.git
-cd trumpstein-timeline
+git clone https://github.com/Snorplee/CreepState.git
+cd creepstate
 
 # Run local server - production port
 python3 -m http.server 8847
@@ -24,7 +24,7 @@ python3 -m http.server 8847
 npm install -g live-server
 
 # Run in project directory
-cd trumpstein-timeline
+cd creepstate
 live-server --port=8847
 
 # Access at: http://localhost:8847
@@ -32,7 +32,7 @@ live-server --port=8847
 
 #### PHP Built-in Server
 ```bash
-cd trumpstein-timeline
+cd creepstate
 php -S localhost:8847
 
 # Access at: http://localhost:8847
@@ -56,7 +56,7 @@ ssh-keygen -t ed25519 -C "your-secure-email"
 ssh-copy-id user@your-vps-ip
 
 # 3. Clone your private repo
-git clone https://your-token@github.com/snorplee/trumpstein-timeline.git
+git clone https://your-token@github.com/Snorplee/CreepState.git
 
 # 4. Run the automated setup
 sudo ./update-server.sh install
@@ -81,7 +81,7 @@ sudo dpkg -i cloudflared-linux-amd64.deb
 cloudflared tunnel login
 
 # Create tunnel
-cloudflared tunnel create trumpstein-timeline
+cloudflared tunnel create creepstate
 
 # Configure tunnel (edit config file)
 mkdir -p ~/.cloudflared
@@ -96,7 +96,7 @@ ingress:
 EOF
 
 # Run tunnel
-cloudflared tunnel run trumpstein-timeline
+cloudflared tunnel run creepstate
 ```
 
 #### Using Tailscale (Private Network)
@@ -133,10 +133,10 @@ location / {
 #### Docker with IP Restrictions
 ```bash
 # Run container bound to localhost only
-docker run -d -p 127.0.0.1:8847:80 --name trumpstein-timeline trumpstein-timeline
+docker run -d -p 127.0.0.1:8847:80 --name creepstate creepstate
 
 # Or with specific IP binding
-docker run -d -p YOUR_IP:8847:80 --name trumpstein-timeline trumpstein-timeline
+docker run -d -p YOUR_IP:8847:80 --name creepstate creepstate
 ```
 
 #### Docker with VPN
@@ -176,7 +176,7 @@ docker run -d -p YOUR_IP:8847:80 --name trumpstein-timeline trumpstein-timeline
 ### Quick Shutdown
 ```bash
 # Stop all services immediately
-sudo docker stop trumpstein-timeline
+sudo docker stop creepstate
 sudo systemctl stop nginx
 sudo ufw deny 80
 sudo ufw deny 443
@@ -185,8 +185,8 @@ sudo ufw deny 443
 ### Data Wipe
 ```bash
 # Secure deletion of sensitive data
-sudo rm -rf /opt/trumpstein-timeline
-sudo shred -vfz -n 3 /var/log/trumpstein-timeline*.log
+sudo rm -rf /opt/creepstate
+sudo shred -vfz -n 3 /var/log/creepstate*.log
 ```
 
 ### Access Log Clearing
@@ -202,8 +202,8 @@ history -c
 ### 1. Local Development + VPN Access
 ```bash
 # Best for personal research
-git clone https://github.com/snorplee/trumpstein-timeline.git
-cd trumpstein-timeline
+git clone https://github.com/Snorplee/CreepState.git
+cd creepstate
 python3 -m http.server 8847
 # Access via http://localhost:8847 only on your secured device
 ```

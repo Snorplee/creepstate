@@ -16,7 +16,7 @@ mkdir -p "$REPORT_DIR"
 log "Generating verification report..."
 
 # Run fact-checker
-python3 /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline/scripts/fact-checker.py
+python3 "$(dirname "$0")/fact-checker.py"
 
 # Copy latest verification data
 if [ -f "/tmp/fact-check-report.json" ]; then
@@ -98,8 +98,8 @@ with open('/tmp/fact-check-report.json') as f:
 EOF
     
     # Update container with latest verification data
-    if docker ps | grep -q "trumpstein-timeline"; then
-        docker cp "$REPORT_DIR/latest-report.html" trumpstein-timeline:/usr/share/nginx/html/verification-report.html
+    if docker ps | grep -q "creepstate"; then
+        docker cp "$REPORT_DIR/latest-report.html" creepstate:/usr/share/nginx/html/verification-report.html
         log "Verification report deployed to container"
     fi
     

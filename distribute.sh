@@ -89,8 +89,8 @@ security_check() {
 create_package() {
     log "📦 Creating distribution package..."
     
-    PACKAGE_DIR="trumpstein-timeline-dist"
-    PACKAGE_FILE="trumpstein-timeline-investigation.zip"
+    PACKAGE_DIR="creepstate-dist"
+    PACKAGE_FILE="creepstate-investigation.zip"
     
     # Create clean directory
     rm -rf "$PACKAGE_DIR" "$PACKAGE_FILE"
@@ -310,14 +310,14 @@ main() {
             2)
                 log "📡 IPFS Distribution:"
                 info "1. Install IPFS: https://ipfs.io/install/"
-                info "2. Add your package: ipfs add -r trumpstein-timeline-investigation.zip"
+                info "2. Add your package: ipfs add -r creepstate-investigation.zip"
                 info "3. Share the hash: ipfs://QmYourHashHere"
                 info "4. Pin to multiple nodes for redundancy"
                 ;;
             3)
                 log "🌊 Torrent Creation:"
                 info "1. Install mktorrent: sudo apt install mktorrent"
-                info "2. Create torrent: mktorrent -a udp://tracker.openbittorrent.com:80 trumpstein-timeline-investigation.zip"
+                info "2. Create torrent: mktorrent -a udp://tracker.openbittorrent.com:80 creepstate-investigation.zip"
                 info "3. Upload .torrent file to anonymous sites"
                 ;;
             4)
@@ -348,7 +348,7 @@ main() {
 
 # Check if we're in the right directory
 if [ ! -f "index.html" ]; then
-    error "Run this script from the trumpstein-timeline directory"
+    error "Run this script from the creepstate directory"
     exit 1
 fi
 

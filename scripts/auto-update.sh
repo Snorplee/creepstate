@@ -6,8 +6,8 @@
 set -e
 
 # Configuration
-CONTAINER_NAME="trumpstein-timeline"
-IMAGE_NAME="trumpstein-timeline"
+CONTAINER_NAME="creepstate"
+IMAGE_NAME="creepstate"
 BACKUP_DIR="/tmp/timeline-backup"
 LOG_FILE="/var/log/timeline-updates.log"
 
@@ -111,7 +111,7 @@ rebuild_container() {
     docker rm "$CONTAINER_NAME" || true
     
     # Rebuild image
-    cd /mnt/c/Users/snorplee/Documents/Dropbox/apps/trumpstein-timeline
+    cd "$(dirname "$0")/.."  # Go to parent directory of scripts folder
     docker build -t "$IMAGE_NAME" .
     
     # Start new container

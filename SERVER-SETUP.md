@@ -6,8 +6,8 @@ This guide provides complete instructions for setting up an automated, secure, a
 
 ```bash
 # Clone the repository
-git clone https://github.com/snorplee/trumpstein-timeline.git
-cd trumpstein-timeline
+git clone https://github.com/Snorplee/CreepState.git
+cd creepstate
 
 # Run full installation (requires root)
 sudo ./update-server.sh install
@@ -59,12 +59,12 @@ sudo ./update-server.sh status
 sudo apt update && sudo apt upgrade -y
 
 # Create project directory
-sudo mkdir -p /opt/trumpstein-timeline
-cd /opt/trumpstein-timeline
+sudo mkdir -p /opt/creepstate
+cd /opt/creepstate
 
 # Download scripts
-wget https://raw.githubusercontent.com/snorplee/trumpstein-timeline/main/update-server.sh
-wget https://raw.githubusercontent.com/snorplee/trumpstein-timeline/main/health-check.sh
+wget https://raw.githubusercontent.com/snorplee/creepstate/main/update-server.sh
+wget https://raw.githubusercontent.com/snorplee/creepstate/main/health-check.sh
 chmod +x *.sh
 ```
 
@@ -79,7 +79,7 @@ sudo nano update-server.sh
 Update these variables:
 - `GITHUB_REPO`: Your repository URL
 - `NOTIFICATION_EMAIL`: Your email for alerts
-- `PROJECT_DIR`: Installation directory (default: /opt/trumpstein-timeline)
+- `PROJECT_DIR`: Installation directory (default: /opt/creepstate)
 - `PORT`: Application port (default: 8847)
 
 ### 3. Full Installation
@@ -153,13 +153,13 @@ sudo ./health-check.sh report email
 sudo ./update-server.sh logs
 
 # View Docker logs
-sudo docker logs trumpstein-timeline
+sudo docker logs creepstate
 
 # View system logs
-sudo journalctl -u trumpstein-timeline -f
+sudo journalctl -u creepstate -f
 
 # View health check logs
-sudo tail -f /var/log/trumpstein-timeline-health.log
+sudo tail -f /var/log/creepstate-health.log
 ```
 
 ## Systemd Service
@@ -168,16 +168,16 @@ The installation creates a systemd service for continuous monitoring:
 
 ```bash
 # Check service status
-sudo systemctl status trumpstein-timeline
+sudo systemctl status creepstate
 
 # Start/stop/restart service
-sudo systemctl start trumpstein-timeline
-sudo systemctl stop trumpstein-timeline
-sudo systemctl restart trumpstein-timeline
+sudo systemctl start creepstate
+sudo systemctl stop creepstate
+sudo systemctl restart creepstate
 
 # Enable/disable auto-start
-sudo systemctl enable trumpstein-timeline
-sudo systemctl disable trumpstein-timeline
+sudo systemctl enable creepstate
+sudo systemctl disable creepstate
 ```
 
 ## Cron Jobs
@@ -241,22 +241,22 @@ sudo certbot renew --dry-run
 
 ### Backup Locations
 
-- Backups: `/opt/backups/trumpstein-timeline/`
-- Logs: `/var/log/trumpstein-timeline*.log`
-- Configuration: `/opt/trumpstein-timeline/`
+- Backups: `/opt/backups/creepstate/`
+- Logs: `/var/log/creepstate*.log`
+- Configuration: `/opt/creepstate/`
 
 ### Restore from Backup
 
 ```bash
 # Stop application
-sudo docker stop trumpstein-timeline
+sudo docker stop creepstate
 
 # Restore from backup
 cd /opt
-sudo tar -xzf /opt/backups/trumpstein-timeline/backup-YYYYMMDD-HHMMSS.tar.gz
+sudo tar -xzf /opt/backups/creepstate/backup-YYYYMMDD-HHMMSS.tar.gz
 
 # Restart application
-sudo ./trumpstein-timeline/update-server.sh deploy
+sudo ./creepstate/update-server.sh deploy
 ```
 
 ## Troubleshooting
@@ -269,7 +269,7 @@ sudo ./trumpstein-timeline/update-server.sh deploy
 sudo systemctl status docker
 
 # Check container logs
-sudo docker logs trumpstein-timeline
+sudo docker logs creepstate
 
 # Rebuild container
 sudo ./update-server.sh deploy
@@ -314,10 +314,10 @@ sudo journalctl -u certbot
 
 ### Log Files
 
-- Application logs: `/var/log/trumpstein-timeline.log`
-- Health check logs: `/var/log/trumpstein-timeline-health.log`
-- Docker logs: `sudo docker logs trumpstein-timeline`
-- System logs: `sudo journalctl -u trumpstein-timeline`
+- Application logs: `/var/log/creepstate.log`
+- Health check logs: `/var/log/creepstate-health.log`
+- Docker logs: `sudo docker logs creepstate`
+- System logs: `sudo journalctl -u creepstate`
 - Nginx logs: `/var/log/nginx/access.log`, `/var/log/nginx/error.log`
 
 ### Getting Help
@@ -338,11 +338,11 @@ sudo journalctl -u certbot
 
 ### Performance Tuning
 
-Edit `/opt/trumpstein-timeline/docker-compose.yml`:
+Edit `/opt/creepstate/docker-compose.yml`:
 
 ```yaml
 services:
-  trumpstein-timeline:
+  creepstate:
     deploy:
       resources:
         limits:

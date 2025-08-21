@@ -3,7 +3,7 @@
  * Provides offline functionality and caching
  */
 
-const CACHE_NAME = 'trumpstein-timeline-v1.0';
+const CACHE_NAME = 'creepstate-v1.0';
 const urlsToCache = [
     './',
     './index.html',

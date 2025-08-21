@@ -8,7 +8,7 @@
 
     // Dark mode configuration
     const DARK_MODE_CONFIG = {
-        storageKey: 'trumpstein-timeline-dark-mode',
+        storageKey: 'creepstate-dark-mode',
         toggleButtonId: 'darkModeToggle',
         darkClass: 'dark-mode',
         defaultMode: 'dark' // Default to dark mode for investigation theme

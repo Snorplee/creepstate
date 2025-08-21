@@ -66,7 +66,7 @@ Improved event descriptions with:
 ## File Structure
 
 ```
-trumpstein-timeline/
+creepstate/
 ├── index.html                    # Main horizontal timeline (enhanced)
 ├── vertical-timeline.html        # New vertical timeline view
 ├── timeline-comprehensive.xml    # Enhanced with pre-1987 events and metadata
