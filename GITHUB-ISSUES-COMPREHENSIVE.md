@@ -1,8 +1,8 @@
-# Trump-Epstein Timeline - Comprehensive GitHub Issues Tracking System
+# Creepstate Investigation Platform - Comprehensive GitHub Issues Tracking System
 
 ## 🎯 Overview
 
-This document provides a complete reference for the GitHub issues tracking system for the Trump-Epstein Timeline project. All issues are designed to be created programmatically using the GitHub CLI script provided.
+This document provides a complete reference for the GitHub issues tracking system for the Creepstate Investigation Platform project. All issues are designed to be created programmatically using the GitHub CLI script provided.
 
 ## 📋 Issue Categories and Labels
 

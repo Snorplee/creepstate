@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline Investigation - Server Automation Script
+# Creepstate Investigation Platform Investigation - Server Automation Script
 # This script automates updates, deployment, and monitoring of the investigation suite
 # Usage: ./update-server.sh [action]
 # Actions: update, deploy, backup, monitor, full
@@ -447,7 +447,7 @@ update_all() {
     deploy_container
     monitor_system
     
-    send_notification "Trump-Epstein Timeline Updated" "The investigation timeline has been successfully updated and deployed."
+    send_notification "Creepstate Investigation Platform Updated" "The investigation timeline has been successfully updated and deployed."
     
     log "Full update process completed successfully"
 }
@@ -469,14 +469,14 @@ full_install() {
     # Optional SSL setup (uncomment and provide domain)
     # setup_ssl "your-domain.com"
     
-    send_notification "Trump-Epstein Timeline Installed" "The investigation timeline has been successfully installed and deployed."
+    send_notification "Creepstate Investigation Platform Installed" "The investigation timeline has been successfully installed and deployed."
     
     log "Full installation completed successfully"
 }
 
 # Show usage information
 show_usage() {
-    echo "Trump-Epstein Investigation - Server Automation Script"
+    echo "Creepstate Investigation - Server Automation Script"
     echo ""
     echo "Usage: $0 [action]"
     echo ""
@@ -508,7 +508,7 @@ show_logs() {
 
 # Show status
 show_status() {
-    echo "=== Trump-Epstein Timeline Investigation Status ==="
+    echo "=== Creepstate Investigation Platform Investigation Status ==="
     echo ""
     echo "Container Status:"
     docker ps -f name="$CONTAINER_NAME" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

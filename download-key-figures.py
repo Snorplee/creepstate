@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Investigation - Key Figures Photo Downloader
+Creepstate Investigation - Key Figures Photo Downloader
 Downloads high-quality photos for 5 key network figures
 """
 
@@ -332,7 +332,7 @@ class KeyFiguresDownloader:
         return total_photos - corrupted_photos
 
 def main():
-    print("📸 Trump-Epstein Investigation - Key Figures Photo Downloader")
+    print("📸 Creepstate Investigation - Key Figures Photo Downloader")
     print("=" * 65)
     print("Downloading high-quality photos for 5 key network figures:")
     print("• Jeffrey Epstein (enablers)")

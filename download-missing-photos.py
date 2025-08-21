@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Investigation Photo Management System
+Creepstate Investigation Photo Management System
 Downloads missing photos for the names-and-shame.html page
 
 This script identifies people without photos and downloads appropriate images
@@ -450,7 +450,7 @@ class PhotoDownloader:
     
     def run_download_process(self, max_downloads: int = 50):
         """Run the complete photo download process"""
-        logging.info("Starting Trump-Epstein Investigation Photo Download Process")
+        logging.info("Starting Creepstate Investigation Photo Download Process")
         logging.info(f"Base path: {self.base_path}")
         
         # Get missing people

@@ -1,4 +1,4 @@
-// Enhanced Network Data for Trump-Epstein Investigation
+// Enhanced Network Data for Creepstate Investigation
 // Comprehensive network including 1000+ victims, connections, and relationships
 // Matching quality of Montana/jeffrey-epstein-timeline network visualization
 

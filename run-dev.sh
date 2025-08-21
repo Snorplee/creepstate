@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - Development Server
+# Creepstate Investigation Platform - Development Server
 # Run this script for development work on port 8845
 
 set -e
@@ -27,7 +27,7 @@ info() {
 # Show development server info
 echo ""
 echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║         🔧 Trump-Epstein Timeline - DEVELOPMENT MODE         ║"
+echo "║         🔧 Creepstate Investigation Platform - DEVELOPMENT MODE         ║"
 echo "╠══════════════════════════════════════════════════════════════╣"
 echo "║  🌐 Dev Server URL: http://$HOST:$PORT                      ║"
 echo "║  📁 Serving from: $(pwd)                    ║"

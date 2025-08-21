@@ -1,5 +1,5 @@
 /**
- * Universal Photo Components for Trump-Epstein Investigation
+ * Universal Photo Components for Creepstate Investigation
  * Reusable photo display components with zoom, metadata, and investigation features
  */
 

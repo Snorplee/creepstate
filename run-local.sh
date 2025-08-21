@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - Local Development Server
+# Creepstate Investigation Platform - Local Development Server
 # Run this script to start a secure local server for private investigation
 
 set -e
@@ -77,7 +77,7 @@ security_check() {
 show_server_info() {
     echo ""
     echo "╔══════════════════════════════════════════════════════════════╗"
-    echo "║             🕵️  Trump-Epstein Timeline Investigation          ║"
+    echo "║             🕵️  Creepstate Investigation Platform Investigation          ║"
     echo "║                      Local Development Server                 ║"
     echo "╠══════════════════════════════════════════════════════════════╣"
     echo "║  🌐 Server URL: http://$HOST:$PORT                           ║"
@@ -140,7 +140,7 @@ main() {
     show_server_info
     
     # Log startup
-    log "Starting Trump-Epstein Timeline Investigation server"
+    log "Starting Creepstate Investigation Platform Investigation server"
     log "Host: $HOST, Port: $PORT, Directory: $(pwd)"
     
     # Try different server methods in order of preference
@@ -219,7 +219,7 @@ main() {
 
 # Help function
 show_help() {
-    echo "Trump-Epstein Timeline Investigation - Local Server"
+    echo "Creepstate Investigation Platform Investigation - Local Server"
     echo ""
     echo "Usage: $0 [PORT]"
     echo ""

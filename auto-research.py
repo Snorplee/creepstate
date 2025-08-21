@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Timeline - Automated Research & Fact-Checking System
+Creepstate Investigation Platform - Automated Research & Fact-Checking System
 This system automatically researches new connections, verifies dates, and tracks Trump distractions.
 
 SECURITY: This script uses anonymous research methods and can be run via VPN/Tor.
@@ -843,7 +843,7 @@ class AnonymousResearcher:
 
 def main():
     """Main execution function for daily automated research"""
-    print("🕵️ Trump-Epstein Timeline - Enhanced Distraction Pattern Recognition System")
+    print("🕵️ Creepstate Investigation Platform - Enhanced Distraction Pattern Recognition System")
     print("=" * 75)
     
     researcher = AnonymousResearcher()

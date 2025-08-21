@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Timeline Fact-Checking System
+Creepstate Investigation Platform Fact-Checking System
 Verifies claims against multiple reliable sources before updates
 """
 

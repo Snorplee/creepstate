@@ -1,4 +1,4 @@
-# ChatGPT Research Prompt for Trump-Epstein Timeline
+# ChatGPT Research Prompt for Creepstate Investigation Platform
 
 ## Instructions for AI Research Agents
 

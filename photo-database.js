@@ -1,5 +1,5 @@
 /**
- * Trump-Epstein Investigation Photo Database System
+ * Creepstate Investigation Photo Database System
  * Comprehensive photo management with metadata, search, and evidence correlation
  */
 

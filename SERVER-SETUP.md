@@ -1,6 +1,6 @@
-# Trump-Epstein Timeline Investigation - Server Setup Guide
+# Creepstate Investigation Platform Investigation - Server Setup Guide
 
-This guide provides complete instructions for setting up an automated, secure, and monitored server deployment of the Trump-Epstein Timeline Investigation suite.
+This guide provides complete instructions for setting up an automated, secure, and monitored server deployment of the Creepstate Investigation Platform Investigation suite.
 
 ## Quick Start
 

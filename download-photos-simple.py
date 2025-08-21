@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple Photo Download for Trump-Epstein Timeline
+Simple Photo Download for Creepstate Investigation Platform
 Downloads photos from direct URLs without Wikipedia API dependency
 """
 
@@ -41,7 +41,7 @@ def download_image(url, filename):
         return False
 
 def main():
-    print("📸 Trump-Epstein Investigation - Simple Photo Download")
+    print("📸 Creepstate Investigation - Simple Photo Download")
     print("=" * 60)
     
     # Create directories

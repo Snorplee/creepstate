@@ -1,4 +1,4 @@
-# 🕴️ Anonymous Hosting Guide for Trump-Epstein Timeline
+# 🕴️ Anonymous Hosting Guide for Creepstate Investigation Platform
 
 **⚠️ CRITICAL SECURITY**: This guide helps you host the investigation anonymously while protecting your identity and safety.
 

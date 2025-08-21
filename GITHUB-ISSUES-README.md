@@ -1,6 +1,6 @@
 # GitHub Issues Tracking System
 
-This directory contains a comprehensive GitHub issues tracking system for the Trump-Epstein Timeline project.
+This directory contains a comprehensive GitHub issues tracking system for the Creepstate Investigation Platform project.
 
 ## 🚀 Quick Start
 

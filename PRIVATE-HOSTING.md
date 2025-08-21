@@ -1,4 +1,4 @@
-# Trump-Epstein Timeline - Private & Secure Hosting Guide
+# Creepstate Investigation Platform - Private & Secure Hosting Guide
 
 **⚠️ SECURITY FIRST**: This guide prioritizes your safety and privacy while providing access to the investigation timeline.
 

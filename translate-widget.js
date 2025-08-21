@@ -1,4 +1,4 @@
-// SAFE Global Translation Widget for Trump-Epstein Investigation
+// SAFE Global Translation Widget for Creepstate Investigation
 // Prioritizes languages from high-trafficking regions for victim accessibility
 // ENHANCED with bulletproof error handling to prevent documentElement errors
 

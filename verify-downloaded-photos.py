@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Enhanced Photo Verification Script for Trump-Epstein Investigation
+Enhanced Photo Verification Script for Creepstate Investigation
 Verifies downloaded photos meet requirements and generates comprehensive reports
 """
 

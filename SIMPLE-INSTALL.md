@@ -1,6 +1,6 @@
-# Trump-Epstein Timeline - Simple Website Installation
+# Creepstate Investigation Platform - Simple Website Installation
 
-This guide shows how to install the Trump-Epstein Timeline investigation on any web hosting service or simple web server.
+This guide shows how to install the Creepstate Investigation Platform investigation on any web hosting service or simple web server.
 
 ## Quick Installation Methods
 

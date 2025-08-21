@@ -1,4 +1,4 @@
-# 🕴️ Anonymous Distribution Guide for Trump-Epstein Timeline
+# 🕴️ Anonymous Distribution Guide for Creepstate Investigation Platform
 
 **⚠️ CRITICAL SECURITY**: This guide helps you distribute the investigation anonymously while protecting your identity and safety.
 

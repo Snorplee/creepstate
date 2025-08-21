@@ -1,5 +1,5 @@
 /**
- * Service Worker for Trump-Epstein Timeline
+ * Service Worker for Creepstate Investigation Platform
  * Provides offline functionality and caching
  */
 

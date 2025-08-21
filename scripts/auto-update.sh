@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline Auto-Update System with Fact-Checking
+# Creepstate Investigation Platform Auto-Update System with Fact-Checking
 # Automatically updates container with verified information from RSS feeds
 
 set -e

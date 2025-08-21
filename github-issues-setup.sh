@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - GitHub Issues Setup Script
+# Creepstate Investigation Platform - GitHub Issues Setup Script
 # Comprehensive issues tracking system creation
 # Run this script from the repository root directory after authenticating with gh CLI
 
 set -e
 
-echo "🔧 Setting up GitHub Issues for Trump-Epstein Timeline Project"
+echo "🔧 Setting up GitHub Issues for Creepstate Investigation Platform Project"
 echo "Repository: https://github.com/Snorplee/creepstate"
 echo ""
 
@@ -457,7 +457,7 @@ gh issue create \
     --body "$(cat <<'EOF'
 ## Implementation Status: ✅ COMPLETED
 
-A comprehensive version tracking system has been successfully implemented for the Trump-Epstein Timeline project.
+A comprehensive version tracking system has been successfully implemented for the Creepstate Investigation Platform project.
 
 ## Features Implemented
 - [x] Centralized version management (`version.js`)
@@ -740,7 +740,7 @@ gh issue create \
     --title "Implement GitHub Actions CI/CD pipeline" \
     --body "$(cat <<'EOF'
 ## Feature Description
-Set up automated CI/CD pipeline using GitHub Actions for testing, building, and deployment of the Trump-Epstein Timeline project.
+Set up automated CI/CD pipeline using GitHub Actions for testing, building, and deployment of the Creepstate Investigation Platform project.
 
 ## Pipeline Requirements
 - [ ] **Automated Testing**:

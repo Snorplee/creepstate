@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - GitHub Issues Management Script
+# Creepstate Investigation Platform - GitHub Issues Management Script
 # Quick commands for managing issues after initial setup
 
 set -e
@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🔧 Trump-Epstein Timeline - Issues Management${NC}"
+echo -e "${BLUE}🔧 Creepstate Investigation Platform - Issues Management${NC}"
 echo ""
 
 # Function to check gh CLI
@@ -94,7 +94,7 @@ create_project_board() {
     echo -e "${BLUE}🗂️ Creating Project Board...${NC}"
     
     # Check if project already exists
-    if gh project list | grep -q "Trump-Epstein Timeline Tracker"; then
+    if gh project list | grep -q "Creepstate Investigation Platform Tracker"; then
         echo -e "${YELLOW}⚠️ Project board already exists${NC}"
         gh project list
         return
@@ -102,7 +102,7 @@ create_project_board() {
     
     # Create project board
     echo "Creating project board..."
-    gh project create --title "Trump-Epstein Timeline Tracker" --body "Comprehensive tracking for timeline project development"
+    gh project create --title "Creepstate Investigation Platform Tracker" --body "Comprehensive tracking for timeline project development"
     
     echo -e "${GREEN}✅ Project board created${NC}"
     echo "You can now manually add issues to the project board via the GitHub web interface"
@@ -171,7 +171,7 @@ generate_status_report() {
     echo -e "${BLUE}📊 Generating Status Report...${NC}"
     
     echo "======================================"
-    echo "Trump-Epstein Timeline - Status Report"
+    echo "Creepstate Investigation Platform - Status Report"
     echo "Generated: $(date)"
     echo "======================================"
     echo ""

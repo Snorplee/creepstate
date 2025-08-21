@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Missing Photos Analysis for Trump-Epstein Investigation
+Missing Photos Analysis for Creepstate Investigation
 Identifies key figures who need photos downloaded
 """
 
@@ -203,7 +203,7 @@ def generate_priority_download_list(missing_analysis):
 
 def main():
     """Generate missing photos analysis report"""
-    print("📋 Missing Photos Analysis - Trump-Epstein Investigation")
+    print("📋 Missing Photos Analysis - Creepstate Investigation")
     print("=" * 70)
     
     # Analyze missing photos

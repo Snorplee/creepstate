@@ -1,5 +1,5 @@
 # Database Schema Documentation
-## Trump-Epstein Timeline Investigation Platform
+## Creepstate Investigation Platform
 
 **Last Updated:** 2025-08-20  
 **Version:** 2.1.4-stable  
@@ -9,7 +9,7 @@
 
 ## Overview
 
-The Trump-Epstein Timeline Investigation Platform utilizes a PostgreSQL database to store and manage comprehensive investigative data including flight logs, timeline events, network relationships, and verification metadata.
+The Creepstate Investigation Platform utilizes a PostgreSQL database to store and manage comprehensive investigative data including flight logs, timeline events, network relationships, and verification metadata.
 
 ## Database Architecture
 
@@ -474,4 +474,4 @@ GET /api/stats/network
 
 ---
 
-This documentation provides comprehensive coverage of the database architecture supporting the Trump-Epstein Timeline Investigation Platform. Regular updates ensure accuracy as the platform evolves.
+This documentation provides comprehensive coverage of the database architecture supporting the Creepstate Investigation Platform. Regular updates ensure accuracy as the platform evolves.

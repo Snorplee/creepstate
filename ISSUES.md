@@ -1,4 +1,4 @@
-# Trump-Epstein Timeline Investigation - Issue Tracker
+# Creepstate Investigation Platform Investigation - Issue Tracker
 
 ## 🐛 Bugs (High Priority)
 

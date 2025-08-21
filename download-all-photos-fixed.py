@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Timeline - Comprehensive Photo Download System
+Creepstate Investigation Platform - Comprehensive Photo Download System
 Downloads Wikipedia and other source photos for all network associates
 """
 
@@ -94,7 +94,7 @@ class PhotoDownloader:
         """Fetch high-quality image from Wikipedia"""
         try:
             # Initialize Wikipedia API
-            wiki_wiki = wikipediaapi.Wikipedia('en', headers={'User-Agent': 'Trump-Epstein Timeline (contact@example.com)'})
+            wiki_wiki = wikipediaapi.Wikipedia('en', headers={'User-Agent': 'Creepstate Investigation Platform (contact@example.com)'})
             # Get Wikipedia page
             page = wiki_wiki.page(wikipedia_title)
             
@@ -204,7 +204,7 @@ class PhotoDownloader:
         return success_count, failure_count
 
 def main():
-    print("📸 Trump-Epstein Investigation - Photo Download System")
+    print("📸 Creepstate Investigation - Photo Download System")
     print("=" * 60)
     
     downloader = PhotoDownloader()

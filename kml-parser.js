@@ -1,5 +1,5 @@
 /**
- * KML Flight Data Parser for Trump-Epstein Timeline
+ * KML Flight Data Parser for Creepstate Investigation Platform
  * Comprehensive parser for KML flight log data with Google Maps integration
  */
 

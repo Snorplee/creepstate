@@ -1,5 +1,5 @@
 [Unit]
-Description=Trump-Epstein Timeline Investigation Service
+Description=Creepstate Investigation Platform Investigation Service
 Documentation=https://github.com/user/creepstate-timeline
 After=docker.service
 Requires=docker.service

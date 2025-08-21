@@ -1,5 +1,5 @@
 /**
- * Trump-Epstein Timeline Version Management System
+ * Creepstate Investigation Platform Version Management System
  * Centralized version tracking for all HTML pages
  * 
  * This file provides:
@@ -143,7 +143,7 @@
             ">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                     <div style="flex: 1; text-align: left; min-width: 200px;">
-                        <strong>🔍 Trump-Epstein Timeline ${getVersionString()}</strong>
+                        <strong>🔍 Creepstate Investigation Platform ${getVersionString()}</strong>
                     </div>
                     <div style="flex: 1; text-align: center; min-width: 250px;">
                         Built: ${buildTime} | Page: ${pageDisplayName}
@@ -234,7 +234,7 @@
         const pageDisplayName = getPageDisplayName(currentPage);
         const buildTime = getBuildTimestamp();
         
-        const versionText = `Trump-Epstein Timeline ${getVersionString()}
+        const versionText = `Creepstate Investigation Platform ${getVersionString()}
 Page: ${pageDisplayName}
 Build: ${VERSION_INFO.build}
 Built: ${buildTime}
@@ -479,7 +479,7 @@ Timestamp: ${new Date().toISOString()}`;
         notification.innerHTML = `
             <div style="margin-bottom: 15px;">🎉 Timeline Updated!</div>
             <div style="font-size: 14px; margin-bottom: 20px; font-weight: normal;">
-                A new version (${getVersionString()}) of the Trump-Epstein Timeline is now available with improved features and data.
+                A new version (${getVersionString()}) of the Creepstate Investigation Platform is now available with improved features and data.
             </div>
             <div style="display: flex; gap: 10px; justify-content: center;">
                 <button onclick="location.reload()" style="padding: 10px 20px; background: white; color: #333; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">

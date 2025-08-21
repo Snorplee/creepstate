@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Enhanced Photo Download for Trump-Epstein Timeline
+Enhanced Photo Download for Creepstate Investigation Platform
 Downloads photos from curated URLs without external API dependencies
 """
 
@@ -46,7 +46,7 @@ def download_image(url, filename):
         return False
 
 def main():
-    print("📸 Trump-Epstein Investigation - Enhanced Photo Download")
+    print("📸 Creepstate Investigation - Enhanced Photo Download")
     print("=" * 60)
     
     # Create directories

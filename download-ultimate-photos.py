@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trump-Epstein Investigation - Ultimate Photo Acquisition System
+Creepstate Investigation - Ultimate Photo Acquisition System
 Multi-source photo downloader with advanced search, verification, and organization
 """
 
@@ -357,7 +357,7 @@ class UltimatePhotoDownloader:
         
         try:
             wiki = wikipediaapi.Wikipedia('en', headers={
-                'User-Agent': 'Trump-Epstein Investigation (research@example.com)'
+                'User-Agent': 'Creepstate Investigation (research@example.com)'
             })
             
             page = wiki.page(person_data['wikipedia'])
@@ -781,7 +781,7 @@ class UltimatePhotoDownloader:
             logger.info(f"🗑️ Removed corrupted file: {corrupted_file.name}")
 
 def main():
-    print("📸 Trump-Epstein Investigation - Ultimate Photo Acquisition System")
+    print("📸 Creepstate Investigation - Ultimate Photo Acquisition System")
     print("=" * 70)
     
     downloader = UltimatePhotoDownloader()

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Health Check Script for Trump-Epstein Timeline Investigation
+# Health Check Script for Creepstate Investigation Platform Investigation
 # This script performs comprehensive health checks and can be run via cron
 
 set -e
@@ -38,14 +38,14 @@ send_alert() {
     
     # Email alert
     if command -v mail >/dev/null 2>&1; then
-        echo "$message" | mail -s "[$severity] Trump-Epstein Timeline Alert" "$ALERT_EMAIL"
+        echo "$message" | mail -s "[$severity] Creepstate Investigation Platform Alert" "$ALERT_EMAIL"
     fi
     
     # Webhook alert (Slack/Discord)
     if [ -n "$WEBHOOK_URL" ]; then
         curl -X POST "$WEBHOOK_URL" \
             -H "Content-Type: application/json" \
-            -d "{\"text\": \"[$severity] Trump-Epstein Timeline: $message\"}" \
+            -d "{\"text\": \"[$severity] Creepstate Investigation Platform: $message\"}" \
             >/dev/null 2>&1 || true
     fi
     
@@ -278,7 +278,7 @@ generate_report() {
     local report_file="/tmp/health-report-$(date +%Y%m%d-%H%M%S).txt"
     
     {
-        echo "=== Trump-Epstein Timeline Investigation Health Report ==="
+        echo "=== Creepstate Investigation Platform Investigation Health Report ==="
         echo "Generated: $(date)"
         echo ""
         echo "=== System Status ==="
@@ -298,7 +298,7 @@ generate_report() {
     
     # Optionally email the report
     if [ "$1" = "email" ] && command -v mail >/dev/null 2>&1; then
-        mail -s "Trump-Epstein Timeline Health Report" "$ALERT_EMAIL" < "$report_file"
+        mail -s "Creepstate Investigation Platform Health Report" "$ALERT_EMAIL" < "$report_file"
         log "Health report emailed to $ALERT_EMAIL"
     fi
 }
@@ -359,7 +359,7 @@ case "${1:-check}" in
         check_performance
         ;;
     help|--help|-h)
-        echo "Health Check Script for Trump-Epstein Timeline Investigation"
+        echo "Health Check Script for Creepstate Investigation Platform Investigation"
         echo ""
         echo "Usage: $0 [action]"
         echo ""

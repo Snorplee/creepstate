@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - Issues Setup Verification Script
+# Creepstate Investigation Platform - Issues Setup Verification Script
 # Verifies that all GitHub issues, labels, and milestones were created correctly
 
 set -e
@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🔍 Trump-Epstein Timeline - Issues Setup Verification${NC}"
+echo -e "${BLUE}🔍 Creepstate Investigation Platform - Issues Setup Verification${NC}"
 echo "=================================================="
 echo ""
 

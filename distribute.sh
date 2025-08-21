@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Trump-Epstein Timeline - Anonymous Distribution Helper
+# Creepstate Investigation Platform - Anonymous Distribution Helper
 # This script helps prepare the investigation for anonymous distribution
 
 set -e
@@ -32,7 +32,7 @@ info() {
 show_menu() {
     echo ""
     echo "╔══════════════════════════════════════════════════════════════╗"
-    echo "║        🕴️ Trump-Epstein Timeline - Distribution Helper        ║"
+    echo "║        🕴️ Creepstate Investigation Platform - Distribution Helper        ║"
     echo "╠══════════════════════════════════════════════════════════════╣"
     echo "║  1) Create distribution package                              ║"
     echo "║  2) Generate IPFS-ready bundle                               ║"
@@ -152,7 +152,7 @@ EOF
     # Create anonymous deployment script
     cat > "$PACKAGE_DIR/quick-deploy.sh" << 'EOF'
 #!/bin/bash
-echo "🕵️ Trump-Epstein Timeline Investigation"
+echo "🕵️ Creepstate Investigation Platform Investigation"
 echo "Quick Anonymous Deployment"
 echo ""
 echo "1) Local server (safest): ./run-local.sh"
@@ -176,7 +176,7 @@ EOF
     
     # Create verification file
     cat > "${PACKAGE_FILE}.verify" << EOF
-Trump-Epstein Timeline Investigation Package
+Creepstate Investigation Platform Investigation Package
 File: $PACKAGE_FILE
 Size: $(stat --format="%s" "$PACKAGE_FILE") bytes
 Created: $(date -u)
@@ -226,9 +226,9 @@ generate_qr_codes() {
     cat > qr-codes/qr-codes.html << 'EOF'
 <!DOCTYPE html>
 <html>
-<head><title>Trump-Epstein Timeline - QR Codes</title></head>
+<head><title>Creepstate Investigation Platform - QR Codes</title></head>
 <body style="font-family: Arial; text-align: center; background: #1a1a1a; color: white;">
-<h1>🕵️ Trump-Epstein Timeline QR Codes</h1>
+<h1>🕵️ Creepstate Investigation Platform QR Codes</h1>
 <p>Scan to access the investigation anonymously</p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
 <div><h3>Local Server</h3><img src="qr-code-1.png" alt="Local"><br>localhost:8847</div>
@@ -254,7 +254,7 @@ create_social_graphics() {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trump-Epstein Investigation</title>
+    <title>Creepstate Investigation</title>
     <style>
         body { font-family: Arial; background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; margin: 0; padding: 40px; }
         .card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 30px; text-align: center; max-width: 800px; margin: 0 auto; }
@@ -268,7 +268,7 @@ create_social_graphics() {
 </head>
 <body>
     <div class="card">
-        <h1>🕵️ Trump-Epstein Investigation</h1>
+        <h1>🕵️ Creepstate Investigation</h1>
         <p style="font-size: 1.3em; margin-bottom: 30px;">Comprehensive Timeline & Network Analysis</p>
         <div class="stats">
             <div class="stat"><span class="stat-number">78+</span><div class="stat-label">Timeline Events</div></div>
