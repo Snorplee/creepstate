@@ -1,0 +1,680 @@
+{
+  "timestamp": "2025-08-20 22:30:00",
+  "summary": {
+    "total_missing": 63,
+    "total_needs_more": 5,
+    "total_has_photos": 6
+  },
+  "priority_list": [
+    {
+      "name": "Bill Clinton",
+      "category": "core",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Donald Trump",
+      "category": "core",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Ghislaine Maxwell",
+      "category": "core",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Igor Zinoviev",
+      "category": "enablers",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Jean-Luc Brunel",
+      "category": "enablers",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Jeffrey Epstein",
+      "category": "core",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Lex Wexner",
+      "category": "enablers",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Nadia Marcinkova",
+      "category": "enablers",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Sarah Kellen",
+      "category": "enablers",
+      "priority": 1,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Annie Farmer",
+      "category": "victims",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Bill Richardson",
+      "category": "politicians",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Courtney Wild",
+      "category": "victims",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Ehud Barak",
+      "category": "politicians",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "George Mitchell",
+      "category": "politicians",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Maria Farmer",
+      "category": "victims",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Michelle Licata",
+      "category": "victims",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Sarah Ransome",
+      "category": "victims",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Tony Blair",
+      "category": "politicians",
+      "priority": 2,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Glenn Dubin",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Hillary Clinton",
+      "category": "politicians",
+      "priority": 3,
+      "status": "needs_more",
+      "current_photos": 1
+    },
+    {
+      "name": "Leon Black",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Lex Wexner",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Marvin Minsky",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Princess Beatrice",
+      "category": "royalty",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Princess Eugenie",
+      "category": "royalty",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Reid Hoffman",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Sarah Ferguson",
+      "category": "royalty",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Thomas Pritzker",
+      "category": "business",
+      "priority": 3,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Virginia Giuffre",
+      "category": "victims",
+      "priority": 3,
+      "status": "needs_more",
+      "current_photos": 1
+    },
+    {
+      "name": "Alan Dershowitz",
+      "category": "legal",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Alexander Acosta",
+      "category": "intelligence",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Alexander Acosta",
+      "category": "legal",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Barak Ehud",
+      "category": "intelligence",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Bill Gates",
+      "category": "business",
+      "priority": 4,
+      "status": "needs_more",
+      "current_photos": 1
+    },
+    {
+      "name": "David Boies",
+      "category": "legal",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Dmitri Klokov",
+      "category": "russian",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Elon Musk",
+      "category": "business",
+      "priority": 4,
+      "status": "needs_more",
+      "current_photos": 1
+    },
+    {
+      "name": "Igor Zinoviev",
+      "category": "russian",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Kenneth Starr",
+      "category": "legal",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Robert Maxwell",
+      "category": "intelligence",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Sergey Brin",
+      "category": "russian",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Vladimir Putin",
+      "category": "russian",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "William Barr",
+      "category": "intelligence",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "William Barr",
+      "category": "legal",
+      "priority": 4,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Alec Baldwin",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Chris Tucker",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Courtney Love",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "David Copperfield",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "George Church",
+      "category": "academics",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Kevin Spacey",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Lawrence Krauss",
+      "category": "academics",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Martin Nowak",
+      "category": "academics",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Marvin Minsky",
+      "category": "academics",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Naomi Campbell",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Ralph Fiennes",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Steven Pinker",
+      "category": "academics",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Woody Allen",
+      "category": "celebrities",
+      "priority": 5,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Charlie Rose",
+      "category": "media",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "George Stephanopoulos",
+      "category": "media",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Jean-Luc Brunel",
+      "category": "international",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Katie Couric",
+      "category": "media",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Mohammed bin Salman",
+      "category": "international",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Mort Zuckerman",
+      "category": "media",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Peter Thiel",
+      "category": "international",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Rupert Murdoch",
+      "category": "media",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Sergey Brin",
+      "category": "international",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    },
+    {
+      "name": "Stephen Hawking",
+      "category": "academics",
+      "priority": 6,
+      "status": "needs_more",
+      "current_photos": 1
+    },
+    {
+      "name": "Vladimir Putin",
+      "category": "international",
+      "priority": 6,
+      "status": "missing",
+      "current_photos": 0
+    }
+  ],
+  "category_analysis": {
+    "core": {
+      "missing_people": [
+        "Jeffrey Epstein",
+        "Ghislaine Maxwell",
+        "Donald Trump",
+        "Bill Clinton"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "enablers": {
+      "missing_people": [
+        "Jean-Luc Brunel",
+        "Lex Wexner",
+        "Igor Zinoviev",
+        "Sarah Kellen",
+        "Nadia Marcinkova"
+      ],
+      "has_photos": [
+        {
+          "name": "Jeffrey Epstein",
+          "count": 6
+        },
+        {
+          "name": "Ghislaine Maxwell",
+          "count": 6
+        }
+      ],
+      "needs_more_photos": []
+    },
+    "politicians": {
+      "missing_people": [
+        "George Mitchell",
+        "Bill Richardson",
+        "Ehud Barak",
+        "Tony Blair"
+      ],
+      "has_photos": [
+        {
+          "name": "Donald Trump",
+          "count": 6
+        },
+        {
+          "name": "Bill Clinton",
+          "count": 6
+        },
+        {
+          "name": "Alan Dershowitz",
+          "count": 5
+        }
+      ],
+      "needs_more_photos": [
+        {
+          "name": "Hillary Clinton",
+          "count": 1
+        }
+      ]
+    },
+    "business": {
+      "missing_people": [
+        "Lex Wexner",
+        "Leon Black",
+        "Glenn Dubin",
+        "Thomas Pritzker",
+        "Marvin Minsky",
+        "Reid Hoffman"
+      ],
+      "has_photos": [],
+      "needs_more_photos": [
+        {
+          "name": "Bill Gates",
+          "count": 1
+        },
+        {
+          "name": "Elon Musk",
+          "count": 1
+        }
+      ]
+    },
+    "celebrities": {
+      "missing_people": [
+        "Kevin Spacey",
+        "Woody Allen",
+        "Chris Tucker",
+        "Naomi Campbell",
+        "Courtney Love",
+        "Ralph Fiennes",
+        "Alec Baldwin",
+        "David Copperfield"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "academics": {
+      "missing_people": [
+        "Lawrence Krauss",
+        "Martin Nowak",
+        "George Church",
+        "Steven Pinker",
+        "Marvin Minsky"
+      ],
+      "has_photos": [],
+      "needs_more_photos": [
+        {
+          "name": "Stephen Hawking",
+          "count": 1
+        }
+      ]
+    },
+    "royalty": {
+      "missing_people": [
+        "Sarah Ferguson",
+        "Princess Beatrice",
+        "Princess Eugenie"
+      ],
+      "has_photos": [
+        {
+          "name": "Prince Andrew",
+          "count": 6
+        }
+      ],
+      "needs_more_photos": []
+    },
+    "victims": {
+      "missing_people": [
+        "Maria Farmer",
+        "Annie Farmer",
+        "Courtney Wild",
+        "Michelle Licata",
+        "Sarah Ransome"
+      ],
+      "has_photos": [],
+      "needs_more_photos": [
+        {
+          "name": "Virginia Giuffre",
+          "count": 1
+        }
+      ]
+    },
+    "media": {
+      "missing_people": [
+        "Katie Couric",
+        "George Stephanopoulos",
+        "Charlie Rose",
+        "Mort Zuckerman",
+        "Rupert Murdoch"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "international": {
+      "missing_people": [
+        "Jean-Luc Brunel",
+        "Mohammed bin Salman",
+        "Vladimir Putin",
+        "Sergey Brin",
+        "Peter Thiel"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "intelligence": {
+      "missing_people": [
+        "Robert Maxwell",
+        "Barak Ehud",
+        "Alexander Acosta",
+        "William Barr"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "legal": {
+      "missing_people": [
+        "Alan Dershowitz",
+        "Kenneth Starr",
+        "Alexander Acosta",
+        "William Barr",
+        "David Boies"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    },
+    "russian": {
+      "missing_people": [
+        "Vladimir Putin",
+        "Sergey Brin",
+        "Igor Zinoviev",
+        "Dmitri Klokov"
+      ],
+      "has_photos": [],
+      "needs_more_photos": []
+    }
+  }
+}

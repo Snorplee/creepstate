@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ Enhanced Flight Logs Investigation - Trump-Epstein Network</title>
+    <script src="version.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --warning-color: #ffc107;
+            --success-color: #28a745;
+            --bg-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --card-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 80px;
+            overflow-anchor: none; /* Prevent scroll anchoring jumps */
+        }
+
+        /* Universal Navigation */
+        .universal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary-color);
+            z-index: 10000;
+            padding: 10px 0;
+        }
+
+        .nav-container-universal {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link-universal {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link-universal:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-link-universal.active {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Flight Stats Dashboard */
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--secondary-color);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Interactive Map */
+        #flightMap {
+            height: 500px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Flight Controls */
+        .flight-controls {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .control-group label {
+            display: block;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .control-group input,
+        .control-group select {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            color: white;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--danger-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning-color);
+            color: black;
+        }
+
+        /* Passenger Cards */
+        .passenger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            max-height: 400px; /* Limit height */
+            overflow-y: auto; /* Add scroll if needed */
+            overflow-x: hidden;
+        }
+
+        .passenger-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .passenger-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .passenger-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 10px;
+        }
+
+        .passenger-name {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .passenger-stats {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .flight-count {
+            background: var(--danger-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Flight Table */
+        .flights-table-container {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            overflow: auto;
+            max-height: 600px;
+            position: relative;
+            /* Prevent layout jumps */
+            min-height: 400px;
+        }
+
+        .flights-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .flights-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .flights-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .flights-table tr:hover {
+            background: rgba(255,107,107,0.1);
+        }
+
+        .passenger-tag {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            margin: 2px;
+        }
+
+        .vip-tag {
+            background: var(--warning-color);
+            color: black;
+        }
+
+        .suspicious-tag {
+            background: var(--danger-color);
+        }
+
+        /* Charts */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            height: 350px; /* Fixed height to prevent stretching */
+            position: relative;
+        }
+        
+        .chart-container canvas {
+            max-height: 280px !important; /* Constrain canvas height */
+        }
+
+        .chart-title {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Animation */
+        @keyframes flightPath {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .flight-path {
+            stroke: var(--primary-color);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 1000;
+            animation: flightPath 2s ease-in-out;
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 10001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Heat Map Legend */
+        .heatmap-legend {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .heatmap-legend h4 {
+            margin: 0 0 10px 0;
+            color: white;
+            font-size: 14px;
+        }
+
+        .legend-gradient {
+            width: 200px;
+            height: 20px;
+            background: linear-gradient(to right, blue, cyan, lime, yellow, red);
+            border-radius: 3px;
+        }
+
+        .legend-labels {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Universal Navigation -->
+    <nav class="universal-nav">
+        <div class="nav-container-universal">
+            <a href="index.html" class="nav-brand">
+                🔍 Trump-Epstein Investigation
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link-universal">Home</a>
+                <a href="timeline.html" class="nav-link-universal">Timeline</a>
+                <a href="enhanced-visualizations.html" class="nav-link-universal">Network</a>
+                <a href="flight-logs-enhanced.html" class="nav-link-universal active">✈️ Flight Logs</a>
+                <a href="vertical-timeline.html" class="nav-link-universal">Vertical</a>
+                <a href="stats.html" class="nav-link-universal">Statistics</a>
+                <a href="name-the-scandal.html" class="nav-link-universal">🏆 Name It!</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">
+            ✈️ Epstein Flight Logs Investigation Dashboard
+        </h1>
+
+        <!-- Statistics Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stat-card">
+                <span class="stat-number" id="totalFlights">0</span>
+                <div class="stat-label">Total Flights</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="uniquePassengers">0</span>
+                <div class="stat-label">Unique Passengers</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="frequentFlyers">0</span>
+                <div class="stat-label">Frequent Flyers (10+ flights)</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="destinations">0</span>
+                <div class="stat-label">Destinations</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="vipFlights">0</span>
+                <div class="stat-label">VIP Flights</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="suspiciousFlights">0</span>
+                <div class="stat-label">🚨 Suspicious Patterns</div>
+            </div>
+        </div>
+
+        <!-- Flight Controls -->
+        <div class="flight-controls">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">🔍 Search & Filter Flights</h3>
+            <div class="control-row">
+                <div class="control-group">
+                    <label>Passenger Name</label>
+                    <input type="text" id="passengerSearch" placeholder="Search passengers...">
+                </div>
+                <div class="control-group">
+                    <label>Date Range</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="control-group">
+                    <label>&nbsp;</label>
+                    <input type="date" id="endDate">
+                </div>
+                <div class="control-group">
+                    <label>Destination</label>
+                    <select id="destinationFilter">
+                        <option value="">All Destinations</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-row">
+                <button class="btn btn-primary" onclick="searchFlights()">🔍 Search</button>
+                <button class="btn btn-secondary" onclick="resetFilters()">↻ Reset</button>
+                <button class="btn btn-warning" onclick="showSuspiciousOnly()">🚨 Suspicious Only</button>
+                <button class="btn btn-primary" onclick="animateFlights()">▶️ Animate Flights</button>
+                <button class="btn btn-secondary" onclick="exportData()">📥 Export Data</button>
+            </div>
+        </div>
+
+        <!-- Interactive Map -->
+        <div id="flightMap"></div>
+        <div class="heatmap-legend" style="display: none;">
+            <h4>Flight Frequency</h4>
+            <div class="legend-gradient"></div>
+            <div class="legend-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+        </div>
+
+        <!-- Top Passengers -->
+        <h2 style="color: var(--primary-color); margin-bottom: 20px;">👥 Frequent Flyers</h2>
+        <div class="passenger-grid" id="passengerGrid">
+            <!-- Will be populated dynamically -->
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">📊 Flights Over Time</h3>
+                <canvas id="flightsTimeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">🌍 Top Destinations</h3>
+                <canvas id="destinationsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Flight Table -->
+        <div class="flights-table-container">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">📋 Flight Manifest</h3>
+            <table class="flights-table" id="flightsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Flight #</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Passengers</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="flightsTableBody">
+                    <!-- Will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Global variables
+        let map;
+        let flightData = [];
+        let passengerData = {};
+        let flightPaths = [];
+        let heatmapLayer;
+        let currentAnimation = null;
+        let isUpdating = false; // Flag to prevent scroll issues during updates
+
+        // Airport coordinates
+        const airports = {
+            'TEB': { lat: 40.8501, lng: -74.0608, name: 'Teterboro Airport, NJ' },
+            'PBI': { lat: 26.6832, lng: -80.0956, name: 'Palm Beach International, FL' },
+            'EWR': { lat: 40.6925, lng: -74.1687, name: 'Newark Liberty International, NJ' },
+            'JFK': { lat: 40.6413, lng: -73.7781, name: 'John F. Kennedy International, NY' },
+            'TIST': { lat: 18.3373, lng: -64.9733, name: 'Cyril E. King Airport, Virgin Islands' },
+            'CMH': { lat: 39.9980, lng: -82.8919, name: 'Columbus International, OH' },
+            'MBPV': { lat: 21.7736, lng: -72.2659, name: 'Providenciales International, Turks & Caicos' },
+            'BED': { lat: 42.4696, lng: -71.2890, name: 'Hanscom Field, MA' },
+            'OPF': { lat: 25.9072, lng: -80.2784, name: 'Opa-locka Executive, FL' },
+            'SAF': { lat: 35.6175, lng: -106.0881, name: 'Santa Fe Regional, NM' },
+            'DCA': { lat: 38.8521, lng: -77.0402, name: 'Ronald Reagan Washington National' },
+            'BOS': { lat: 42.3656, lng: -71.0096, name: 'Boston Logan International' },
+            'LAX': { lat: 33.9425, lng: -118.4081, name: 'Los Angeles International' },
+            'LHR': { lat: 51.4700, lng: -0.4543, name: 'London Heathrow' },
+            'CDG': { lat: 49.0097, lng: 2.5479, name: 'Paris Charles de Gaulle' }
+        };
+
+        // Initialize map
+        function initializeMap() {
+            map = L.map('flightMap').setView([35, -60], 4);
+            
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© OpenStreetMap contributors © CARTO',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Add airport markers
+            Object.keys(airports).forEach(code => {
+                const airport = airports[code];
+                L.marker([airport.lat, airport.lng])
+                    .addTo(map)
+                    .bindPopup(`<strong>${code}</strong><br>${airport.name}`);
+            });
+        }
+
+        // Load flight data
+        async function loadFlightData() {
+            try {
+                // Load CSV data
+                const response = await fetch('flight_flights_table_updated.csv');
+                const csvText = await response.text();
+                const lines = csvText.split('\n');
+                const headers = lines[0].split(',');
+                
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim()) {
+                        const values = parseCSVLine(lines[i]);
+                        const flight = {
+                            date: values[0],
+                            flightNo: values[1],
+                            from: values[2],
+                            to: values[3],
+                            passengers: parsePassengers(values[4])
+                        };
+                        flightData.push(flight);
+                        
+                        // Track passenger data
+                        flight.passengers.forEach(passenger => {
+                            if (!passengerData[passenger]) {
+                                passengerData[passenger] = {
+                                    name: passenger,
+                                    flights: [],
+                                    count: 0
+                                };
+                            }
+                            passengerData[passenger].flights.push(flight);
+                            passengerData[passenger].count++;
+                        });
+                    }
+                }
+                
+                // Load KML data
+                await loadKMLData();
+                
+                updateStatistics();
+                displayFlights();
+                displayPassengers();
+                createCharts();
+                
+            } catch (error) {
+                console.error('Error loading flight data:', error);
+                showNotification('Error loading flight data', 'error');
+            }
+        }
+
+        // Parse CSV line handling quotes
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current);
+            return result;
+        }
+
+        // Parse passenger list
+        function parsePassengers(passengerString) {
+            if (!passengerString) return [];
+            return passengerString.split(',').map(p => p.trim()).filter(p => p);
+        }
+
+        // Load KML data
+        async function loadKMLData() {
+            try {
+                const response = await fetch('flightlogs_flightgraph.kml');
+                const kmlText = await response.text();
+                const parser = new DOMParser();
+                const kmlDoc = parser.parseFromString(kmlText, 'text/xml');
+                
+                const placemarks = kmlDoc.querySelectorAll('Placemark');
+                placemarks.forEach(placemark => {
+                    const name = placemark.querySelector('name')?.textContent;
+                    const description = placemark.querySelector('description')?.textContent;
+                    const coordinates = placemark.querySelector('coordinates')?.textContent;
+                    
+                    if (coordinates) {
+                        const coords = coordinates.trim().split(' ').map(coord => {
+                            const [lng, lat] = coord.split(',').map(Number);
+                            return [lat, lng];
+                        });
+                        
+                        if (coords.length >= 2) {
+                            const polyline = L.polyline(coords, {
+                                color: '#ff6b6b',
+                                weight: 2,
+                                opacity: 0.6
+                            }).addTo(map);
+                            
+                            polyline.bindPopup(`<strong>${name}</strong><br>${description || ''}`);
+                            flightPaths.push(polyline);
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading KML data:', error);
+            }
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            document.getElementById('totalFlights').textContent = flightData.length;
+            document.getElementById('uniquePassengers').textContent = Object.keys(passengerData).length;
+            
+            const frequentFlyers = Object.values(passengerData).filter(p => p.count >= 10).length;
+            document.getElementById('frequentFlyers').textContent = frequentFlyers;
+            
+            const destinations = new Set(flightData.map(f => f.to));
+            document.getElementById('destinations').textContent = destinations.size;
+            
+            const vipNames = ['Trump', 'Clinton', 'Prince Andrew', 'Dershowitz', 'Bill Gates'];
+            const vipFlights = flightData.filter(f => 
+                f.passengers.some(p => vipNames.some(vip => p.toLowerCase().includes(vip.toLowerCase())))
+            ).length;
+            document.getElementById('vipFlights').textContent = vipFlights;
+            
+            // Detect suspicious patterns
+            const suspicious = detectSuspiciousFlights();
+            document.getElementById('suspiciousFlights').textContent = suspicious.length;
+        }
+
+        // Detect suspicious flight patterns
+        function detectSuspiciousFlights() {
+            const suspicious = [];
+            
+            flightData.forEach(flight => {
+                // Flag flights with young passengers
+                const youngPassengers = ['minor', 'female', 'girl', 'young'];
+                const hasYoung = flight.passengers.some(p => 
+                    youngPassengers.some(term => p.toLowerCase().includes(term))
+                );
+                
+                // Flag flights to private islands
+                const privateDestinations = ['TIST', 'MBPV'];
+                const isPrivate = privateDestinations.includes(flight.to);
+                
+                // Flag flights with only Epstein/Maxwell and unidentified passengers
+                const hasUnidentified = flight.passengers.some(p => 
+                    p.includes('Female') || p.includes('1 ') || p.includes('2 ')
+                );
+                
+                if ((hasYoung || isPrivate) && hasUnidentified) {
+                    suspicious.push(flight);
+                }
+            });
+            
+            return suspicious;
+        }
+
+        // Display flights in table
+        function displayFlights(flights = flightData) {
+            // Preserve scroll position
+            const scrollY = window.scrollY;
+            const scrollX = window.scrollX;
+            
+            const tbody = document.getElementById('flightsTableBody');
+            tbody.innerHTML = '';
+            
+            flights.slice(0, 100).forEach(flight => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${formatDate(flight.date)}</td>
+                    <td>${flight.flightNo}</td>
+                    <td>${flight.from}</td>
+                    <td>${flight.to}</td>
+                    <td>${formatPassengers(flight.passengers)}</td>
+                    <td>${getFlightStatus(flight)}</td>
+                `;
+            });
+            
+            // Restore scroll position
+            requestAnimationFrame(() => {
+                window.scrollTo(scrollX, scrollY);
+            });
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            if (!dateStr || dateStr.length !== 8) return dateStr;
+            const year = dateStr.substring(0, 4);
+            const month = dateStr.substring(4, 6);
+            const day = dateStr.substring(6, 8);
+            return `${year}-${month}-${day}`;
+        }
+
+        // Format passengers with tags
+        function formatPassengers(passengers) {
+            return passengers.map(p => {
+                let className = 'passenger-tag';
+                if (p.includes('Epstein')) className += ' suspicious-tag';
+                if (p.includes('Maxwell')) className += ' suspicious-tag';
+                if (p.includes('Trump') || p.includes('Clinton')) className += ' vip-tag';
+                return `<span class="${className}">${p}</span>`;
+            }).join(' ');
+        }
+
+        // Get flight status
+        function getFlightStatus(flight) {
+            const suspicious = detectSuspiciousFlights();
+            if (suspicious.includes(flight)) {
+                return '<span style="color: var(--danger-color);">🚨 Suspicious</span>';
+            }
+            return '<span style="color: var(--success-color);">✓ Logged</span>';
+        }
+
+        // Display top passengers
+        function displayPassengers() {
+            // Preserve scroll position
+            const scrollY = window.scrollY;
+            const scrollX = window.scrollX;
+            
+            const passengerGrid = document.getElementById('passengerGrid');
+            passengerGrid.innerHTML = '';
+            
+            const topPassengers = Object.values(passengerData)
+                .sort((a, b) => b.count - a.count)
+                .slice(0, 12);
+            
+            topPassengers.forEach(passenger => {
+                const card = document.createElement('div');
+                card.className = 'passenger-card';
+                card.innerHTML = `
+                    <div class="passenger-photo">${getInitials(passenger.name)}</div>
+                    <div class="passenger-name">${passenger.name}</div>
+                    <div class="passenger-stats">
+                        <span class="flight-count">${passenger.count} flights</span>
+                    </div>
+                `;
+                card.onclick = () => filterByPassenger(passenger.name);
+                passengerGrid.appendChild(card);
+            });
+            
+            // Restore scroll position
+            requestAnimationFrame(() => {
+                window.scrollTo(scrollX, scrollY);
+            });
+        }
+
+        // Get initials for avatar
+        function getInitials(name) {
+            const parts = name.split(' ');
+            if (parts.length >= 2) {
+                return parts[0][0] + parts[parts.length - 1][0];
+            }
+            return name.substring(0, 2).toUpperCase();
+        }
+
+        // Create charts
+        function createCharts() {
+            // Flights over time chart
+            const timeCtx = document.getElementById('flightsTimeChart').getContext('2d');
+            const flightsByYear = {};
+            
+            flightData.forEach(flight => {
+                const year = flight.date.substring(0, 4);
+                flightsByYear[year] = (flightsByYear[year] || 0) + 1;
+            });
+            
+            new Chart(timeCtx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(flightsByYear).sort(),
+                    datasets: [{
+                        label: 'Flights',
+                        data: Object.keys(flightsByYear).sort().map(year => flightsByYear[year]),
+                        borderColor: '#ff6b6b',
+                        backgroundColor: 'rgba(255,107,107,0.2)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 0 // Disable animation to prevent scroll jumps
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#fff' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#fff' }
+                        }
+                    }
+                }
+            });
+            
+            // Top destinations chart
+            const destCtx = document.getElementById('destinationsChart').getContext('2d');
+            const destinations = {};
+            
+            flightData.forEach(flight => {
+                destinations[flight.to] = (destinations[flight.to] || 0) + 1;
+            });
+            
+            const topDest = Object.entries(destinations)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 8);
+            
+            new Chart(destCtx, {
+                type: 'bar',
+                data: {
+                    labels: topDest.map(d => d[0]),
+                    datasets: [{
+                        label: 'Flights',
+                        data: topDest.map(d => d[1]),
+                        backgroundColor: '#4ecdc4'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#fff' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#fff' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Search flights
+        function searchFlights() {
+            const passengerSearch = document.getElementById('passengerSearch').value.toLowerCase();
+            const startDate = document.getElementById('startDate').value.replace(/-/g, '');
+            const endDate = document.getElementById('endDate').value.replace(/-/g, '');
+            const destination = document.getElementById('destinationFilter').value;
+            
+            let filtered = flightData;
+            
+            if (passengerSearch) {
+                filtered = filtered.filter(f => 
+                    f.passengers.some(p => p.toLowerCase().includes(passengerSearch))
+                );
+            }
+            
+            if (startDate) {
+                filtered = filtered.filter(f => f.date >= startDate);
+            }
+            
+            if (endDate) {
+                filtered = filtered.filter(f => f.date <= endDate);
+            }
+            
+            if (destination) {
+                filtered = filtered.filter(f => f.to === destination);
+            }
+            
+            displayFlights(filtered);
+            showNotification(`Found ${filtered.length} flights`, 'success');
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('passengerSearch').value = '';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            document.getElementById('destinationFilter').value = '';
+            displayFlights();
+            showNotification('Filters reset', 'info');
+        }
+
+        // Show suspicious flights only
+        function showSuspiciousOnly() {
+            const suspicious = detectSuspiciousFlights();
+            displayFlights(suspicious);
+            showNotification(`Showing ${suspicious.length} suspicious flights`, 'warning');
+        }
+
+        // Filter by passenger
+        function filterByPassenger(name) {
+            document.getElementById('passengerSearch').value = name;
+            searchFlights();
+        }
+
+        // Animate flight paths
+        function animateFlights() {
+            if (currentAnimation) {
+                clearInterval(currentAnimation);
+                currentAnimation = null;
+                showNotification('Animation stopped', 'info');
+                return;
+            }
+            
+            let index = 0;
+            currentAnimation = setInterval(() => {
+                if (index >= flightPaths.length) {
+                    clearInterval(currentAnimation);
+                    currentAnimation = null;
+                    showNotification('Animation complete', 'success');
+                    return;
+                }
+                
+                flightPaths[index].setStyle({ opacity: 1, weight: 4 });
+                setTimeout(() => {
+                    flightPaths[index].setStyle({ opacity: 0.6, weight: 2 });
+                }, 500);
+                
+                index++;
+            }, 200);
+            
+            showNotification('Animating flight paths...', 'info');
+        }
+
+        // Export data
+        function exportData() {
+            const data = flightData.map(f => ({
+                date: formatDate(f.date),
+                flight: f.flightNo,
+                from: f.from,
+                to: f.to,
+                passengers: f.passengers.join(', ')
+            }));
+            
+            const csv = [
+                Object.keys(data[0]).join(','),
+                ...data.map(row => Object.values(row).map(v => `"${v}"`).join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'epstein-flights-export.csv';
+            a.click();
+            
+            showNotification('Data exported successfully', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.background = 
+                type === 'error' ? 'var(--danger-color)' :
+                type === 'warning' ? 'var(--warning-color)' :
+                type === 'success' ? 'var(--success-color)' :
+                'var(--primary-color)';
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMap();
+            loadFlightData();
+            
+            // Populate destination filter
+            setTimeout(() => {
+                const destinations = [...new Set(flightData.map(f => f.to))].sort();
+                const select = document.getElementById('destinationFilter');
+                destinations.forEach(dest => {
+                    const option = document.createElement('option');
+                    option.value = dest;
+                    option.textContent = `${dest} - ${airports[dest]?.name || 'Unknown'}`;
+                    select.appendChild(option);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

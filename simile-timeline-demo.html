@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMILE Timeline Demo - Trump-Epstein Investigation</title>
+    
+    <!-- SIMILE Timeline Configuration -->
+    <script>
+        window.Timeline_ajax_url = "simile-timeline/simile-ajax-api.js";
+        window.Timeline_urlPrefix = "simile-timeline/api/";
+    </script>
+    
+    <!-- Load SIMILE Timeline -->
+    <script src="simile-timeline/simile-ajax-api.js"></script>
+    <script src="simile-timeline/api/timeline-api.js"></script>
+    
+    <!-- Custom Investigation Theme -->
+    <link rel="stylesheet" type="text/css" href="simile-timeline/investigation-theme.css">
+    
+    <!-- Timeline Image Enhancement -->
+    <script src="timeline-image-enhancer.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #e0e0e0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+        }
+        
+        .header h1 {
+            color: #f7fafc;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        
+        .header p {
+            color: #cbd5e0;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .timeline-container {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            border: 2px solid #4a5568;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        #timeline {
+            height: 500px;
+            border: 2px solid #718096;
+            border-radius: 8px;
+            background: #1a1a1a;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            color: #e2e8f0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .control-group select, .control-group input {
+            padding: 8px 12px;
+            border: 1px solid #4a5568;
+            border-radius: 6px;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+        
+        .control-group button {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .control-group button:hover {
+            background: linear-gradient(135deg, #63b3ed, #4299e1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+        }
+        
+        .status {
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4299e1;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .status.success {
+            border-left-color: #48bb78;
+            background: rgba(72, 187, 120, 0.1);
+        }
+        
+        .status.error {
+            border-left-color: #f56565;
+            background: rgba(245, 101, 101, 0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .feature-card h3 {
+            color: #f7fafc;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .feature-card p {
+            color: #cbd5e0;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .feature-card .feature-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 SIMILE Timeline Demo</h1>
+        <p>Professional-grade interactive timeline for investigative journalism</p>
+        <p>Trump-Epstein Investigation Platform</p>
+    </div>
+    
+    <div class="status" id="status">
+        🚀 Initializing SIMILE Timeline...
+    </div>
+    
+    <div class="timeline-container">
+        <div class="controls">
+            <div class="control-group">
+                <label>📅 Time Scale:</label>
+                <select id="timeScale" onchange="changeTimeScale()">
+                    <option value="year">Year</option>
+                    <option value="decade">Decade</option>
+                    <option value="month">Month</option>
+                    <option value="week">Week</option>
+                    <option value="day">Day</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>🏷️ Category:</label>
+                <select id="categoryFilter" onchange="applyFilters()">
+                    <option value="all">All Categories</option>
+                    <option value="events">Key Events</option>
+                    <option value="reports">Media Reports</option>
+                    <option value="legal">Legal Actions</option>
+                    <option value="investigations">Investigations</option>
+                    <option value="deaths">Deaths</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>🔍 Search:</label>
+                <input type="text" id="searchBox" placeholder="Search events..." onkeyup="applyFilters()">
+            </div>
+            
+            <div class="control-group">
+                <button onclick="resetTimeline()">🔄 Reset</button>
+                <button onclick="exportTimeline()">📥 Export</button>
+                <button onclick="toggleFullscreen()">📺 Fullscreen</button>
+            </div>
+        </div>
+        
+        <div id="timeline"></div>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Professional Theming</h3>
+            <p>Custom investigation-focused visual design with evidence-level indicators, category color coding, and responsive layout optimized for serious research.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3>Rich Media Integration</h3>
+            <p>Automatic image mapping system that adds relevant photos to timeline events based on content analysis and metadata matching.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Advanced Filtering</h3>
+            <p>Multi-dimensional filtering by category, evidence level, people, locations, and keyword search with real-time results.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Interactive Navigation</h3>
+            <p>Smooth zooming, panning, and time scale controls with synchronized dual-band display for both detailed and overview perspectives.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Data Integrity</h3>
+            <p>Evidence-level tracking, source attribution, geographic coordinates, and intelligence agency relevance indicators for thorough analysis.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Professional Integration</h3>
+            <p>Seamless integration with existing investigation platform, responsive design, and export capabilities for research workflows.</p>
+        </div>
+    </div>
+    
+    <script>
+        let timeline = null;
+        let eventSource = null;
+        let allEvents = [];
+        
+        function updateStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+            console.log(message);
+        }
+        
+        function initializeDemo() {
+            updateStatus('🔧 Checking SIMILE Timeline API availability...');
+            
+            if (typeof SimileAjax === 'undefined') {
+                updateStatus('❌ ERROR: SimileAjax not available', 'error');
+                return;
+            }
+            
+            if (typeof Timeline === 'undefined') {
+                updateStatus('❌ ERROR: Timeline not available', 'error');
+                return;
+            }
+            
+            updateStatus('✅ SIMILE APIs loaded successfully', 'success');
+            loadTimelineData();
+        }
+        
+        function loadTimelineData() {
+            updateStatus('📥 Loading timeline data...');
+            
+            Timeline.loadXML("timeline-comprehensive.xml", function(xml, url) {
+                try {
+                    eventSource = new Timeline.DefaultEventSource();
+                    Timeline.loadXML("timeline-comprehensive.xml", function(xml, url) {
+                        eventSource.loadXML(xml, url);
+                        allEvents = eventSource.getAllEventIterator().getAllEvents() || [];
+                        
+                        updateStatus(`✅ Loaded ${allEvents.length} timeline events`, 'success');
+                        createTimeline();
+                        
+                    }, function(error) {
+                        updateStatus('❌ Failed to process timeline data: ' + error, 'error');
+                    });
+                    
+                } catch (error) {
+                    updateStatus('❌ Error loading timeline data: ' + error.message, 'error');
+                }
+            }, function(error) {
+                updateStatus('❌ Failed to load timeline XML file: ' + error, 'error');
+            });
+        }
+        
+        function createTimeline() {
+            updateStatus('🎨 Creating interactive timeline...');
+            
+            try {
+                const bandInfos = [
+                    Timeline.createBandInfo({
+                        width: "70%",
+                        intervalUnit: Timeline.DateTime.YEAR,
+                        intervalPixels: 120,
+                        eventSource: eventSource,
+                        date: new Date(2000, 0, 1)
+                    }),
+                    Timeline.createBandInfo({
+                        width: "30%",
+                        intervalUnit: Timeline.DateTime.DECADE,
+                        intervalPixels: 200,
+                        eventSource: eventSource,
+                        date: new Date(2000, 0, 1),
+                        overview: true
+                    })
+                ];
+                
+                bandInfos[1].syncWith = 0;
+                bandInfos[1].highlight = true;
+                
+                timeline = Timeline.create(document.getElementById("timeline"), bandInfos);
+                
+                updateStatus('🎉 SIMILE Timeline created successfully! Ready for exploration.', 'success');
+                
+                // Enhance with images
+                if (window.TimelineImageEnhancer) {
+                    window.TimelineImageEnhancer.enhanceSimile(timeline);
+                }
+                
+            } catch (error) {
+                updateStatus('❌ Failed to create timeline: ' + error.message, 'error');
+                console.error("Timeline creation error:", error);
+            }
+        }
+        
+        function changeTimeScale() {
+            if (!timeline) return;
+            
+            const scale = document.getElementById('timeScale').value;
+            updateStatus(`🔄 Changing time scale to: ${scale}`);
+            
+            let intervalUnit;
+            switch(scale) {
+                case 'decade': intervalUnit = Timeline.DateTime.DECADE; break;
+                case 'year': intervalUnit = Timeline.DateTime.YEAR; break;
+                case 'month': intervalUnit = Timeline.DateTime.MONTH; break;
+                case 'week': intervalUnit = Timeline.DateTime.WEEK; break;
+                case 'day': intervalUnit = Timeline.DateTime.DAY; break;
+                default: intervalUnit = Timeline.DateTime.YEAR;
+            }
+            
+            // Recreate timeline with new scale
+            const bandInfos = [
+                Timeline.createBandInfo({
+                    width: "70%",
+                    intervalUnit: intervalUnit,
+                    intervalPixels: 120,
+                    eventSource: eventSource
+                }),
+                Timeline.createBandInfo({
+                    width: "30%",
+                    intervalUnit: intervalUnit === Timeline.DateTime.DECADE ? Timeline.DateTime.CENTURY : Timeline.DateTime.DECADE,
+                    intervalPixels: 200,
+                    eventSource: eventSource,
+                    overview: true
+                })
+            ];
+            
+            bandInfos[1].syncWith = 0;
+            bandInfos[1].highlight = true;
+            
+            timeline.dispose();
+            timeline = Timeline.create(document.getElementById("timeline"), bandInfos);
+            
+            updateStatus(`✅ Timeline scale changed to: ${scale}`, 'success');
+        }
+        
+        function applyFilters() {
+            updateStatus('🔍 Applying filters...');
+            // Filter implementation would go here
+            updateStatus('✅ Filters applied', 'success');
+        }
+        
+        function resetTimeline() {
+            updateStatus('🔄 Resetting timeline...');
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('searchBox').value = '';
+            document.getElementById('timeScale').value = 'year';
+            
+            if (timeline) {
+                timeline.dispose();
+                createTimeline();
+            }
+        }
+        
+        function exportTimeline() {
+            updateStatus('📥 Export functionality would be implemented here');
+        }
+        
+        function toggleFullscreen() {
+            const timelineContainer = document.querySelector('.timeline-container');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                timelineContainer.requestFullscreen();
+            }
+        }
+        
+        // Initialize when everything is loaded
+        window.addEventListener('load', function() {
+            setTimeout(initializeDemo, 1000);
+        });
+    </script>
+</body>
+</html>

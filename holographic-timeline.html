@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRIDAY Investigation Suite | Holographic Timeline Analysis</title>
+    
+    <!-- Three.js and WebGL Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+    
+    <!-- Voice Recognition and Audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --neon-blue: #00d4ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-purple: #bf00ff;
+            --neon-red: #ff073a;
+            --neon-orange: #ff8c00;
+            --dark-bg: #0a0a0a;
+            --matrix-green: #00ff41;
+            --hologram-blue: rgba(0, 212, 255, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background: var(--dark-bg);
+            color: var(--neon-blue);
+            overflow: hidden;
+            cursor: none;
+        }
+        
+        /* Holographic Main Container */
+        #holographic-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #001122 0%, #000000 100%);
+            overflow: hidden;
+        }
+        
+        /* Matrix Digital Rain Background */
+        #matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        /* Three.js Canvas Container */
+        #timeline-3d {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        /* HUD Interface Overlay */
+        .hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        /* FRIDAY Logo and Status */
+        .friday-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: auto;
+        }
+        
+        .friday-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        .investigation-status {
+            font-size: 0.9rem;
+            color: var(--neon-green);
+            margin-top: 5px;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        /* Voice Command Interface */
+        .voice-interface {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            pointer-events: auto;
+        }
+        
+        .voice-status {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--neon-blue);
+            border-radius: 25px;
+            padding: 15px 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .voice-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 15px var(--neon-green);
+            animation: voice-pulse 1.5s ease-in-out infinite;
+        }
+        
+        /* Control Panel */
+        .control-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            pointer-events: auto;
+            min-width: 300px;
+        }
+        
+        .control-section {
+            margin-bottom: 20px;
+        }
+        
+        .control-section h3 {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+        
+        .hologram-button {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(191, 0, 255, 0.2));
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 5px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .hologram-button:hover {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.4), rgba(191, 0, 255, 0.4));
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        /* Event Details Hologram */
+        .event-hologram {
+            position: absolute;
+            background: rgba(0, 212, 255, 0.05);
+            border: 2px solid var(--neon-blue);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
+            max-width: 400px;
+            pointer-events: auto;
+            animation: hologram-flicker 3s ease-in-out infinite;
+            display: none;
+        }
+        
+        .event-title {
+            color: var(--neon-cyan);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+        
+        .event-date {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .event-description {
+            color: var(--neon-blue);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Neural Network Visualization */
+        .neural-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        /* Gesture Guide */
+        .gesture-guide {
+            position: absolute;
+            bottom: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--neon-purple);
+            border-radius: 10px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            pointer-events: auto;
+            font-size: 0.7rem;
+        }
+        
+        .gesture-guide h4 {
+            color: var(--neon-purple);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .gesture-item {
+            color: var(--neon-blue);
+            margin: 5px 0;
+        }
+        
+        /* Custom Cursor */
+        .holographic-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            mix-blend-mode: difference;
+            animation: cursor-glow 1s ease-in-out infinite alternate;
+        }
+        
+        /* Animations */
+        @keyframes pulse-glow {
+            0% { text-shadow: 0 0 20px var(--neon-blue); }
+            100% { text-shadow: 0 0 40px var(--neon-blue), 0 0 60px var(--neon-blue); }
+        }
+        
+        @keyframes voice-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        @keyframes hologram-flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+            75% { opacity: 0.9; }
+        }
+        
+        @keyframes cursor-glow {
+            0% { box-shadow: 0 0 10px var(--neon-blue); }
+            100% { box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+        }
+        
+        @keyframes matrix-fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        /* Evidence Beam Effects */
+        .evidence-beam {
+            position: absolute;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--neon-red) 20%, 
+                var(--neon-orange) 50%, 
+                var(--neon-red) 80%, 
+                transparent 100%);
+            height: 2px;
+            box-shadow: 0 0 10px var(--neon-red);
+            animation: beam-pulse 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes beam-pulse {
+            0%, 100% { opacity: 0.6; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(2); }
+        }
+        
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 2s ease-out;
+        }
+        
+        .loading-text {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px var(--neon-blue);
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-cyan));
+            border-radius: 2px;
+            animation: loading-animate 3s ease-out forwards;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+        
+        @keyframes loading-animate {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .friday-logo {
+                font-size: 1.8rem;
+            }
+            
+            .control-panel {
+                right: 10px;
+                top: 10px;
+                min-width: 250px;
+                padding: 15px;
+            }
+            
+            .voice-interface {
+                bottom: 20px;
+            }
+            
+            .gesture-guide {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-text">INITIALIZING FRIDAY INVESTIGATION SUITE</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Custom Holographic Cursor -->
+    <div class="holographic-cursor" id="cursor"></div>
+
+    <!-- Main Holographic Container -->
+    <div id="holographic-container">
+        <!-- Matrix Digital Rain Background -->
+        <canvas id="matrix-rain"></canvas>
+        
+        <!-- Three.js 3D Timeline Container -->
+        <div id="timeline-3d"></div>
+        
+        <!-- Neural Network Overlay -->
+        <canvas class="neural-overlay" id="neural-network"></canvas>
+        
+        <!-- HUD Interface Overlay -->
+        <div class="hud-overlay">
+            <!-- FRIDAY Header -->
+            <div class="friday-header">
+                <div class="friday-logo">FRIDAY</div>
+                <div class="investigation-status">TRUMP-EPSTEIN INVESTIGATION SUITE</div>
+                <div class="investigation-status" id="system-status">SYSTEM ONLINE | NEURAL PATTERNS ACTIVE</div>
+            </div>
+            
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3>Timeline Controls</h3>
+                    <button class="hologram-button" onclick="resetTimeline()">Reset View</button>
+                    <button class="hologram-button" onclick="toggleParticles()">Toggle Particles</button>
+                    <button class="hologram-button" onclick="focusOnTrump()">Trump Focus</button>
+                    <button class="hologram-button" onclick="focusOnEpstein()">Epstein Focus</button>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Analysis Mode</h3>
+                    <button class="hologram-button" onclick="showConnections()">Show Connections</button>
+                    <button class="hologram-button" onclick="toggleEvidenceBeams()">Evidence Beams</button>
+                    <button class="hologram-button" onclick="activateNeuralNet()">Neural Analysis</button>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Time Period</h3>
+                    <button class="hologram-button" onclick="filterByDecade('1990s')">1990s</button>
+                    <button class="hologram-button" onclick="filterByDecade('2000s')">2000s</button>
+                    <button class="hologram-button" onclick="filterByDecade('2010s')">2010s</button>
+                    <button class="hologram-button" onclick="showAll()">All Time</button>
+                </div>
+            </div>
+            
+            <!-- Gesture Guide -->
+            <div class="gesture-guide">
+                <h4>Gesture Controls</h4>
+                <div class="gesture-item">• Drag: Rotate Timeline</div>
+                <div class="gesture-item">• Scroll: Zoom In/Out</div>
+                <div class="gesture-item">• Click: Select Event</div>
+                <div class="gesture-item">• Double-Click: Deep Analysis</div>
+                <div class="gesture-item">• Right-Click: Context Menu</div>
+            </div>
+            
+            <!-- Voice Command Interface -->
+            <div class="voice-interface">
+                <div class="voice-status">
+                    <span class="voice-indicator" id="voice-indicator"></span>
+                    <span id="voice-command-text">Voice Command Ready - Try: "Show me 2019 events"</span>
+                </div>
+            </div>
+            
+            <!-- Event Details Hologram -->
+            <div class="event-hologram" id="event-details">
+                <div class="event-title" id="event-title">Event Title</div>
+                <div class="event-date" id="event-date">Date</div>
+                <div class="event-description" id="event-description">Event description...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global Variables
+        let scene, camera, renderer, controls;
+        let timelineEvents = [];
+        let particleSystem;
+        let neuralNetwork;
+        let evidenceBeams = [];
+        let isParticlesEnabled = true;
+        let isNeuralNetActive = false;
+        let isEvidenceBeamsActive = false;
+        
+        // Timeline Data (Sample - will load from XML)
+        const timelineData = [
+            {
+                date: '1992-03-01',
+                title: 'Mar-a-Lago Party',
+                description: 'Trump and Epstein attend party at Mar-a-Lago',
+                category: 'social',
+                color: '#ff6b6b',
+                connections: ['trump', 'epstein', 'mar-a-lago']
+            },
+            {
+                date: '2005-07-01',
+                title: 'Palm Beach Investigation',
+                description: 'Police investigation into Epstein begins',
+                category: 'legal',
+                color: '#45b7d1',
+                connections: ['epstein', 'investigation', 'palm-beach']
+            },
+            {
+                date: '2019-07-06',
+                title: 'Epstein Arrested',
+                description: 'Jeffrey Epstein arrested on federal charges',
+                category: 'legal',
+                color: '#8B0000',
+                connections: ['epstein', 'arrest', 'federal']
+            }
+        ];
+        
+        // Initialize FRIDAY System
+        function initializeFRIDAY() {
+            console.log('FRIDAY Investigation Suite Initializing...');
+            
+            // Initialize Matrix Rain
+            initMatrixRain();
+            
+            // Initialize 3D Timeline
+            init3DTimeline();
+            
+            // Initialize Neural Network
+            initNeuralNetwork();
+            
+            // Initialize Voice Commands
+            initVoiceCommands();
+            
+            // Initialize Custom Cursor
+            initCustomCursor();
+            
+            // Load Timeline Data
+            loadTimelineData();
+            
+            // Hide loading screen after 3 seconds
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 2000);
+            }, 3000);
+        }
+        
+        // Matrix Digital Rain Effect
+        function initMatrixRain() {
+            const canvas = document.getElementById('matrix-rain');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
+            const drops = [];
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+            
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff41';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(drawMatrix, 50);
+        }
+        
+        // 3D Timeline Initialization
+        function init3DTimeline() {
+            const container = document.getElementById('timeline-3d');
+            
+            // Scene Setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000510);
+            
+            // Camera Setup
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 5, 15);
+            
+            // Renderer Setup
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(renderer.domElement);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0x00d4ff, 1, 100);
+            pointLight.position.set(0, 10, 10);
+            pointLight.castShadow = true;
+            scene.add(pointLight);
+            
+            // Timeline Base Structure
+            createTimelineBase();
+            
+            // Particle System
+            createParticleSystem();
+            
+            // Mouse Controls
+            initMouseControls();
+            
+            // Start Render Loop
+            animate();
+        }
+        
+        // Create Timeline Base Structure
+        function createTimelineBase() {
+            // Central Timeline Spine
+            const spineGeometry = new THREE.CylinderGeometry(0.05, 0.05, 20, 8);
+            const spineMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0x00d4ff,
+                emissive: 0x001122,
+                transparent: true,
+                opacity: 0.8
+            });
+            const spine = new THREE.Mesh(spineGeometry, spineMaterial);
+            spine.rotation.z = Math.PI / 2;
+            scene.add(spine);
+            
+            // Holographic Grid
+            const gridHelper = new THREE.GridHelper(20, 20, 0x00ffff, 0x004444);
+            gridHelper.position.y = -2;
+            gridHelper.material.transparent = true;
+            gridHelper.material.opacity = 0.3;
+            scene.add(gridHelper);
+        }
+        
+        // Create Particle System
+        function createParticleSystem() {
+            const particleCount = 1000;
+            const particles = new THREE.BufferGeometry();
+            const positions = [];
+            const colors = [];
+            
+            for (let i = 0; i < particleCount; i++) {
+                positions.push(
+                    (Math.random() - 0.5) * 40,
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 40
+                );
+                
+                const color = new THREE.Color();
+                color.setHSL(Math.random() * 0.2 + 0.5, 1, 0.5);
+                colors.push(color.r, color.g, color.b);
+            }
+            
+            particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            particles.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            
+            particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+        }
+        
+        // Create Timeline Events in 3D
+        function createTimelineEvents() {
+            timelineData.forEach((event, index) => {
+                const eventGroup = new THREE.Group();
+                
+                // Event Sphere
+                const sphereGeometry = new THREE.SphereGeometry(0.2, 16, 16);
+                const sphereMaterial = new THREE.MeshPhongMaterial({
+                    color: event.color,
+                    emissive: event.color,
+                    emissiveIntensity: 0.3,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+                
+                // Position along timeline
+                const timePosition = (index - timelineData.length / 2) * 3;
+                sphere.position.set(timePosition, 0, 0);
+                
+                // Event Data
+                sphere.userData = event;
+                
+                // Holographic Ring
+                const ringGeometry = new THREE.RingGeometry(0.3, 0.35, 32);
+                const ringMaterial = new THREE.MeshBasicMaterial({
+                    color: 0x00ffff,
+                    transparent: true,
+                    opacity: 0.5,
+                    side: THREE.DoubleSide
+                });
+                const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                ring.position.copy(sphere.position);
+                ring.lookAt(camera.position);
+                
+                eventGroup.add(sphere);
+                eventGroup.add(ring);
+                scene.add(eventGroup);
+                
+                timelineEvents.push({ sphere, ring, data: event });
+            });
+        }
+        
+        // Mouse Controls
+        function initMouseControls() {
+            let isMouseDown = false;
+            let mouseX = 0, mouseY = 0;
+            let targetRotationX = 0, targetRotationY = 0;
+            let rotationX = 0, rotationY = 0;
+            
+            renderer.domElement.addEventListener('mousedown', (event) => {
+                isMouseDown = true;
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+            
+            renderer.domElement.addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+            
+            renderer.domElement.addEventListener('mousemove', (event) => {
+                if (isMouseDown) {
+                    targetRotationY = (event.clientX - mouseX) * 0.01;
+                    targetRotationX = (event.clientY - mouseY) * 0.01;
+                    
+                    scene.rotation.y += targetRotationY * 0.1;
+                    scene.rotation.x += targetRotationX * 0.1;
+                }
+            });
+            
+            // Zoom with scroll
+            renderer.domElement.addEventListener('wheel', (event) => {
+                camera.position.z += event.deltaY * 0.01;
+                camera.position.z = Math.max(5, Math.min(50, camera.position.z));
+            });
+            
+            // Click to select events
+            renderer.domElement.addEventListener('click', (event) => {
+                const raycaster = new THREE.Raycaster();
+                const mouse = new THREE.Vector2();
+                
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                raycaster.setFromCamera(mouse, camera);
+                
+                const eventSpheres = timelineEvents.map(e => e.sphere);
+                const intersects = raycaster.intersectObjects(eventSpheres);
+                
+                if (intersects.length > 0) {
+                    const selectedEvent = intersects[0].object.userData;
+                    showEventDetails(selectedEvent);
+                }
+            });
+        }
+        
+        // Neural Network Visualization
+        function initNeuralNetwork() {
+            const canvas = document.getElementById('neural-network');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const nodes = [];
+            const connections = [];
+            
+            // Create nodes
+            for (let i = 0; i < 50; i++) {
+                nodes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 3 + 1
+                });
+            }
+            
+            function updateNeuralNetwork() {
+                if (!isNeuralNetActive) return;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Update nodes
+                nodes.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
+                    
+                    if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+                    if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+                });
+                
+                // Draw connections
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+                ctx.lineWidth = 1;
+                
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dist = Math.sqrt(
+                            Math.pow(nodes[i].x - nodes[j].x, 2) +
+                            Math.pow(nodes[i].y - nodes[j].y, 2)
+                        );
+                        
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                // Draw nodes
+                ctx.fillStyle = 'rgba(0, 255, 255, 0.6)';
+                nodes.forEach(node => {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                requestAnimationFrame(updateNeuralNetwork);
+            }
+            
+            updateNeuralNetwork();
+        }
+        
+        // Voice Commands
+        function initVoiceCommands() {
+            if (typeof annyang !== 'undefined') {
+                const commands = {
+                    'show me *year events': (year) => {
+                        filterByYear(year);
+                        updateVoiceStatus(`Filtering events for ${year}`);
+                    },
+                    'focus on trump': () => {
+                        focusOnTrump();
+                        updateVoiceStatus('Focusing on Trump connections');
+                    },
+                    'focus on epstein': () => {
+                        focusOnEpstein();
+                        updateVoiceStatus('Focusing on Epstein network');
+                    },
+                    'show connections': () => {
+                        showConnections();
+                        updateVoiceStatus('Displaying network connections');
+                    },
+                    'activate neural analysis': () => {
+                        activateNeuralNet();
+                        updateVoiceStatus('Neural analysis activated');
+                    },
+                    'reset view': () => {
+                        resetTimeline();
+                        updateVoiceStatus('Timeline view reset');
+                    },
+                    'friday analyze': () => {
+                        performFridayAnalysis();
+                        updateVoiceStatus('Performing deep analysis...');
+                    }
+                };
+                
+                annyang.addCommands(commands);
+                annyang.start({ autoRestart: true, continuous: false });
+                
+                annyang.addCallback('result', (phrases) => {
+                    updateVoiceStatus(`Command recognized: "${phrases[0]}"`);
+                });
+                
+                annyang.addCallback('error', () => {
+                    updateVoiceStatus('Voice command ready...');
+                });
+            }
+        }
+        
+        // Custom Cursor
+        function initCustomCursor() {
+            const cursor = document.getElementById('cursor');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+        }
+        
+        // Load Timeline Data from XML
+        function loadTimelineData() {
+            // For now, use sample data. In production, this would load from timeline-comprehensive.xml
+            createTimelineEvents();
+        }
+        
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate particles
+            if (particleSystem && isParticlesEnabled) {
+                particleSystem.rotation.y += 0.001;
+                particleSystem.rotation.x += 0.0005;
+            }
+            
+            // Animate timeline events
+            timelineEvents.forEach((event, index) => {
+                if (event.ring) {
+                    event.ring.rotation.z += 0.01;
+                    event.ring.lookAt(camera.position);
+                }
+                
+                // Floating animation
+                event.sphere.position.y = Math.sin(Date.now() * 0.001 + index) * 0.2;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Control Functions
+        function resetTimeline() {
+            camera.position.set(0, 5, 15);
+            scene.rotation.set(0, 0, 0);
+        }
+        
+        function toggleParticles() {
+            isParticlesEnabled = !isParticlesEnabled;
+            if (particleSystem) {
+                particleSystem.visible = isParticlesEnabled;
+            }
+        }
+        
+        function focusOnTrump() {
+            // Focus camera on Trump-related events
+            const trumpEvents = timelineEvents.filter(e => 
+                e.data.connections.includes('trump')
+            );
+            
+            if (trumpEvents.length > 0) {
+                const avgPosition = trumpEvents.reduce((acc, event) => ({
+                    x: acc.x + event.sphere.position.x,
+                    y: acc.y + event.sphere.position.y,
+                    z: acc.z + event.sphere.position.z
+                }), { x: 0, y: 0, z: 0 });
+                
+                avgPosition.x /= trumpEvents.length;
+                avgPosition.y /= trumpEvents.length;
+                avgPosition.z /= trumpEvents.length;
+                
+                camera.position.set(avgPosition.x, avgPosition.y + 5, avgPosition.z + 10);
+                camera.lookAt(avgPosition.x, avgPosition.y, avgPosition.z);
+            }
+        }
+        
+        function focusOnEpstein() {
+            // Similar to focusOnTrump but for Epstein events
+            const epsteinEvents = timelineEvents.filter(e => 
+                e.data.connections.includes('epstein')
+            );
+            
+            if (epsteinEvents.length > 0) {
+                const avgPosition = epsteinEvents.reduce((acc, event) => ({
+                    x: acc.x + event.sphere.position.x,
+                    y: acc.y + event.sphere.position.y,
+                    z: acc.z + event.sphere.position.z
+                }), { x: 0, y: 0, z: 0 });
+                
+                avgPosition.x /= epsteinEvents.length;
+                avgPosition.y /= epsteinEvents.length;
+                avgPosition.z /= epsteinEvents.length;
+                
+                camera.position.set(avgPosition.x, avgPosition.y + 5, avgPosition.z + 10);
+                camera.lookAt(avgPosition.x, avgPosition.y, avgPosition.z);
+            }
+        }
+        
+        function showConnections() {
+            // Create connection lines between related events
+            timelineEvents.forEach((event1, i) => {
+                timelineEvents.forEach((event2, j) => {
+                    if (i < j && hasConnection(event1.data, event2.data)) {
+                        createConnectionBeam(event1.sphere.position, event2.sphere.position);
+                    }
+                });
+            });
+        }
+        
+        function hasConnection(event1, event2) {
+            return event1.connections.some(conn => event2.connections.includes(conn));
+        }
+        
+        function createConnectionBeam(pos1, pos2) {
+            const geometry = new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(pos1.x, pos1.y, pos1.z),
+                new THREE.Vector3(pos2.x, pos2.y, pos2.z)
+            ]);
+            
+            const material = new THREE.LineBasicMaterial({
+                color: 0xff073a,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            const line = new THREE.Line(geometry, material);
+            scene.add(line);
+            evidenceBeams.push(line);
+        }
+        
+        function toggleEvidenceBeams() {
+            isEvidenceBeamsActive = !isEvidenceBeamsActive;
+            evidenceBeams.forEach(beam => {
+                beam.visible = isEvidenceBeamsActive;
+            });
+        }
+        
+        function activateNeuralNet() {
+            isNeuralNetActive = !isNeuralNetActive;
+            const canvas = document.getElementById('neural-network');
+            canvas.style.display = isNeuralNetActive ? 'block' : 'none';
+        }
+        
+        function filterByDecade(decade) {
+            // Filter events by decade
+            const decadeStart = parseInt(decade.substring(0, 4));
+            const decadeEnd = decadeStart + 9;
+            
+            timelineEvents.forEach(event => {
+                const eventYear = new Date(event.data.date).getFullYear();
+                const isInRange = eventYear >= decadeStart && eventYear <= decadeEnd;
+                event.sphere.visible = isInRange;
+                event.ring.visible = isInRange;
+            });
+        }
+        
+        function showAll() {
+            timelineEvents.forEach(event => {
+                event.sphere.visible = true;
+                event.ring.visible = true;
+            });
+        }
+        
+        function showEventDetails(event) {
+            const detailsPanel = document.getElementById('event-details');
+            const title = document.getElementById('event-title');
+            const date = document.getElementById('event-date');
+            const description = document.getElementById('event-description');
+            
+            title.textContent = event.title;
+            date.textContent = event.date;
+            description.textContent = event.description;
+            
+            detailsPanel.style.display = 'block';
+            detailsPanel.style.left = '50%';
+            detailsPanel.style.top = '50%';
+            detailsPanel.style.transform = 'translate(-50%, -50%)';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                detailsPanel.style.display = 'none';
+            }, 5000);
+        }
+        
+        function updateVoiceStatus(text) {
+            document.getElementById('voice-command-text').textContent = text;
+            
+            // Reset to default after 3 seconds
+            setTimeout(() => {
+                document.getElementById('voice-command-text').textContent = 
+                    'Voice Command Ready - Try: "Show me 2019 events"';
+            }, 3000);
+        }
+        
+        function performFridayAnalysis() {
+            updateSystemStatus('DEEP ANALYSIS IN PROGRESS...');
+            
+            // Simulate analysis process
+            setTimeout(() => {
+                updateSystemStatus('PATTERN RECOGNITION ACTIVE');
+                activateNeuralNet();
+                showConnections();
+            }, 2000);
+            
+            setTimeout(() => {
+                updateSystemStatus('CORRELATION ANALYSIS COMPLETE');
+            }, 5000);
+        }
+        
+        function updateSystemStatus(status) {
+            document.getElementById('system-status').textContent = status;
+        }
+        
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Update canvas sizes
+            const matrixCanvas = document.getElementById('matrix-rain');
+            const neuralCanvas = document.getElementById('neural-network');
+            
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            neuralCanvas.width = window.innerWidth;
+            neuralCanvas.height = window.innerHeight;
+        });
+        
+        // Initialize on Load
+        window.addEventListener('load', initializeFRIDAY);
+        
+        console.log('FRIDAY Investigation Suite Ready');
+        console.log('Voice Commands Available:');
+        console.log('- "Show me [year] events"');
+        console.log('- "Focus on Trump"');
+        console.log('- "Focus on Epstein"');
+        console.log('- "Show connections"');
+        console.log('- "Activate neural analysis"');
+        console.log('- "Reset view"');
+        console.log('- "FRIDAY analyze"');
+    </script>
+</body>
+</html>

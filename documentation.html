@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump-Epstein Investigation - Documentation</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --putin-color: #800080;
+            --future-color: #32CD32;
+            --bg-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --card-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-bar {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-link.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .nav-icon {
+            font-size: 16px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .doc-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .subsection {
+            margin-bottom: 25px;
+        }
+
+        .subsection h3 {
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            color: #f8f8f2;
+        }
+
+        .highlight {
+            background: var(--putin-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .url-list {
+            list-style: none;
+        }
+
+        .url-list li {
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .url-list a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .url-list a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .doc-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">🕵️ Trump-Epstein Investigation Documentation</h1>
+        
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">📅</span>
+                    Interactive Timeline
+                </a>
+                <a href="enhanced-visualizations.html" class="nav-link">
+                    <span class="nav-icon">🌐</span>
+                    Network Visualizations
+                </a>
+                <a href="flight-logs.html" class="nav-link">
+                    <span class="nav-icon">✈️</span>
+                    Flight Logs
+                </a>
+                <a href="slideshow-timeline.html" class="nav-link">
+                    <span class="nav-icon">🎬</span>
+                    Slideshow Presentation
+                </a>
+                <a href="stats.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    Statistics
+                </a>
+                <a href="names-and-shame.html" class="nav-link">
+                    <span class="nav-icon">👥</span>
+                    Associates Directory
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <span class="nav-icon">🆘</span>
+                    Victim Resources
+                </a>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="doc-section">
+            <h2 class="section-title">📋 Project Overview</h2>
+            <p>The <span class="highlight">Trump-Epstein Investigation Suite</span> is the world's most comprehensive interactive timeline documenting the scandal that connected a U.S. President to an international blackmail network. This project provides multiple visualization methods to explore connections, evidence, and timelines spanning from 1980 to 2037.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">78+</span>
+                    <div class="stat-label">Timeline Events</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">38</span>
+                    <div class="stat-label">Evidence Images</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <div class="stat-label">Countries Involved</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Years Covered</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="doc-section">
+            <h2 class="section-title">🌟 Key Features</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📅 Interactive Timeline</h4>
+                    <p>SIMILE Timeline widget with zoom controls, search functionality, category filtering, and dark mode. Click-to-expand events with full evidence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🌐 Network Visualization</h4>
+                    <p>D3.js powered network maps showing connections between people, organizations, locations, and events with interactive physics simulation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🧠 Mind Mapping</h4>
+                    <p>Visual mind maps of the blackmail network with expandable nodes showing intelligence connections, financial flows, and geographical operations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📊 Gantt Charts</h4>
+                    <p>Project timeline view showing overlapping periods of investigations, relationships, and legal proceedings with timeline comparisons.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🎬 Professional Slideshow</h4>
+                    <p>Reveal.js presentation with adjustable auto-advance intervals, touch navigation, and professional slide transitions for presentations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🔗 Connections Matrix</h4>
+                    <p>Relationship strength analysis with sortable matrices showing the intensity and type of connections between network participants.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="doc-section">
+            <h2 class="section-title">⚙️ Technical Stack</h2>
+            
+            <div class="subsection">
+                <h3>🎯 Core Technologies</h3>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                    <li><strong>SIMILE Timeline:</strong> MIT's timeline widget for the main interactive timeline</li>
+                    <li><strong>D3.js:</strong> Data visualization library for network maps and interactive charts</li>
+                    <li><strong>Reveal.js:</strong> HTML presentation framework for professional slideshows</li>
+                    <li><strong>Docker:</strong> Containerized deployment with nginx for easy hosting</li>
+                    <li><strong>CSS3:</strong> Modern styling with CSS variables, gradients, and animations</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>🚀 Deployment</h3>
+                <div class="code-block">
+# Clone and run the timeline
+git clone &lt;repository&gt;
+cd trumpstein-timeline
+docker-compose up --build -d
+
+# Access the timeline
+http://localhost:8847
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guide -->
+        <div class="doc-section">
+            <h2 class="section-title">📚 Usage Guide</h2>
+            
+            <div class="subsection">
+                <h3>📅 Interactive Timeline Navigation</h3>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                    <li><strong>Zoom:</strong> Use mouse wheel or zoom controls for different time scales (Hour/Day/Week/Month/Year/Decade)</li>
+                    <li><strong>Search:</strong> Type keywords to filter events in real-time</li>
+                    <li><strong>Categories:</strong> Filter by event types (Events, Reports, Legal, Investigations, Deaths, Putin connections)</li>
+                    <li><strong>Dark Mode:</strong> Toggle between light and dark themes with persistence</li>
+                    <li><strong>Expand Events:</strong> Click on event bubbles to see full details and evidence</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>🎬 Slideshow Controls</h3>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                    <li><strong>Navigation:</strong> Arrow keys, spacebar, or touch/swipe gestures</li>
+                    <li><strong>Auto-Advance:</strong> Adjustable interval from 2-15 seconds</li>
+                    <li><strong>Keyboard Shortcuts:</strong> 'A' for auto-toggle, 'H' for help</li>
+                    <li><strong>Full Screen:</strong> F11 or F key for full screen presentation mode</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>🌐 Network Visualization</h3>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                    <li><strong>Drag Nodes:</strong> Click and drag to reposition network elements</li>
+                    <li><strong>Filter Types:</strong> Show/hide people, organizations, locations, events</li>
+                    <li><strong>Physics Simulation:</strong> Toggle realistic node behavior and collision detection</li>
+                    <li><strong>Export:</strong> Save network visualizations as PNG images</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Data Sources -->
+        <div class="doc-section">
+            <h2 class="section-title">📚 Data Sources & Methodology</h2>
+            
+            <div class="subsection">
+                <h3>🔍 Primary Sources</h3>
+                <ul class="url-list">
+                    <li>📰 <strong>Miami Herald:</strong> Julie K. Brown's "Perversion of Justice" investigation</li>
+                    <li>⚖️ <strong>Court Records:</strong> Federal and state court filings, depositions, evidence lists</li>
+                    <li>🏛️ <strong>Government Documents:</strong> FBI files, DOJ records, Treasury reports</li>
+                    <li>🌐 <strong>Flight Logs:</strong> Documented passenger manifests and travel records</li>
+                    <li>🏘️ <strong>Property Records:</strong> Real estate transactions, ownership timelines</li>
+                    <li>📺 <strong>Media Archives:</strong> NBC footage, interview transcripts, news reports</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>🌍 International Research</h3>
+                <ul class="url-list">
+                    <li>🇷🇺 <strong>Dossier Center:</strong> Russian intelligence connections and FSB networks</li>
+                    <li>🇮🇱 <strong>Haaretz & Times of Israel:</strong> Israeli intelligence and Mossad connections</li>
+                    <li>🇬🇧 <strong>BBC & Guardian:</strong> Prince Andrew investigations and royal connections</li>
+                    <li>🇫🇷 <strong>French Prosecutors:</strong> Jean-Luc Brunel case and European networks</li>
+                    <li>🇸🇦 <strong>Saudi Connections:</strong> MBS claims and Middle East relationships</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="doc-section">
+            <h2 class="section-title">🎨 Event Categories & Color Coding</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card" style="border-left-color: #ff6b6b;">
+                    <h4 style="color: #ff6b6b;">🔴 Events (#ff6b6b)</h4>
+                    <p>Social gatherings, business meetings, property transactions, and documented interactions between key figures.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left-color: #4ecdc4;">
+                    <h4 style="color: #4ecdc4;">🔵 Reports (#4ecdc4)</h4>
+                    <p>Media coverage, journalistic investigations, published articles, and public statements.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left-color: #45b7d1;">
+                    <h4 style="color: #45b7d1;">🔷 Legal (#45b7d1)</h4>
+                    <p>Court filings, indictments, plea deals, trials, verdicts, and all legal proceedings.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left-color: #96ceb4;">
+                    <h4 style="color: #96ceb4;">🟢 Investigations (#96ceb4)</h4>
+                    <p>FBI investigations, police reports, congressional inquiries, and official government actions.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left-color: #8B0000;">
+                    <h4 style="color: #8B0000;">⚫ Deaths (#8B0000)</h4>
+                    <p>Suspicious deaths, suicides, and deaths of key witnesses, investigators, and network participants.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left-color: #800080;">
+                    <h4 style="color: #800080;">🟣 Putin Connections (#800080)</h4>
+                    <p>Russian intelligence links, oligarch connections, international espionage, and foreign government ties.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Access URLs -->
+        <div class="doc-section">
+            <h2 class="section-title">🌐 Access URLs</h2>
+            
+            <div class="subsection">
+                <h3>🔗 Live Timeline URLs</h3>
+                <ul class="url-list">
+                    <li>📅 <a href="http://localhost:8847/">Main Interactive Timeline</a> - SIMILE Timeline with full functionality</li>
+                    <li>🌐 <a href="http://localhost:8847/enhanced-visualizations.html">Network Visualizations</a> - D3.js network maps and mind maps</li>
+                    <li>🎬 <a href="http://localhost:8847/slideshow-timeline.html">Professional Slideshow</a> - Reveal.js presentation mode</li>
+                    <li>📖 <a href="http://localhost:8847/documentation.html">Documentation</a> - This comprehensive guide</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Future Development -->
+        <div class="doc-section">
+            <h2 class="section-title">🚀 Future Development</h2>
+            
+            <div class="subsection">
+                <h3>🔮 Planned Enhancements</h3>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                    <li><strong>Real-time Updates:</strong> Automatic integration of new court documents and news reports</li>
+                    <li><strong>AI Analysis:</strong> Natural language processing of legal documents for automated timeline generation</li>
+                    <li><strong>3D Visualization:</strong> Three-dimensional network maps showing temporal and geographical relationships</li>
+                    <li><strong>Collaborative Research:</strong> Multi-user editing and fact-checking with source verification</li>
+                    <li><strong>Mobile App:</strong> Native iOS and Android applications with offline capability</li>
+                    <li><strong>Academic Integration:</strong> Citation tools and academic research features for scholarly work</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--card-bg); color: #888;">
+            <p>🕵️ Trump-Epstein Investigation Suite - The Most Comprehensive Timeline Ever Assembled</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Documenting Truth Through Technology • Seeking Justice Through Transparency</p>
+        </div>
+    </div>
+</body>
+</html>

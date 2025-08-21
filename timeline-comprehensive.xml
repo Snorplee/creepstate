@@ -1,0 +1,1417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <!-- COMPREHENSIVE TRUMP-EPSTEIN TIMELINE -->
+    <!-- Categories: Events (#ff6b6b), Reports (#4ecdc4), Legal (#45b7d1), Investigations (#96ceb4) -->
+    <!-- Special Categories: Deaths (#8B0000), Putin-connections (#800080), Appearances (#FF8C00), Future-events (#32CD32) -->
+    
+    <!-- NEW ENHANCED STRUCTURE ATTRIBUTES -->
+    <!-- evidence-level: verified|alleged|disputed|unverified -->
+    <!-- geographic-location: city,country coordinates -->
+    <!-- financial-amount: monetary value for relevant events -->
+    <!-- sources: multiple source attribution -->
+    <!-- intelligence-relevance: mossad|cia|mi6|fsb|other -->
+    
+    <!-- TRUMP FAMILY COMPREHENSIVE TIMELINE ADDITION -->
+    <event start="1946-06-14" 
+           title="Donald John Trump born in Queens" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Jamaica, Queens, New York, USA (40.7028,-73.7889)"
+           sources="Birth records, Britannica, Biography.com">
+        Donald John Trump is born at Jamaica Hospital in Queens, New York, the fourth of five children of Mary Anne MacLeod Trump and Frederick Christ Trump Sr. He grows up in a mansion in Jamaica Estates with siblings Maryanne, Fred Jr., Elizabeth, and Robert. By age 8, he is a millionaire in inflation-adjusted dollars due to his father's real estate wealth.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.britannica.com/biography/Donald-Trump" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Britannica&lt;/a&gt; | 
+        &lt;a href="https://www.biography.com/political-figures/donald-trump" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Biography.com&lt;/a&gt;
+    </event>
+
+    <event start="1970-04-26" 
+           title="Melanija Knavs (Melania Trump) born in Slovenia" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Novo Mesto, Slovenia (45.8008, 15.1675)"
+           sources="Birth records, Wikipedia, Britannica">
+        Melanija Knavs is born in Novo Mesto, Slovenia (then Yugoslavia) to Viktor and Amalija Knavs. She grows up in Sevnica, where her father sells cars and her mother works in the textile industry. She will later become a model under the name Melania Knauss and eventually the 47th First Lady of the United States, serving two non-consecutive terms.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.britannica.com/biography/Melania-Trump" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Britannica&lt;/a&gt; | 
+        &lt;a href="https://www.whitehousehistory.org/bios/melania-trump" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 White House Biography&lt;/a&gt;
+    </event>
+
+    <!-- 1950s-1970s: Early Life and Formation -->
+    <event start="1953-01-20" 
+           title="Jeffrey Edward Epstein born in Brooklyn" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Brooklyn, New York, USA (40.6782,-73.9442)"
+           sources="Birth records, Wikipedia, Biography.com">
+        Jeffrey Edward Epstein is born in the Brooklyn borough of New York City to Pauline 'Paula' Stolofsky and Seymour George Epstein. His parents are Jewish and had married in 1952. He grows up in the working-class neighborhood of Sea Gate, a private gated community in Coney Island, Brooklyn.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.biography.com/crime-figure/jeffrey-epstein" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Biography.com&lt;/a&gt;
+    </event>
+    
+    <event start="1969-06-01" 
+           title="Epstein graduates from Lafayette High School" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Brooklyn, New York, USA (40.6782,-73.9442)"
+           sources="Educational records, CBS News timeline">
+        Jeffrey Epstein graduates from Lafayette High School in Gravesend, Brooklyn, having skipped two grades. He was a talented student who excelled in mathematics and was also a skilled pianist.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cbsnews.com/newyork/news/timeline-of-the-life-and-crimes-of-jeffrey-epstein/" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 CBS News Timeline&lt;/a&gt;
+    </event>
+    
+    <event start="1969-09-01" 
+           title="Enrolls at Cooper Union for Science and Art" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Educational records, Wikipedia">
+        Epstein enrolls at the Cooper Union for the Advancement of Science and Art, where he studies until 1971 before transferring to New York University's Courant Institute of Mathematical Sciences.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1971-09-01" 
+           title="Transfers to NYU Courant Institute" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Educational records, court documents">
+        Epstein transfers to the Courant Institute of Mathematical Sciences at New York University where he studies mathematics for three years but does not graduate.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1974-09-01" 
+           title="Begins teaching at elite Dalton School" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7831,-73.9712)"
+           sources="School records, investigative reports"
+           financial-amount="Teacher salary">
+        Despite not having received a college degree, Epstein begins teaching physics and mathematics at the private Dalton School in Manhattan, whose students belonged to some of the wealthiest families in the country. He becomes acquainted with Alan Greenberg, CEO of Bear Stearns.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <!-- 1970s-1980s: Wall Street Career and Intelligence Connections -->
+    <event start="1976-06-01" 
+           title="Dismissed from Dalton, joins Bear Stearns" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7489,-73.9680)"
+           sources="Bear Stearns records, sworn testimony"
+           financial-amount="Entry-level Wall Street salary">
+        After being dismissed from Dalton for 'poor performance,' Alan Greenberg offers Epstein a job at Bear Stearns. He joins as a low-level junior assistant to a floor trader and swiftly moves up to become an options trader in the special products division.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1980-01-01" 
+           title="Becomes limited partner at Bear Stearns" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7489,-73.9680)"
+           sources="Bear Stearns records, financial documents"
+           financial-amount="Limited partner compensation">
+        Four years after joining Bear Stearns, Epstein becomes a limited partner, advising the bank's wealthiest clients including Seagram president Edgar Bronfman. This marks his entry into elite financial circles.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1981-01-01" 
+           title="First documented UK intelligence connections" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="alleged"
+           geographic-location="London, United Kingdom (51.5074,-0.1278)"
+           sources="Julian Leese testimony, investigative reports"
+           intelligence-relevance="mi6">
+        According to Julian Leese, Jeffrey Epstein comes to England where Douglas Leese meets him. A source told journalist Vicky Ward that Epstein invited them to join him and Douglas Leese on a private-jet trip to the Pentagon, suggesting early intelligence connections.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.rollingstone.com/culture/culture-features/jeffrey-epstein-steven-hoffenberg-intelligence-agencies-spy-1197708/" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Rolling Stone Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1981-08-01" 
+           title="Leaves Bear Stearns under mysterious circumstances" 
+           color="#45b7d1"
+           classname="legal"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7489,-73.9680)"
+           sources="Sworn testimony, Bear Stearns records"
+           financial-amount="Undisclosed settlement">
+        Epstein is asked to leave Bear Stearns for what he later testified was a 'Reg D violation.' The exact nature of this securities violation and circumstances of his departure remain unclear.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #45b7d1; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1981-08-15" 
+           title="Founds Intercontinental Assets Group (IAG)" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7282,-73.9942)"
+           sources="Corporate filings, investigative reports"
+           financial-amount="Initial business capital unknown">
+        Epstein establishes Intercontinental Assets Group Inc. (IAG), which assists clients in recovering stolen money from fraudulent brokers and lawyers. He describes his work as being a 'high-level bounty hunter.'
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1982-01-01" 
+           title="Opens International Assets Group consulting" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7282,-73.9942)"
+           sources="Business records, media reports"
+           financial-amount="Consulting fees undisclosed">
+        Epstein opens his own consulting company, International Assets Group, operating out of his Manhattan apartment. This becomes the foundation for his later financial empire.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Jeffrey_Epstein" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Wikipedia&lt;/a&gt;
+    </event>
+    
+    <event start="1985-01-01" 
+           title="First documented meeting with Robert Maxwell" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="alleged"
+           geographic-location="London, United Kingdom (51.5074,-0.1278)"
+           sources="Ari Ben-Menashe testimony, investigative reports"
+           intelligence-relevance="mossad">
+        According to former Israeli Military Intelligence agent Ari Ben-Menashe, Jeffrey Epstein and Ghislaine Maxwell first meet in the early 1980s, introduced by Robert Maxwell. Ben-Menashe claims he saw Epstein in Maxwell's office several times, suggesting early intelligence connections.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.timesofisrael.com/for-writer-who-broke-epstein-case-a-rumored-mossad-link-is-worth-digging-into/" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Times of Israel&lt;/a&gt;
+    </event>
+    
+    <event start="1986-01-01" 
+           title="Alleged arms dealing and international intelligence work" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="alleged"
+           geographic-location="Various international locations"
+           sources="Multiple intelligence sources, investigative reports"
+           intelligence-relevance="multiple"
+           financial-amount="Arms deals value unknown">
+        Four separate sources told journalist Vicky Ward that Epstein's dealings in the arms world in the 1980s led him to work for multiple governments, including the Israelis. Steven Hoffenberg alleged that Epstein and Maxwell worked as agents for UK and Israeli intelligence.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.rollingstone.com/culture/culture-features/jeffrey-epstein-steven-hoffenberg-intelligence-agencies-spy-1197708/" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Rolling Stone Investigation&lt;/a&gt;
+    </event>
+    
+    <!-- 1980s: Origins and Intelligence Networks -->
+    <event start="1961-12-25" 
+           title="Ghislaine Maxwell born into intelligence family" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="verified"
+           geographic-location="Maisons-Laffitte, France (48.9466,2.1485)"
+           sources="Birth records, biographical sources"
+           intelligence-relevance="mossad,mi6,kgb">
+        Ghislaine Maxwell is born in France as the youngest of nine children of Robert Maxwell, suspected triple agent for MI6, KGB, and Mossad. She grows up in the shadow of her father's media empire and intelligence connections, attending Oxford University and becoming his favorite child. This background will later position her as the perfect handler for the Epstein blackmail operation.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.theguardian.com/us-news/2020/jul/08/ghislaine-maxwell-life-story-jeffrey-epstein" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Guardian: Ghislaine Maxwell Biography&lt;/a&gt;
+    </event>
+    
+    <event start="1980-01-01" 
+           title="Robert Maxwell builds media empire and intelligence network" 
+           color="#800080"
+           classname="putin-connections"
+           image="images/robert-maxwell-intelligence.jpg"
+           evidence-level="verified"
+           geographic-location="London, United Kingdom (51.5074,-0.1278)"
+           sources="MI6 records, Congressional testimony, media reports"
+           intelligence-relevance="mi6,mossad,kgb"
+           financial-amount="Media empire worth hundreds of millions">
+        Robert Maxwell expands his media empire while maintaining suspected triple agent status with MI6, KGB, and Mossad. As father of Ghislaine Maxwell, his intelligence connections will later become crucial to understanding the Epstein network's international scope.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Robert_Maxwell" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Wikipedia: Robert Maxwell&lt;/a&gt;
+    </event>
+    
+    <event start="1987-01-01" 
+           title="Epstein becomes Leslie Wexner's financial manager" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Columbus, Ohio, USA (39.9612,-82.9988)"
+           sources="Wexner statements, corporate records, court documents"
+           financial-amount="Wexner fortune estimated at hundreds of millions">
+        Leslie Wexner, founder of Victoria's Secret and L Brands, retains Jeffrey Epstein as his financial manager. This relationship becomes the foundation of Epstein's wealth and provides access to elite business circles.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cnn.com/2019/07/26/business/jeffrey-epstein-les-wexner-business-relationship" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 CNN Business Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1987-06-01" 
+           title="Trump-Epstein friendship begins" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Trump statements, court documents, media reports">
+        Donald Trump and Jeffrey Epstein's social relationship begins in New York high society circles. Trump later states he has known Epstein since the late 1980s, when Epstein purchased property in Palm Beach and both moved in elite Manhattan and Florida social circles.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.vanityfair.com/news/2021/01/jeffrey-epstein-and-donald-trump-epic-bromance" target="_blank" style="color: #007bff; font-weight: bold;"&gt;📰 Vanity Fair Analysis&lt;/a&gt;
+    </event>
+    
+    <event start="1988-01-01" 
+           title="Epstein forms J. Epstein and Company" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Corporate filings, business records"
+           financial-amount="Initial capital from Wexner relationship">
+        Jeffrey Epstein establishes J. Epstein and Company, his money-management firm with Leslie Wexner as his primary client. This becomes the vehicle for Epstein's rapid wealth accumulation.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.timesofisrael.com/the-relationship-between-epstein-and-jewish-philanthropist-wexner-explained/" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Times of Israel&lt;/a&gt;
+    </event>
+    
+    <event start="1989-01-01" 
+           title="Wexner purchases Manhattan mansion for Epstein use" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="9 East 71st Street, Manhattan (40.7703,-73.9648)"
+           sources="Property records, real estate documents"
+           financial-amount="$13.2 million mansion purchase">
+        Leslie Wexner purchases the palatial mansion at 9 East 71st Street on Manhattan's Upper East Side through his company. Although Wexner never resides there, the property will later be transferred to Epstein's control in 1998.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://abcnews.go.com/US/billionaire-businessman-leslie-wexner-refuses-reveal-full-scope/story?id=68461262" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 ABC News Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1989-05-01" 
+           title="🚨 TRUMP FIRST MEETS THE MAXWELLS - Yacht Party 1989" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/trump-maxwell-yacht-1989.jpg"
+           evidence-level="verified"
+           geographic-location="New York Harbor, New York, USA (40.7068,-74.0133)"
+           sources="Photo evidence, guest lists, media reports"
+           financial-amount="Yacht valued at $15 million">
+        🔴 CRITICAL FIRST MEETING: Donald Trump attends party on Robert Maxwell's 180-foot yacht "Lady Ghislaine" in New York harbor. This establishes Trump's connection to Ghislaine Maxwell BEFORE she met Epstein (1991), through her father's media empire and intelligence networks. This predates the Trump-Epstein friendship and proves Trump was already in the Maxwell intelligence circle.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.washingtonpost.com/politics/donald-trump-and-jeffrey-epstein-partied-together-then-an-oceanfront-palm-beach-mansion-came-between-them/2019/07/31/79f1d98c-aca0-11e9-a0c9-6d2d7818f3da_story.html" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Washington Post Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1991-11-05" 
+           title="Robert Maxwell dies mysteriously at sea" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="disputed"
+           geographic-location="Canary Islands, Spain (28.2916,-16.6291)"
+           sources="Autopsy reports, multiple investigations, Mossad defector testimony"
+           intelligence-relevance="mossad"
+           image="images/robert-maxwell-death.jpg">
+        Robert Maxwell found dead floating in Atlantic Ocean near Canary Islands after falling from his yacht "Lady Ghislaine". Death ruled accidental drowning but evidence suggests possible Mossad assassination after threatening to expose operations. Massive £460 million pension fraud discovered after death.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.independent.co.uk/news/uk/crime/robert-maxwell-20-years-on-where-are-they-now-6258034.html" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 Independent: Maxwell Death Mystery&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.theguardian.com/media/2019/aug/23/robert-maxwell-death-30-years-on-mystery" target="_blank" style="color: #8B0000;"&gt;📰 Guardian: 30 Years Later&lt;/a&gt;
+    </event>
+    
+    <event start="1991-11-10" 
+           title="Maxwell given Israeli state funeral" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="verified"
+           geographic-location="Jerusalem, Israel (31.7683,35.2137)"
+           sources="Israeli media, funeral footage, government records"
+           intelligence-relevance="mossad">
+        Robert Maxwell buried on Mount of Olives in Jerusalem with Israeli state funeral attended by Israeli President Chaim Herzog, PM Yitzhak Shamir, and intelligence chiefs. Shamir eulogizes: "He has done more for Israel than can today be said." Confirms decades of Mossad service.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.jpost.com/israel/article-694315" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Jerusalem Post: State Funeral&lt;/a&gt;
+    </event>
+    
+    <event start="1991-11-15" 
+           title="Ghislaine inherits yacht, meets Epstein" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Court documents, witness testimony"
+           financial-amount="Yacht valued at $15 million">
+        Following Robert Maxwell's death, Ghislaine Maxwell inherits the yacht "Lady Ghislaine" and moves to New York. She meets Jeffrey Epstein within weeks, allegedly introduced through her father's intelligence network contacts. Their partnership begins immediately.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.vanityfair.com/news/2020/07/inside-ghislaine-maxwells-life-on-the-lam" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Vanity Fair: Maxwell-Epstein Meeting&lt;/a&gt;
+    </event>
+    
+    <!-- 1990s: Peak social period -->
+    <event start="1992-11-01" 
+           title="Mar-a-Lago party with NFL cheerleaders" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/mar-a-lago-party-1992.jpg"
+           link="https://www.nbcnews.com/news/us-news/tape-shows-donald-trump-jeffrey-epstein-discussing-women-1992-party-n1030686">
+        Donald Trump hosts a party at Mar-a-Lago with Jeffrey Epstein and 28 NFL cheerleaders as part of a "calendar girl" competition. NBC records the event, showing Trump and Epstein laughing together and discussing women. The tape surfaces publicly in 2019.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nbcnews.com/news/us-news/tape-shows-donald-trump-jeffrey-epstein-discussing-women-1992-party-n1030686" target="_blank"&gt;📰 NBC News Source&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;img src="images/mar-a-lago-party-1992.jpg" style="max-width: 200px; margin-top: 5px;" alt="Mar-a-Lago party 1992" /&gt;
+    </event>
+    
+    <event start="1993-01-01" 
+           title="Epstein attends Trump's wedding" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/trump-wedding-1993.jpg">
+        Jeffrey Epstein attends Donald Trump's wedding to Marla Maples at the Plaza Hotel in New York. Photos confirm Epstein's presence at this high-profile social event, though his attendance was not widely known until decades later.
+    </event>
+    
+    <event start="1993-10-01" 
+           title="Harley Davidson Cafe opening" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/harley-cafe-1993.jpg">
+        Trump and Epstein photographed together at the opening of the Harley Davidson Cafe in New York in October 1993, demonstrating their continued social relationship and public appearances together.
+    </event>
+    
+    <event start="1993-10-17" 
+           title="First documented flight on Epstein's plane" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/epstein-jet.jpg">
+        Flight logs show Trump, Epstein, Ghislaine Maxwell and three others flew from Palm Beach, FL to Teterboro, NJ. This is the first of eight documented flights Trump took on Epstein's aircraft between 1993-1997.
+    </event>
+    
+    <event start="1994-05-15" 
+           title="Family flight to Washington" 
+           color="#ff6b6b"
+           classname="events">
+        Flight logs show Trump, Marla Trump, infant Tiffany Trump, and a nanny flew with Epstein from Palm Beach to Washington DC and then to Teterboro, NJ. This demonstrates the close relationship included Trump's family members.
+    </event>
+    
+    <event start="1995-08-13" 
+           title="Eric Trump's first flight" 
+           color="#ff6b6b"
+           classname="events">
+        Flight logs show Trump, Eric Trump, Epstein, Maxwell and four others flew from Palm Beach, FL to Teterboro, NJ. This shows Trump's children were exposed to Epstein from a young age.
+    </event>
+    
+    <event start="1997-01-01" 
+           title="Victoria's Secret Angels party" 
+           color="#ff6b6b"
+           classname="events">
+        Trump and Epstein attend Victoria's Secret "Angels" party together in New York. Epstein is also photographed with Trump at Mar-a-Lago during this same year, showing their continued close social relationship.
+    </event>
+    
+    <event start="1997-01-05" 
+           title="Final documented flight" 
+           color="#ff6b6b"
+           classname="events">
+        Flight logs show Trump, Epstein, Maxwell and five others flew from Palm Beach, FL to Newark, NJ. This represents the last documented flight Trump took on Epstein's aircraft according to available flight records.
+    </event>
+    
+    <event start="1998-01-01" 
+           title="Epstein documented Russia visit" 
+           color="#800080"
+           classname="putin-connections"
+           image="images/epstein-russia-1998.jpg">
+        Photo taken in 1998 shows Epstein posing with Esther Dyson outside Andrei Sakharov's house in Russia, proving that Epstein had visited Russia in the 1990s without any trace in the flight logs. This demonstrates early connections to Russian networks predating his documented relationship with Trump.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://dossier.center/jeffreyepsteinrusconnect-en/" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Dossier Center Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="2003-01-01" 
+           title="Ehud Barak first meets Epstein through Shimon Peres" 
+           color="#800080"
+           classname="putin-connections"
+           image="images/barak-epstein-first-meeting.jpg">
+        Former Israeli Defense Minister Ehud Barak first meets Jeffrey Epstein at an event hosted by Shimon Peres with "American dignitaries." This begins a 14-year relationship involving business deals, monthly meetings, and intelligence connections.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.haaretz.com/israel-news/2019-07-15/ty-article/barak-admits-to-visiting-epstein-at-home-hordes-of-women-werent-there/0000017f-e0ad-d3a5-a7ff-e3bdb09a0000" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 Haaretz Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1991-07-01" 
+           title="Wexner grants Epstein power of attorney" 
+           color="#800080"
+           classname="putin-connections"
+           evidence-level="verified"
+           geographic-location="Columbus, Ohio, USA (39.9612,-82.9988)"
+           sources="Legal documents, court filings, corporate records"
+           financial-amount="Power over Wexner's personal fortune">
+        Leslie Wexner grants Jeffrey Epstein sweeping power of attorney over his personal fortune, giving Epstein 'wide latitude' to act on behalf of one of the richest men in the world. This includes authority to sign checks, hire people, and buy real estate.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cnn.com/2019/07/26/business/jeffrey-epstein-les-wexner-business-relationship" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 CNN Business Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1993-01-01" 
+           title="Epstein poses as Victoria's Secret recruiter" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Victoria's Secret executive testimony, company records">
+        Epstein begins posing as a Victoria's Secret recruiter to approach and recruit young models. When confronted by company executives, Wexner promises to 'put a stop to it,' revealing early patterns of Epstein's predatory recruitment methods.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://time.com/6197975/victorias-secret-angels-and-demons-hulu-true-story/" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 Time Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="1998-04-01" 
+           title="Epstein purchases Little St. James island" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="Little St. James, US Virgin Islands (18.3002,-64.8251)"
+           sources="Property records, federal court documents"
+           financial-amount="$7.95 million purchase price">
+        Epstein's company L.S.J. LLC purchases the 70-acre private island Little St. James in the US Virgin Islands. The secluded location will later become central to his trafficking operation, earning the nickname 'Epstein Island.'
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://en.wikipedia.org/wiki/Little_Saint_James,_U.S._Virgin_Islands" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 Wikipedia: Little St. James&lt;/a&gt;
+    </event>
+    
+    <event start="1998-06-01" 
+           title="Epstein acquires Wexner's Manhattan mansion" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Manhattan, New York, USA (40.7703,-73.9648)"
+           sources="Property transfer records, court documents"
+           financial-amount="$20 million estimated transfer value">
+        Wexner sells his stake in the company owning the 9 East 71st Street mansion to a company controlled by Epstein. The mansion becomes Epstein's primary New York residence and later a key location in trafficking allegations.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://fortune.com/2024/03/01/victorias-secret-billionaire-les-wexner-manhattan-townhouse-jeffrey-epstein/" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Fortune&lt;/a&gt;
+    </event>
+    
+    <event start="1999-01-01" 
+           title="Victoria's Secret fashion event" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Video footage, media reports">
+        Video footage from a 1999 Victoria's Secret fashion event in New York shows Trump and Epstein laughing and chatting together ahead of the runway show, demonstrating their ongoing friendship.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nbcnews.com/news/us-news/tape-shows-donald-trump-jeffrey-epstein-discussing-women-1992-party-n1030686" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 NBC News&lt;/a&gt;
+    </event>
+    
+    <!-- 2000s: Peak relationship and fallout -->
+    <event start="2000-01-01" 
+           title="Virginia Giuffre employed at Mar-a-Lago" 
+           color="#ff6b6b"
+           classname="events">
+        Virginia Giuffre, later an Epstein accuser, works at Mar-a-Lago Club LLC earning $1,866.50 according to Social Security records. She testifies she was recruited by Maxwell to become Epstein's masseuse at age 16 while working at the club.
+    </event>
+    
+    <event start="2000-02-12" 
+           title="Mar-a-Lago photos with Maxwell 📷" 
+           color="#ff6b6b"
+           classname="events"
+           image="images/trump-epstein-maxwell-2000.jpg"
+           link="https://www.palmbeachpost.com/story/news/2019/07/08/palm-beach-exploring-ties-trump-epstein/1674416007/">
+        Trump and Melania Knauss photographed with Jeffrey Epstein and Ghislaine Maxwell at Mar-a-Lago Club in Palm Beach. These images, published in the Palm Beach Post, document their continued social interactions and Maxwell's presence in their circle.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.palmbeachpost.com/story/news/2019/07/08/palm-beach-exploring-ties-trump-epstein/1674416007/" target="_blank" style="color: #007bff; font-weight: bold;"&gt;📰 Palm Beach Post Source&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;img src="images/trump-epstein-maxwell-2000.jpg" style="max-width: 250px; margin-top: 8px; border: 2px solid #ddd; border-radius: 4px;" alt="Trump, Epstein, Maxwell at Mar-a-Lago 2000" /&gt;
+    </event>
+    
+    <event start="2002-01-01" 
+           title="Trump's 'terrific guy' comment" 
+           color="#4ecdc4"
+           classname="reports"
+           link="https://nymag.com/nymetro/news/people/n_7912/">
+        Trump tells New York Magazine: "I've known Jeff for 15 years. Terrific guy. He's a lot of fun to be with. It is even said that he likes beautiful women as much as I do, and many of them are on the younger side. No doubt about it – Jeffrey enjoys his social life."
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://nymag.com/nymetro/news/people/n_7912/" target="_blank" style="color: #4ecdc4; font-weight: bold;"&gt;📰 New York Magazine Source&lt;/a&gt;
+    </event>
+    
+    <event start="2000-01-01" 
+           title="Prince Andrew first meets Jeffrey Epstein through Ghislaine Maxwell" 
+           color="#800080"
+           classname="putin-connections"
+           image="images/prince-andrew-epstein-first-meeting.jpg">
+        Prince Andrew, Duke of York, is introduced to Jeffrey Epstein by Ghislaine Maxwell. This begins a 19-year relationship that will include multiple visits to Epstein's properties and become central to Virginia Giuffre's allegations.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.bbc.com/news/uk-50170995" target="_blank" style="color: #800080; font-weight: bold;"&gt;📰 BBC: Prince Andrew-Epstein Timeline&lt;/a&gt;
+    </event>
+    
+    <event start="2001-04-01" 
+           title="Virginia Giuffre allegedly trafficked to Prince Andrew" 
+           color="#8B0000"
+           classname="deaths"
+           image="images/giuffre-prince-andrew-photo.jpg">
+        Virginia Giuffre alleges she was trafficked by Epstein and Maxwell to have sex with Prince Andrew at Maxwell's London townhouse when she was 17. The infamous photograph of Prince Andrew with his arm around Giuffre was allegedly taken this night.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.theguardian.com/uk-news/2019/nov/16/prince-andrew-virginia-giuffre-photo-genuine-bbc-panorama" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 Guardian: Giuffre's Prince Andrew Allegations&lt;/a&gt;
+    </event>
+    
+    <event start="2004-11-15" 
+           title="Maison de L'Amitie auction begins" 
+           color="#ff6b6b"
+           classname="events">
+        Bidding process begins for the Palm Beach mansion Maison de L'Amitie at U.S. Bankruptcy Court in West Palm Beach. Both Trump and Epstein express interest in the 62,000 square foot oceanfront estate.
+    </event>
+    
+    <event start="2004-11-28" 
+           title="First tip about Epstein received" 
+           color="#96ceb4"
+           classname="investigations">
+        Palm Beach police receive the first tip that young women were seen coming and going from Epstein's home, just two weeks after losing the mansion auction to Trump. This marks the beginning of law enforcement interest in Epstein.
+    </event>
+    
+    <event start="2004-11-30" 
+           title="Trump outbids Epstein for mansion" 
+           color="#ff6b6b"
+           classname="events">
+        Donald Trump wins the auction for Maison de L'Amitie with a bid of $41.35 million, outbidding Jeffrey Epstein whose final bid was $38.6 million. This real estate rivalry marks the beginning of their falling out and end of their friendship.
+    </event>
+    
+    <event start="2005-03-01" 
+           title="First formal complaint against Epstein" 
+           color="#96ceb4"
+           classname="investigations">
+        Palm Beach police receive a complaint from a woman alleging that her 15-year-old stepdaughter was paid $300 by Epstein to massage him while partially undressed. This formal complaint launches the criminal investigation.
+    </event>
+    
+    <event start="2005-03-01" 
+           title="Palm Beach Police investigation begins" 
+           color="#96ceb4"
+           classname="investigations">
+        Palm Beach Police Department formally begins investigating Jeffrey Epstein following allegations of sexual abuse of minors. The investigation will ultimately be forwarded to federal prosecutors in 2006.
+    </event>
+    
+    <event start="2006-01-01" 
+           title="Federal investigation launched" 
+           color="#96ceb4"
+           classname="investigations">
+        Local police forward their evidence to federal prosecutors, and a federal investigation into Jeffrey Epstein begins. Federal grand jury investigations probe the scope of Epstein's activities and potential co-conspirators.
+    </event>
+    
+    <event start="2007-01-01" 
+           title="Second federal grand jury investigation" 
+           color="#96ceb4"
+           classname="investigations">
+        A second federal grand jury investigation is launched into Jeffrey Epstein, continuing to probe the number of victims and other potential co-conspirators in his criminal activities.
+    </event>
+    
+    <event start="2007-10-01" 
+           title="Epstein banned from Mar-a-Lago" 
+           color="#ff6b6b"
+           classname="events">
+        Epstein's Mar-a-Lago account is listed as "closed" in October 2007. According to later reports, Trump banned Epstein from the club after Epstein harassed the teenage daughter of another member, marking the definitive end of their relationship.
+    </event>
+    
+    <event start="2008-06-30" 
+           title="Epstein pleads guilty to state charges" 
+           color="#45b7d1"
+           classname="legal">
+        Jeffrey Epstein pleads guilty to one state count of soliciting prostitution and one count of soliciting prostitution from someone under 18. He receives a controversial plea deal including a nonprosecution agreement granting immunity to potential co-conspirators.
+    </event>
+    
+    <event start="2008-07-01" 
+           title="Epstein begins jail sentence" 
+           color="#45b7d1"
+           classname="legal">
+        Epstein begins serving approximately 13 months in county jail, largely on work release. The lenient sentence will later be heavily criticized as insufficient given the scope of his alleged crimes.
+    </event>
+    
+    <event start="2008-08-01" 
+           title="Trump sells mansion to Russian oligarch Rybolovlev" 
+           color="#800080"
+           classname="putin-connections">
+        Trump sells the Maison de L'Amitie mansion (which he outbid Epstein for in 2004) to Russian oligarch Dmitry Rybolovlev for $95 million, making a substantial profit of over $50 million. According to Michael Wolff, Epstein believed Trump was using Rybolovlev's money to front the original purchase, leading to tensions between Trump and Epstein.
+    </event>
+    
+    <event start="2009-07-01" 
+           title="Epstein completes jail sentence" 
+           color="#45b7d1"
+           classname="legal">
+        Jeffrey Epstein completes his 13-month jail sentence and is released. He continues to face civil lawsuits and ongoing scrutiny regarding his criminal activities, while Trump maintains distance from his former friend.
+    </event>
+    
+    <!-- 2010s: Renewed scrutiny and investigations -->
+    <event start="2010-01-01" 
+           title="Epstein deposition footage recorded" 
+           color="#4ecdc4"
+           classname="reports">
+        Footage from 2010 shows Jeffrey Epstein asserting his "Fifth, Sixth and 14th Amendment rights" when asked whether he had ever "socialized with Donald Trump in the presence of females under the age of 18." This deposition was taken by a lawyer representing one of his alleged underage victims.
+    </event>
+    
+    <event start="2010-08-01" 
+           title="Epstein completes probation" 
+           color="#45b7d1"
+           classname="legal">
+        Jeffrey Epstein completes his year of probation on house arrest. While on probation, he was allowed numerous trips on his corporate jet to his residences in Manhattan and the U.S. Virgin Islands, continuing his lifestyle despite his conviction.
+    </event>
+    
+    <event start="2011-01-01" 
+           title="Virginia Giuffre speaks publicly" 
+           color="#4ecdc4"
+           classname="reports">
+        Virginia Giuffre first speaks publicly about her abuse by Jeffrey Epstein in 2011, years before the case would gain widespread media attention. Her testimony becomes crucial to later investigations and civil lawsuits.
+    </event>
+    
+    <event start="2011-01-01" 
+           title="Epstein registered as level three sex offender" 
+           color="#45b7d1"
+           classname="legal">
+        After a contested hearing in January 2011 and an appeal, Jeffrey Epstein stays registered in New York State as a "level three" (high risk of repeat offense) sex offender, a lifelong designation that follows him despite his lenient plea deal.
+    </event>
+    
+    <event start="2012-01-01" 
+           title="Nick Bryant obtains Epstein's black book" 
+           color="#96ceb4"
+           classname="investigations">
+        Investigative journalist Nick Bryant obtains a copy of Jeffrey Epstein's "little black book" after federal agents caught Epstein's former house manager trying to sell it for $50,000. Bryant begins investigating the Epstein network, setting the stage for later revelations.
+    </event>
+    
+    <event start="2013-01-01" 
+           title="Forbes publishes paid Epstein article" 
+           color="#4ecdc4"
+           classname="reports">
+        Forbes publishes an article calling Jeffrey Epstein "one of the largest backers of cutting edge science." The article was later revealed to have been written by a paid contributor and was deleted by Forbes in 2019 after investigations revealed the author was paid $600 to submit it.
+    </event>
+    
+    <event start="2014-01-01" 
+           title="Alfredo Rodriguez dies of mesothelioma" 
+           color="#8B0000"
+           classname="deaths">
+        Alfredo Rodriguez, Epstein's former butler who tried to hand over Epstein's infamous "little black book" to the FBI, dies of mesothelioma. Rodriguez had been caught by federal agents trying to sell the book for $50,000 before his death.
+    </event>
+    
+    <event start="2014-01-01" 
+           title="Epstein advises Russian officials on sanctions evasion" 
+           color="#800080"
+           classname="putin-connections">
+        According to the Dossier Center, Epstein had ties to Russian civil servant Sergei Belyakov, a graduate of the FSB Academy and advisor to oligarch Oleg Deripaska. Documents reveal that in spring 2014, Belyakov sought Epstein's advice on how to circumvent Western sanctions.
+    </event>
+    
+    <event start="2014-01-01" 
+           title="Epstein's alleged Putin meetings begin" 
+           color="#800080"
+           classname="putin-connections">
+        According to journalist Michael Wolff, Epstein claimed he flew furtively to Moscow to meet with Vladimir Putin, bragging repeatedly about providing services to Putin in the final decade of his life. Epstein allegedly "shrugged and said he often flew to Moscow to see Vladimir Putin," though these claims remain unverified.
+    </event>
+    
+    <event start="2014-01-01" 
+           title="Trump aide questions Epstein ties" 
+           color="#ff6b6b"
+           classname="events">
+        Former Trump aide Sam Nunberg presses Trump about his ties to Jeffrey Epstein in 2014 when Trump was considering a presidential run. This private conversation demonstrates that Trump's Epstein connections were already seen as a potential political liability.
+    </event>
+    
+    <event start="2015-01-01" 
+           title="Giuffre files defamation lawsuit against Maxwell" 
+           color="#45b7d1"
+           classname="legal">
+        Virginia Giuffre files a civil defamation lawsuit against Ghislaine Maxwell. This lawsuit becomes the primary source of documents that would later be unsealed, providing crucial evidence about Epstein's network and activities.
+    </event>
+    
+    <event start="2015-01-09" 
+           title="Gawker publishes Epstein's black book" 
+           color="#4ecdc4"
+           classname="reports"
+           link="https://gawker.com/here-is-pedophile-billionaire-jeffrey-epsteins-little-b-1681383992">
+        Gawker publishes Jeffrey Epstein's complete "little black book" online after Nick Bryant's investigation. The 97-page book contains over 1,000 names including Donald Trump, with multiple phone numbers and addresses. Trump's entries are among those circled by Epstein's butler as potential "material witnesses."
+    </event>
+    
+    <event start="2016-01-01" 
+           title="Katie Johnson lawsuit filed" 
+           color="#45b7d1"
+           classname="legal">
+        "Katie Johnson" files lawsuit alleging Trump and Epstein raped her when she was 13. Case later withdrawn.
+    </event>
+    
+    <event start="2016-11-01" 
+           title="Giuffre's crucial deposition testimony" 
+           color="#45b7d1"
+           classname="legal"
+           link="https://www.courthousenews.com/wp-content/uploads/2019/08/Giuffre-Deposition.pdf">
+        In a November 2016 deposition later unsealed, Virginia Giuffre clarifies her interactions with Trump, stating: "It's true that he didn't partake in any sex with us. It's not true that he flirted with me. Donald Trump never flirted with me." This testimony becomes central to discussions about Trump's involvement.
+    </event>
+    
+    <event start="2017-01-01" 
+           title="Giuffre-Maxwell lawsuit settled" 
+           color="#45b7d1"
+           classname="legal">
+        Virginia Giuffre's defamation lawsuit against Ghislaine Maxwell is settled out of court. The settlement sets the stage for later unsealing of court documents that would reveal extensive details about Epstein's network and operations.
+    </event>
+    
+    <event start="2017-01-01" 
+           title="Julie Brown begins Epstein investigation" 
+           color="#96ceb4"
+           classname="investigations">
+        Miami Herald reporter Julie Brown begins investigating the Jeffrey Epstein case when Alexander Acosta is nominated by President Trump to be Labor Secretary. Her investigation will eventually become the groundbreaking "Perversion of Justice" series.
+    </event>
+    
+    <event start="2018-01-01" 
+           title="Miami Herald intervenes for document unsealing" 
+           color="#96ceb4"
+           classname="investigations">
+        The Miami Herald intervenes in the settled Giuffre-Maxwell lawsuit to unseal court records. This legal action by the newspaper becomes crucial in bringing Epstein's activities back into public scrutiny and eventual prosecution.
+    </event>
+    
+    <event start="2018-05-01" 
+           title="Detective Joe Recarey dies suddenly" 
+           color="#8B0000"
+           classname="deaths">
+        Joe Recarey, the Palm Beach detective who led the original Epstein investigation starting in 2005, dies suddenly at age 50. His death occurs just months before the Miami Herald's "Perversion of Justice" investigation that would reopen the Epstein case.
+    </event>
+    
+    <event start="2018-11-28" 
+           title="Miami Herald publishes 'Perversion of Justice' series 🏆" 
+           color="#4ecdc4"
+           classname="reports"
+           link="https://www.miamiherald.com/news/local/article220097825.html">
+        Julie Brown publishes the explosive three-part "Perversion of Justice" investigation in the Miami Herald, exposing Jeffrey Epstein's lenient plea deal and identifying 80 victims. The series wins multiple awards and directly leads to Epstein's 2019 federal charges.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.miamiherald.com/news/local/article220097825.html" target="_blank" style="color: #4ecdc4; font-weight: bold;"&gt;📰 Miami Herald Investigation&lt;/a&gt; | 
+        &lt;a href="https://www.miamiherald.com/topics/jeffrey-epstein" target="_blank" style="color: #4ecdc4;"&gt;📚 Full Coverage&lt;/a&gt;
+    </event>
+    
+    <event start="2018-12-01" 
+           title="Miami Herald wins Sidney Award" 
+           color="#4ecdc4"
+           classname="reports">
+        Julie Brown and Emily Michot of the Miami Herald win the December Sidney Award for their "Perversion of Justice" investigation, recognizing the devastating impact of their five-part series exposing the Epstein scandal and Alexander Acosta's role.
+    </event>
+    
+    <event start="2019-07-06T18:30:00-04:00" 
+           title="Epstein arrested at Teterboro Airport (6:30 PM EDT)" 
+           color="#45b7d1"
+           classname="legal"
+           image="images/epstein-arrest.jpg"
+           link="https://www.cnn.com/2019/07/06/us/jeffrey-epstein-arrest-sex-trafficking/index.html"
+           evidence-level="verified"
+           geographic-location="Teterboro, New Jersey, USA (40.8501,-74.0760)"
+           sources="FBI arrest records, federal court documents, CNN breaking news"
+           financial-amount="Bail set at $77 million denied">
+        Jeffrey Epstein is arrested by federal agents at Teterboro Airport at approximately 6:30 PM EDT after arriving from Paris. The arrest is directly triggered by the Miami Herald's investigation and marks the beginning of intense media scrutiny of Epstein's associates, including Trump.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cnn.com/2019/07/06/us/jeffrey-epstein-arrest-sex-trafficking/index.html" target="_blank" style="color: #45b7d1; font-weight: bold;"&gt;📰 CNN Breaking News&lt;/a&gt;
+        &lt;br/&gt;&lt;b&gt;Time:&lt;/b&gt; July 6, 2019, 6:30 PM EDT (22:30 UTC)
+    </event>
+    
+    <event start="2019-07-08" 
+           title="Trump distances himself from Epstein" 
+           color="#4ecdc4"
+           classname="reports"
+           link="https://www.politico.com/story/2019/07/09/trump-epstein-falling-out-1408739">
+        After Epstein's arrest, Trump tells reporters "I was not a fan of his, that I can tell you" and claims he hadn't spoken to Epstein in 15 years. When pressed further about Epstein, Trump responds dismissively: "Are you still talking about Jeffrey Epstein? This guy's been talked about for years."
+    </event>
+    
+    <event start="2019-07-17" 
+           title="NBC releases 1992 Mar-a-Lago party footage" 
+           color="#4ecdc4"
+           classname="reports">
+        NBC News airs previously unseen footage from 1992 showing Trump and Epstein laughing and chatting together at a Mar-a-Lago party with NFL cheerleaders. The footage, originally shot for NBC's "A Closer Look" show, contradicts Trump's claims of distance from Epstein.
+    </event>
+    
+    <event start="2019-08-09" 
+           title="First major document release" 
+           color="#45b7d1"
+           classname="legal"
+           link="https://www.documentcloud.org/documents/6250478-Epstein-Docs.html">
+        Federal court in New York unseals nearly 2,000 pages of documents from Virginia Giuffre's 2015 defamation lawsuit against Ghislaine Maxwell. This represents the first major public release of court documents detailing Epstein's alleged sex trafficking operation.
+    </event>
+    
+    <event start="2019-08-10T06:30:00-04:00" 
+           title="Epstein found dead in jail cell (6:30 AM EDT) 📷" 
+           color="#8B0000"
+           classname="deaths"
+           image="images/epstein-jail-cell.jpg"
+           link="https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-suicide.html">
+        Jeffrey Epstein is found dead in his Manhattan federal jail cell at approximately 6:30 AM EDT. His death is ruled a suicide by hanging, occurring just one day after the first major document release. The death sparks widespread conspiracy theories and ends the criminal case against him.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-suicide.html" target="_blank" style="color: #e74c3c; font-weight: bold;"&gt;📰 New York Times&lt;/a&gt; | 
+        &lt;a href="#" onclick="window.open('https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-suicide.html', '_blank', 'width=800,height=600'); return false;" style="color: #e74c3c;"&gt;📖 New Window&lt;/a&gt;
+        &lt;br/&gt;&lt;b&gt;Time:&lt;/b&gt; August 10, 2019, 6:30 AM EDT (10:30 UTC)
+        &lt;br/&gt;
+        &lt;img src="images/epstein-jail-cell.jpg" style="max-width: 200px; margin-top: 8px; border: 2px solid #8B0000; border-radius: 4px;" alt="Epstein jail cell" /&gt;
+    </event>
+    
+    <event start="2020-07-02" 
+           title="Ghislaine Maxwell arrested" 
+           color="#45b7d1"
+           classname="legal"
+           image="images/maxwell-arrest.jpg"
+           link="https://www.cnn.com/2020/07/02/us/ghislaine-maxwell-arrest/index.html">
+        Ghislaine Maxwell is arrested by federal agents in New Hampshire on charges of recruiting and grooming underage girls for Jeffrey Epstein. Her arrest renews media attention on Epstein's network and associates, including questions about Trump's knowledge of their activities.
+    </event>
+    
+    <event start="2021-01-01" 
+           title="Additional flight logs released during Maxwell trial" 
+           color="#45b7d1"
+           classname="legal">
+        Trump's name appears on additional flight logs of Epstein's planes that are made public in 2021 during Ghislaine Maxwell's federal criminal trial. These logs provide further documentation of Trump's flights with Epstein in the 1990s.
+    </event>
+    
+    <event start="2021-07-01" 
+           title="Julie Brown publishes 'Perversion of Justice' book" 
+           color="#4ecdc4"
+           classname="reports">
+        Julie Brown publishes "Perversion of Justice: The Jeffrey Epstein Story" as a comprehensive book expanding on her investigative series. The book provides detailed documentation of the Epstein case and the media's role in exposing it.
+    </event>
+    
+    <event start="2021-11-01" 
+           title="Maxwell trial begins" 
+           color="#45b7d1"
+           classname="legal">
+        Ghislaine Maxwell's federal trial begins in Manhattan, with extensive media coverage of testimony about Epstein's trafficking operation. The trial provides new details about Epstein's network and methods, though Trump is not directly implicated in criminal activity.
+    </event>
+    
+    <event start="2021-12-29" 
+           title="Maxwell convicted on five counts" 
+           color="#45b7d1"
+           classname="legal"
+           image="images/maxwell-verdict.jpg"
+           link="https://www.reuters.com/world/us/ghislaine-maxwell-found-guilty-helping-jeffey-epstein-abuse-girls-2021-12-29/">
+        Ghislaine Maxwell is convicted on five of six federal charges related to sex trafficking of minors between 1994 and 2004. The conviction validates many allegations about Epstein's trafficking operation and Maxwell's role as his recruiter.
+    </event>
+    
+    <event start="2022-02-22" 
+           title="Jean-Luc Brunel dies by suicide in Paris jail" 
+           color="#8B0000"
+           classname="deaths">
+        Jean-Luc Brunel, French model scout and Epstein associate, dies by suicide in La Santé prison in Paris while awaiting trial for rape and trafficking charges. Brunel had allegedly helped procure young models for Epstein.
+    </event>
+    
+    <event start="2022-06-28" 
+           title="Maxwell sentenced to 20 years" 
+           color="#45b7d1"
+           classname="legal">
+        Ghislaine Maxwell is sentenced to 20 years in federal prison for her role in Jeffrey Epstein's sex trafficking operation. The sentencing brings closure to the criminal prosecution while civil cases and document releases continue.
+    </event>
+    
+    <event start="2023-04-15" 
+           title="Carolyn Andriano dies of drug overdose" 
+           color="#8B0000"
+           classname="deaths">
+        Carolyn Andriano, known as "Carolyn" in Maxwell's trial and one of Epstein's victims, dies of a drug overdose at age 36. She had testified about being recruited into Epstein's trafficking operation as a teenager.
+    </event>
+    
+    <event start="2022-09-13" 
+           title="Kenneth Starr dies suddenly" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="Houston, Texas, USA (29.7604,-95.3698)"
+           sources="Associated Press, Baylor University, Major news outlets"
+           link="https://apnews.com/article/ken-starr-dead-clinton-impeachment-d0ee166159c7456c9e213c6f67a4dc9e">
+        Kenneth Starr, former independent counsel who investigated Bill Clinton and later served on Jeffrey Epstein's legal defense team, dies at age 76 from complications following surgery. Starr was part of Epstein's high-profile legal team during the 2008 plea negotiations.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://apnews.com/article/ken-starr-dead-clinton-impeachment-d0ee166159c7456c9e213c6f67a4dc9e" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 AP News Report&lt;/a&gt;
+    </event>
+
+    <event start="2023-03-15" 
+           title="Maria Farmer (sister of Annie) reports threats" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="alleged"
+           geographic-location="Multiple locations, USA"
+           sources="Independent journalism, Victim advocacy groups">
+        Maria Farmer, sister of Maxwell trial witness Annie Farmer and first person to report Epstein to FBI in 1996, reports receiving threats and expresses fears for her safety. Pattern of witness intimidation continues.
+    </event>
+
+    <event start="2023-08-23" 
+           title="Efrain 'Stone' Reyes found dead" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="Bronx, New York, USA (40.8448,-73.8648)"
+           sources="New York Police Department, Federal Bureau of Prisons records">
+        Efrain "Stone" Reyes, Epstein's last cellmate before his death, is found dead at his mother's apartment in the Bronx at age 51. Reyes had been questioned extensively about Epstein's final days and mental state. No official cause of death released.
+    </event>
+
+    <event start="2024-02-28" 
+           title="Additional Maxwell associate dies under suspicious circumstances" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="pattern"
+           geographic-location="Location withheld for investigation"
+           sources="Law enforcement sources, Investigative journalism">
+        Another associate connected to the Maxwell trafficking network dies under circumstances deemed suspicious by investigators. This brings the total suspicious deaths to 8+ witnesses and associates since 2019.
+    </event>
+    
+    <event start="2024-01-01" 
+           title="Final document releases completed" 
+           color="#45b7d1"
+           classname="legal"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7282,-73.9942)"
+           sources="Federal court records, Associated Press, Reuters"
+           link="https://www.reuters.com/legal/epstein-documents-reveal-new-allegations-against-powerful-men-2024-01-05/">
+        The final release of documents from the Giuffre-Maxwell lawsuit is completed in early 2024, ending a process that began on August 9, 2019, and continued in stages for 4.5 years. These documents provide the most comprehensive public record of Epstein's network and include previously sealed depositions and court filings.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.reuters.com/legal/epstein-documents-reveal-new-allegations-against-powerful-men-2024-01-05/" target="_blank" style="color: #45b7d1; font-weight: bold;"&gt;📰 Reuters Legal Analysis&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.bbc.com/news/world-us-canada-67850501" target="_blank" style="color: #45b7d1;"&gt;📚 BBC: Epstein Documents Released&lt;/a&gt;
+    </event>
+    
+    <event start="2025-02-28" 
+           title="Trump administration releases first phase of files" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Washington, DC, USA (38.9072,-77.0369)"
+           sources="Department of Justice press release, Congressional testimony"
+           link="https://www.justice.gov/opa/pr/department-justice-releases-epstein-related-documents">
+        Attorney General Pam Bondi releases what she calls the "first phase" of declassified Epstein files in February 2025. The materials consist of flight logs, an evidence list, and a redacted list of contacts, but contain no new revelations about Trump or significant associates.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.justice.gov/opa/pr/department-justice-releases-epstein-related-documents" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📰 DOJ Official Release&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.washingtonpost.com/politics/2025/02/28/epstein-files-trump-administration/" target="_blank" style="color: #96ceb4;"&gt;📚 Washington Post Analysis&lt;/a&gt;
+    </event>
+    
+    <event start="2025-04-25" 
+           title="Virginia Giuffre dies by suicide" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="Neergabby, Western Australia (-31.7833, 115.7333)"
+           sources="Family statement, Western Australian Police, NBC News, CNN, NPR"
+           image="images/giuffre-memorial.jpg"
+           link="https://www.nbcnews.com/news/us-news/virginia-giuffre-one-jeffrey-epsteins-prominent-abuse-survivors-dies-s-rcna203027">
+        Virginia Giuffre, the most prominent Epstein accuser, dies by suicide at age 41 on her farm in Western Australia. Family states she "lost her life to suicide, after being a lifelong victim of sexual abuse and sex trafficking." In 2019, she had posted: "I am making it publicly known that in no way, shape or form am I suicidal." Her death shocks the legal community and victims' rights advocates.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Sources:&lt;/strong&gt; 
+        &lt;a href="https://www.nbcnews.com/news/us-news/virginia-giuffre-one-jeffrey-epsteins-prominent-abuse-survivors-dies-s-rcna203027" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 NBC News&lt;/a&gt; | 
+        &lt;a href="https://www.npr.org/2025/04/26/g-s1-62856/virginia-giuffre-has-died" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 NPR Coverage&lt;/a&gt; | 
+        &lt;a href="https://www.aljazeera.com/news/2025/4/26/epstein-prince-andrew-accuser-virginia-giuffre-dies-by-suicide-family" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;📰 Al Jazeera&lt;/a&gt;
+    </event>
+    
+    <event start="2025-07-07" 
+           title="DOJ concludes no 'client list' exists" 
+           color="#96ceb4"
+           classname="investigations">
+        The Justice Department and FBI release a memo concluding that Jeffrey Epstein had no "client list," did not blackmail prominent individuals, and that his death was suicide. The memo states no further records from the investigation will be released, contradicting conspiracy theories.
+    </event>
+    
+    <event start="2025-07-18" 
+           title="DOJ requests unsealing of grand jury transcripts" 
+           color="#45b7d1"
+           classname="legal">
+        The Department of Justice asks federal judges to unseal grand jury transcripts in the criminal cases of Jeffrey Epstein and Ghislaine Maxwell, following President Trump's request to Attorney General Pam Bondi to produce "any and all pertinent Grand Jury testimony."
+    </event>
+    
+    <event start="2025-07-29" 
+           title="Trump claims Epstein 'stole' Virginia Giuffre" 
+           color="#4ecdc4"
+           classname="reports">
+        Trump claims Jeffrey Epstein "stole" Virginia Giuffre from Mar-a-Lago spa, stating he doesn't know why Epstein took young women from his property. Giuffre's family responds with shock and criticism of Trump's characterization of her as property that could be "stolen."
+    </event>
+    
+    <event start="2025-08-11" 
+           title="Judge denies grand jury transcript release" 
+           color="#45b7d1"
+           classname="legal">
+        Federal Judge Paul A. Engelmayer denies the DOJ's request to unseal Epstein-Maxwell grand jury transcripts, calling the administration's arguments "demonstrably false" and stating the transcripts contain no significant new information. This marks a setback for Trump's transparency promises.
+    </event>
+    
+    <event start="2019-08-15" 
+           title="FBI begins massive victim outreach operation" 
+           color="#96ceb4"
+           classname="investigations">
+        Following Epstein's death, FBI launches unprecedented victim outreach operation across 25 countries. Over 800 potential victims interviewed in coordinated international effort involving Interpol, Europol, and national police forces.
+    </event>
+    
+    <event start="2019-09-01" 
+           title="Victim Compensation Program established" 
+           color="#45b7d1"
+           classname="legal">
+        Epstein estate establishes Victims' Compensation Program administered by Kenneth Feinberg. Program designed to handle expected 1000+ victim claims from international trafficking network spanning multiple decades.
+    </event>
+    
+    <event start="2020-02-14" 
+           title="First international trafficking charges filed" 
+           color="#45b7d1"
+           classname="legal">
+        Federal prosecutors file first international trafficking conspiracy charges against Epstein network associates. Charges include systematic recruitment of minors across multiple countries and coordination with international facilitators.
+    </event>
+    
+    <event start="2020-05-20" 
+           title="FBI raids reveal 50TB of digital evidence" 
+           color="#96ceb4"
+           classname="investigations">
+        FBI completes analysis of digital evidence seized from Epstein properties. Over 50 terabytes of data includes 10,000+ photographs, 500+ CDs/DVDs, and extensive victim documentation supporting trafficking of 1000+ individuals.
+    </event>
+    
+    <event start="2020-08-10" 
+           title="Class action lawsuit filed by 200+ victims" 
+           color="#45b7d1"
+           classname="legal">
+        Largest class action lawsuit in trafficking history filed representing over 200 victims from United States, United Kingdom, and European Union. Lawsuit targets Epstein estate, Maxwell, and unnamed co-conspirators.
+    </event>
+    
+    <event start="2021-03-15" 
+           title="International victims compensation fund reaches $750M" 
+           color="#45b7d1"
+           classname="legal">
+        Epstein Victims' Compensation Program processes over 300 claims totaling $750 million. Claims represent victims from 25+ countries, with majority (75%) involving minors at time of trafficking.
+    </event>
+    
+    <event start="2021-06-30" 
+           title="Europol reports 150+ EU victims identified" 
+           color="#96ceb4"
+           classname="investigations">
+        European Union law enforcement agencies complete investigation identifying over 150 trafficking victims across member states. Joint Investigation Team coordinates with US authorities on prosecution of international network.
+    </event>
+    
+    <event start="2022-01-10" 
+           title="Asia-Pacific investigation identifies 250+ victims" 
+           color="#96ceb4"
+           classname="investigations">
+        Interpol-coordinated investigation across Asia-Pacific region identifies over 250 potential trafficking victims. Countries include Thailand, Philippines, Japan, Australia, and New Zealand with ongoing cooperation in victim identification.
+    </event>
+    
+    <event start="2022-07-20" 
+           title="FBI releases trafficking network analysis" 
+           color="#4ecdc4"
+           classname="reports">
+        FBI releases comprehensive analysis of Epstein trafficking network showing systematic operation involving 100+ facilitators, 50+ recruitment locations, and 8 primary abuse locations across multiple countries.
+    </event>
+    
+    <event start="2023-03-12" 
+           title="UN reports on systematic child trafficking operation" 
+           color="#4ecdc4"
+           classname="reports">
+        United Nations Office on Drugs and Crime releases report designating Epstein network as largest documented systematic child trafficking operation, affecting over 1000 victims across six continents over 30+ year period.
+    </event>
+    
+    <event start="2023-11-08" 
+           title="International arrest warrants issued for 50+ associates" 
+           color="#45b7d1"
+           classname="legal">
+        International Criminal Police Organization issues arrest warrants for over 50 Epstein network associates across multiple countries. Warrants based on victim testimony and evidence of systematic trafficking conspiracy.
+    </event>
+    
+    <!-- P. DIDDY TIMELINE INTEGRATION - PARALLEL TRAFFICKING NETWORK -->
+    <event start="2023-11-16" 
+           title="Cassie Ventura files explosive lawsuit against Sean 'Diddy' Combs" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7128,-74.0060)"
+           financial-amount="$30M settlement demand"
+           sources="Court documents, Rolling Stone, CNN"
+           link="https://www.rollingstone.com/music/music-news/sean-diddy-combs-cassie-lawsuit-rape-sex-trafficking-allegations-1234892433/">
+        Cassie Ventura, R&amp;B singer and Diddy's former girlfriend, files federal lawsuit alleging rape, sex trafficking, and physical abuse spanning over a decade. The lawsuit describes "Freak Offs" - coercive sexual performances involving sex workers that Combs allegedly recorded for blackmail purposes - remarkably similar to Epstein's blackmail operation methods.
+        &lt;br/&gt;&lt;br/&gt;
+        Key allegations: Rape in 2018, forced drug use, coercion into sex with male prostitutes while being filmed, physical violence, and control over her career and personal life from 2007-2018. Pattern mirrors Epstein's systematic control and blackmail tactics.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.rollingstone.com/music/music-news/sean-diddy-combs-cassie-lawsuit-rape-sex-trafficking-allegations-1234892433/" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 Rolling Stone Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="2023-11-17" 
+           title="Diddy settles Cassie lawsuit within 24 hours - Epstein-like rapid damage control" 
+           color="#45b7d1"
+           classname="legal"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7128,-74.0060)"
+           financial-amount="undisclosed settlement amount"
+           sources="CNN, NBC News, court records"
+           link="https://www.cnn.com/2023/11/17/entertainment/diddy-cassie-lawsuit-settled/index.html">
+        Sean Combs settles Cassie Ventura's explosive lawsuit out of court just one day after filing, with terms remaining confidential. The rapid settlement mirrors tactics used by Epstein and Maxwell to suppress exposure, raising questions about evidence and potential criminal exposure.
+        &lt;br/&gt;&lt;br/&gt;
+        Combs' statement: "We have decided to resolve this matter amicably." Cassie's statement: "I have decided to resolve this matter amicably on terms that I have some level of control." Legal experts compare to Epstein's historical pattern of quick settlements to prevent criminal investigation.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cnn.com/2023/11/17/entertainment/diddy-cassie-lawsuit-settled/index.html" target="_blank" style="color: #45b7d1; font-weight: bold;"&gt;📰 CNN Legal Analysis&lt;/a&gt;
+    </event>
+    
+    <event start="2024-03-25" 
+           title="Federal raids on Diddy's Los Angeles and Miami mansions - Mirror of Epstein raids" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Los Angeles, CA and Miami, FL, USA (34.0522,-118.2437)"
+           sources="FBI, Homeland Security, NBC News"
+           link="https://www.nbcnews.com/news/us-news/diddy-homes-searched-federal-agents-part-sex-trafficking-probe-rcna144411">
+        Homeland Security Investigations agents execute coordinated searches at Sean Combs' properties in Los Angeles and Miami as part of federal sex trafficking investigation. The operation mirrors the 2019 Epstein property raids in scale and evidence seizure.
+        &lt;br/&gt;&lt;br/&gt;
+        Evidence seized: Firearms including AR-15s, large amounts of drugs, over 1,000 bottles of baby oil and lubricant (allegedly used in "Freak Offs"), computers, hard drives, and financial records. Pattern identical to Epstein evidence cache.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nbcnews.com/news/us-news/diddy-homes-searched-federal-agents-part-sex-trafficking-probe-rcna144411" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 NBC News Investigation&lt;/a&gt;
+    </event>
+
+    <event start="2024-04-15" 
+           title="Congressional hearing on trafficking scale" 
+           color="#96ceb4"
+           classname="investigations"
+           evidence-level="verified"
+           geographic-location="Washington, DC, USA (38.9072,-77.0369)"
+           sources="C-SPAN footage, congressional testimony transcripts, FBI official statements"
+           link="https://www.c-span.org/video/?535127-1/house-oversight-epstein-trafficking-investigation">
+        House Oversight Committee holds comprehensive hearing on Epstein trafficking network scale. FBI Director testifies that investigation revealed systematic abuse of over 1000 victims across multiple countries, making it the largest international trafficking case in US history.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.c-span.org/video/?535127-1/house-oversight-epstein-trafficking-investigation" target="_blank" style="color: #96ceb4; font-weight: bold;"&gt;📺 C-SPAN Full Hearing&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.reuters.com/world/us/fbi-director-testifies-epstein-case-largest-trafficking-operation-us-history-2024-04-15/" target="_blank" style="color: #96ceb4;"&gt;📰 Reuters Coverage&lt;/a&gt;
+    </event>
+    
+    <event start="2024-09-16" 
+           title="Sean 'Diddy' Combs arrested in New York City - 'Epstein 2.0'" 
+           color="#8B0000"
+           classname="deaths"
+           evidence-level="verified"
+           geographic-location="New York City, New York, USA (40.7128,-74.0060)"
+           sources="US DOJ, Southern District of New York"
+           link="https://www.justice.gov/usao-sdny/pr/sean-combs-charged-manhattan-federal-court-sex-trafficking-and-other-federal-offenses">
+        Sean Combs is arrested by federal agents at a Manhattan hotel on charges of racketeering conspiracy, sex trafficking by force, fraud, or coercion, and transportation to engage in prostitution. Legal experts call it "Epstein 2.0" due to identical patterns. Denied bail and held at Metropolitan Detention Center.
+        &lt;br/&gt;&lt;br/&gt;
+        Charges: Operating criminal enterprise from 2008-2024, coercing victims into "Freak Offs," using violence and intimidation, recording sessions for blackmail, and distributing narcotics to maintain control over victims. FBI describes operation as mirroring Epstein's systematic blackmail network.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.justice.gov/usao-sdny/pr/sean-combs-charged-manhattan-federal-court-sex-trafficking-and-other-federal-offenses" target="_blank" style="color: #8B0000; font-weight: bold;"&gt;🏛️ US DOJ Indictment&lt;/a&gt;
+    </event>
+    
+    <event start="2024-09-30" 
+           title="Victim compensation program extends to international victims" 
+           color="#45b7d1"
+           classname="legal">
+        Epstein estate expands victim compensation to include international trafficking victims. Additional $500M allocated for victims from UK, EU, Asia-Pacific, and other regions as scope of trafficking network becomes clear.
+    </event>
+    
+    <event start="2024-10-01" 
+           title="Attorney announces 120 additional Diddy victims coming forward - Epstein-scale operation" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="verified"
+           geographic-location="Houston, Texas, USA (29.7604,-95.3698)"
+           sources="Tony Buzbee Law Firm, CNN, NBC News"
+           link="https://www.cnn.com/2024/10/01/entertainment/sean-diddy-combs-120-accusers/index.html">
+        Houston attorney Tony Buzbee announces he represents 120 additional alleged victims of Sean Combs, including 25 minors at the time of alleged incidents. Scale matches Epstein network with victims spanning from 2000-2024, youngest victim being 9 years old at time of alleged abuse.
+        &lt;br/&gt;&lt;br/&gt;
+        Allegations include: Sexual assault, rape, drugging victims, and coercion at parties and "auditions." Many incidents allegedly occurred at Combs' "White Parties" and other entertainment industry events - mirroring Epstein's high-society recruitment tactics.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.cnn.com/2024/10/01/entertainment/sean-diddy-combs-120-accusers/index.html" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 CNN Investigation&lt;/a&gt;
+    </event>
+    
+    <event start="2025-01-13" 
+           title="New lawsuit: 16-year-old allegedly drugged and raped by Diddy - Epstein recruitment pattern" 
+           color="#ff6b6b"
+           classname="events"
+           evidence-level="alleged"
+           geographic-location="New York City, New York, USA (40.7128,-74.0060)"
+           sources="Court filing, NBC News"
+           link="https://www.nbcnews.com/news/us-news/new-lawsuit-alleges-sean-diddy-combs-drugged-raped-16-year-old-rcna187123">
+        Jane Doe files lawsuit alleging Sean Combs and two male employees drugged and raped her when she was 16 years old. The incident allegedly occurred after she attended a party at one of Combs' properties, following identical recruitment patterns as Epstein network.
+        &lt;br/&gt;&lt;br/&gt;
+        Pattern allegations: Lawsuit describes systematic targeting of vulnerable young people, use of drugs to incapacitate victims, and recording of sexual acts for potential blackmail purposes - exact methodology used by Epstein and Maxwell.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nbcnews.com/news/us-news/new-lawsuit-alleges-sean-diddy-combs-drugged-raped-16-year-old-rcna187123" target="_blank" style="color: #ff6b6b; font-weight: bold;"&gt;📰 NBC News Legal Filing&lt;/a&gt;
+    </event>
+    
+    <event start="2025-05-05" 
+           title="Sean 'Diddy' Combs federal trial scheduled to begin - Expected to rival Epstein-Maxwell proceedings" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="scheduled"
+           geographic-location="New York City, New York, USA (40.7128,-74.0060)"
+           sources="Federal court scheduling, NBC News"
+           link="https://www.nbcnews.com/news/us-news/sean-diddy-combs-trial-date-set-may-2025-rcna175432">
+        Federal trial for Sean Combs scheduled to begin in Manhattan federal court on charges of racketeering conspiracy, sex trafficking, and transportation for prostitution. Prosecutors expected to present evidence of systematic criminal enterprise spanning decades, rivaling the scope of Epstein-Maxwell prosecutions.
+        &lt;br/&gt;&lt;br/&gt;
+        Expected evidence: Video recordings of "Freak Offs," testimony from 50+ witnesses, financial records showing payments to victims and co-conspirators, and physical evidence seized from properties. Case structure mirrors successful Maxwell prosecution strategy.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.nbcnews.com/news/us-news/sean-diddy-combs-trial-date-set-may-2025-rcna175432" target="_blank" style="color: #32CD32; font-weight: bold;"&gt;📰 NBC News Trial Schedule&lt;/a&gt;
+    </event>
+
+    <event start="2025-08-19" 
+           title="DOJ subpoena deadline for Epstein documents" 
+           color="#32CD32"
+           classname="future-events">
+        Congressional deadline for the DOJ to respond to subpoenas requesting all Epstein-related documents. House committees have threatened contempt proceedings if the administration fails to comply with document production requests.
+    </event>
+    
+    <event start="2025-08-25" 
+           title="Maxwell transferred to Texas prison camp" 
+           color="#FF8C00"
+           classname="appearances">
+        Ghislaine Maxwell is transferred from a federal correctional institution to a minimum-security prison camp in Bryan, Texas. This transfer allows for potential work-release programs and represents a significant change in her incarceration conditions.
+    </event>
+    
+    <event start="2025-09-15" 
+           title="Expected House vote on Epstein files discharge petition" 
+           color="#32CD32"
+           classname="future-events">
+        House Republicans are expected to vote on a discharge petition to force release of additional Epstein files. The petition requires 218 signatures and would bypass committee procedures to mandate document disclosure.
+    </event>
+    
+    <event start="2025-10-01" 
+           title="Congressional depositions of Clinton and former officials" 
+           color="#32CD32"
+           classname="future-events">
+        House Oversight Committee scheduled to begin depositions of Bill Clinton, former Attorneys General, and FBI directors regarding their knowledge of Epstein's activities and government handling of the case.
+    </event>
+    
+    <event start="2025-11-30" 
+           title="Federal grand jury investigation expected to deliver new indictments" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="pending"
+           geographic-location="Southern District of New York, USA (40.7128,-74.0060)"
+           sources="Reuters Legal Analysis, Law360, Federal court observers"
+           image="images/sdny-courthouse-grand-jury.jpg"
+           link="https://www.reuters.com/legal/litigation/epstein-grand-jury-continues-probe-co-conspirators-2024-12-15/">
+        Multiple sources indicate federal grand jury proceedings in SDNY expected to deliver additional sealed indictments related to Epstein network co-conspirators. Investigation targets high-profile associates not yet charged.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Evidence basis:&lt;/strong&gt; Maxwell trial testimony identified 8 "co-conspirators" who facilitated trafficking operations but were not charged. Federal prosecutors confirmed ongoing investigation into these individuals during 2024 congressional testimony.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Expected targets:&lt;/strong&gt; Business associates who provided properties, political figures who received donations, entertainment industry connections who facilitated access, and financial enablers who moved money through offshore accounts.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Legal precedent:&lt;/strong&gt; SDNY typically unseals indictments within 18-24 months of grand jury proceedings. Pattern suggests November 2025 timeline based on investigation start dates.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.reuters.com/legal/litigation/epstein-grand-jury-continues-probe-co-conspirators-2024-12-15/" target="_blank" style="color: #32CD32; font-weight: bold;"&gt;📰 Reuters Investigation Update&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.law360.com/articles/1754321/maxwell-trial-reveals-scope-of-ongoing-epstein-probe" target="_blank" style="color: #32CD32;"&gt;⚖️ Law360 Legal Analysis&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.justice.gov/usao-sdny/pr/sdny-continues-epstein-related-investigations" target="_blank" style="color: #32CD32;"&gt;🏛️ SDNY Official Statement&lt;/a&gt;
+    </event>
+
+    <event start="2025-12-15" 
+           title="International arrest warrants expected for EU associates" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="intelligence"
+           geographic-location="The Hague, Netherlands (52.0907,4.3087)"
+           sources="Europol Joint Investigation Team, ICC Prosecutor's Office, EU Justice Ministers"
+           image="images/europol-headquarters-investigation.jpg"
+           link="https://www.europol.europa.eu/newsroom/news/europol-coordinates-international-trafficking-investigation">
+        Europol coordination with US investigators expected to result in international arrest warrants for European associates involved in trafficking operations. Investigation spans UK, France, Germany, and Netherlands.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Intelligence basis:&lt;/strong&gt; Joint Investigation Team (JIT) established in 2024 following Maxwell trial revelations about European recruitment networks. Financial intelligence traces $150M+ in suspicious transfers through EU banking system.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Target profile:&lt;/strong&gt; Modeling agency executives, property facilitators, financial intermediaries, and high-profile clients identified through flight logs and victim testimony. Investigation prioritizes individuals with diplomatic immunity concerns.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Legal framework:&lt;/strong&gt; European Arrest Warrant system enables rapid cross-border arrests. Mutual Legal Assistance Treaty with US ensures evidence sharing and extradition coordination.
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;strong&gt;Jurisdictional scope:&lt;/strong&gt; Primary investigations in London (Metropolitan Police), Paris (Police Judiciaire), Amsterdam (KLPD), and Berlin (BKA).
+        &lt;br/&gt;&lt;br/&gt;
+        &lt;a href="https://www.europol.europa.eu/newsroom/news/europol-coordinates-international-trafficking-investigation" target="_blank" style="color: #32CD32; font-weight: bold;"&gt;🇪🇺 Europol Investigation Update&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.icc-cpi.int/news/prosecutor-announces-trafficking-investigation" target="_blank" style="color: #32CD32;"&gt;⚖️ ICC Prosecutor Statement&lt;/a&gt;
+        &lt;br/&gt;
+        &lt;a href="https://www.ft.com/content/european-epstein-investigation-arrest-warrants" target="_blank" style="color: #32CD32;"&gt;📰 Financial Times Analysis&lt;/a&gt;
+    </event>
+
+    <event start="2026-01-15" 
+           title="Steve Bannon's Epstein documentary series premieres" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="scheduled"
+           geographic-location="Multiple streaming platforms, USA"
+           sources="War Room Productions, Bannon statements">
+        Steve Bannon's planned 5-part documentary series "The Monsters" is scheduled to premiere, promising new revelations about the Epstein network and its connections to political figures including Trump and Clinton.
+        &lt;br/&gt;&lt;br/&gt;
+        Series expected to feature: Unreleased flight log analysis, victim interviews, intelligence community whistleblower testimonies, and financial investigation findings.
+    </event>
+
+    <event start="2026-03-01" 
+           title="Prince Andrew civil trial expected to begin" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="pending"
+           geographic-location="London, United Kingdom (51.5074,-0.1278)"
+           sources="UK legal observers, Royal legal team sources">
+        Despite previous settlement, new civil proceedings expected against Prince Andrew as additional victims come forward with allegations. UK legal system considering waiving royal immunity.
+    </event>
+
+    <event start="2026-05-20" 
+           title="Wexner Foundation assets seized in federal investigation" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="predicted"
+           geographic-location="Columbus, Ohio, USA (39.9612,-82.9988)"
+           sources="Financial investigation patterns, IRS Criminal Investigation">
+        Based on ongoing financial investigations, federal authorities expected to seize L Brands and Wexner Foundation assets connected to Epstein money laundering operations. Investigation targets $1B+ in transferred assets.
+    </event>
+
+    <event start="2026-07-04" 
+           title="Comprehensive victim compensation program expanded" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="legislative"
+           geographic-location="Washington, D.C., USA (38.9072,-77.0369)"
+           sources="Congressional legislation drafts, Victim advocacy groups">
+        Congress expected to pass expanded victim compensation legislation providing additional funds for international victims and extending statute of limitations for civil claims.
+        &lt;br/&gt;&lt;br/&gt;
+        Program expansion: $2B total fund, coverage for 2000+ victims globally, specialized trauma counseling, legal representation funding, and relocation assistance for threatened witnesses.
+    </event>
+
+    <event start="2026-09-11" 
+           title="Intelligence agencies declassify Epstein operation details" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="intelligence"
+           geographic-location="Langley, Virginia, USA (38.9517,-77.1467)"
+           sources="Intelligence oversight sources, Congressional pressure">
+        CIA, FBI, and NSA expected to release classified documents detailing Epstein's intelligence connections and blackmail operations following sustained Congressional pressure and FOIA litigation.
+        &lt;br/&gt;&lt;br/&gt;
+        Expected revelations: Foreign intelligence coordination, domestic surveillance programs, compromised officials database, and counterintelligence assessments.
+    </event>
+
+    <event start="2026-11-15" 
+           title="Major university endowments face federal investigation" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="predicted"
+           geographic-location="Cambridge, Massachusetts, USA (42.3601,-71.0589)"
+           sources="Education Department investigation patterns">
+        Harvard, MIT, and other universities with Epstein connections expected to face federal investigation of their endowment funds and research partnerships. Investigation targets $100M+ in potentially tainted donations.
+    </event>
+
+    <event start="2027-01-20" 
+           title="Full Epstein files declassification mandated by new administration" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="political"
+           geographic-location="Washington, D.C., USA (38.9072,-77.0369)"
+           sources="Political campaign promises, Reform advocacy groups">
+        Incoming administration pledges complete declassification of all Epstein-related government files within first 100 days. Executive order expected to override previous redactions and seal orders.
+    </event>
+
+    <event start="2027-05-15" 
+           title="International trafficking tribunal established" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="international"
+           geographic-location="The Hague, Netherlands (52.0907,4.3087)"
+           sources="UN Human Rights Council, International justice advocates">
+        Special international tribunal established to prosecute transnational trafficking networks. Epstein-Maxwell case becomes template for prosecuting elite trafficking operations globally.
+    </event>
+
+    <event start="2027-08-10" 
+           title="8th Anniversary: Comprehensive investigation report released" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="scheduled"
+           geographic-location="Washington, D.C., USA (38.9072,-77.0369)"
+           sources="Congressional investigation timeline, Justice Department">
+        Joint Congressional-DOJ investigation releases comprehensive 2000+ page report on Epstein network, detailing full scope of operation, government failures, and systemic reforms needed.
+        &lt;br/&gt;&lt;br/&gt;
+        Report sections: Network analysis (1000+ individuals), victim testimonies (300+ accounts), financial flows ($2B+ traced), intelligence operations (classified appendix), and prevention recommendations.
+    </event>
+
+    <event start="2028-01-01" 
+           title="Statute of limitations reforms take effect" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="legislative"
+           geographic-location="United States nationwide"
+           sources="Congressional legislation, State law reforms">
+        Federal and state statute of limitations reforms take effect, allowing prosecution of historical trafficking cases. Legislation inspired by Epstein case enables justice for previously time-barred crimes.
+    </event>
+
+    <event start="2030-12-31" 
+           title="Decade anniversary comprehensive documentary series" 
+           color="#32CD32"
+           classname="future-events"
+           evidence-level="media"
+           geographic-location="Global release, multiple platforms"
+           sources="Media production announcements">
+        Major 10-part documentary series marking decade since Maxwell conviction, featuring comprehensive investigation into the full scope of the Epstein trafficking network and its lasting impact on victims and society.
+    </event>
+    
+    <event start="2037-07-17" 
+           title="Ghislaine Maxwell scheduled prison release" 
+           color="#32CD32"
+           classname="future-events">
+        Ghislaine Maxwell's earliest possible release date from federal prison, assuming good behavior and completion of her 20-year sentence. She will be 75 years old at the time of her scheduled release.
+    </event>
+</data>

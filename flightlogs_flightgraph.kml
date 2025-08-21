@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>Flight Logs</name>
+  <Placemark>
+    <name>Flight 44 20010106</name>
+    <description><![CDATA[Passengers: Jeffrey Epstein, Ghislaine Maxwell, Sarah Kellen, AP, Alexia Wallert, Cindy Lopez
+Origin: TIST -> Destination: EWR]]></description>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-64.9733333,18.3373056,0 -74.1686878,40.6924806,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Flight 45 20010111</name>
+    <description><![CDATA[Passengers: Jeffrey Epstein, Ghislaine Maxwell, Roger, Warren, Margaret, 1 Female
+Origin: EWR -> Destination: PBI]]></description>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-74.1686878,40.6924806,0 -80.0955919,26.6831617,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Flight 1557 20010113</name>
+    <description><![CDATA[Passengers: Jeffrey Epstein, Ghislaine Maxwell
+Origin: PBI -> Destination: MBPV]]></description>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-80.0955919,26.6831617,0 -72.2659,21.7736,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Flight 1558 20010113</name>
+    <description><![CDATA[Passengers: Jeffrey Epstein, Ghislaine Maxwell
+Origin: MBPV -> Destination: PBI]]></description>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-72.2659,21.7736,0 -80.0955919,26.6831617,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Flight 46 20010114</name>
+    <description><![CDATA[Passengers: Jeffrey Epstein, Ghislaine Maxwell
+Origin: PBI -> Destination: LGA]]></description>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-80.0955919,26.6831617,0 -73.8726056,40.7772422,0</coordinates>
+    </LineString>
+  </Placemark>
+</Document>
+</kml>

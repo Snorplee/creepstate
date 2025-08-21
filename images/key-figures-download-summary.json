@@ -1,0 +1,18 @@
+{
+  "download_date": "2025-08-20T20:32:41.832497",
+  "total_photos": 23,
+  "people": {
+    "Jeffrey Epstein": 4,
+    "Ghislaine Maxwell": 4,
+    "Prince Andrew": 5,
+    "Bill Clinton": 5,
+    "Alan Dershowitz": 5
+  },
+  "directories": {
+    "Jeffrey Epstein": "images/people/enablers",
+    "Ghislaine Maxwell": "images/people/enablers",
+    "Prince Andrew": "images/people/royalty",
+    "Bill Clinton": "images/people/politicians",
+    "Alan Dershowitz": "images/people/politicians"
+  }
+}

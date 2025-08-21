@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump-Epstein Vertical Timeline</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <!-- Dark mode toggle system -->
+    <script src="dark-mode.js"></script>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --timeline-line: #45b7d1;
+            --accent-color: #ff6b6b;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --container-bg: #2d2d2d;
+            --text-color: #e0e0e0;
+            --border-color: #444;
+            --timeline-line: #6bb6ff;
+            --accent-color: #ff8a80;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Universal Navigation Bar */
+        .universal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-color);
+            z-index: 10000;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styles */
+        .footer-nav {
+            background: var(--container-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-nav-title {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: 1.3em;
+        }
+
+        .footer-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-nav-section {
+            text-align: center;
+        }
+
+        .footer-nav-section h4 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .footer-nav-links {
+            list-style: none;
+        }
+
+        .footer-nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .footer-nav-links a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .footer {
+            background: rgba(0,0,0,0.9);
+            padding: 30px 20px;
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #444;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .search-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            background: var(--container-bg);
+            color: var(--text-color);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            border-color: var(--timeline-line);
+            box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.1);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            background: var(--container-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .filter-btn.events { border-color: #ff6b6b; }
+        .filter-btn.events.active { background: #ff6b6b; color: white; }
+        .filter-btn.reports { border-color: #4ecdc4; }
+        .filter-btn.reports.active { background: #4ecdc4; color: white; }
+        .filter-btn.legal { border-color: #45b7d1; }
+        .filter-btn.legal.active { background: #45b7d1; color: white; }
+        .filter-btn.investigations { border-color: #96ceb4; }
+        .filter-btn.investigations.active { background: #96ceb4; color: white; }
+        .filter-btn.deaths { border-color: #8B0000; }
+        .filter-btn.deaths.active { background: #8B0000; color: white; }
+        .filter-btn.putin-connections { border-color: #800080; }
+        .filter-btn.putin-connections.active { background: #800080; color: white; }
+        .filter-btn.appearances { border-color: #FF8C00; }
+        .filter-btn.appearances.active { background: #FF8C00; color: white; }
+        .filter-btn.future-events { border-color: #32CD32; }
+        .filter-btn.future-events.active { background: #32CD32; color: white; }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--timeline-line);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .timeline-event {
+            position: relative;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-event.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-event:nth-child(odd) .event-content {
+            margin-left: 0;
+            margin-right: 60%;
+            text-align: right;
+        }
+        
+        .timeline-event:nth-child(even) .event-content {
+            margin-left: 60%;
+            margin-right: 0;
+            text-align: left;
+        }
+        
+        .event-content {
+            background: var(--container-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .event-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .event-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--timeline-line);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        
+        .timeline-event:nth-child(odd) .event-date {
+            top: 20px;
+        }
+        
+        .timeline-event:nth-child(even) .event-date {
+            top: 20px;
+        }
+        
+        .event-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--container-bg);
+            border: 4px solid var(--timeline-line);
+            z-index: 5;
+        }
+        
+        .event-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: var(--accent-color);
+        }
+        
+        .event-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .event-meta span {
+            background: rgba(69, 183, 209, 0.1);
+            padding: 4px 8px;
+            border-radius: 10px;
+        }
+        
+        .event-image {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px 0 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: 2px solid var(--border-color);
+            display: block;
+        }
+        
+        .event-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border-color: var(--accent-color);
+        }
+        
+        .event-sources {
+            margin-top: 15px;
+        }
+        
+        .event-sources a {
+            color: var(--timeline-line);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .event-sources a:hover {
+            text-decoration: underline;
+        }
+        
+        .density-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 300px;
+            background: rgba(69, 183, 209, 0.1);
+            border-radius: 20px;
+            border: 2px solid var(--timeline-line);
+            z-index: 100;
+        }
+        
+        .density-bar {
+            position: absolute;
+            right: 5px;
+            width: 30px;
+            background: var(--timeline-line);
+            border-radius: 15px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .density-bar:hover {
+            opacity: 1;
+            transform: scaleX(1.2);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .stats-summary {
+            background: var(--container-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 1000px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            padding: 15px;
+            background: rgba(69, 183, 209, 0.1);
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-event:nth-child(odd) .event-content,
+            .timeline-event:nth-child(even) .event-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+            
+            .event-date {
+                left: 30px !important;
+            }
+            
+            .event-dot {
+                left: 30px !important;
+            }
+            
+            .density-indicator {
+                display: none;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .header-controls {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Universal Navigation -->
+    <nav class="universal-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                🔍 Trump-Epstein Investigation
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="timeline.html" class="nav-link">Timeline</a>
+                <a href="vertical-timeline.html" class="nav-link active">Vertical Timeline</a>
+                <a href="enhanced-visualizations.html" class="nav-link">Network</a>
+                <a href="flight-logs.html" class="nav-link">Flight Logs</a>
+                <a href="stats.html" class="nav-link">Statistics</a>
+                <a href="names-and-shame.html" class="nav-link">Directory</a>
+                <a href="name-the-scandal.html" class="nav-link">🏆 Name It!</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Server Notice -->
+    <div id="serverNotice" style="background: linear-gradient(135deg, #ff6b6b, #ffa500); color: white; padding: 15px; margin: 20px auto; max-width: 1200px; border-radius: 10px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: none;">
+        <h4 style="margin: 0 0 10px 0;">⚠️ Local Server Required</h4>
+        <p style="margin: 0; font-size: 14px;">This timeline requires a web server to load data. Run <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">./run-local.sh</code> and access via <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px;">http://127.0.0.1:8847</code></p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search timeline events..." id="searchBox">
+        <div class="filters">
+            <button class="filter-btn" onclick="filterEvents('all')" id="filter-all">All</button>
+            <button class="filter-btn events" onclick="filterEvents('events')" id="filter-events">Events</button>
+            <button class="filter-btn reports" onclick="filterEvents('reports')" id="filter-reports">Reports</button>
+            <button class="filter-btn legal" onclick="filterEvents('legal')" id="filter-legal">Legal</button>
+            <button class="filter-btn investigations" onclick="filterEvents('investigations')" id="filter-investigations">Investigations</button>
+            <button class="filter-btn deaths" onclick="filterEvents('deaths')" id="filter-deaths">Deaths</button>
+            <button class="filter-btn putin-connections" onclick="filterEvents('putin-connections')" id="filter-putin-connections">Putin/Russia</button>
+            <button class="filter-btn appearances" onclick="filterEvents('appearances')" id="filter-appearances">Appearances</button>
+            <button class="filter-btn future-events" onclick="filterEvents('future-events')" id="filter-future-events">Future</button>
+        </div>
+    </div>
+    
+    <div class="stats-summary" id="statsSummary">
+        <h3>Timeline Statistics</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" id="totalEvents">-</div>
+                <div class="stat-label">Total Events</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="timeSpan">-</div>
+                <div class="stat-label">Years Covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="verifiedEvents">-</div>
+                <div class="stat-label">Verified Events</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="sourcesCount">-</div>
+                <div class="stat-label">Source Documents</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="timeline-container" id="timelineContainer">
+        <div class="timeline-line"></div>
+        <div class="loading" id="loadingIndicator">Loading timeline data...</div>
+    </div>
+    
+    <div class="density-indicator" id="densityIndicator"></div>
+    
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    
+    <script>
+        let timelineData = [];
+        let filteredData = [];
+        let currentFilter = 'all';
+        let searchTerm = '';
+        
+        // Load and parse XML data
+        // Photo mapping system for timeline events
+        function mapEventToPhoto(title, description) {
+            const content = `${title} ${description}`.toLowerCase();
+            
+            // Photo mapping database - maps keywords to photo paths
+            const photoMappings = {
+                // Core investigation figures
+                'trump': 'images/people/politicians/donald-trump.jpg',
+                'epstein': 'images/people/enablers/jeffrey-epstein.jpg',
+                'maxwell': 'images/people/enablers/ghislaine-maxwell.jpg',
+                'ghislaine': 'images/people/enablers/ghislaine-maxwell.jpg',
+                
+                // Politicians
+                'clinton': 'images/people/politicians/bill-clinton.jpg',
+                'bill clinton': 'images/people/politicians/bill-clinton.jpg',
+                'hillary': 'images/people/politicians/hillary-clinton.jpg',
+                'prince andrew': 'images/people/royalty/prince-andrew.jpg',
+                'andrew': 'images/people/royalty/prince-andrew.jpg',
+                'dershowitz': 'images/people/politicians/alan-dershowitz.jpg',
+                
+                // Business figures  
+                'wexner': 'images/people/business/les-wexner.jpg',
+                'gates': 'images/people/business/bill-gates.jpg',
+                'bill gates': 'images/people/business/bill-gates.jpg',
+                'dubin': 'images/people/business/glenn-dubin.jpg',
+                'black': 'images/people/business/leon-black.jpg',
+                
+                // Victims and witnesses
+                'giuffre': 'images/people/victims/virginia-giuffre.jpg',
+                'virginia': 'images/people/victims/virginia-giuffre.jpg',
+                'roberts': 'images/people/victims/virginia-giuffre.jpg',
+                
+                // Locations and events
+                'mar-a-lago': 'images/people/politicians/donald-trump.jpg',
+                'mar a lago': 'images/people/politicians/donald-trump.jpg',
+                'little st james': 'images/people/enablers/jeffrey-epstein.jpg',
+                'little st. james': 'images/people/enablers/jeffrey-epstein.jpg',
+                'zorro ranch': 'images/people/enablers/jeffrey-epstein.jpg',
+                'manhattan mansion': 'images/people/enablers/jeffrey-epstein.jpg',
+                'palm beach': 'images/people/enablers/jeffrey-epstein.jpg',
+                'lolita express': 'images/people/enablers/jeffrey-epstein.jpg',
+                'boeing 727': 'images/people/enablers/jeffrey-epstein.jpg',
+                
+                // Legal events
+                'arrest': 'images/people/enablers/jeffrey-epstein.jpg',
+                'trial': 'images/people/legal/court-gavel.jpg',
+                'lawsuit': 'images/people/legal/court-gavel.jpg',
+                'settlement': 'images/people/legal/court-documents.jpg',
+                'indictment': 'images/people/legal/court-gavel.jpg',
+                
+                // Media and investigations
+                'miami herald': 'images/people/media/julie-brown.jpg',
+                'vanity fair': 'images/people/media/magazine.jpg',
+                'new york times': 'images/people/media/newspaper.jpg',
+                'washington post': 'images/people/media/newspaper.jpg',
+                
+                // Intelligence connections
+                'mossad': 'images/people/intelligence/mossad.jpg',
+                'intelligence': 'images/people/intelligence/spy.jpg',
+                'cia': 'images/people/intelligence/cia.jpg'
+            };
+            
+            // Advanced content analysis - check for multiple keywords
+            const keywordMatches = [];
+            for (const [keyword, photoPath] of Object.entries(photoMappings)) {
+                if (content.includes(keyword)) {
+                    keywordMatches.push({ keyword, photoPath, relevance: keyword.length });
+                }
+            }
+            
+            // Return the most relevant photo (longest matching keyword)
+            if (keywordMatches.length > 0) {
+                const bestMatch = keywordMatches.sort((a, b) => b.relevance - a.relevance)[0];
+                return bestMatch.photoPath;
+            }
+            
+            // Fallback photos based on event categories
+            if (content.includes('court') || content.includes('legal') || content.includes('judge')) {
+                return 'images/people/legal/court-gavel.jpg';
+            }
+            if (content.includes('flight') || content.includes('plane') || content.includes('jet')) {
+                return 'images/people/enablers/jeffrey-epstein.jpg';
+            }
+            if (content.includes('party') || content.includes('social') || content.includes('event')) {
+                return 'images/people/politicians/donald-trump.jpg';
+            }
+            if (content.includes('victim') || content.includes('abuse') || content.includes('trafficking')) {
+                return 'images/people/victims/virginia-giuffre.jpg';
+            }
+            
+            // Default fallback - investigation symbol or main figures
+            return 'images/people/enablers/jeffrey-epstein.jpg';
+        }
+
+        async function loadTimelineData() {
+            try {
+                console.log('Loading timeline data...');
+                const response = await fetch('timeline-comprehensive.xml');
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load XML: ${response.status}`);
+                }
+                
+                const xmlText = await response.text();
+                console.log('XML loaded, length:', xmlText.length);
+                
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                // Check for XML parsing errors
+                const parseError = xmlDoc.querySelector('parsererror');
+                if (parseError) {
+                    console.error('XML parse error:', parseError.textContent);
+                    throw new Error('XML parsing failed: ' + parseError.textContent);
+                }
+                
+                const events = xmlDoc.querySelectorAll('event');
+                console.log('Found events:', events.length);
+                timelineData = Array.from(events).map((event, index) => {
+                    try {
+                        const eventData = {
+                            start: event.getAttribute('start'),
+                            title: event.getAttribute('title'),
+                            color: event.getAttribute('color'),
+                            classname: event.getAttribute('classname'),
+                            image: event.getAttribute('image') || mapEventToPhoto(event.getAttribute('title'), event.textContent.trim()),
+                            link: event.getAttribute('link'),
+                            evidenceLevel: event.getAttribute('evidence-level') || 'unverified',
+                            geographicLocation: event.getAttribute('geographic-location') || '',
+                            sources: event.getAttribute('sources') || '',
+                            intelligenceRelevance: event.getAttribute('intelligence-relevance') || '',
+                            financialAmount: event.getAttribute('financial-amount') || '',
+                            description: event.textContent.trim()
+                        };
+                        
+                        // Validate required fields
+                        if (!eventData.start || !eventData.title) {
+                            console.warn(`Event ${index} missing required fields:`, eventData);
+                        }
+                        
+                        return eventData;
+                    } catch (error) {
+                        console.error(`Error processing event ${index}:`, error);
+                        return null;
+                    }
+                }).filter(event => event !== null); // Remove failed events
+                
+                timelineData.sort((a, b) => new Date(a.start) - new Date(b.start));
+                filteredData = [...timelineData];
+                
+                console.log('Processed timeline data:');
+                console.log('- Total events:', timelineData.length);
+                console.log('- Date range:', timelineData[0]?.start, 'to', timelineData[timelineData.length - 1]?.start);
+                console.log('- Categories:', [...new Set(timelineData.map(e => e.classname))]);
+                
+                // Show success message
+                if (timelineData.length > 0) {
+                    const firstDate = new Date(timelineData[0].start).getFullYear();
+                    const lastDate = new Date(timelineData[timelineData.length - 1].start).getFullYear();
+                    console.log(`✅ Successfully loaded ${timelineData.length} events spanning ${firstDate}-${lastDate}`);
+                }
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderTimeline();
+                updateStats();
+                generateDensityIndicators();
+                setupScrollEffects();
+                
+            } catch (error) {
+                console.error('Error loading timeline data:', error);
+                document.getElementById('loadingIndicator').innerHTML = 
+                    `<div class="error">
+                        <h3>Failed to load timeline data</h3>
+                        <p><strong>Reason:</strong> ${error.message}</p>
+                        <p><strong>Solution:</strong> You must run this timeline through a local web server due to browser security restrictions.</p>
+                        <div style="background: rgba(69, 183, 209, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <h4>📋 How to fix this:</h4>
+                            <ol style="text-align: left; margin: 10px 0; padding-left: 20px;">
+                                <li>Open terminal/command prompt in the timeline directory</li>
+                                <li>Run: <code style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px;">./run-local.sh</code></li>
+                                <li>Open <code style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px;">http://127.0.0.1:8847/vertical-timeline.html</code> in your browser</li>
+                            </ol>
+                            <p><strong>Alternative methods:</strong></p>
+                            <ul style="text-align: left; margin: 10px 0; padding-left: 20px;">
+                                <li>Python: <code style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px;">python3 -m http.server 8080</code></li>
+                                <li>Node.js: <code style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px;">npx http-server</code></li>
+                                <li>PHP: <code style="background: #333; color: #fff; padding: 2px 6px; border-radius: 3px;">php -S localhost:8080</code></li>
+                            </ul>
+                        </div>
+                        <p><strong>Expected timeline:</strong> 138 events from 1946 to 2037 (main period: 1987-2037)</p>
+                    </div>`;
+            }
+        }
+        
+        function renderTimeline() {
+            const container = document.getElementById('timelineContainer');
+            const timelineLine = container.querySelector('.timeline-line');
+            
+            // Clear existing content except timeline line
+            container.innerHTML = '';
+            
+            // Recreate timeline line if it doesn't exist
+            if (timelineLine) {
+                container.appendChild(timelineLine);
+            } else {
+                const newTimelineLine = document.createElement('div');
+                newTimelineLine.className = 'timeline-line';
+                container.appendChild(newTimelineLine);
+            }
+            
+            filteredData.forEach((event, index) => {
+                const eventElement = createEventElement(event, index);
+                container.appendChild(eventElement);
+            });
+            
+            // Trigger animations
+            setTimeout(() => {
+                const events = container.querySelectorAll('.timeline-event');
+                events.forEach((event, index) => {
+                    setTimeout(() => {
+                        event.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 100);
+        }
+        
+        function createEventElement(event, index) {
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `timeline-event ${event.classname}`;
+            eventDiv.setAttribute('data-date', event.start);
+            eventDiv.setAttribute('data-category', event.classname);
+            
+            const date = new Date(event.start);
+            const formattedDate = date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            
+            let imageHtml = '';
+            if (event.image) {
+                imageHtml = `<img src="${event.image}" alt="${event.title}" class="event-image" 
+                    onclick="openImageModal('${event.image}')" 
+                    onerror="this.src='images/people/enablers/jeffrey-epstein.jpg'; this.onerror=null;"
+                    loading="lazy">`;
+            }
+            
+            let sourcesHtml = '';
+            if (event.sources) {
+                sourcesHtml = `<div class="event-sources">Sources: ${event.sources}</div>`;
+            }
+            
+            let linkHtml = '';
+            if (event.link) {
+                linkHtml = `<div class="event-sources"><a href="${event.link}" target="_blank">📰 Primary Source</a></div>`;
+            }
+            
+            // Decode HTML entities in description
+            const description = event.description
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&');
+            
+            eventDiv.innerHTML = `
+                <div class="event-date">${formattedDate}</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <div class="event-title">${event.title}</div>
+                    ${imageHtml}
+                    <div class="event-description">${description}</div>
+                    ${sourcesHtml}
+                    ${linkHtml}
+                    <div class="event-meta">
+                        <span>📍 ${event.geographicLocation || 'Location not specified'}</span>
+                        <span>🔍 ${event.evidenceLevel}</span>
+                        ${event.financialAmount ? `<span>💰 ${event.financialAmount}</span>` : ''}
+                        ${event.intelligenceRelevance ? `<span>🕵️ ${event.intelligenceRelevance}</span>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            return eventDiv;
+        }
+        
+        function filterEvents(category) {
+            currentFilter = category;
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`filter-${category}`).classList.add('active');
+            
+            applyFilters();
+        }
+        
+        function applyFilters() {
+            filteredData = timelineData.filter(event => {
+                const matchesCategory = currentFilter === 'all' || event.classname === currentFilter;
+                const matchesSearch = !searchTerm || 
+                    event.title.toLowerCase().includes(searchTerm) ||
+                    event.description.toLowerCase().includes(searchTerm);
+                
+                return matchesCategory && matchesSearch;
+            });
+            
+            renderTimeline();
+            updateStats();
+        }
+        
+        function updateStats() {
+            if (filteredData.length === 0) {
+                document.getElementById('totalEvents').textContent = '-';
+                document.getElementById('timeSpan').textContent = '-';
+                document.getElementById('verifiedEvents').textContent = '-';
+                document.getElementById('sourcesCount').textContent = '-';
+                return;
+            }
+            
+            const totalEvents = filteredData.length;
+            const dates = filteredData.map(e => new Date(e.start));
+            const minDate = Math.min(...dates);
+            const maxDate = Math.max(...dates);
+            const timeSpan = Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24 * 365));
+            const verifiedEvents = filteredData.filter(e => e.evidenceLevel === 'verified').length;
+            const sourcesCount = filteredData.filter(e => e.sources).length;
+            
+            document.getElementById('totalEvents').textContent = totalEvents;
+            document.getElementById('timeSpan').textContent = timeSpan + ' years';
+            document.getElementById('verifiedEvents').textContent = verifiedEvents;
+            document.getElementById('sourcesCount').textContent = sourcesCount;
+        }
+        
+        function generateDensityIndicators() {
+            const indicator = document.getElementById('densityIndicator');
+            indicator.innerHTML = '';
+            
+            // Group events by year
+            const eventsByYear = {};
+            timelineData.forEach(event => {
+                const year = new Date(event.start).getFullYear();
+                eventsByYear[year] = (eventsByYear[year] || 0) + 1;
+            });
+            
+            const years = Object.keys(eventsByYear).sort();
+            const maxEvents = Math.max(...Object.values(eventsByYear));
+            
+            years.forEach((year, index) => {
+                const count = eventsByYear[year];
+                const height = (count / maxEvents) * 40; // Max 40px height
+                const top = (index / years.length) * 260; // Distribute over 260px
+                
+                const bar = document.createElement('div');
+                bar.className = 'density-bar';
+                bar.style.height = `${height}px`;
+                bar.style.top = `${top}px`;
+                bar.title = `${year}: ${count} events`;
+                bar.onclick = () => scrollToYear(year);
+                
+                indicator.appendChild(bar);
+            });
+        }
+        
+        function setupScrollEffects() {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+                
+                // Animate events as they come into view
+                const events = document.querySelectorAll('.timeline-event:not(.visible)');
+                events.forEach(event => {
+                    const rect = event.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        event.classList.add('visible');
+                    }
+                });
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function scrollToYear(year) {
+            const event = document.querySelector(`[data-date^="${year}"]`);
+            if (event) {
+                event.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                event.style.animation = 'pulse 2s';
+            }
+        }
+        
+        function scrollToDate() {
+            const date = prompt('Enter a date (YYYY-MM-DD):');
+            if (date) {
+                const event = document.querySelector(`[data-date^="${date}"]`);
+                if (event) {
+                    event.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    event.style.animation = 'pulse 2s';
+                } else {
+                    alert('No event found for that date.');
+                }
+            }
+        }
+        
+        function toggleDarkMode() {
+            const body = document.body;
+            const button = document.getElementById('darkModeToggle');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                button.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                button.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        function exportTimeline() {
+            const data = filteredData.map(event => ({
+                date: event.start,
+                title: event.title,
+                category: event.classname,
+                evidenceLevel: event.evidenceLevel,
+                location: event.geographicLocation,
+                sources: event.sources,
+                description: event.description.replace(/<[^>]*>/g, '') // Strip HTML
+            }));
+            
+            const csv = [
+                ['Date', 'Title', 'Category', 'Evidence Level', 'Location', 'Sources', 'Description'],
+                ...data.map(row => [
+                    row.date, row.title, row.category, row.evidenceLevel, 
+                    row.location, row.sources, row.description
+                ])
+            ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'trump-epstein-timeline.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function openImageModal(src) {
+            window.open(src, '_blank');
+        }
+        
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            searchTerm = e.target.value.toLowerCase();
+            setTimeout(applyFilters, 300); // Debounce search
+        });
+        
+        // Load saved theme and check for file protocol
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('darkModeToggle').textContent = '☀️ Light Mode';
+            }
+            
+            // Show server notice if running from file:// protocol
+            if (window.location.protocol === 'file:') {
+                document.getElementById('serverNotice').style.display = 'block';
+            }
+        });
+        
+        // Initialize
+        window.addEventListener('load', () => {
+            loadTimelineData();
+        });
+        
+        // Add pulse animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+        <h3 class="footer-nav-title">🧭 Site Navigation</h3>
+        <div class="footer-nav-grid">
+            <div class="footer-nav-section">
+                <h4>🔍 Investigation Tools</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="timeline.html">📅 Interactive Timeline</a></li>
+                    <li><a href="vertical-timeline.html">📜 Vertical Timeline</a></li>
+                    <li><a href="enhanced-visualizations.html">🌐 Network Visualization</a></li>
+                    <li><a href="flight-logs.html">✈️ Flight Log Analysis</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>📊 Data & Statistics</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="stats.html">📊 Investigation Statistics</a></li>
+                    <li><a href="names-and-shame.html">👥 Associates Directory</a></li>
+                    <li><a href="name-the-scandal.html">🏆 Name The Scandal</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🎯 Resources & Support</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="resources.html">🆘 Victim Resources</a></li>
+                    <li><a href="index.html#documentation">📖 Documentation</a></li>
+                    <li><a href="#" onclick="window.scrollTo(0,0)">⬆️ Back to Top</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🔗 External Links</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="https://github.com/yourusername/trumpstein-timeline" target="_blank">💻 GitHub Repository</a></li>
+                    <li><a href="https://www.epsteincompensationfund.com" target="_blank">💰 Victim Compensation</a></li>
+                    <li><a href="https://www.justice.gov/usao-sdny" target="_blank">⚖️ SDNY Office</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html#documentation" class="footer-link">Documentation</a>
+            <a href="resources.html" class="footer-link">Resources</a>
+            <a href="https://github.com/yourusername/trumpstein-timeline" class="footer-link">GitHub</a>
+            <a href="#" class="footer-link">Report Issue</a>
+        </div>
+        <p style="color: #666;">© 2025 Trump-Epstein Investigation | For Truth and Justice</p>
+        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+            This resource compiles publicly available information for educational and journalistic purposes.
+        </p>
+        <p style="color: #666; font-size: 0.8em; margin-top: 15px; border-top: 1px solid #444; padding-top: 15px;">
+            <strong>Open License:</strong> This platform is freely available for non-commercial use. 
+            <a href="LICENSE" style="color: var(--accent-color);">View full license terms</a> | 
+            Data integrity protected - modifications to investigative content require permission.
+        </p>
+    </footer>
+
+    <!-- License Notice -->
+    <div style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #ccc; padding: 8px 12px; border-radius: 5px; font-size: 11px; z-index: 1000;">
+        <a href="LICENSE" style="color: var(--accent-color); text-decoration: none;">Open License</a> | Non-commercial use only
+    </div>
+</body>
+</html>

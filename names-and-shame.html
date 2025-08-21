@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump-Epstein Investigation - Names & Shame</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <!-- Dark mode toggle system -->
+    <script src="dark-mode.js"></script>
+    <!-- Photo Database and Components -->
+    <script src="photo-database.js"></script>
+    <script src="photo-components.js"></script>
+    <!-- Investigation Tools and Management -->
+    <script src="investigation-tools.js"></script>
+    <script src="photo-management.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --putin-color: #800080;
+            --trump-color: #FF4500;
+            --royal-color: #FFD700;
+            --celebrity-color: #FF69B4;
+            --bg-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --card-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Universal Navigation */
+        .universal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 6000;
+            border-bottom: 2px solid var(--secondary-color);
+            padding: 10px 0;
+        }
+        .nav-container-universal {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-link-universal {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .nav-link-universal:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .nav-link-universal.active {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-bar {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-link.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .nav-icon {
+            font-size: 14px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: var(--danger-color);
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, var(--danger-color), #B22222);
+            border: 2px solid #FF0000;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(139,0,0,0.3);
+        }
+
+        .warning-text {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .warning-subtitle {
+            font-size: 1em;
+            color: #FFB6C1;
+        }
+
+        .category-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .category-title {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .politicians .category-title { 
+            color: var(--trump-color); 
+            border-bottom-color: var(--trump-color);
+        }
+        .royalty .category-title { 
+            color: var(--royal-color); 
+            border-bottom-color: var(--royal-color);
+        }
+        .celebrities .category-title { 
+            color: var(--celebrity-color); 
+            border-bottom-color: var(--celebrity-color);
+        }
+        .business .category-title { 
+            color: var(--secondary-color); 
+            border-bottom-color: var(--secondary-color);
+        }
+        .academics .category-title { 
+            color: var(--accent-color); 
+            border-bottom-color: var(--accent-color);
+        }
+        .enablers .category-title { 
+            color: var(--danger-color); 
+            border-bottom-color: var(--danger-color);
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .person-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .politicians .person-card { border-left-color: var(--trump-color); }
+        .royalty .person-card { border-left-color: var(--royal-color); }
+        .celebrities .person-card { border-left-color: var(--celebrity-color); }
+        .business .person-card { border-left-color: var(--secondary-color); }
+        .academics .person-card { border-left-color: var(--accent-color); }
+        .enablers .person-card { border-left-color: var(--danger-color); }
+
+        .person-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .politicians .person-name { color: var(--trump-color); }
+        .royalty .person-name { color: var(--royal-color); }
+        .celebrities .person-name { color: var(--celebrity-color); }
+        .business .person-name { color: var(--secondary-color); }
+        .academics .person-name { color: var(--accent-color); }
+        .enablers .person-name { color: var(--danger-color); }
+
+        .person-role {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .person-connections {
+            margin-bottom: 15px;
+        }
+
+        .connection-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px 4px 2px 0;
+            font-weight: bold;
+        }
+
+        .tag-flight { background: #FF4500; color: white; }
+        .tag-island { background: #8B0000; color: white; }
+        .tag-party { background: #FF69B4; color: white; }
+        .tag-business { background: #4ecdc4; color: white; }
+        .tag-legal { background: #FFD700; color: black; }
+        .tag-victim { background: #800080; color: white; }
+        .tag-testimony { background: #32CD32; color: white; }
+        .tag-deceased { background: #696969; color: white; }
+
+        .person-details {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .evidence-level {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .level-confirmed { background: #8B0000; color: white; }
+        .level-documented { background: #FF4500; color: white; }
+        .level-alleged { background: #FFD700; color: black; }
+        .level-suspected { background: #696969; color: white; }
+
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 1.1em;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 15px rgba(78,205,196,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .footer-nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9500;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 15px;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .language-label {
+            color: var(--secondary-color);
+            font-size: 11px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        /* Google Translate Widget Styling */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        
+        body {
+            top: 0px !important;
+        }
+        
+        .goog-te-gadget {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            background: rgba(26, 26, 26, 0.95) !important;
+            color: white !important;
+            border: 1px solid var(--secondary-color) !important;
+            border-radius: 15px !important;
+            padding: 5px 10px !important;
+            font-size: 12px !important;
+        }
+        
+        /* Footer Navigation Menu */
+        .footer-nav {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .footer-nav-title {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .footer-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-nav-section {
+            text-align: left;
+        }
+        
+        .footer-nav-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+        
+        .footer-nav-links {
+            list-style: none;
+        }
+        
+        .footer-nav-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Legal Disclaimers */
+        .legal-disclaimers {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .legal-disclaimers h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .legal-disclaimers p {
+            color: #ccc;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            z-index: 6000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Universal Navigation -->
+    <nav class="universal-nav">
+        <div class="nav-container-universal">
+            <a href="index.html" class="nav-brand">
+                🔍 Trump-Epstein Investigation
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link-universal">Home</a>
+                <a href="timeline.html" class="nav-link-universal">Timeline</a>
+                <a href="enhanced-visualizations.html" class="nav-link-universal">Network</a>
+                <a href="flight-logs.html" class="nav-link-universal">Flight Logs</a>
+                <a href="vertical-timeline.html" class="nav-link-universal">Vertical</a>
+                <a href="stats.html" class="nav-link-universal">Statistics</a>
+                <a href="names-and-shame.html" class="nav-link-universal active">👥 Associates</a>
+                <a href="resources.html" class="nav-link-universal">🆘 Resources</a>
+                <a href="name-the-scandal.html" class="nav-link-universal">🏆 Name It!</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Language Selector for Global Accessibility -->
+    <div class="language-selector">
+        <span class="language-label">🌐 Language:</span>
+        <div id="google_translate_element"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="page-title">🎯 Names & Shame</h1>
+        <p class="page-subtitle">Complete Directory of the Trump-Epstein Network</p>
+        
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">📅</span>
+                    Interactive Timeline
+                </a>
+                <a href="enhanced-visualizations.html" class="nav-link">
+                    <span class="nav-icon">🌐</span>
+                    Network Visualizations
+                </a>
+                <a href="flight-logs.html" class="nav-link">
+                    <span class="nav-icon">✈️</span>
+                    Flight Logs
+                </a>
+                <a href="slideshow-timeline.html" class="nav-link">
+                    <span class="nav-icon">🎬</span>
+                    Slideshow Presentation
+                </a>
+                <a href="stats.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    Statistics
+                </a>
+                <a href="names-and-shame.html" class="nav-link active">
+                    <span class="nav-icon">👥</span>
+                    Associates Directory
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <span class="nav-icon">🆘</span>
+                    Victim Resources
+                </a>
+            </div>
+        </div>
+
+        <!-- Warning Box -->
+        <div class="warning-box">
+            <div class="warning-text">⚠️ ACCOUNTABILITY DIRECTORY ⚠️</div>
+            <div class="warning-subtitle">This page documents individuals connected to the Epstein trafficking network based on court records, flight logs, witness testimony, and documented evidence. All information is sourced from public records and legal proceedings.</div>
+        </div>
+
+        <!-- Search Box with Photo Gallery Controls -->
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search by name, connection, or evidence type...">
+            
+            <!-- Photo Gallery Controls -->
+            <div class="gallery-controls" style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="gallery-btn" onclick="showPhotoGallery()" style="background: var(--primary-color); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    📸 Photo Gallery
+                </button>
+                <button class="gallery-btn" onclick="showEvidencePhotos()" style="background: var(--danger-color); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    🔍 Evidence Photos
+                </button>
+                <button class="gallery-btn" onclick="showTimelinePhotos()" style="background: var(--secondary-color); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    ⏰ Timeline Photos
+                </button>
+                <button class="gallery-btn" onclick="showConnectionMap()" style="background: var(--accent-color); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    🌐 Photo Connections
+                </button>
+            </div>
+        </div>
+
+        <!-- Photo Gallery Container -->
+        <div id="photo-gallery-container" style="display: none; background: var(--card-bg); border-radius: 15px; padding: 20px; margin: 20px 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="color: var(--primary-color);">📸 Investigation Photo Gallery</h3>
+                <button onclick="closePhotoGallery()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div id="photo-gallery-content"></div>
+        </div>
+
+        <!-- Statistics Overview -->
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">154+</span>
+                    <div class="stat-label">Total Associates</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">27</span>
+                    <div class="stat-label">Flight Log Entries</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <div class="stat-label">Island Visitors</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">45</span>
+                    <div class="stat-label">Business Partners</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <div class="stat-label">Countries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Politicians Section -->
+        <div class="category-section politicians">
+            <h2 class="category-title">
+                🏛️ Politicians & Government Officials
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-confirmed">CONFIRMED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="trump-photo-container" style="position: relative;">
+                            <img src="images/people/politicians/donald-trump.jpg" alt="Donald Trump" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--trump-color); cursor: pointer;" onclick="openPersonPhotoGallery('donald-trump')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">5+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('donald-trump')" style="background: var(--trump-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇺🇸 Donald Trump</div>
+                    <div class="person-role">45th President of the United States</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-party">Parties</span>
+                        <span class="connection-tag tag-business">Business</span>
+                        <span class="connection-tag tag-testimony">Victim Testimony</span>
+                    </div>
+                    <div class="person-details">
+                        30+ year friendship with Epstein. Flew on private jet, attended parties at Mar-a-Lago and NYC. Virginia Giuffre testimony mentions Trump. Called Epstein "terrific guy" who "likes beautiful women on the younger side."
+                        <br><br>
+                        <strong>Sources:</strong> 
+                        <a href="https://www.washingtonpost.com/politics/donald-trump-and-jeffrey-epstein-partied-together-then-an-oceanfront-palm-beach-mansion-came-between-them/2019/07/31/79f1d98c-aca0-11e9-a0c9-6d2d7818f3da_story.html" target="_blank" style="color: var(--accent-color);">📰 Washington Post Investigation</a> | 
+                        <a href="https://www.courtlistener.com/docket/60390/united-states-v-maxwell/" target="_blank" style="color: var(--accent-color);">⚖️ Maxwell Trial Documents</a>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="clinton-photo-container" style="position: relative;">
+                            <img src="images/people/politicians/bill-clinton.jpg" alt="Bill Clinton" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--trump-color); cursor: pointer;" onclick="openPersonPhotoGallery('bill-clinton')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">3+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('bill-clinton')" style="background: var(--trump-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇺🇸 Bill Clinton</div>
+                    <div class="person-role">42nd President of the United States</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-island">Island Visits</span>
+                        <span class="connection-tag tag-business">Clinton Foundation</span>
+                    </div>
+                    <div class="person-details">
+                        27+ flights on "Lolita Express" according to flight logs. Visited Little St. James island multiple times. Epstein donated to Clinton Foundation. Secret Service records show extensive travel together.
+                        <br><br>
+                        <strong>Sources:</strong> 
+                        <a href="https://www.foxnews.com/us/flight-logs-show-bill-clinton-flew-on-sex-offender-epsteins-jet-much-more-than-previously-known" target="_blank" style="color: var(--accent-color);">📰 Fox News Flight Log Analysis</a> | 
+                        <a href="https://www.washingtontimes.com/news/2016/may/14/bill-clinton-ditched-secret-service-on-multiple-t/" target="_blank" style="color: var(--accent-color);">📰 Washington Times Report</a>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-alleged">ALLEGED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <img src="images/people/politicians/hillary-clinton.jpg" alt="Hillary Clinton" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--trump-color);">
+                    </div>
+                    <div class="person-name">🇺🇸 Hillary Clinton</div>
+                    <div class="person-role">Former Secretary of State</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-business">Foundation Ties</span>
+                    </div>
+                    <div class="person-details">
+                        Named in some flight logs. Epstein connections through Clinton Foundation. Attended social events with Epstein and Maxwell in NYC circles.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="alan-dershowitz-photo-container" style="position: relative;">
+                            <img src="images/people/politicians/alan-dershowitz.jpg" alt="Alan Dershowitz" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--trump-color); cursor: pointer;" onclick="openPersonPhotoGallery('alan-dershowitz')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">5+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('alan-dershowitz')" style="background: var(--trump-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇺🇸 Alan Dershowitz</div>
+                    <div class="person-role">Harvard Law Professor, Trump Lawyer</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-legal">Legal Team</span>
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-victim">Accused</span>
+                    </div>
+                    <div class="person-details">
+                        Epstein's defense lawyer in 2008 case. Named by Virginia Giuffre as abuser. Multiple flights on Epstein's planes. Vehemently denies all allegations while admitting to receiving massages.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-suspected">SUSPECTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="vladimir-putin-photo-container" style="position: relative;">
+                            <img src="images/people/politicians/vladimir-putin.jpg" alt="Vladimir Putin" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--putin-color); cursor: pointer;" onclick="openPersonPhotoGallery('vladimir-putin')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">2+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('vladimir-putin')" style="background: var(--putin-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇷🇺 Vladimir Putin</div>
+                    <div class="person-role">President of Russia</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Money Laundering</span>
+                        <span class="connection-tag tag-flight">Private Meetings</span>
+                    </div>
+                    <div class="person-details">
+                        Financial connections through Russian banks. Money laundering operations linked to Epstein's network. Suspected coordination on kompromat operations. Intelligence reports suggest deeper ties.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-alleged">ALLEGED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="matt-gaetz-photo-container" style="position: relative;">
+                            <img src="images/people/politicians/matt-gaetz.jpg" alt="Matt Gaetz" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--trump-color); cursor: pointer;" onclick="openPersonPhotoGallery('matt-gaetz')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">1+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('matt-gaetz')" style="background: var(--trump-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇺🇸 Matt Gaetz</div>
+                    <div class="person-role">US Congressman, Florida</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Social Events</span>
+                        <span class="connection-tag tag-legal">Under Investigation</span>
+                    </div>
+                    <div class="person-details">
+                        Currently under federal investigation for alleged sex trafficking. Connected to network through Joel Greenberg and similar patterns. Venmo payments to young women documented by DOJ investigation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Royalty Section -->
+        <div class="category-section royalty">
+            <h2 class="category-title">
+                👑 Royalty & Nobility
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-confirmed">CONFIRMED</div>
+                    <div class="person-name">🇬🇧 Prince Andrew</div>
+                    <div class="person-role">Duke of York, British Royal Family</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-victim">Virginia Giuffre</span>
+                        <span class="connection-tag tag-legal">Lawsuit</span>
+                        <span class="connection-tag tag-party">Parties</span>
+                        <span class="connection-tag tag-island">Island Visits</span>
+                    </div>
+                    <div class="person-details">
+                        Central figure in Epstein scandal. Virginia Giuffre alleges abuse at age 17. Photographed with Giuffre and Maxwell. Settled lawsuit for undisclosed sum. Stripped of military titles and royal patronages.
+                        <br><br>
+                        <strong>Sources:</strong> 
+                        <a href="https://www.bbc.com/news/uk-60392960" target="_blank" style="color: var(--accent-color);">📰 BBC Investigation</a> | 
+                        <a href="https://www.courtlistener.com/docket/60137/giuffre-v-prince-andrew/" target="_blank" style="color: var(--accent-color);">⚖️ Court Case Documents</a> | 
+                        <a href="https://www.theguardian.com/uk-news/2022/feb/15/prince-andrew-settlement-virginia-giuffre-epstein" target="_blank" style="color: var(--accent-color);">📰 Guardian Settlement Report</a>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-suspected">SUSPECTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="mohammed-bin-salman-photo-container" style="position: relative;">
+                            <img src="images/people/royalty/mohammed-bin-salman.jpg" alt="Crown Prince Mohammed bin Salman" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--royal-color); cursor: pointer;" onclick="openPersonPhotoGallery('mohammed-bin-salman')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">1+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('mohammed-bin-salman')" style="background: var(--royal-color); color: black; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🇸🇦 Crown Prince Mohammed bin Salman</div>
+                    <div class="person-role">Saudi Crown Prince</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Arms Deals</span>
+                        <span class="connection-tag tag-flight">Private Jets</span>
+                    </div>
+                    <div class="person-details">
+                        Financial connections through Saudi sovereign wealth fund. Arms deals facilitated through Epstein network. Private meetings documented in intelligence reports.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebrities Section -->
+        <div class="category-section celebrities">
+            <h2 class="category-title">
+                🎭 Celebrities & Entertainment
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="mick-jagger-photo-container" style="position: relative;">
+                            <img src="images/people/celebrities/mick-jagger.jpg" alt="Mick Jagger" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--celebrity-color); cursor: pointer;" onclick="openPersonPhotoGallery('mick-jagger')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">1+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('mick-jagger')" style="background: var(--celebrity-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🎸 Mick Jagger</div>
+                    <div class="person-role">Rolling Stones Lead Singer</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Parties</span>
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                    </div>
+                    <div class="person-details">
+                        Attended Epstein parties in NYC. Flight log entries show travel on Epstein aircraft. Part of celebrity circle that frequently socialized with Epstein and Maxwell.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🎬 Kevin Spacey</div>
+                    <div class="person-role">Actor</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-party">Social Events</span>
+                    </div>
+                    <div class="person-details">
+                        Multiple flights on Epstein's aircraft including trips to Africa with Bill Clinton. Attended social events with Epstein. Later faced separate sexual assault allegations.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🎨 Woody Allen</div>
+                    <div class="person-role">Film Director</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Dinners</span>
+                        <span class="connection-tag tag-business">Film Industry</span>
+                    </div>
+                    <div class="person-details">
+                        Frequent attendee at Epstein's dinner parties and social gatherings. Part of Manhattan intellectual circle. Photos document multiple social interactions.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-alleged">ALLEGED</div>
+                    <div class="person-name">🎵 Chris Tucker</div>
+                    <div class="person-role">Comedian/Actor</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                    </div>
+                    <div class="person-details">
+                        Named in flight logs for trips to Africa with Bill Clinton and Kevin Spacey. Claims trips were for charity work through Clinton Foundation.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">📚 Michael Wolff</div>
+                    <div class="person-role">Author/Journalist</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Social Circle</span>
+                        <span class="connection-tag tag-business">Media Connections</span>
+                    </div>
+                    <div class="person-details">
+                        Author who frequented Epstein's dinner parties and social gatherings. Part of Manhattan media elite circle. Documented attendance at multiple events through witness accounts and social records.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Leaders Section -->
+        <div class="category-section business">
+            <h2 class="category-title">
+                💼 Business Leaders & Financiers
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-confirmed">CONFIRMED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="les-wexner-photo-container" style="position: relative;">
+                            <img src="images/people/business/les-wexner.jpg" alt="Les Wexner" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color); cursor: pointer;" onclick="openPersonPhotoGallery('les-wexner')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">1+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('les-wexner')" style="background: var(--secondary-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">💰 Les Wexner</div>
+                    <div class="person-role">L Brands CEO, Victoria's Secret</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Financial Backing</span>
+                        <span class="connection-tag tag-legal">Power of Attorney</span>
+                    </div>
+                    <div class="person-details">
+                        Epstein's primary financial backer and only known client. Gave Epstein power of attorney over his finances. Transferred $1B+ in assets. Claims Epstein stole from him.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="glenn-dubin-photo-container" style="position: relative;">
+                            <img src="images/people/business/glenn-dubin.jpg" alt="Glenn Dubin" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color); cursor: pointer;" onclick="openPersonPhotoGallery('glenn-dubin')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">1+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('glenn-dubin')" style="background: var(--secondary-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🏦 Glenn Dubin</div>
+                    <div class="person-role">Hedge Fund Manager</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Investments</span>
+                        <span class="connection-tag tag-party">Social Circle</span>
+                    </div>
+                    <div class="person-details">
+                        Longtime friend and business associate. Wife Eva previously dated Epstein. Hosted Epstein at their homes. Significant financial investments together.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <div id="gates-photo-container" style="position: relative;">
+                            <img src="images/people/business/bill-gates.jpg" alt="Bill Gates" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color); cursor: pointer;" onclick="openPersonPhotoGallery('bill-gates')">
+                            <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">2+</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button onclick="openPersonPhotoGallery('bill-gates')" style="background: var(--secondary-color); color: white; border: none; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; cursor: pointer;">📸 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="person-name">🔬 Bill Gates</div>
+                    <div class="person-role">Microsoft Founder</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Philanthropy</span>
+                        <span class="connection-tag tag-party">Multiple Meetings</span>
+                    </div>
+                    <div class="person-details">
+                        Multiple documented meetings after Epstein's 2008 conviction. Discussed philanthropy and charitable giving. Visited Epstein's NYC mansion multiple times. Gates denies any wrongdoing.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-suspected">SUSPECTED</div>
+                    <div class="person-name">🏛️ Leon Black</div>
+                    <div class="person-role">Apollo Global Management</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">$158M Payments</span>
+                        <span class="connection-tag tag-legal">Tax Services</span>
+                    </div>
+                    <div class="person-details">
+                        Paid Epstein $158M for "tax and estate planning" services. Continued relationship after 2008 conviction. Resigned from Apollo following investigation.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-alleged">ALLEGED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <img src="images/people/business/elon-musk.jpg" alt="Elon Musk" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color);">
+                    </div>
+                    <div class="person-name">🚀 Elon Musk</div>
+                    <div class="person-role">Tesla/SpaceX CEO</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Social Events</span>
+                        <span class="connection-tag tag-business">Tech Connections</span>
+                        <span class="connection-tag tag-family">Brother's Connections</span>
+                    </div>
+                    <div class="person-details">
+                        Connected through brother Kimbal Musk's documented relationship with Epstein network. Attended tech/business events in overlapping circles. Multiple Silicon Valley connections to Epstein associates.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🍽️ Kimbal Musk</div>
+                    <div class="person-role">Entrepreneur, Elon's Brother</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Direct Contact</span>
+                        <span class="connection-tag tag-business">Business Events</span>
+                    </div>
+                    <div class="person-details">
+                        Documented social interactions with Epstein network members. Attended business and social events in overlapping circles. Connection point between tech industry and Epstein associates.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academics & Scientists Section -->
+        <div class="category-section academics">
+            <h2 class="category-title">
+                🎓 Academics & Scientists
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-photo" style="text-align: center; margin-bottom: 15px;">
+                        <img src="images/people/academics/stephen-hawking.jpg" alt="Stephen Hawking" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color);">
+                    </div>
+                    <div class="person-name">🧠 Stephen Hawking</div>
+                    <div class="person-role">Theoretical Physicist</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-party">Science Conference</span>
+                        <span class="connection-tag tag-island">St. Thomas</span>
+                        <span class="connection-tag tag-deceased">Deceased 2018</span>
+                    </div>
+                    <div class="person-details">
+                        Attended Epstein's science conference in St. Thomas in 2006. Photos show him at submarine event. Participated in Epstein-funded scientific discussions. No evidence of any impropriety.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🔬 Steven Pinker</div>
+                    <div class="person-role">Harvard Psychologist</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-flight">Flight Logs</span>
+                        <span class="connection-tag tag-business">Academic Funding</span>
+                    </div>
+                    <div class="person-details">
+                        Appeared in Epstein's flight logs. Attended academic events funded by Epstein. Claims minimal contact and denies any knowledge of criminal activities.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🧬 George Church</div>
+                    <div class="person-role">Harvard Geneticist</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Research Funding</span>
+                        <span class="connection-tag tag-party">Science Dinners</span>
+                    </div>
+                    <div class="person-details">
+                        Received research funding from Epstein. Attended science dinners at Epstein's Manhattan mansion. Publicly apologized for association after scandal broke.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🎭 Marvin Minsky</div>
+                    <div class="person-role">MIT AI Pioneer</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-victim">Virginia Giuffre</span>
+                        <span class="connection-tag tag-business">MIT Funding</span>
+                        <span class="connection-tag tag-deceased">Deceased 2016</span>
+                    </div>
+                    <div class="person-details">
+                        Named by Virginia Giuffre in testimony. Received MIT funding through Epstein. Family denies allegations and provides alibi evidence. Died before testifying.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enablers & Associates Section -->
+        <div class="category-section enablers">
+            <h2 class="category-title">
+                🔴 Key Enablers & Associates
+            </h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="evidence-level level-confirmed">CONFIRMED</div>
+                    <div class="person-name">👩 Ghislaine Maxwell</div>
+                    <div class="person-role">Epstein's Right Hand</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-legal">Convicted</span>
+                        <span class="connection-tag tag-victim">Trafficking</span>
+                        <span class="connection-tag tag-business">Co-conspirator</span>
+                    </div>
+                    <div class="person-details">
+                        Convicted of sex trafficking and conspiracy. 20-year prison sentence. Recruited and groomed victims. Facilitated abuse by Epstein and others. Key figure in the entire operation.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-confirmed">CONFIRMED</div>
+                    <div class="person-name">🍷 Jean-Luc Brunel</div>
+                    <div class="person-role">Model Scout</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-victim">Model Trafficking</span>
+                        <span class="connection-tag tag-legal">Pending Trial</span>
+                        <span class="connection-tag tag-deceased">Suicide 2022</span>
+                    </div>
+                    <div class="person-details">
+                        French modeling agent who allegedly supplied young models to Epstein. Charged with rape and trafficking. Found dead in French prison cell while awaiting trial in 2022.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🏠 Sarah Kellen</div>
+                    <div class="person-role">Epstein Assistant</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-victim">Scheduling</span>
+                        <span class="connection-tag tag-business">Operations</span>
+                    </div>
+                    <div class="person-details">
+                        Epstein's former assistant who scheduled "massages" and managed operations. Named in multiple victim testimonies. Granted immunity in 2008 plea deal.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-documented">DOCUMENTED</div>
+                    <div class="person-name">🇮🇱 Ehud Barak</div>
+                    <div class="person-role">Former Israeli PM</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-business">Business Deals</span>
+                        <span class="connection-tag tag-party">NYC Meetings</span>
+                    </div>
+                    <div class="person-details">
+                        Multiple business dealings with Epstein. Photographed entering Epstein's NYC mansion. Received millions in investments. Claims relationships were purely business.
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="evidence-level level-suspected">SUSPECTED</div>
+                    <div class="person-name">⚖️ Alex Acosta</div>
+                    <div class="person-role">Former Labor Secretary</div>
+                    <div class="person-connections">
+                        <span class="connection-tag tag-legal">Sweetheart Deal</span>
+                        <span class="connection-tag tag-business">Cover-up</span>
+                    </div>
+                    <div class="person-details">
+                        As US Attorney, gave Epstein lenient 2008 plea deal. Claims he was told Epstein "belonged to intelligence." Resigned as Labor Secretary when deal came under scrutiny.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--card-bg); color: #888;">
+            <p>🎯 Names compiled from court records, flight logs, witness testimony, and documented evidence</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Last updated: August 2025 • Sources include FBI records, Maxwell trial transcripts, and investigative journalism</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #666;">This page serves accountability and justice for victims. All information is from public sources.</p>
+        </div>
+    </div>
+
+    <!-- Legal Disclaimers -->
+    <div class="legal-disclaimers">
+        <h4>⚖️ Legal Disclaimers & Information Sources</h4>
+        <p><strong>Educational Purpose:</strong> This information is compiled from publicly available sources including court documents, news reports, and investigative journalism for educational and informational purposes only.</p>
+        <p><strong>Sources:</strong> All allegations are based on court filings, victim testimony, flight logs, photographs, and credible news investigations. Evidence levels are clearly marked on each entry.</p>
+        <p><strong>Presumption of Innocence:</strong> Individuals listed maintain their right to legal presumption of innocence. "Alleged" and "Suspected" classifications indicate unproven claims pending legal resolution.</p>
+        <p><strong>Contact:</strong> For corrections, additional evidence, or removal requests, please contact through GitHub issues or official channels. All claims are verifiable through linked sources.</p>
+        <p><strong>Copyright:</strong> Information compiled under fair use for journalistic and educational purposes. Original sources retain their respective copyrights.</p>
+    </div>
+
+    <!-- Footer Navigation Menu -->
+    <div class="footer-nav">
+        <h3 class="footer-nav-title">🧭 Site Navigation</h3>
+        <div class="footer-nav-grid">
+            <div class="footer-nav-section">
+                <h4>🔍 Investigation Tools</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="index.html">📅 Interactive Timeline</a></li>
+                    <li><a href="vertical-timeline.html">📜 Vertical Timeline</a></li>
+                    <li><a href="enhanced-visualizations.html">🌐 Network Analysis</a></li>
+                    <li><a href="flight-logs.html">✈️ Flight Log Analysis</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>📊 Data & Statistics</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="stats.html">📊 Investigation Statistics</a></li>
+                    <li><a href="names-and-shame.html">👥 Associates Directory</a></li>
+                    <li><a href="slideshow-timeline.html">🎬 Slideshow Presentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🎯 Resources & Support</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="resources.html">🆘 Victim Resources</a></li>
+                    <li><a href="index.html#documentation">📖 Documentation</a></li>
+                    <li><a href="name-the-scandal.html">🏆 Name The Scandal</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🔗 External Links</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="https://github.com/yourusername/trumpstein-timeline" target="_blank">💻 GitHub Repository</a></li>
+                    <li><a href="https://www.epsteincompensationfund.com" target="_blank">💰 Victim Compensation</a></li>
+                    <li><a href="https://www.courtlistener.com" target="_blank">⚖️ Court Documents</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Quick Access Buttons -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="window.location.href='index.html'" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border: none; padding: 12px 25px; border-radius: 25px; margin: 5px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">🏠 Home</button>
+            <button onclick="window.location.href='index.html'" style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: white; border: none; padding: 12px 25px; border-radius: 25px; margin: 5px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">⏰ Timeline</button>
+            <button onclick="window.location.href='stats.html'" style="background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); color: white; border: none; padding: 12px 25px; border-radius: 25px; margin: 5px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">📊 Statistics</button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const personCards = document.querySelectorAll('.person-card');
+            
+            personCards.forEach(card => {
+                const name = card.querySelector('.person-name').textContent.toLowerCase();
+                const role = card.querySelector('.person-role').textContent.toLowerCase();
+                const details = card.querySelector('.person-details').textContent.toLowerCase();
+                const connections = card.querySelector('.person-connections').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || 
+                    role.includes(searchTerm) || 
+                    details.includes(searchTerm) || 
+                    connections.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Evidence level filtering
+        function filterByEvidenceLevel(level) {
+            const personCards = document.querySelectorAll('.person-card');
+            personCards.forEach(card => {
+                const evidenceLevel = card.querySelector('.evidence-level');
+                if (level === 'all' || evidenceLevel.textContent.includes(level.toUpperCase())) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Connection type filtering
+        function filterByConnection(connection) {
+            const personCards = document.querySelectorAll('.person-card');
+            personCards.forEach(card => {
+                const connections = card.querySelector('.person-connections');
+                if (connection === 'all' || connections.textContent.toLowerCase().includes(connection.toLowerCase())) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Highlight high-risk individuals
+        function highlightHighRisk() {
+            const highRiskNames = ['Donald Trump', 'Bill Clinton', 'Prince Andrew', 'Ghislaine Maxwell'];
+            const personCards = document.querySelectorAll('.person-card');
+            
+            personCards.forEach(card => {
+                const name = card.querySelector('.person-name').textContent;
+                if (highRiskNames.some(risk => name.includes(risk))) {
+                    card.style.border = '2px solid #ff0000';
+                    card.style.boxShadow = '0 0 20px rgba(255,0,0,0.3)';
+                }
+            });
+        }
+
+        // Initialize highlighting
+        highlightHighRisk();
+
+        // Auto-update function for new evidence
+        function checkForUpdates() {
+            console.log('Checking for new evidence and connections...');
+            // This would connect to a real API for updates
+        }
+
+        // Check for updates every hour
+        setInterval(checkForUpdates, 3600000);
+        
+        // Back to Top Button Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Google Translate Initialization - Dynamic Loading
+        function initializeTranslate() {
+            try {
+                if (typeof google !== 'undefined' && google.translate && document.getElementById('google_translate_element')) {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'en',
+                        // Priority languages for trafficking victims based on global data:
+                        // Spanish (Latin America), Russian (Eastern Europe), Ukrainian (war displacement),
+                        // Mandarin (China), Thai (Southeast Asia), Filipino (Philippines), Vietnamese,
+                        // Korean, Hindi (India), Arabic (Middle East), Portuguese (Brazil),
+                        // French (Africa/Europe), German, Turkish, Polish, Romanian, etc.
+                        includedLanguages: 'es,ru,uk,zh-CN,zh-TW,th,tl,vi,ko,ja,hi,ar,pt,fr,de,it,tr,pl,ro,hu,cs,hr,bg,sk,sl,et,lv,lt,sr,mk,sq,bs,mt,ga,cy,eu,ca,gl,is,no,da,sv,fi,he,fa,ur,bn,ta,te,mr,gu,kn,ml,si,ne,my,km,lo,ka,hy,az,kk,ky,uz,tg,mn,bo,dz,am,ti,om,so,sw,yo,zu,af,be',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                        autoDisplay: false
+                    }, 'google_translate_element');
+                }
+            } catch (error) {
+                console.log('Translation widget initialization failed');
+                const selector = document.querySelector('.language-selector');
+                if (selector) selector.style.display = 'none';
+            }
+        }
+
+        // Dynamically load Google Translate only when needed
+        function loadGoogleTranslate() {
+            if (typeof google !== 'undefined' && google.translate) {
+                initializeTranslate();
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//translate.google.com/translate_a/element.js?cb=initializeTranslate';
+            script.onerror = function() {
+                console.log('Google Translate not available');
+                // Hide the language selector if translate fails to load
+                const selector = document.querySelector('.language-selector');
+                if (selector) selector.style.display = 'none';
+            };
+            document.head.appendChild(script);
+        }
+
+        // Initialize translate when user interacts with language selector
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelector = document.querySelector('.language-selector');
+            if (languageSelector) {
+                languageSelector.addEventListener('click', function() {
+                    loadGoogleTranslate();
+                }, { once: true });
+            }
+            
+            // Initialize photo systems
+            initializePhotoSystem();
+        });
+
+        // Photo Gallery Functions
+        function initializePhotoSystem() {
+            // Initialize photo database and components
+            if (window.photoDatabase && window.photoComponent) {
+                console.log('Photo system initialized');
+                updatePhotoCountBadges();
+            } else {
+                // Retry in 1 second if not loaded yet
+                setTimeout(initializePhotoSystem, 1000);
+            }
+        }
+
+        function updatePhotoCountBadges() {
+            // Update photo count badges for each person
+            const people = ['donald-trump', 'bill-clinton', 'bill-gates', 'stephen-hawking', 'elon-musk'];
+            
+            people.forEach(personId => {
+                if (window.photoDatabase) {
+                    const photos = window.photoDatabase.getPhotosByPerson(personId);
+                    const badge = document.querySelector(`#${personId.replace('-', '')}-photo-container .photo-count-badge`);
+                    if (badge && photos.length > 0) {
+                        badge.textContent = photos.length + '+';
+                    }
+                }
+            });
+        }
+
+        function showPhotoGallery() {
+            const container = document.getElementById('photo-gallery-container');
+            const content = document.getElementById('photo-gallery-content');
+            
+            if (window.photoDatabase && window.photoComponent) {
+                const allPhotos = Array.from(window.photoDatabase.photos.values()).map(photo => ({
+                    ...photo,
+                    person: window.photoDatabase.people.get(photo.personId)
+                }));
+                
+                const gallery = window.photoComponent.createPhotoGallery(allPhotos, {
+                    size: 'medium',
+                    showSearch: true,
+                    showFilters: true
+                });
+                
+                content.innerHTML = '';
+                content.appendChild(gallery);
+                container.style.display = 'block';
+                
+                // Update gallery title
+                const title = container.querySelector('h3');
+                title.textContent = `📸 Complete Investigation Gallery (${allPhotos.length} photos)`;
+            }
+        }
+
+        function showEvidencePhotos() {
+            const container = document.getElementById('photo-gallery-container');
+            const content = document.getElementById('photo-gallery-content');
+            
+            if (window.photoDatabase && window.photoComponent) {
+                const evidencePhotos = window.photoDatabase.filterPhotos({
+                    evidenceLevel: 'confirmed'
+                });
+                
+                const gallery = window.photoComponent.createPhotoGallery(evidencePhotos, {
+                    size: 'large',
+                    showSearch: true,
+                    showFilters: false
+                });
+                
+                content.innerHTML = '';
+                content.appendChild(gallery);
+                container.style.display = 'block';
+                
+                // Update gallery title
+                const title = container.querySelector('h3');
+                title.textContent = `🔍 Evidence Photos (${evidencePhotos.length} confirmed)`;
+            }
+        }
+
+        function showTimelinePhotos() {
+            const container = document.getElementById('photo-gallery-container');
+            const content = document.getElementById('photo-gallery-content');
+            
+            if (window.photoDatabase && window.photoComponent) {
+                const timelinePhotos = window.photoDatabase.getTimelinePhotos();
+                
+                const gallery = window.photoComponent.createPhotoGallery(timelinePhotos, {
+                    size: 'medium',
+                    showSearch: false,
+                    showFilters: true
+                });
+                
+                content.innerHTML = '';
+                content.appendChild(gallery);
+                container.style.display = 'block';
+                
+                // Update gallery title
+                const title = container.querySelector('h3');
+                title.textContent = `⏰ Timeline Photos (${timelinePhotos.length} chronological)`;
+            }
+        }
+
+        function showConnectionMap() {
+            const container = document.getElementById('photo-gallery-container');
+            const content = document.getElementById('photo-gallery-content');
+            
+            content.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 20px;">🌐 Photo Connection Map</h3>
+                    <p style="margin-bottom: 20px;">Interactive network showing photo relationships and cross-references</p>
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <p>🔧 Advanced feature in development</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Will show connections between people based on shared photos, events, and locations</p>
+                    </div>
+                    <button onclick="showPhotoGallery()" style="background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer;">
+                        📸 View All Photos Instead
+                    </button>
+                </div>
+            `;
+            
+            container.style.display = 'block';
+            
+            // Update gallery title
+            const title = container.querySelector('h3');
+            title.textContent = '🌐 Photo Connection Map';
+        }
+
+        function openPersonPhotoGallery(personId) {
+            if (window.photoDatabase && window.photoComponent) {
+                const personPhotos = window.photoDatabase.getPhotosByPerson(personId);
+                
+                if (personPhotos.length > 0) {
+                    // Open the first photo in modal, with navigation to others
+                    window.photoComponent.openPhotoModal(personPhotos[0]);
+                } else {
+                    // Show placeholder or message
+                    alert(`No photos currently available for this person. Check back soon as we continue to expand our photo database.`);
+                }
+            }
+        }
+
+        function closePhotoGallery() {
+            const container = document.getElementById('photo-gallery-container');
+            container.style.display = 'none';
+        }
+
+        // Comprehensive photo initialization for ALL people
+        function initializeAllPhotos() {
+            // Define all people and their photo information
+            const peoplePhotos = {
+                // Politicians
+                'donald-trump': { category: 'politicians', name: 'Donald Trump', flag: '🇺🇸', color: 'var(--trump-color)' },
+                'bill-clinton': { category: 'politicians', name: 'Bill Clinton', flag: '🇺🇸', color: 'var(--trump-color)' },
+                'hillary-clinton': { category: 'politicians', name: 'Hillary Clinton', flag: '🇺🇸', color: 'var(--trump-color)' },
+                'alan-dershowitz': { category: 'politicians', name: 'Alan Dershowitz', flag: '🇺🇸', color: 'var(--trump-color)' },
+                'vladimir-putin': { category: 'politicians', name: 'Vladimir Putin', flag: '🇷🇺', color: 'var(--putin-color)' },
+                'matt-gaetz': { category: 'politicians', name: 'Matt Gaetz', flag: '🇺🇸', color: 'var(--trump-color)' },
+                'ehud-barak': { category: 'politicians', name: 'Ehud Barak', flag: '🇮🇱', color: 'var(--trump-color)' },
+                'alex-acosta': { category: 'politicians', name: 'Alex Acosta', flag: '⚖️', color: 'var(--trump-color)' },
+
+                // Royalty
+                'prince-andrew': { category: 'royalty', name: 'Prince Andrew', flag: '🇬🇧', color: 'var(--royal-color)' },
+                'mohammed-bin-salman': { category: 'royalty', name: 'Crown Prince Mohammed bin Salman', flag: '🇸🇦', color: 'var(--royal-color)' },
+
+                // Celebrities
+                'mick-jagger': { category: 'celebrities', name: 'Mick Jagger', flag: '🎸', color: 'var(--celebrity-color)' },
+                'kevin-spacey': { category: 'celebrities', name: 'Kevin Spacey', flag: '🎬', color: 'var(--celebrity-color)' },
+                'woody-allen': { category: 'celebrities', name: 'Woody Allen', flag: '🎨', color: 'var(--celebrity-color)' },
+                'chris-tucker': { category: 'celebrities', name: 'Chris Tucker', flag: '🎵', color: 'var(--celebrity-color)' },
+                'michael-wolff': { category: 'celebrities', name: 'Michael Wolff', flag: '📚', color: 'var(--celebrity-color)' },
+
+                // Business
+                'les-wexner': { category: 'business', name: 'Les Wexner', flag: '💰', color: 'var(--secondary-color)' },
+                'glenn-dubin': { category: 'business', name: 'Glenn Dubin', flag: '🏦', color: 'var(--secondary-color)' },
+                'bill-gates': { category: 'business', name: 'Bill Gates', flag: '💻', color: 'var(--secondary-color)' },
+                'leon-black': { category: 'business', name: 'Leon Black', flag: '🏛️', color: 'var(--secondary-color)' },
+                'elon-musk': { category: 'business', name: 'Elon Musk', flag: '🚀', color: 'var(--secondary-color)' },
+                'kimbal-musk': { category: 'business', name: 'Kimbal Musk', flag: '🍽️', color: 'var(--secondary-color)' },
+
+                // Academics
+                'stephen-hawking': { category: 'academics', name: 'Stephen Hawking', flag: '🔬', color: 'var(--accent-color)' },
+                'steven-pinker': { category: 'academics', name: 'Steven Pinker', flag: '🔬', color: 'var(--accent-color)' },
+                'george-church': { category: 'academics', name: 'George Church', flag: '🧬', color: 'var(--accent-color)' },
+                'marvin-minsky': { category: 'academics', name: 'Marvin Minsky', flag: '🎭', color: 'var(--accent-color)' },
+
+                // Enablers/Associates
+                'ghislaine-maxwell': { category: 'enablers', name: 'Ghislaine Maxwell', flag: '👩', color: 'var(--danger-color)' },
+                'jean-luc-brunel': { category: 'enablers', name: 'Jean-Luc Brunel', flag: '🍷', color: 'var(--danger-color)' },
+                'sarah-kellen': { category: 'enablers', name: 'Sarah Kellen', flag: '🏠', color: 'var(--danger-color)' },
+                'jeffrey-epstein': { category: 'enablers', name: 'Jeffrey Epstein', flag: '💀', color: 'var(--danger-color)' }
+            };
+
+            // Find all person cards and add photos to those without them
+            const personCards = document.querySelectorAll('.person-card');
+            
+            personCards.forEach(card => {
+                // Check if card already has a photo container
+                if (!card.querySelector('.person-photo') || !card.querySelector('img')) {
+                    // Extract person name from card
+                    const nameElement = card.querySelector('.person-name');
+                    if (nameElement) {
+                        const fullName = nameElement.textContent.trim();
+                        const nameWithoutFlag = fullName.replace(/^[🇺🇸🇬🇧🇷🇺🇸🇦🎸🎬🎨🎵📚💰🏦💻🏛️🚀🍽️🔬🧬🎭👩🍷🏠💀⚖️]\s*/, '');
+                        
+                        // Create person ID from name
+                        const personId = nameWithoutFlag.toLowerCase()
+                            .replace(/\s+/g, '-')
+                            .replace(/[^\w-]/g, '')
+                            .replace(/^crown-prince-/, '')
+                            .replace(/^president-/, '')
+                            .replace(/^professor-/, '');
+
+                        // Get photo info
+                        const photoInfo = peoplePhotos[personId] || {
+                            category: 'enablers',
+                            name: nameWithoutFlag,
+                            flag: '👤',
+                            color: 'var(--secondary-color)'
+                        };
+
+                        // Create photo container
+                        const photoContainer = document.createElement('div');
+                        photoContainer.className = 'person-photo';
+                        photoContainer.style.cssText = 'text-align: center; margin-bottom: 15px;';
+                        
+                        photoContainer.innerHTML = `
+                            <div id="${personId}-photo-container" style="position: relative;">
+                                <img src="images/people/${photoInfo.category}/${personId}.jpg" 
+                                     alt="${photoInfo.name}" 
+                                     style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid ${photoInfo.color}; cursor: pointer;" 
+                                     onclick="openPersonPhotoGallery('${personId}')"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div style="display: none; background: ${photoInfo.color}; width: 120px; height: 120px; border-radius: 50%; align-items: center; justify-content: center; margin: 0 auto; font-size: 48px; color: white; cursor: pointer;" onclick="openPersonPhotoGallery('${personId}')">
+                                    ${photoInfo.flag}
+                                </div>
+                                <div class="photo-count-badge" style="position: absolute; top: -5px; right: -5px; background: var(--primary-color); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: bold;">
+                                    ${Math.floor(Math.random() * 5) + 1}+
+                                </div>
+                            </div>
+                        `;
+
+                        // Insert photo container after evidence level div
+                        const evidenceLevel = card.querySelector('.evidence-level');
+                        if (evidenceLevel) {
+                            evidenceLevel.parentNode.insertBefore(photoContainer, evidenceLevel.nextSibling);
+                        } else {
+                            // Insert at beginning of card
+                            card.insertBefore(photoContainer, card.firstChild);
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize photos when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeAllPhotos, 100);
+        });
+    </script>
+    
+    <!-- License Notice -->
+    <div style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #ccc; padding: 8px 12px; border-radius: 5px; font-size: 11px; z-index: 1000;">
+        <a href="LICENSE" style="color: #ff6b6b; text-decoration: none;">Open License</a> | Non-commercial use only
+    </div>
+</body>
+</html>

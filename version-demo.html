@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Tracking System Demo | Trump-Epstein Timeline</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --card-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .demo-section {
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .demo-section h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            font-size: 14px;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+        }
+
+        .console-output {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 15px 0;
+            min-height: 100px;
+            border: 2px solid #333;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .feature-list li::before {
+            content: "✅ ";
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .nav-back {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #444;
+        }
+
+        .nav-back a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back a:hover {
+            background: var(--secondary-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Version Tracking System Demo</h1>
+        
+        <div class="demo-section">
+            <h3>🎯 System Overview</h3>
+            <p>This page demonstrates the comprehensive version tracking system implemented across all Trump-Epstein Timeline pages. The system provides synchronized versioning, build tracking, and deployment verification capabilities.</p>
+        </div>
+
+        <div class="demo-section">
+            <h3>✨ Key Features</h3>
+            <ul class="feature-list">
+                <li>Synchronized version numbers across all HTML pages</li>
+                <li>Build timestamp tracking with UTC timezone</li>
+                <li>Console logging for debugging and verification</li>
+                <li>Visible footer version information</li>
+                <li>Meta tag version injection</li>
+                <li>Clickable version indicator in top-left corner</li>
+                <li>One-click version information copying</li>
+                <li>Page-specific identification</li>
+                <li>Git commit tracking (placeholder for CI/CD integration)</li>
+                <li>Automatic update notifications</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h3>🧪 Interactive Demo</h3>
+            <p>Use these buttons to test the version system features:</p>
+            
+            <div class="button-grid">
+                <button class="demo-button" onclick="showVersionInConsole()">📋 Log Version to Console</button>
+                <button class="demo-button" onclick="copyVersionInfo()">📄 Copy Version Info</button>
+                <button class="demo-button" onclick="showCurrentVersion()">🔢 Display Current Version</button>
+                <button class="demo-button" onclick="showBuildInfo()">🏗️ Show Build Information</button>
+                <button class="demo-button" onclick="simulateUpdate()">🆕 Simulate Update Check</button>
+                <button class="demo-button" onclick="showSystemFeatures()">⚡ Test Feature Detection</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>🖥️ Console Output</h3>
+            <p>Check the browser console (F12) for detailed version logging, or click the buttons above to see system information:</p>
+            <div class="console-output" id="consoleOutput">
+                Version system initialized. Click buttons above to interact with the version tracking system...
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>📊 Version Information Format</h3>
+            <p><strong>Footer Display:</strong> <code>Trump-Epstein Timeline v2.1.4 | Built: 2025-01-20 18:05 UTC | Page: Version Demo</code></p>
+            <p><strong>Console Message:</strong> <code>🔍 Timeline System v2.1.4 loaded successfully</code></p>
+            <p><strong>Meta Tag:</strong> <code>&lt;meta name="version" content="2.1.4-20250120"&gt;</code></p>
+        </div>
+
+        <div class="demo-section">
+            <h3>🛠️ Implementation Details</h3>
+            <p>The version system is implemented via a centralized <code>version.js</code> file that:</p>
+            <ul class="feature-list">
+                <li>Loads automatically on every page</li>
+                <li>Injects meta tags for version tracking</li>
+                <li>Adds visible footer with version information</li>
+                <li>Provides interactive version indicator</li>
+                <li>Logs comprehensive system information to console</li>
+                <li>Supports clipboard copying of version details</li>
+                <li>Checks for version updates periodically</li>
+            </ul>
+        </div>
+
+        <div class="nav-back">
+            <a href="index.html">🏠 Back to Timeline Home</a>
+        </div>
+    </div>
+
+    <script>
+        function showVersionInConsole() {
+            if (typeof window.getVersionString === 'function') {
+                const version = window.getVersionString();
+                const buildInfo = window.VERSION_INFO;
+                const output = `Current Version: ${version}\nBuild: ${buildInfo.build}\nTimestamp: ${buildInfo.timestamp}`;
+                updateConsoleOutput(output);
+                console.log('🔍 Version Information:', buildInfo);
+            } else {
+                updateConsoleOutput('Error: Version system not loaded');
+            }
+        }
+
+        function showCurrentVersion() {
+            if (typeof window.getVersionString === 'function') {
+                const version = window.getVersionString();
+                alert(`Current Trump-Epstein Timeline Version: ${version}`);
+                updateConsoleOutput(`Displayed current version: ${version}`);
+            } else {
+                alert('Version system not loaded');
+                updateConsoleOutput('Error: Version system not available');
+            }
+        }
+
+        function showBuildInfo() {
+            if (window.VERSION_INFO) {
+                const info = window.VERSION_INFO;
+                const buildDetails = `Build Number: ${info.build}\nTimestamp: ${info.timestamp}\nCommit: ${info.gitCommit}\nEnvironment: ${info.environment}`;
+                alert(`Build Information:\n\n${buildDetails}`);
+                updateConsoleOutput(`Build Info: ${info.build} | ${info.timestamp}`);
+            } else {
+                alert('Build information not available');
+                updateConsoleOutput('Error: Build information not loaded');
+            }
+        }
+
+        function simulateUpdate() {
+            updateConsoleOutput('Checking for updates...');
+            setTimeout(() => {
+                updateConsoleOutput('Update check complete. Current version is latest.');
+                // In real implementation, this would check a remote endpoint
+                console.log('🆕 Update check completed');
+            }, 1500);
+        }
+
+        function showSystemFeatures() {
+            const features = {
+                localStorage: typeof(Storage) !== "undefined",
+                clipboard: !!navigator.clipboard,
+                performance: !!window.performance,
+                serviceWorker: 'serviceWorker' in navigator
+            };
+            
+            const featureText = Object.entries(features)
+                .map(([key, value]) => `${key}: ${value ? '✅' : '❌'}`)
+                .join('\n');
+            
+            updateConsoleOutput(`Browser Features:\n${featureText}`);
+            console.log('🔧 System Features:', features);
+        }
+
+        function updateConsoleOutput(text) {
+            const output = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            output.textContent = `[${timestamp}] ${text}`;
+        }
+
+        // Initialize demo
+        window.addEventListener('load', () => {
+            updateConsoleOutput('Version tracking demo loaded. System ready for testing.');
+            
+            // Show the version indicator is working
+            setTimeout(() => {
+                const indicator = document.getElementById('versionIndicator');
+                if (indicator) {
+                    indicator.style.animation = 'pulse 2s';
+                    updateConsoleOutput('Version indicator found and working!');
+                }
+            }, 2000);
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

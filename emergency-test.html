@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Timeline Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .test-pass { background: #d4edda; border-color: #c3e6cb; }
+        .test-fail { background: #f8d7da; border-color: #f5c6cb; }
+        .test-pending { background: #fff3cd; border-color: #ffeaa7; }
+    </style>
+</head>
+<body>
+    <h1>Emergency Timeline System Test</h1>
+    
+    <div class="test-section test-pending" id="xmlTest">
+        <h3>XML Data Loading Test</h3>
+        <p>Status: <span id="xmlStatus">Testing...</span></p>
+        <p>Events Found: <span id="xmlCount">0</span></p>
+    </div>
+    
+    <div class="test-section test-pending" id="parseTest">
+        <h3>XML Parsing Test</h3>
+        <p>Status: <span id="parseStatus">Waiting...</span></p>
+        <p>Sample Event: <span id="sampleEvent">None</span></p>
+    </div>
+    
+    <div class="test-section test-pending" id="displayTest">
+        <h3>Timeline Display Test</h3>
+        <p>Status: <span id="displayStatus">Waiting...</span></p>
+        <div id="miniTimeline" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-top: 10px;"></div>
+    </div>
+
+    <script>
+        // Test the emergency timeline system
+        async function testEmergencySystem() {
+            console.log('🧪 Starting Emergency Timeline System Test');
+            
+            // Test 1: XML Loading
+            try {
+                const response = await fetch('timeline-comprehensive.xml');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const xmlText = await response.text();
+                document.getElementById('xmlStatus').textContent = 'Success';
+                document.getElementById('xmlTest').className = 'test-section test-pass';
+                
+                // Test 2: XML Parsing
+                try {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                    const events = xmlDoc.querySelectorAll('event');
+                    
+                    document.getElementById('xmlCount').textContent = events.length;
+                    document.getElementById('parseStatus').textContent = 'Success';
+                    document.getElementById('parseTest').className = 'test-section test-pass';
+                    
+                    if (events.length > 0) {
+                        const firstEvent = events[0];
+                        const sampleTitle = firstEvent.getAttribute('title');
+                        const sampleDate = firstEvent.getAttribute('start');
+                        document.getElementById('sampleEvent').textContent = `${sampleDate}: ${sampleTitle}`;
+                        
+                        // Test 3: Display Generation
+                        generateMiniTimeline(Array.from(events).slice(0, 5)); // Show first 5 events
+                        document.getElementById('displayStatus').textContent = 'Success - Mini timeline generated';
+                        document.getElementById('displayTest').className = 'test-section test-pass';
+                    }
+                    
+                } catch (parseError) {
+                    document.getElementById('parseStatus').textContent = 'Failed: ' + parseError.message;
+                    document.getElementById('parseTest').className = 'test-section test-fail';
+                    document.getElementById('displayStatus').textContent = 'Skipped - Parse failed';
+                    document.getElementById('displayTest').className = 'test-section test-fail';
+                }
+                
+            } catch (error) {
+                document.getElementById('xmlStatus').textContent = 'Failed: ' + error.message;
+                document.getElementById('xmlTest').className = 'test-section test-fail';
+                document.getElementById('parseStatus').textContent = 'Skipped - Load failed';
+                document.getElementById('parseTest').className = 'test-section test-fail';
+                document.getElementById('displayStatus').textContent = 'Skipped - Load failed';
+                document.getElementById('displayTest').className = 'test-section test-fail';
+            }
+        }
+        
+        function generateMiniTimeline(events) {
+            const container = document.getElementById('miniTimeline');
+            let html = '';
+            
+            events.forEach(event => {
+                const title = event.getAttribute('title');
+                const date = event.getAttribute('start');
+                const color = event.getAttribute('color') || '#666';
+                const category = event.getAttribute('classname') || 'events';
+                
+                html += `
+                    <div style="margin: 8px 0; padding: 8px; border-left: 4px solid ${color}; background: #f9f9f9;">
+                        <div style="font-weight: bold; font-size: 14px;">${title}</div>
+                        <div style="font-size: 12px; color: #666;">${date} | ${category}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || '<p>No events to display</p>';
+        }
+        
+        // Run test when page loads
+        window.addEventListener('load', testEmergencySystem);
+    </script>
+</body>
+</html>

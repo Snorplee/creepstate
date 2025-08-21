@@ -1,0 +1,437 @@
+<!doctype html><html class="no-js" lang="en"><head><script>
+   try {var _sf_startpt=(new Date()).getTime();} catch(e){}
+</script>
+<meta itemscope itemtype="https://schema.org/SpeakableSpecification" itemref="speakable" /><title>Page Not Found : NPR</title><meta id="speakable" itemprop="cssSelector" content="[data-is-speakable]" /><meta id="google-site-verification" name="google-site-verification" content="1VqzbDm4ukeFVHOoq5LjIKA2fVKZD-EYv8cXZhKXSfU" /><meta charset="utf-8" /><meta name="robots" content="noarchive,index,follow" /><meta name="Rating" content="General" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta name="npr-pjax" /><link rel="apple-touch-icon" sizes="180x180" href="https://media.npr.org/templates/favicon/favicon-180x180.png" /><link rel="icon" sizes="96x96" href="https://media.npr.org/templates/favicon/favicon-96x96.png" /><link rel="icon" sizes="32x32" href="https://media.npr.org/templates/favicon/favicon-32x32.png" /><link rel="icon" sizes="16x16" href="https://media.npr.org/templates/favicon/favicon-16x16.png" /><script id="npr-vars">
+   window.NPR = window.NPR || {};
+NPR.ServerConstants = {"cbHost":"npr.org","webHost":"https:\/\/www.npr.org","legacyWebHost":"https:\/\/legacy.npr.org","embedHost":"https:\/\/www.npr.org","webHostSecure":"https:\/\/secure.npr.org","apiHost":"https:\/\/api.npr.org","serverMediaCache":"https:\/\/media.npr.org","googleAnalyticsAccount":"UA-5828686-4","nielsenSFCode":"dcr","nielsenAPN":"NPR-dcr","shouldShowHPLocalContent":true,"readingServiceHostname":"https:\/\/reading.api.npr.org"};
+NPR.serverVars = {"webpackPublicPath":"https:\/\/s.prod.npr.org\/templates\/javascript\/dist\/bundles\/","persistenceVersion":"546bf3d3474b5545595f5e6ef78097a6","isBuildOut":false};
+</script>
+<script type="text/javascript" src="https://cdn.optimizely.com/js/11107397707.js">
+   </script>
+<script type="text/javascript" src="https://s.npr.org/templates/javascript/lib/modernizr/modernizr.custom.js">
+   </script>
+<script>
+   !function(e){function a(c){if(d[c])return d[c].exports;var f=d[c]={exports:{},id:c,loaded:!1};return e[c].call(f.exports,f,f.exports,a),f.loaded=!0,f.exports}var c=window.webpackJsonp;window.webpackJsonp=function(b,t){for(var n,r,o=0,i=[];o<b.length;o++)r=b[o],f[r]&&i.push.apply(i,f[r]),f[r]=0;for(n in t){var s=t[n];switch(typeof s){case"object":e[n]=function(a){var c=a.slice(1),d=a[0];return function(a,f,b){e[d].apply(this,[a,f,b].concat(c))}}(s);break;case"function":e[n]=s;break;default:e[n]=e[s]}}for(c&&c(b,t);i.length;)i.shift().call(null,a);if(t[0])return d[0]=0,a(0)};var d={},f={25:0};a.e=function(e,c){if(0===f[e])return c.call(null,a);if(void 0!==f[e])f[e].push(c);else{f[e]=[c];var d=document.getElementsByTagName("head")[0],b=document.createElement("script");b.type="text/javascript",b.charset="utf-8",b.async=!0,b.src=a.p+""+e+"."+{0:"1730d33ad1445d431a94",1:"4079a155c13a3bc15f0b",2:"4baed56466af71818e2e",3:"8c13393575dfb1ba596a",4:"1c0af85f42029791627e",5:"5336ebee692a3227d701",6:"3f00b602852a902ca6ac",7:"dc73a16adfe27157533b",8:"7bc687b52b7017f9181c",9:"4292de0a1c44e3407371",10:"1df0bc133317a026175e",11:"665bed059b449ee706c9",12:"72a1a389bc01788fbd88",13:"9f358f04248f9b840eaf",14:"0fd27ec2e03cb06b4d21",15:"56e86f3cda785208a430",16:"3ab04457ef2a11329489",17:"4a0645e9ae1b2e838253",18:"2093972b248345c10b0a",19:"48576e5012a827b17650",20:"2ee5f63ccc53e63a0e72",21:"d2ad82d928bc59c2fd1b",22:"f390cd6f9c8131605a70",23:"039b22d1262df92108d9",24:"8d64f38c28f1157b5ecd",26:"f7e72505235d48c9e0a1",27:"7f2dc65217d64d689305",28:"8fea20934359199e6af3",29:"80dfcbded0512c71e186",30:"4c244773cf8143580ed4",31:"6bfe28d6f4488be92607",32:"02908d5b72ddd3d4cf8b",33:"9f0e9f61e6fb662955cb",34:"27d8bea0b55f62e23db1",35:"e9245bd414c396637c94",36:"1deec6299e9b25ac1e17",37:"47e318f244ab5dfe669a",38:"8da3e24527fb9e3740e7",39:"8b976ea3020509938fb8",40:"8133f0ade489d5fdd76b",41:"8ffd346d383216dde6f5",42:"d140fab0d35778e9158c",43:"d767b097f59f354a0950",44:"5c491e302995bb5ecb60",45:"7ac8cc98d737e8183a9e",46:"f24c2aca57e696006875",47:"8724723e9af4cd427a8e",48:"a880c83e13aac04d1649",49:"c9d48d0351762560de6b",50:"e3240f1530803e1c92d4",51:"b3966475a43d8cba567d",52:"ea641cc29960df855ad6",53:"e889bef88be8c0a8620a",54:"956e4a6cf8ee5a9810c9",55:"ba4ba43a02a785026511",56:"a64ed285a462b90ba300",57:"4e7de01126681dd86c8f",58:"49464800d5686fe576dc",59:"9f89e49a73425061f2a8",60:"b4d7cfe8e8549c494d12",61:"6e6f7a1713c0d898c5c9",62:"95fff4bf9eb725ebb722",63:"5c710b48d0e94c7520a2",64:"f34ab58073240c00b0c2",65:"6b2f0c815aa8ab3b30e7",66:"71edd35c1122bc00ef5e",67:"b2eea532f9e61adde04c",68:"c683b65554479c60fb51",69:"f2748659ddf9b370e18f",70:"cf3ce4928571a1d9c455",71:"02a4108717a204410410",72:"dc19a96ed48c7244451e",73:"8a650876ad75d7e2b0e0",74:"3a17150e98009c4998d8",75:"25e5156ab44b397863f0",76:"9e7972cc6e62a523bfc5",77:"1100e6785fa8711ac129",78:"6084fffab46707208c03",79:"9e6774a8a444fdb4b6df",80:"42faaa60bf7c6578d25a",81:"d8156616595fb9a9ef44",82:"c9c55d5807aad9da9b20",83:"cf2a794cb7c04e86b036",84:"6c6c089831aeb2ec561d",85:"9fdbe5e5fa3ff6041a4d",86:"6da478207f3c6dfd1edc",87:"fe5e7370ac26a2d8a81f",88:"715cc159ebddd88cd49a"}[e]+".chunk.js",d.appendChild(b)}},a.m=e,a.c=d,a.p="/templates/javascript/dist/bundles/"}(function(e){for(var a in e)if(Object.prototype.hasOwnProperty.call(e,a))switch(typeof e[a]){case"function":break;case"object":e[a]=function(a){var c=a.slice(1),d=e[a[0]];return function(e,a,f){d.apply(this,[e,a,f].concat(c))}}(e[a]);break;default:e[a]=e[e[a]]}return e}([]));
+</script>
+<script type="text/javascript" src="https://s.prod.npr.org/templates/javascript/dist/bundles/globalNavigationDropdowns-7f2dc65217d64d689305.js">
+   </script>
+<link rel="stylesheet" data-persist="true" media="screen, print" href="https://s.prod.npr.org/templates/javascript/dist/bundles/persistent-css-9c43da10afdd03c37500.css" /><link rel="stylesheet" media="screen, print" href="https://s.prod.npr.org/templates/javascript/dist/bundles/404-css-9c43da10afdd03c37500.css" /><script type="text/javascript">
+   document.domain="npr.org";
+</script>
+</head><body id="news" class="news tmplError    " data-pjax-modules="util/env images/lazy-load chartbeat comscore metrics nielsen nielsenDCR copyright auto-refresh navigation/global-navigation fitvids dfp globalfooter persistent-audio player/more-options player/audio-module-clickable what-input metrics/doubleclickFloodlight metrics/facebookTracking story/replace-centerstage global-alerts"><div class="skip-links">
+      <span>Accessibility links</span>   <ul>
+            <li><a href="#mainContent" class="skiplink">Skip to main content</a></li>
+      <li><a href="https://help.npr.org/contact/s/article?name=what-are-the-keyboard-shortcuts-for-using-the-npr-org-audio-player" class="skiplink">Keyboard shortcuts for audio player</a></li>
+   </ul>
+</div>
+<header class="npr-header" id="globalheader" aria-label="NPR header">
+<nav class="navigation">
+    <div class="navigation__top-level-wrap" data-metrics-all data-metrics-category="global navigation">
+        <ul class="navigation__top-level">
+            <li class="navigation__home">
+                <a href="/" data-metrics-action="click npr logo">
+                    <img src="https://media.npr.org/chrome_svg/npr-logo.svg" alt="NPR logo"/>
+                </a>
+            </li>
+
+            <li id="navigation__station-mount"></li>
+
+            <li id="user-account-dropdown-mount" class="navigation__account"></li>
+
+            <li class="navigation__shop">
+                <a href="https://shop.npr.org" data-metrics-action="click npr shop">NPR Shop</a>
+            </li>
+
+            <li id="navigation__station-donate-mount"></li>
+
+            <li class="navigation__toggle-wrap">
+                <button id="navigation__toggle--open" class="navigation__toggle navigation__toggle--open" aria-haspopup="true" aria-expanded="false" data-metrics-action="open navigation menu">
+                    Open Navigation Menu
+                </button>
+            </li>
+        </ul>
+    </div>
+    <section id="main-menu" class="menu menu--main" data-metrics-all data-metrics-category="global navigation">
+        <div class="menu__inner">
+            <header class="menu__header">
+                <button id="navigation__toggle--close" class="navigation__toggle navigation__toggle--close" aria-haspopup="true" aria-expanded="true" data-metrics-action="close navigation menu">
+                    Close <span>Navigation Menu</span>
+                </button>
+            </header>
+            <ul class="menu__list">
+                <li class="menu__item menu__item--home">
+                    <div class="menu__item-inner"><a href="/" data-metrics-action="click npr logo">Home</a></div>
+                </li>
+                <li class="menu__item menu__item--news menu__item--has-submenu">
+                    <div class="menu__item-inner">
+                        <a href="/sections/news/" data-metrics-action="click news">News</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle news drawer">Expand/collapse submenu for News</button>
+                    </div>
+
+                    <ul class="submenu submenu--news">
+                        <li class="submenu__item"><a href="/sections/national/" data-metrics-action="click national">National</a></li>
+                        <li class="submenu__item"><a href="/sections/world/" data-metrics-action="click world">World</a></li>
+                        <li class="submenu__item"><a href="/sections/politics/" data-metrics-action="click politics">Politics</a></li>
+                        <li class="submenu__item"><a href="/sections/business/" data-metrics-action="click business">Business</a></li>
+                        <li class="submenu__item"><a href="/sections/health/" data-metrics-action="click health">Health</a></li>
+                        <li class="submenu__item"><a href="/sections/science/" data-metrics-action="click science">Science</a></li>
+                        <li class="submenu__item"><a href="/sections/climate/" data-metrics-action="click climate">Climate</a></li>
+                        <li class="submenu__item"><a href="/sections/codeswitch/" data-metrics-action="click race">Race</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--arts-life menu__item--has-submenu">
+                    <div class="menu__item-inner">
+                        <a href="/sections/culture/" data-metrics-action="click culture">Culture</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle arts drawer">Expand/collapse submenu for Arts &amp; Life</button>
+                    </div>
+
+                    <ul class="submenu submenu--arts-life">
+                        <li class="submenu__item"><a href="/books/" data-metrics-action="click books">Books</a></li>
+                        <li class="submenu__item"><a href="/sections/movies/" data-metrics-action="click movies">Movies</a></li>
+                        <li class="submenu__item"><a href="/sections/television/" data-metrics-action="click television">Television</a></li>
+                        <li class="submenu__item"><a href="/sections/pop-culture/" data-metrics-action="click pop culture">Pop Culture</a></li>
+                        <li class="submenu__item"><a href="/sections/food/" data-metrics-action="click food">Food</a></li>
+                        <li class="submenu__item"><a href="/sections/art-design/" data-metrics-action="click art & design">Art &amp; Design</a> </li>
+                        <li class="submenu__item"><a href="/sections/performing-arts/" data-metrics-action="click performing arts">Performing Arts</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--music menu__item--has-submenu">
+                    <div class="menu__item-inner">
+                        <a href="/music/" data-metrics-action="click music">Music</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle music drawer">Expand/collapse submenu for Music</button>
+                    </div>
+
+                    <ul class="submenu submenu--music"><li class="submenu__item">
+    <a href="https://www.npr.org/series/tiny-desk-concerts/" data-metrics-action="click tiny desk">
+        Tiny Desk
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/series/1191556125/hip-hop-50" data-metrics-action="click hip-hop 50">
+        Hip-Hop 50
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/allsongs/" data-metrics-action="click all songs considered">
+        All Songs Considered
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/music-features" data-metrics-action="click music features">
+        Music Features
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/series/770565791/npr-music-live-sessions" data-metrics-action="click live sessions">
+        Live Sessions
+    </a>
+</li></ul>
+
+                </li>
+                <li class="menu__item menu__item--shows-podcasts menu__item--has-submenu">
+                    <div class="menu__item-inner">
+                        <a href="/programs/" data-metrics-action="click shows & podcasts">Shows &amp; Podcasts</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle programs &amp; podcasts drawer">Expand/collapse submenu for Shows &amp; Podcasts</button>
+                    </div>
+
+                    <div class="submenu submenu--shows-podcasts">
+                        <span class="submenu__category submenu__category--daily">Daily</span>
+                        <ul class="submenu__list submenu__list--daily">
+                            <li class="submenu__item submenu__item--timed submenu__item--weekday hidden">
+                                <a href="/programs/morning-edition/" data-metrics-action="click morning edition">
+                                    <img src="https://media.npr.org/chrome/programs/logos/morning-edition.jpg" alt="" />
+                                    Morning Edition
+                                </a>
+                            </li>
+                            <li class="submenu__item submenu__item--timed submenu__item--saturday hidden" >
+                                <a href="/programs/weekend-edition-saturday/" data-metrics-action="click weekend edition saturday">
+                                    <img src="https://media.npr.org/assets/img/2019/02/26/we_otherentitiestemplatesat_sq-cbde87a2fa31b01047441e6f34d2769b0287bcd4-s100-c85.png" alt="" />
+                                    Weekend Edition Saturday
+                                </a>
+                            </li>
+                            <li class="submenu__item submenu__item--timed submenu__item--sunday hidden">
+                                <a href="/programs/weekend-edition-sunday/" data-metrics-action="click weekend edition sunday">
+                                    <img src="https://media.npr.org/assets/img/2019/02/26/we_otherentitiestemplatesun_sq-4a03b35e7e5adfa446aec374523a578d54dc9bf5-s100-c85.png" alt="" />
+                                    Weekend Edition Sunday
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/programs/all-things-considered/" data-metrics-action="click all things considered">
+                                    <img src="https://media.npr.org/chrome/programs/logos/all-things-considered.png" alt="" />
+                                    All Things Considered
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/programs/fresh-air/" data-metrics-action="click fresh air">
+                                    <img src="https://media.npr.org/chrome/programs/logos/fresh-air.png" alt="" />
+                                    Fresh Air
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/podcasts/510318/up-first" data-metrics-action="click up first">
+                                    <img src="https://media.npr.org/chrome/programs/logos/up-first.jpg?version=2" alt="" />
+                                    Up First
+                                </a>
+                            </li>
+                        </ul>
+                        <span class="submenu__category submenu__category--featured">Featured</span>
+
+                        <ul class="submenu__list submenu__list--featured"><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510310/npr-politics-podcast" data-metrics-action="click the npr politics podcast">
+        <img src="https://media.npr.org/assets/img/2024/01/11/podcast-politics_2023_update1_sq-e6c98d67ef0627c9a66ae919db8f9dd7c8d933ff.jpg?s=100" alt="" />
+        The NPR Politics Podcast
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510333/throughline" data-metrics-action="click throughline">
+        <img src="https://media.npr.org/assets/img/2024/05/15/throughline_tile-art_sq-57d96f90085658adfc110e24569d46a293da585a.jpg?s=100" alt="" />
+        Throughline
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510374/trumps-terms" data-metrics-action="click trump's terms ">
+        <img src="https://media.npr.org/assets/img/2024/11/20/trumps-terms_tile-art_sq-ec8e1a63b459203766ea4b47865233968e0e3480.jpg?s=100" alt="" />
+        Trump's Terms 
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510379/wild-card-with-rachel-martin" data-metrics-action="click wild card with rachel martin">
+        <img src="https://media.npr.org/assets/img/2024/04/19/tile-wild-card-with-rachel-martin_sq-8847259f07221b5fbacbbc570c64dfe5eee121d4.jpg?s=100" alt="" />
+        Wild Card with Rachel Martin
+    </a>
+</li></ul>
+
+                        <ul class="submenu__list submenu__list--directories">
+                            <li class="submenu__item"><a href="/programs/" data-metrics-action="click all programs">More Shows &amp; Podcasts</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu__item menu__item--search">
+                    <div class="menu__item-inner">
+                        <a href="/search" id="navigation_dropdown-search" data-metrics-action="click search">Search</a>
+                    </div>
+                </li>
+                <li id="user-account-dropdown-mount-two" class="menu__item menu__item--account"></li>
+                <li class="menu__item menu__item--shop">
+                    <div class="menu__item-inner">
+                        <a href="https://shop.npr.org" data-metrics-action="click npr shop">NPR Shop</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="menu menu--music" data-metrics-all data-metrics-category="music ecosystem navigation">
+        <div class="menu__list-wrap">
+            <ul class="menu__list menu__list--ecosystem menu__list--music">
+                <li class="menu__item menu__item--music-home">
+                    <a href="/music/" data-metrics-action="click npr music logo">
+                        <img src="https://media.npr.org/chrome_svg/music-logo-dark.svg" class="music-logo"  alt="NPR Music" />
+                        <img src="https://media.npr.org/chrome_svg/music-logo-light.svg" class="music-logo-alt" alt="NPR Music" />
+                    </a>
+                </li>
+
+                <li class="menu__item">
+    <a href="https://www.npr.org/series/tiny-desk-concerts/" data-metrics-action="click tiny desk">
+        Tiny Desk
+    </a>
+</li><li class="menu__item">
+    <a href="https://www.npr.org/series/1191556125/hip-hop-50" data-metrics-action="click hip-hop 50">
+        Hip-Hop 50
+    </a>
+</li><li class="menu__item">
+    <a href="https://www.npr.org/sections/allsongs/" data-metrics-action="click all songs considered">
+        All Songs Considered
+    </a>
+</li><li class="menu__item">
+    <a href="https://www.npr.org/sections/music-features" data-metrics-action="click music features">
+        Music Features
+    </a>
+</li><li class="menu__item">
+    <a href="https://www.npr.org/series/770565791/npr-music-live-sessions" data-metrics-action="click live sessions">
+        Live Sessions
+    </a>
+</li>
+            </ul>
+        </div>
+    </section>
+    <section class="menu menu--about" data-metrics-all data-metrics-category="about ecosystem navigation">
+        <div class="menu__list-wrap">
+            <ul class="menu__list menu__list--ecosystem menu__list--about">
+                <li class="menu__item menu__item--about-home"><a href="/about/" data-metrics-action="click about npr">About NPR</a></li>
+                <li class="menu__item menu__item--about-overview"><a href="/overview/" data-metrics-action="click overview">Overview</a></li>
+                <li class="menu__item menu__item--about-support"><a href="/support/" data-metrics-action="click support">Support</a></li>
+                <li class="menu__item menu__item--about-careers"><a href="/careers/" data-metrics-action="click careers">Careers</a></li>
+                <li class="menu__item menu__item--about-connect"><a href="/connect/" data-metrics-action="click connect">Connect</a></li>
+                <li class="menu__item menu__item--about-press"><a href="/press/" data-metrics-action="click press">Press</a></li>
+                <li class="menu__item menu__item--about-ethics"><a href="/ethics/" data-metrics-action="click ethics">Ethics</a></li>
+            </ul>
+        </div>
+    </section>
+</nav>
+</header><main aria-label="main content"><div id="wrapper">
+    <div id="not-found" class="not-found">
+        <section class="not-found__section">
+            <h1 class="not-found__page-title">Page Not Found</h1>
+            <p class="not-found__support-text">We can't seem to find the page you were looking for.</p>
+            <ul class="not-found__links">
+                <li class="not-found__item"><a class="not-found__link" href="/search">search to find your page</a></li>
+                <li class="not-found__item"><a class="not-found__link" href="https://npr.desk.com/customer/portal/emails/new?i=6&s=Report%20a%20broken%20link">report this page as missing</a></li>
+                <li class="not-found__item"><a class="not-found__link" href="/">browse the homepage</a></li>
+            </ul>
+            <p class="not-found__support-text">It's a shame that your page is lost, but at least it's in good company; stick around to browse through NPR stories about lost people, places and things that still haven't turned up.</p>
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=1032135">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/earhart.jpg" alt="" />
+        <h2 class="not-found__title">Amelia Earhart</h2>
+        <p class="not-found__teaser">Researchers are still trying to figure out what happened to aviator Amelia Earhart, who disappeared while flying over the South Pacific in 1937</p>
+    </a>
+</article>
+
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=4463532">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/watergate.jpg" alt="" />
+        <h2 class="not-found__title">18 1/2 Minutes of Watergate Tapes</h2>
+        <p class="not-found__teaser">Rose Mary Woods, the loyal secretary of President Richard Nixon, took responsibility for erasing tape that was crucial to the Watergate investigation.</p>
+    </a>
+</article>
+
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=5440223">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/hoffa.jpg" alt="" />
+        <h2 class="not-found__title">Jimmy Hoffa</h2>
+        <p class="not-found__teaser">Prosecutors in Michigan say authorities are calling off their latest search for the remains of Jimmy Hoffa, the long-missing former Teamsters boss.</p>
+    </a>
+</article>
+
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=1114640">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/luggage.jpg" alt="" />
+        <h2 class="not-found__title">Your Luggage</h2>
+        <p class="not-found__teaser">Travelling without luggage can be a major inconvenience, but for commentator Bill Harley, it turned out to be a blessing in disguise.</p>
+    </a>
+</article>
+
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=4176661">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/atlantis.jpg" alt="" />
+        <h2 class="not-found__title">The Lost City of Atlantis</h2>
+        <p class="not-found__teaser">Slate senior editor Andy Bowers explains the myths surrounding the lost city of Atlantis, a metropolis mentioned in ancient texts.</p>
+    </a>
+</article>
+
+                <article class="not-found__story">
+    <a href="/templates/story/story.php?storyId=89677916">
+        <img class="not-found__image" src="//media.npr.org/include/images/404/waldo.jpg" alt="" />
+        <h2 class="not-found__title">Waldo</h2>
+        <p class="not-found__teaser">Artist Melanie Coles has plastered a 2,300-square-foot Waldo on a roof in Vancouver. Now she's waiting for Google Earth satellites to pick him up.</p>
+    </a>
+</article>
+
+        </section>
+    </div>
+</div><footer id="npr-footer" class="npr-footer" role="contentinfo" aria-label="NPR footer"><div class="npr-footer__content" data-metrics-category="Global Footer" data-metrics-label="Footer">
+    <div class="npr-footer__module-group">
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Read &amp; Listen</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/" data-metrics-action="Click Homepage">Home</a></li>
+                <li class="npr-footer__item"><a href="/sections/news/" data-metrics-action="Click News">News</a></li>
+                <li class="npr-footer__item"><a href="/sections/arts/" data-metrics-action="Click Arts &amp; Life">Arts &amp; Life</a></li>
+                <li class="npr-footer__item"><a href="/music/" data-metrics-action="Click Music">Music</a></li>
+                <li class="npr-footer__item"><a href="/podcasts/" data-metrics-action="Click Podcasts">Podcasts</a></li>
+                <li class="npr-footer__item"><a href="/programs/" data-metrics-action="Click Programs">Programs</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Connect</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/newsletters/" data-metrics-action="Click Newsletters">Newsletters</a></li>
+                <li class="npr-footer__item"><a href="https://www.facebook.com/NPR/" data-metrics-action="Click Facebook">Facebook</a></li>
+                <li class="npr-footer__item"><a href="https://twitter.com/NPR" data-metrics-action="Click Twitter">Twitter</a></li>
+                <li class="npr-footer__item"><a href="https://www.instagram.com/npr/" data-metrics-action="Click Instagram">Instagram</a></li>
+                <li class="npr-footer__item"><a href="https://www.npr.org/contact" data-metrics-action="Click Contact">Contact</a></li>
+                <li class="npr-footer__item"><a href="https://help.npr.org" data-metrics-action="Click Help">Help</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">About NPR</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/about/" data-metrics-action="Click Overview">Overview</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/178660742/public-radio-finances" data-metrics-action="Click Finances">Finances</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/179803822/people-at-npr" data-metrics-action="Click People">People</a></li>
+                <li class="npr-footer__item"><a href="/press/" data-metrics-action="Click Press">Press</a></li>
+                <li class="npr-footer__item"><a href="/sections/publiceditor/" data-metrics-action="Click Public Editor">Public Editor</a></li>
+                <li class="npr-footer__item"><a href="/corrections/" data-metrics-action="Click Corrections">Corrections</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Get Involved</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/support/" data-metrics-action="Click Support Public Radio">Support Public Radio</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/186948703/corporate-sponsorship" data-metrics-action="Click Sponsor NPR">Sponsor NPR</a></li>
+                <li class="npr-footer__item"><a href="/careers/" data-metrics-action="Click NPR Careers">NPR Careers</a></li>
+                <li class="npr-footer__item"><a href="https://shop.npr.org/" data-metrics-action="Click NPR Shop">NPR Shop</a></li>
+                <li class="npr-footer__item"><a href="https://www.nprpresents.org" data-metrics-action="Click NPR Events">NPR Events</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/177066727/visit-npr" data-metrics-action="Click Visit NPR">Visit NPR</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="npr-footer__module npr-footer__module--secondary">
+        <ul>
+            <li class="npr-footer__item"><a href="/about-npr/179876898/terms-of-use" data-metrics-action="Click Terms of Use">Terms of Use</a></li>
+            <li class="npr-footer__item"><a href="/about-npr/179878450/privacy-policy" data-metrics-action="Click Privacy">Privacy</a></li>
+            <li class="npr-footer__item"><a href="/about-npr/179878450/privacy-policy#yourchoices" data-metrics-action="Click Your Privacy Choices">Your Privacy Choices</a></li>
+            <li class="npr-footer__item"><a href="https://text.npr.org/" data-metrics-action="Click Text Only">Text Only</a></li>
+            <li class="npr-footer__item"><span class="copy-year"></span></li>
+        </ul>
+    </div>
+</div></footer><div id="global-stickybar-mount" class="global-stickybar-mount">
+   </div>
+<section id="global-modal-mount"></section>
+<!-- END ID="GLOBAL-MODAL-MOUNT" -->
+<script type="text/javascript">
+   (function () {
+    var loadPageJs = function () { webpackJsonp([88,25],{0:function(n,t,c){n.exports=c(1978)},1978:function(n,t,c){"use strict";c.p=NPR.serverVars.webpackPublicPath,function(){var n=2,t=function(){--n<1&&function(n){c(51),c(2376)}(c)}.bind(this);c.e(0,t),c.e(18,t)}.call(this)}}); };
+    if (document.readyState === 'complete') {
+        loadPageJs();
+    } else {
+        window.addEventListener('load', function load() {
+            window.removeEventListener('load', load, false);
+            loadPageJs();
+        });
+    }
+})();
+</script>
+</main><noscript><iframe><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1621557368158968&ev=PageView&noscript=1" /></iframe></noscript><script type='text/javascript'>
+    var _sf_async_config = _sf_async_config || {};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = '18888';
+    _sf_async_config.domain = NPR.ServerConstants.cbHost;
+    _sf_async_config.useCanonical = true;
+
+    /** CONFIGURATION END **/
+    (function() {
+        function loadChartbeat() {
+            // Wait until the metric for chartbeat have been setup
+            // in templates/javascript/metrics/chartbeat.js
+            if( !!NPR.ChartbeatLoaded) {
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src', 'https://static.chartbeat.com/js/chartbeat.js');
+                document.body.appendChild(e);
+            } else {
+                setTimeout(loadChartbeat, 1000);
+            }
+        }
+
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() {
+            oldonload();
+            window._sf_endpt = (new Date()).getTime();
+            loadChartbeat();
+        };
+    })();
+</script></body></html>

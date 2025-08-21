@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump-Epstein Timeline - Slideshow Presentation</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css">
+    
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --putin-color: #800080;
+            --future-color: #32CD32;
+        }
+
+        .reveal .slides section {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+
+        .slide-title {
+            color: var(--primary-color);
+            font-size: 1.8em !important;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-date {
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .slide-content {
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .slide-image {
+            max-width: 100%;
+            max-height: 400px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .slide-category {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .category-events { background: var(--primary-color); }
+        .category-reports { background: var(--secondary-color); }
+        .category-legal { background: var(--accent-color); }
+        .category-investigations { background: #96ceb4; }
+        .category-deaths { background: var(--danger-color); }
+        .category-putin-connections { background: var(--putin-color); }
+        .category-appearances { background: #FF8C00; }
+        .category-future-events { background: var(--future-color); color: black; }
+
+        .slide-source {
+            font-size: 0.9em;
+            color: #ccc;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .slide-source a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .slide-source a:hover {
+            text-decoration: underline;
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 6000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: #e55555;
+            transform: translateY(-2px);
+        }
+
+        .progress-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 6000;
+        }
+
+        .reveal .progress {
+            color: var(--primary-color);
+        }
+
+        /* Title slide styles */
+        .title-slide {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main-title {
+            font-size: 4em !important;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+        }
+
+        .timeline-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* Navigation hints */
+        .nav-hint {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 6000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .reveal .slides section {
+                padding: 20px;
+            }
+            
+            .slide-title {
+                font-size: 2.2em !important;
+            }
+            
+            .slide-content {
+                font-size: 1.1em;
+            }
+            
+            .controls {
+                top: 10px;
+                right: 10px;
+            }
+        }
+        /* Main Navigation Bar Styles */
+        .main-nav-bar {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 6100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .main-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+        
+        .main-nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .main-nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+        
+        .main-nav-link.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .main-nav-icon {
+            font-size: 12px;
+        }
+
+        .reveal {
+            margin-top: 50px; /* Account for fixed nav */
+        }
+
+        .controls {
+            top: 60px; /* Move controls below nav */
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation Bar -->
+    <div class="main-nav-bar">
+        <div class="main-nav-container">
+            <a href="index.html" class="main-nav-link">
+                <span class="main-nav-icon">📅</span>
+                Interactive Timeline
+            </a>
+            <a href="enhanced-visualizations.html" class="main-nav-link">
+                <span class="main-nav-icon">🌐</span>
+                Network Visualizations
+            </a>
+            <a href="flight-logs.html" class="main-nav-link">
+                <span class="main-nav-icon">✈️</span>
+                Flight Logs
+            </a>
+            <a href="slideshow-timeline.html" class="main-nav-link active">
+                <span class="main-nav-icon">🎬</span>
+                Slideshow Presentation
+            </a>
+            <a href="stats.html" class="main-nav-link">
+                <span class="main-nav-icon">📊</span>
+                Statistics
+            </a>
+            <a href="names-and-shame.html" class="main-nav-link">
+                <span class="main-nav-icon">👥</span>
+                Associates Directory
+            </a>
+            <a href="resources.html" class="main-nav-link">
+                <span class="main-nav-icon">🆘</span>
+                Victim Resources
+            </a>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" onclick="toggleAutoSlide()">▶️ Auto</button>
+        <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.7); padding: 8px 12px; border-radius: 5px;">
+            <label style="color: white; font-size: 12px; white-space: nowrap;">Interval:</label>
+            <input type="range" id="intervalSlider" min="2" max="15" value="8" step="1" 
+                   style="width: 80px;" onchange="updateSlideInterval()">
+            <span id="intervalDisplay" style="color: white; font-size: 12px; min-width: 25px;">8s</span>
+        </div>
+        <button class="control-btn" onclick="exportSlideshow()">📥 Export</button>
+        <button class="control-btn" onclick="goToTimeline()">🌐 Timeline</button>
+    </div>
+
+    <div class="progress-indicator" id="progressIndicator">
+        Loading slides...
+    </div>
+
+    <div class="nav-hint">
+        Use arrow keys or swipe to navigate • Space for next slide
+    </div>
+
+    <div class="reveal">
+        <div class="slides" id="slideshowSlides">
+            <!-- Slides will be generated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        let reveal;
+        let autoSlideEnabled = false;
+        let totalSlides = 0;
+        let currentInterval = 8000; // Default 8 seconds
+
+        // Load ALL timeline data from XML
+        let timelineData = []; // Will be populated from XML
+        let fallbackTimelineData = [
+            {
+                title: "Trump-Epstein Investigation",
+                subtitle: "The Most Comprehensive Timeline Ever Assembled",
+                type: "title",
+                stats: {
+                    events: "78+",
+                    images: "38",
+                    countries: "12",
+                    timespan: "1987-2037"
+                }
+            }
+        ];
+
+        // Function to load all events from XML
+        async function loadTimelineDataFromXML() {
+            try {
+                const response = await fetch('timeline-comprehensive.xml');
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                const events = xmlDoc.querySelectorAll('event');
+                
+                // Initialize timeline with title slide
+                timelineData = [{
+                    type: "title",
+                    title: "Trump-Epstein Investigation",
+                    subtitle: `Complete Timeline with ${events.length} Documented Events`,
+                    date: "1987-2037",
+                    background: "linear-gradient(135deg, #8B0000 0%, #FF4500 100%)",
+                    stats: {
+                        events: events.length.toString(),
+                        images: Array.from(events).filter(e => e.getAttribute('image')).length.toString(),
+                        countries: "12",
+                        timespan: "1987-2037"
+                    }
+                }];
+                console.log('Loading', events.length, 'events from XML');
+                
+                events.forEach((event, index) => {
+                    try {
+                        const title = event.getAttribute('title');
+                        const date = event.getAttribute('start');
+                        const category = event.getAttribute('classname') || 'events';
+                        const content = event.textContent.trim();
+                        const image = event.getAttribute('image');
+                        const link = event.getAttribute('link');
+                        
+                        // Skip events without essential data
+                        if (!title || !date) {
+                            console.warn(`Skipping event ${index + 1}: missing title or date`);
+                            return;
+                        }
+                        
+                        // Extract URLs from content
+                        const urlMatch = content.match(/href="([^"]+)"/);
+                        const sourceUrl = urlMatch ? urlMatch[1] : link;
+                        
+                        // Extract source name
+                        const sourceMatch = content.match(/📰\s*([^<\n]+)/);
+                        const sourceName = sourceMatch ? sourceMatch[1].trim() : 'Primary Source';
+                        
+                        // Determine if this is a future event
+                        const eventDate = new Date(date);
+                        const currentDate = new Date(); // Use actual current date
+                        const isFutureEvent = eventDate > currentDate;
+                        
+                        // Update category for future events
+                        let finalCategory = category;
+                        if (isFutureEvent && category !== 'future-events') {
+                            finalCategory = 'future-events';
+                        }
+                        
+                        timelineData.push({
+                            title: title,
+                            date: date,
+                            category: finalCategory,
+                            content: content.replace(/<[^>]*>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'),
+                            image: image,
+                            source: sourceName,
+                            sourceUrl: sourceUrl,
+                            significance: `${finalCategory.toUpperCase()} - ${new Date(date).getFullYear()}`,
+                            isFuture: isFutureEvent
+                        });
+                    } catch (eventError) {
+                        console.error(`Error processing event ${index + 1}:`, eventError);
+                    }
+                });
+                
+                console.log(`✅ Successfully loaded ${events.length} events from XML (${timelineData.length} total slides)`);
+                
+                // Update the title slide with accurate count
+                if (timelineData.length > 0 && timelineData[0].type === 'title') {
+                    timelineData[0].subtitle = `Complete Timeline with ${events.length} Documented Events`;
+                    timelineData[0].stats.events = events.length.toString();
+                }
+                
+            } catch (error) {
+                console.error('Error loading XML data:', error);
+                // Fallback to sample data if XML loading fails
+                loadFallbackData();
+            }
+        }
+
+        function loadFallbackData() {
+            console.log('⚠️ Loading fallback data due to XML failure');
+            // Add the sample events to existing timelineData
+            timelineData = [...timelineData]; // Keep existing title slide
+            
+            const sampleEvents = [
+            {
+                title: "Robert Maxwell Intelligence Empire (1980)",
+                date: "1980-01-01",
+                category: "putin-connections",
+                content: "Robert Maxwell expands his media empire while maintaining suspected triple agent status with MI6, KGB, and Mossad. As father of Ghislaine Maxwell, his intelligence connections will later become crucial to understanding the Epstein network's international scope.",
+                image: "images/robert-maxwell-intelligence.jpg",
+                source: "Wikipedia: Robert Maxwell",
+                significance: "Establishes the intelligence foundation for the future Epstein network"
+            },
+            {
+                title: "Trump-Epstein Friendship Begins (1987)",
+                date: "1987-01-01",
+                category: "events",
+                content: "Donald Trump and Jeffrey Epstein's social relationship begins in New York high society circles. Trump later states he has known Epstein since the late 1980s, when Epstein purchased property in Palm Beach and both moved in elite Manhattan and Florida social circles.",
+                image: "images/1987-trump-epstein-beginning.jpg",
+                source: "Vanity Fair Analysis",
+                significance: "Beginning of 17-year friendship that would define both men's futures"
+            },
+            {
+                title: "Trump Attends Maxwell Yacht Party (1989)",
+                date: "1989-05-01", 
+                category: "events",
+                content: "Donald Trump attends party on Robert Maxwell's 180-foot yacht 'Lady Ghislaine' in New York harbor. This establishes Trump's connection to Ghislaine Maxwell BEFORE she met Epstein, through her father's media empire and intelligence networks.",
+                image: "images/trump-maxwell-yacht-1989.jpg",
+                source: "Washington Post Investigation",
+                significance: "Proves Trump-Maxwell connection predates Epstein introduction"
+            },
+            {
+                title: "Mar-a-Lago Party with NFL Cheerleaders (1992)",
+                date: "1992-11-01",
+                category: "events", 
+                content: "Donald Trump hosts a party at Mar-a-Lago with Jeffrey Epstein and 28 NFL cheerleaders as part of a 'calendar girl' competition. NBC records the event, showing Trump and Epstein laughing together and discussing women. The tape surfaces publicly in 2019.",
+                image: "images/mar-a-lago-party-1992.jpg",
+                source: "NBC News Source",
+                significance: "Key video evidence of Trump-Epstein social relationship at its peak"
+            },
+            {
+                title: "Epstein's Documented Russia Visit (1998)",
+                date: "1998-01-01",
+                category: "putin-connections",
+                content: "Photo taken in 1998 shows Epstein posing with Esther Dyson outside Andrei Sakharov's house in Russia, proving that Epstein had visited Russia in the 1990s without any trace in the flight logs. This demonstrates early connections to Russian networks predating his documented relationship with Trump.",
+                image: "images/epstein-russia-1998.jpg",
+                source: "Dossier Center Investigation",
+                significance: "First documented evidence of Epstein's Russian intelligence connections"
+            },
+            {
+                title: "Prince Andrew Meets Epstein (2000)",
+                date: "2000-01-01",
+                category: "putin-connections",
+                content: "Prince Andrew, Duke of York, is introduced to Jeffrey Epstein by Ghislaine Maxwell. This begins a 19-year relationship that will include multiple visits to Epstein's properties and become central to Virginia Giuffre's allegations.",
+                image: "images/prince-andrew-epstein-first-meeting.jpg", 
+                source: "BBC: Prince Andrew-Epstein Timeline",
+                significance: "Expands network to British Royal Family"
+            },
+            {
+                title: "Virginia Giuffre Allegedly Trafficked to Prince Andrew (2001)",
+                date: "2001-04-01",
+                category: "deaths",
+                content: "Virginia Giuffre alleges she was trafficked by Epstein and Maxwell to have sex with Prince Andrew at Maxwell's London townhouse when she was 17. The infamous photograph of Prince Andrew with his arm around Giuffre was allegedly taken this night.",
+                image: "images/giuffre-prince-andrew-photo.jpg",
+                source: "Guardian: Giuffre's Prince Andrew Allegations", 
+                significance: "Key victim testimony linking royalty to trafficking operation"
+            },
+            {
+                title: "Trump's 'Terrific Guy' Comment (2002)",
+                date: "2002-01-01",
+                category: "reports",
+                content: "Trump tells New York Magazine: 'I've known Jeff for 15 years. Terrific guy. He's a lot of fun to be with. It is even said that he likes beautiful women as much as I do, and many of them are on the younger side. No doubt about it – Jeffrey enjoys his social life.'",
+                source: "New York Magazine Source",
+                significance: "Trump's most damaging public statement about Epstein"
+            },
+            {
+                title: "The Mansion Auction Battle (2004)",
+                date: "2004-11-30",
+                category: "events",
+                content: "Donald Trump wins the auction for Maison de L'Amitie with a bid of $41.35 million, outbidding Jeffrey Epstein whose final bid was $38.6 million. This real estate rivalry marks the beginning of their falling out and end of their friendship.",
+                image: "images/2004-maison-de-lamitie-mansion.jpg",
+                significance: "The business deal that ended the Trump-Epstein friendship"
+            },
+            {
+                title: "Russian FSB Connections Emerge (2014)",
+                date: "2014-07-01",
+                category: "putin-connections",
+                content: "FSB Academy graduate and Deputy Minister Sergei Belyakov personally helps Epstein obtain Russian visa and arranges high-level Moscow meetings with Deputy Finance Minister Sergei Storchak, Central Bank Deputy Chairman Alexei Simanovsky, and Minister Alexei Ulyukayev.",
+                image: "images/belyakov-epstein-emails.jpg",
+                source: "Dossier Center: Epstein-Russia Connection",
+                significance: "Direct evidence of Russian government-Epstein coordination"
+            },
+            {
+                title: "Carbyne Investment - Israeli Intelligence (2015)",
+                date: "2015-01-01", 
+                category: "putin-connections",
+                content: "Jeffrey Epstein invests at least $1 million through Southern Trust Company in Carbyne (formerly Reporty Homeland Security), an Israeli emergency response company founded by Unit 8200 veterans. This investment was made through former Israeli defense minister Ehud Barak's private equity fund.",
+                image: "images/carbyne-unit8200.jpg",
+                source: "Haaretz: Epstein-Barak Business Ties",
+                significance: "Links Epstein to Israeli military intelligence operations"
+            },
+            {
+                title: "Epstein Claims Saudi Crown Prince Friendship (2018)",
+                date: "2018-08-01",
+                category: "putin-connections", 
+                content: "During August 2018 interview with NYT journalist James Stewart at Manhattan mansion, Jeffrey Epstein points to framed photo of Saudi Crown Prince Mohammed bin Salman, claiming 'MbS' visited 'many times' and they 'spoke often.' This occurs during the same period as Khashoggi murder investigations.",
+                image: "images/epstein-mbs-photo.jpg",
+                source: "New York Times: Epstein's Saudi Claims",
+                significance: "Alleged connection to Saudi Crown Prince during Khashoggi period"
+            },
+            {
+                title: "Epstein's Arrest and the End (2019)",
+                date: "2019-07-06",
+                category: "legal",
+                content: "Jeffrey Epstein is arrested at Teterboro Airport on federal sex trafficking charges. He dies in his Manhattan Correctional Center cell on August 10, 2019, officially ruled a suicide but spawning countless conspiracy theories.",
+                image: "images/2019-epstein-arrest-teterboro.jpg",
+                significance: "The dramatic end of the most powerful blackmail operation in history"
+            },
+            {
+                title: "Ghislaine Maxwell's Trial and Conviction (2021)",
+                date: "2021-12-29",
+                category: "legal",
+                content: "Ghislaine Maxwell is found guilty on 5 of 6 federal charges including sex trafficking of minors. She is sentenced to 20 years in prison, with earliest release date of July 17, 2037.",
+                image: "images/2021-maxwell-trial-verdict.jpg",
+                significance: "Justice for victims and confirmation of systematic abuse"
+            },
+            {
+                title: "The Investigation Continues (2025)",
+                date: "2025-08-19",
+                category: "future-events",
+                content: "Congressional investigations continue, more documents are released, and the full scope of the international blackmail network slowly comes to light. The Trump-Epstein timeline serves as crucial evidence in understanding how power, corruption, and abuse intersected at the highest levels.",
+                significance: "Ongoing quest for truth and accountability"
+            }
+        ];
+        
+        // Add sample events to timelineData
+        timelineData = timelineData.concat(sampleEvents);
+        }
+
+        async function initializeSlideshow() {
+            console.log('Initializing slideshow...');
+            
+            // Load timeline data from XML first
+            await loadTimelineDataFromXML();
+            
+            console.log(`Starting slideshow with ${timelineData.length} slides`);
+            generateSlides();
+            setupReveal();
+            updateProgressIndicator();
+        }
+
+        function generateSlides() {
+            const slidesContainer = document.getElementById('slideshowSlides');
+            slidesContainer.innerHTML = '';
+            totalSlides = timelineData.length;
+
+            timelineData.forEach((event, index) => {
+                const slide = document.createElement('section');
+                
+                if (event.type === 'title') {
+                    slide.className = 'title-slide';
+                    slide.innerHTML = `
+                        <h1 class="main-title">🕵️ ${event.title}</h1>
+                        <p class="subtitle">${event.subtitle}</p>
+                        <div class="timeline-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">${event.stats.events}</span>
+                                <div class="stat-label">Timeline Events</div>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">${event.stats.images}</span>
+                                <div class="stat-label">Evidence Images</div>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">${event.stats.countries}</span>
+                                <div class="stat-label">Countries Involved</div>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">${event.stats.timespan}</span>
+                                <div class="stat-label">Time Span</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    const dateDisplay = event.date ? formatDate(event.date) : '';
+                    const futureIndicator = event.isFuture ? ' 🔮 FUTURE/PREDICTED' : '';
+                    
+                    slide.innerHTML = `
+                        <div class="slide-category category-${event.category}">${event.category.replace('-', ' ').toUpperCase()}</div>
+                        <h2 class="slide-title">${event.title}${futureIndicator}</h2>
+                        ${event.date ? `<p class="slide-date">${dateDisplay}</p>` : ''}
+                        <div class="slide-content">
+                            <p>${event.content}</p>
+                            ${event.image ? `<img src="${event.image}" alt="${event.title}" class="slide-image" onerror="this.style.display='none'">` : ''}
+                            ${event.significance ? `<p><strong>Significance:</strong> ${event.significance}</p>` : ''}
+                        </div>
+                        ${event.source ? `<div class="slide-source">
+                            <strong>Source:</strong> <a href="${event.sourceUrl || '#'}" target="_blank">${event.source}</a>
+                        </div>` : ''}
+                    `;
+                }
+                
+                slidesContainer.appendChild(slide);
+            });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function setupReveal() {
+            reveal = new Reveal({
+                hash: true,
+                transition: 'slide',
+                transitionSpeed: 'default',
+                backgroundTransition: 'fade',
+                controls: true,
+                progress: true,
+                center: true,
+                touch: true,
+                loop: false,
+                rtl: false,
+                navigationMode: 'default',
+                shuffle: false,
+                fragments: true,
+                fragmentInURL: false,
+                embedded: false,
+                help: true,
+                showNotes: false,
+                autoPlayMedia: null,
+                preloadIframes: null,
+                autoSlide: autoSlideEnabled ? currentInterval : 0,
+                autoSlideStoppable: true,
+                autoSlideMethod: null,
+                defaultTiming: null,
+                mouseWheel: false,
+                hideInactiveCursor: true,
+                hideCursorTime: 5000,
+                previewLinks: false,
+                plugins: [RevealNotes]
+            });
+            
+            reveal.initialize().then(() => {
+                reveal.on('slidechanged', updateProgressIndicator);
+                reveal.on('ready', updateProgressIndicator);
+            });
+        }
+
+        function updateProgressIndicator() {
+            const currentSlide = reveal ? reveal.getIndices().h + 1 : 1;
+            const indicator = document.getElementById('progressIndicator');
+            indicator.textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        }
+
+        function updateSlideInterval() {
+            const slider = document.getElementById('intervalSlider');
+            const display = document.getElementById('intervalDisplay');
+            currentInterval = parseInt(slider.value) * 1000; // Convert to milliseconds
+            display.textContent = slider.value + 's';
+            
+            // Update reveal config if auto-slide is enabled
+            if (autoSlideEnabled && reveal) {
+                reveal.configure({ autoSlide: currentInterval });
+            }
+        }
+
+        function toggleAutoSlide() {
+            autoSlideEnabled = !autoSlideEnabled;
+            const btn = event.target;
+            
+            if (autoSlideEnabled) {
+                reveal.configure({ autoSlide: currentInterval });
+                btn.textContent = '⏸️ Pause';
+                btn.style.background = '#e55555';
+            } else {
+                reveal.configure({ autoSlide: 0 });
+                btn.textContent = '▶️ Auto';
+                btn.style.background = '#ff6b6b';
+            }
+        }
+
+        function exportSlideshow() {
+            alert('Slideshow export functionality would generate PDF or image files of all slides');
+        }
+
+        function goToTimeline() {
+            window.open('index.html', '_blank');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'a':
+                case 'A':
+                    toggleAutoSlide();
+                    break;
+                case 'h':
+                case 'H':
+                    alert('Keyboard Shortcuts:\\n\\nArrow Keys: Navigate slides\\nSpace: Next slide\\nA: Toggle auto-advance\\nH: Show help\\nEsc: Exit fullscreen');
+                    break;
+            }
+        });
+
+        // Touch gestures for mobile
+        let startX = 0;
+        let startY = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            startX = event.touches[0].clientX;
+            startY = event.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            if (!startX || !startY) return;
+            
+            const endX = event.changedTouches[0].clientX;
+            const endY = event.changedTouches[0].clientY;
+            
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (diffX > 50) {
+                    reveal.next();
+                } else if (diffX < -50) {
+                    reveal.prev();
+                }
+            }
+            
+            startX = 0;
+            startY = 0;
+        });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeSlideshow);
+    </script>
+</body>
+</html>

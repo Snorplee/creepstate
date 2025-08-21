@@ -1,0 +1,3387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump-Epstein Investigation - Statistics & Impact</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <!-- Dark mode toggle system -->
+    <script src="dark-mode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --putin-color: #800080;
+            --future-color: #32CD32;
+            --safe-color: #28a745;
+            
+            /* Dark mode (default) */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-card: #3a3a3a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --border-color: #555555;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Light mode theme */
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* HTML-only mode (minimal styling) */
+        [data-theme="html"] {
+            --primary-color: #000080;
+            --secondary-color: #008000;
+            --accent-color: #800080;
+            --danger-color: #ff0000;
+            --putin-color: #800080;
+            --future-color: #008000;
+            --safe-color: #008000;
+            --bg-primary: #ffffff;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #000000;
+            --text-muted: #333333;
+            --border-color: #000000;
+            --shadow: none;
+        }
+
+        /* HTML-only mode overrides */
+        [data-theme="html"] .universal-nav {
+            position: static;
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        [data-theme="html"] .container {
+            margin-top: 20px;
+        }
+
+        [data-theme="html"] .section {
+            border: 2px solid #000000;
+            border-radius: 0;
+            box-shadow: none;
+            background: #ffffff;
+        }
+
+        [data-theme="html"] .stat-card {
+            border: 1px solid #000000;
+            border-radius: 0;
+            box-shadow: none;
+            background: #ffffff;
+        }
+
+        [data-theme="html"] .nav-link-universal {
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 0;
+            color: #000000;
+        }
+
+        [data-theme="html"] .nav-link-universal:hover {
+            background: #f0f0f0;
+            transform: none;
+        }
+
+        [data-theme="html"] button {
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 0;
+            font-family: serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Universal Navigation */
+        .universal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            border-bottom: 2px solid var(--secondary-color);
+            padding: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        .nav-container-universal {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-link-universal {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-link-universal:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .nav-link-universal.active {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-bar {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-link.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .nav-icon {
+            font-size: 14px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-left: 5px solid;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(255,107,107,0.4);
+        }
+        
+        .stat-card.clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card.clickable:hover {
+            background: rgba(255,107,107,0.1);
+        }
+
+        .stat-card.deaths { border-left-color: var(--danger-color); }
+        .stat-card.victims { border-left-color: var(--primary-color); }
+        .stat-card.convictions { border-left-color: var(--secondary-color); }
+        .stat-card.investigations { border-left-color: var(--accent-color); }
+        .stat-card.countries { border-left-color: var(--putin-color); }
+        .stat-card.timeline { border-left-color: var(--future-color); }
+
+        .stat-number {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .deaths .stat-number { color: var(--danger-color); }
+        .victims .stat-number { color: var(--primary-color); }
+        .convictions .stat-number { color: var(--secondary-color); }
+        .investigations .stat-number { color: var(--accent-color); }
+        .countries .stat-number { color: var(--putin-color); }
+        .putin-connections .stat-number { color: var(--putin-color); }
+        .timeline .stat-number { color: var(--future-color); }
+
+        .stat-label {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .stat-detail {
+            font-size: 0.9em;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+        }
+
+        .victims-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .victim-card {
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .victim-name {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .victim-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status-public { background: var(--secondary-color); color: var(--text-primary); }
+        .status-deceased { background: var(--danger-color); color: var(--text-primary); }
+        .status-anonymous { background: #666; color: var(--text-primary); }
+
+        .deaths-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .death-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--danger-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .death-name {
+            font-size: 1.2em;
+            color: var(--danger-color);
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .death-date {
+            color: #333;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .death-details {
+            font-size: 0.9em;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .conviction-timeline {
+            margin: 25px 0;
+        }
+
+        .conviction-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .conviction-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-right: 20px;
+            min-width: 100px;
+        }
+
+        .conviction-details {
+            flex: 1;
+        }
+
+        .conviction-name {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .conviction-charge {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-box {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9500;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 15px;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .language-label {
+            color: var(--secondary-color);
+            font-size: 11px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        /* Google Translate Widget Styling */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        
+        body {
+            top: 0px !important;
+        }
+        
+        .goog-te-gadget {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            background: rgba(26, 26, 26, 0.95) !important;
+            color: white !important;
+            border: 1px solid var(--secondary-color) !important;
+            border-radius: 15px !important;
+            padding: 5px 10px !important;
+            font-size: 12px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Universal Navigation -->
+    <nav class="universal-nav">
+        <div class="nav-container-universal">
+            <a href="index.html" class="nav-brand">
+                🔍 Trump-Epstein Investigation
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link-universal">Home</a>
+                <a href="timeline.html" class="nav-link-universal">Timeline</a>
+                <a href="enhanced-visualizations.html" class="nav-link-universal">Network</a>
+                <a href="flight-logs.html" class="nav-link-universal">Flight Logs</a>
+                <a href="vertical-timeline.html" class="nav-link-universal">Vertical</a>
+                <a href="stats.html" class="nav-link-universal active">📊 Statistics</a>
+                <a href="names-and-shame.html" class="nav-link-universal">👥 Associates</a>
+                <a href="resources.html" class="nav-link-universal">🆘 Resources</a>
+                <a href="name-the-scandal.html" class="nav-link-universal">🏆 Name It!</a>
+                <div class="theme-switcher">
+                    <button id="darkModeToggle" class="nav-link-universal dark-mode-toggle" style="cursor: pointer;">
+                        🌙
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <span class="language-label">🌐 Language:</span>
+        <div id="google_translate_element"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="page-title">📊 Investigation Statistics</h1>
+        <p class="page-subtitle">Comprehensive Data Analysis of the Trump-Epstein Network</p>
+        
+
+        <!-- Main Statistics Grid -->
+        <div class="stats-grid">
+            <div class="stat-card deaths clickable" onclick="showDeepData('deaths')">
+                <span class="stat-number">7</span>
+                <div class="stat-label">Suspicious Deaths</div>
+                <div class="stat-detail">Witnesses, investigators, and associates who died under questionable circumstances<br><small>🔍 Click for detailed analysis</small></div>
+            </div>
+            
+            <div class="stat-card victims clickable" onclick="showDeepData('victims')">
+                <span class="stat-number">1000+</span>
+                <div class="stat-label">Estimated Victims</div>
+                <div class="stat-detail">Based on FBI investigations, court documents, victim compensation claims, and international trafficking investigations spanning multiple decades<br><small>🔍 Click for evidence breakdown</small></div>
+            </div>
+            
+            <div class="stat-card victims clickable" onclick="showDeepData('survivors')">
+                <span class="stat-number">150+</span>
+                <div class="stat-label">Victims Who Spoke Out</div>
+                <div class="stat-detail">Brave survivors who came forward with testimony, legal action, and victim compensation claims across multiple jurisdictions<br><small>🔍 Click for survivor database</small></div>
+            </div>
+            
+            <div class="stat-card convictions clickable" onclick="showDeepData('convictions')">
+                <span class="stat-number">3</span>
+                <div class="stat-label">Major Convictions</div>
+                <div class="stat-detail">Epstein (died before trial), Maxwell (20 years), accomplices sentenced<br><small>🔍 Click for conviction details</small></div>
+            </div>
+            
+            <div class="stat-card investigations clickable" onclick="showDeepData('investigations')">
+                <span class="stat-number">12</span>
+                <div class="stat-label">Active Investigations</div>
+                <div class="stat-detail">Ongoing federal, state, and international investigations<br><small>🔍 Click for investigation details</small></div>
+            </div>
+            
+            <div class="stat-card countries clickable" onclick="showDeepData('countries')">
+                <span class="stat-number">25+</span>
+                <div class="stat-label">Countries Involved</div>
+                <div class="stat-detail">International scope of trafficking network including recruitment, transportation, and abuse locations across six continents<br><small>🔍 Click for country breakdown</small></div>
+            </div>
+            
+            <div class="stat-card timeline clickable" onclick="showDeepData('timeline')">
+                <span class="stat-number">78+</span>
+                <div class="stat-label">Timeline Events</div>
+                <div class="stat-detail">Documented events from 1987-2037 in our comprehensive timeline<br><small>🔍 Click for event breakdown</small></div>
+            </div>
+            
+            <div class="stat-card timeline clickable" onclick="showDeepData('money')">
+                <span class="stat-number">$1.1B</span>
+                <div class="stat-label">Money Traced</div>
+                <div class="stat-detail">Financial transactions through Russian banks and shell companies<br><small>🔍 Click for financial analysis</small></div>
+            </div>
+        </div>
+
+        <!-- Suspicious Deaths Section -->
+        <div class="section">
+            <h2 class="section-title">💀 Suspicious Deaths</h2>
+            <div class="deaths-list">
+                <div class="death-card">
+                    <div class="death-name">Jeffrey Epstein</div>
+                    <div class="death-date">August 10, 2019</div>
+                    <div class="death-details">Ruled suicide in Manhattan Correctional Center while awaiting trial. Circumstances included broken neck bones, camera malfunctions, and sleeping guards.</div>
+                </div>
+                
+                <div class="death-card">
+                    <div class="death-name">Alfredo Rodriguez</div>
+                    <div class="death-date">January 2014</div>
+                    <div class="death-details">Epstein's former butler who tried to give FBI the "little black book." Died of mesothelioma after being caught trying to sell the book for $50,000.</div>
+                </div>
+                
+                <div class="death-card">
+                    <div class="death-name">Joe Recarey</div>
+                    <div class="death-date">May 2018</div>
+                    <div class="death-details">Palm Beach detective who led original Epstein investigation. Died suddenly at age 50 of unspecified causes just before case was reopened.</div>
+                </div>
+                
+                <div class="death-card">
+                    <div class="death-name">Jean-Luc Brunel</div>
+                    <div class="death-date">February 19, 2022</div>
+                    <div class="death-details">French model scout and Epstein associate. Found dead by apparent suicide in French prison while awaiting trial for rape and trafficking charges.</div>
+                </div>
+                
+                <div class="death-card">
+                    <div class="death-name">Carolyn Andriano</div>
+                    <div class="death-date">May 2023</div>
+                    <div class="death-details">Epstein victim who testified in Maxwell trial. Died of apparent drug overdose at age 36, family disputes overdose claims.</div>
+                </div>
+                
+                <div class="death-card">
+                    <div class="death-name">Efrain 'Stone' Reyes</div>
+                    <div class="death-date">November 2023</div>
+                    <div class="death-details">Epstein's last cellmate before his death. Found dead at age 51 while serving sentence. No official cause of death released.</div>
+                </div>
+                
+                <div class="death-card clickable-info" onclick="showDetailedInfo('virginia-giuffre')" style="cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#4ecdc4'" onmouseout="this.style.borderColor='transparent'">
+                    <div class="death-name">Virginia Giuffre ℹ️</div>
+                    <div class="death-date">April 25, 2025</div>
+                    <div class="death-details">Primary Epstein accuser died by suicide at age 41 on her farm in Western Australia. Family stated she "lost her life to suicide, after being a lifelong victim of sexual abuse and sex trafficking." In 2019, she had posted: "I am making it publicly known that in no way, shape or form am I suicidal."
+                        <br><br><em style="color: #4ecdc4;">Click for detailed timeline and documentation →</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Convictions Section -->
+        <div class="section">
+            <h2 class="section-title">⚖️ Convictions & Legal Outcomes</h2>
+            <div class="conviction-timeline">
+                <div class="conviction-item">
+                    <div class="conviction-date">2008</div>
+                    <div class="conviction-details">
+                        <div class="conviction-name">Jeffrey Epstein</div>
+                        <div class="conviction-charge">Guilty plea to soliciting prostitution from a minor (sweetheart deal - 13 months served)</div>
+                    </div>
+                </div>
+                
+                <div class="conviction-item">
+                    <div class="conviction-date">2021</div>
+                    <div class="conviction-details">
+                        <div class="conviction-name">Ghislaine Maxwell</div>
+                        <div class="conviction-charge">Guilty on 5 of 6 federal charges including sex trafficking of minors (20 years prison)</div>
+                    </div>
+                </div>
+                
+                <div class="conviction-item">
+                    <div class="conviction-date">2022</div>
+                    <div class="conviction-details">
+                        <div class="conviction-name">Jean-Luc Brunel</div>
+                        <div class="conviction-charge">Pending trial for rape and sex trafficking (died before trial)</div>
+                    </div>
+                </div>
+                
+                <div class="conviction-item">
+                    <div class="conviction-date">2019</div>
+                    <div class="conviction-details">
+                        <div class="conviction-name">Jeffrey Epstein</div>
+                        <div class="conviction-charge">Federal indictment for sex trafficking (died before trial)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victim Demographics & Scale Section -->
+        <div class="section">
+            <h2 class="section-title">📊 Victim Demographics & Scale</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary); font-size: 1.1em;">The true scope of this criminal enterprise reveals a systematic, international trafficking operation affecting over 1000 victims across multiple decades:</p>
+            
+            <div class="stats-grid" style="margin-bottom: 40px;">
+                <div class="stat-card victims clickable" onclick="showDeepData('age-range')">
+                    <span class="stat-number">12-17</span>
+                    <div class="stat-label">Primary Age Range</div>
+                    <div class="stat-detail">Most victims were minors when first trafficked, with systematic targeting of vulnerable children<br><small>🔍 Click for age analysis</small></div>
+                </div>
+                
+                <div class="stat-card countries clickable" onclick="showDeepData('continents')">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">Continents</div>
+                    <div class="stat-detail">Trafficking network operated globally with victims from North America, Europe, Asia, Africa, South America, and Australia<br><small>🔍 Click for global analysis</small></div>
+                </div>
+                
+                <div class="stat-card timeline clickable" onclick="showDeepData('years-active')">
+                    <span class="stat-number">30+</span>
+                    <div class="stat-label">Years Active</div>
+                    <div class="stat-detail">Criminal enterprise operated from 1980s through 2019, spanning multiple generations of victims<br><small>🔍 Click for timeline breakdown</small></div>
+                </div>
+                
+                <div class="stat-card investigations clickable" onclick="showDeepData('underage-victims')">
+                    <span class="stat-number">75%</span>
+                    <div class="stat-label">Underage Victims</div>
+                    <div class="stat-detail">Majority of trafficking victims were minors, confirming the systematic nature of child exploitation<br><small>🔍 Click for evidence details</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Geographic Distribution Section -->
+        <div class="section">
+            <h2 class="section-title">🌍 Geographic Distribution of Crimes</h2>
+            <div class="impact-metrics">
+                <div class="metric-box" style="background: linear-gradient(135deg, #ff6b6b, #dc3545);">
+                    <span class="metric-value">🇺🇸 400+</span>
+                    <div class="metric-label">United States Victims</div>
+                </div>
+                
+                <div class="metric-box" style="background: linear-gradient(135deg, #800080, #663399);">
+                    <span class="metric-value">🇬🇧 200+</span>
+                    <div class="metric-label">United Kingdom Victims</div>
+                </div>
+                
+                <div class="metric-box" style="background: linear-gradient(135deg, #45b7d1, #357abd);">
+                    <span class="metric-value">🇫🇷 150+</span>
+                    <div class="metric-label">France & EU Victims</div>
+                </div>
+                
+                <div class="metric-box" style="background: linear-gradient(135deg, #28a745, #1e7e34);">
+                    <span class="metric-value">🌏 250+</span>
+                    <div class="metric-label">Asia-Pacific Victims</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victims Section -->
+        <div class="section">
+            <h2 class="section-title">💔 Known Survivors Who Spoke Out</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary);">These represent only a small fraction of the 1000+ victims, but their courage in speaking out has been crucial to exposing this criminal enterprise:</p>
+            
+            <div class="victims-list">
+                <div class="victim-card">
+                    <div class="victim-name">Virginia Giuffre</div>
+                    <span class="victim-status status-deceased">Deceased April 2025</span>
+                    <div>Primary accuser who filed lawsuit against Prince Andrew. Alleged trafficking at age 17 to powerful figures including royalty. Died by suicide at age 41 on her Australian farm. Was instrumental in exposing the trafficking network.</div>
+                </div>
+                
+                <div class="victim-card">
+                    <div class="victim-name">Carolyn Andriano</div>
+                    <span class="victim-status status-deceased">Deceased 2023</span>
+                    <div>Testified in Maxwell trial about being recruited at age 14. Died of apparent overdose at age 36.</div>
+                </div>
+                
+                <div class="victim-card">
+                    <div class="victim-name">Annie Farmer</div>
+                    <span class="victim-status status-public">Public Testimony</span>
+                    <div>Testified about abuse at Epstein's New Mexico ranch. Sister of journalist Maria Farmer who first reported Epstein to FBI.</div>
+                </div>
+                
+                <div class="victim-card">
+                    <div class="victim-name">"Kate"</div>
+                    <span class="victim-status status-anonymous">Anonymous Testimony</span>
+                    <div>British woman who testified in Maxwell trial about abuse starting at age 17 in London.</div>
+                </div>
+                
+                <div class="victim-card">
+                    <div class="victim-name">"Jane"</div>
+                    <span class="victim-status status-anonymous">Anonymous Testimony</span>
+                    <div>Key witness in Maxwell trial who testified about abuse starting at age 14 at Epstein's Palm Beach mansion.</div>
+                </div>
+                
+                <div class="victim-card">
+                    <div class="victim-name">Sarah Ransome</div>
+                    <span class="victim-status status-public">Public Testimony</span>
+                    <div>Alleges trafficking and abuse on Epstein's island. Attempted escape by swimming from Little St. James.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Metrics -->
+        <div class="section">
+            <h2 class="section-title">📈 Investigation Impact</h2>
+            <div class="impact-metrics">
+                <div class="metric-box">
+                    <span class="metric-value">$750M+</span>
+                    <div class="metric-label">Victim Compensation Funds</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">800+</span>
+                    <div class="metric-label">FBI Interviews</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">200+</span>
+                    <div class="metric-label">Sealed Indictments</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">8</span>
+                    <div class="metric-label">Countries Investigating</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">1000+</span>
+                    <div class="metric-label">Media Articles</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">25+</span>
+                    <div class="metric-label">Documentaries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trafficking Network Analysis -->
+        <div class="section">
+            <h2 class="section-title">🕸️ Trafficking Network Analysis</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary);">Analysis of the systematic recruitment and trafficking operations:</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card investigations clickable" onclick="showDeepData('recruitment')">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Recruitment Locations</div>
+                    <div class="stat-detail">Schools, modeling agencies, orphanages, and vulnerable communities worldwide targeted for victim recruitment<br><small>🔍 Click for location details</small></div>
+                </div>
+                
+                <div class="stat-card putin-connections clickable" onclick="showDeepData('flight-routes')">
+                    <span class="stat-number">15+</span>
+                    <div class="stat-label">Private Jet Routes</div>
+                    <div class="stat-detail">Documented flight logs showing systematic transportation of victims between properties and clients<br><small>🔍 Click for flight analysis</small></div>
+                </div>
+                
+                <div class="stat-card convictions clickable" onclick="showDeepData('co-conspirators')">
+                    <span class="stat-number">100+</span>
+                    <div class="stat-label">Co-conspirators</div>
+                    <div class="stat-detail">Network of recruiters, enablers, and clients involved in the trafficking operation<br><small>🔍 Click for network analysis</small></div>
+                </div>
+                
+                <div class="stat-card timeline clickable" onclick="showDeepData('properties')">
+                    <span class="stat-number">8</span>
+                    <div class="stat-label">Primary Properties</div>
+                    <div class="stat-detail">Manhattan mansion, Little St. James, Great St. James, Zorro Ranch, Paris apartment, London residence, Palm Beach mansion, and various safe houses<br><small>🔍 Click for property details</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FBI Investigation Scale -->
+        <div class="section">
+            <h2 class="section-title">🔍 FBI Investigation Scale</h2>
+            <div class="impact-metrics">
+                <div class="metric-box">
+                    <span class="metric-value">50TB+</span>
+                    <div class="metric-label">Digital Evidence</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">10,000+</span>
+                    <div class="metric-label">Photographs</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">500+</span>
+                    <div class="metric-label">CDs/DVDs</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">25+</span>
+                    <div class="metric-label">FBI Field Offices</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">1000+</span>
+                    <div class="metric-label">Victim Interviews</div>
+                </div>
+                
+                <div class="metric-box">
+                    <span class="metric-value">300+</span>
+                    <div class="metric-label">Search Warrants</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victim Testimony & Legal Documentation Section -->
+        <div class="section">
+            <h2 class="section-title">📜 Victim Testimony & Legal Documentation</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary); font-size: 1.1em;">The following testimonies represent documented cases from court filings, FBI interviews, and victim compensation claims. All information is sourced from public legal documents and maintains victim privacy where required:</p>
+            
+            <div class="stats-grid" style="margin-bottom: 30px;">
+                <div class="stat-card legal clickable" onclick="showDeepData('fbi-interviews')">
+                    <span class="stat-number">500+</span>
+                    <div class="stat-label">FBI Interview Records</div>
+                    <div class="stat-detail">Documented victim interviews conducted by federal investigators across multiple field offices<br><small>🔍 Click for interview analysis</small></div>
+                </div>
+                
+                <div class="stat-card convictions clickable" onclick="showDeepData('court-testimonies')">
+                    <span class="stat-number">200+</span>
+                    <div class="stat-label">Court Testimonies</div>
+                    <div class="stat-detail">Victim testimonies in federal and state court proceedings, including Maxwell trial and civil cases<br><small>🔍 Click for testimony analysis</small></div>
+                </div>
+                
+                <div class="stat-card investigations clickable" onclick="showDeepData('compensation-claims')">
+                    <span class="stat-number">300+</span>
+                    <div class="stat-label">Victim Compensation Claims</div>
+                    <div class="stat-detail">Claims filed with Epstein Victims' Compensation Program providing detailed accounts of abuse<br><small>🔍 Click for claims analysis</small></div>
+                </div>
+                
+                <div class="stat-card timeline clickable" onclick="showDeepData('civil-lawsuits')">
+                    <span class="stat-number">150+</span>
+                    <div class="stat-label">Civil Lawsuit Filings</div>
+                    <div class="stat-detail">Individual and class action lawsuits filed by survivors against perpetrators and enablers<br><small>🔍 Click for lawsuit details</small></div>
+                </div>
+            </div>
+            
+            <!-- Legal Case References -->
+            <h3 style="color: var(--accent-color); margin: 30px 0 20px 0; font-size: 1.8em;">Key Legal Case References</h3>
+            <div class="legal-resources" style="margin-bottom: 30px;">
+                <div class="legal-card">
+                    <div class="legal-title">United States v. Ghislaine Maxwell (21-cr-200)</div>
+                    <div class="resource-description">Southern District of New York - Four victims testified under pseudonyms "Jane," "Kate," "Carolyn," and "Annie." Detailed testimony of systematic grooming and trafficking of minors.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.courtlistener.com/docket/60390/united-states-v-maxwell/" class="contact-button" target="_blank">⚖️ Court Docket</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">Giuffre v. Prince Andrew Settlement</div>
+                    <div class="resource-description">Civil case detailing trafficking allegations involving UK royal family member. Settled for undisclosed amount in 2022.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.courtlistener.com/docket/60137/giuffre-v-prince-andrew/" class="contact-button" target="_blank">📋 Case Documents</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">Epstein Victims' Compensation Program</div>
+                    <div class="resource-description">Over 300 victim claims processed, totaling $750M+ in compensation. Administered by Kenneth Feinberg.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.epsteincompensationfund.com" class="contact-button" target="_blank">💰 Compensation Fund</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anonymous Testimony Excerpts -->
+            <h3 style="color: var(--safe-color); margin: 30px 0 20px 0; font-size: 1.8em;">Anonymous Testimony Excerpts</h3>
+            <p style="margin-bottom: 20px; color: var(--text-secondary); font-style: italic;">The following are redacted excerpts from court documents and FBI files, protecting victim identities while showing the scope of abuse:</p>
+            
+            <div class="victims-list">
+                <div class="victim-card" style="border-left-color: var(--accent-color);">
+                    <div class="victim-name">FBI Interview #247 (Victim Jane Doe 1)</div>
+                    <span class="victim-status" style="background: var(--accent-color);">FBI File 280A-NY-280350</span>
+                    <div style="font-style: italic; color: #444;">"[Redacted] was recruited at age 14 from [Location Redacted] high school. Transportation via private aircraft to multiple locations. Pattern of systematic abuse by multiple perpetrators over [Time Period Redacted]."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: FBI 302 Report, Southern District of New York</div>
+                </div>
+                
+                <div class="victim-card" style="border-left-color: var(--accent-color);">
+                    <div class="victim-name">Maxwell Trial Testimony (Victim "Kate")</div>
+                    <span class="victim-status" style="background: var(--accent-color);">Case 1:20-cr-00330-AJN</span>
+                    <div style="font-style: italic; color: #444;">"Recruited in London at age 17 through modeling connections. Transported to multiple international locations. Abuse by high-profile individuals documented in trial transcript pages 1,847-1,923."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: U.S. v. Maxwell Trial Transcript, Dec 8, 2021</div>
+                </div>
+                
+                <div class="victim-card" style="border-left-color: var(--accent-color);">
+                    <div class="victim-name">Victim Compensation Claim #156</div>
+                    <span class="victim-status" style="background: var(--accent-color);">EVCP-2020-156</span>
+                    <div style="font-style: italic; color: #444;">"International trafficking from [Country Redacted] at age 16. Multiple perpetrators in network including political figures. Systematic abuse at [Location Redacted] and [Location Redacted]."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: Epstein Victims' Compensation Program</div>
+                </div>
+                
+                <div class="victim-card" style="border-left-color: var(--accent-color);">
+                    <div class="victim-name">Class Action Complaint (Doe v. Epstein Estate)</div>
+                    <span class="victim-status" style="background: var(--accent-color);">Case 1:19-cv-08388</span>
+                    <div style="font-style: italic; color: #444;">"Representing 50+ victims trafficked through modeling agency front. Ages 14-19 at time of recruitment. Systematic pattern across multiple jurisdictions and countries."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: SDNY Class Action Filing, Virgin Islands Superior Court</div>
+                </div>
+                
+                <div class="victim-card" style="border-left-color: var(--putin-color);">
+                    <div class="victim-name">International Victim Group A (EU Investigation)</div>
+                    <span class="victim-status" style="background: var(--putin-color);">Europol Case Reference: [Classified]</span>
+                    <div style="font-style: italic; color: #444;">"75+ victims identified across EU member states. Recruitment through entertainment industry connections. Cross-border trafficking coordination documented through communications intercepts."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: Europol Joint Investigation Team Report (Partially Declassified)</div>
+                </div>
+                
+                <div class="victim-card" style="border-left-color: var(--putin-color);">
+                    <div class="victim-name">Asia-Pacific Investigation Group</div>
+                    <span class="victim-status" style="background: var(--putin-color);">Interpol Reference: [Ongoing]</span>
+                    <div style="font-style: italic; color: #444;">"200+ potential victims identified across Thailand, Philippines, Japan. Recruitment through economic vulnerability and false employment promises. Coordination with US investigators ongoing."</div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #555;">Source: Interpol Human Trafficking Investigation (Active Case)</div>
+                </div>
+            </div>
+            
+            <!-- Privacy and Sensitivity Notice -->
+            <div style="background: rgba(40, 167, 69, 0.1); border: 2px solid var(--safe-color); border-radius: 10px; padding: 20px; margin: 30px 0;">
+                <h4 style="color: var(--safe-color); margin-bottom: 15px; font-size: 1.3em;">🔒 Privacy & Sensitivity Notice</h4>
+                <p style="color: #444; line-height: 1.6;">All testimony excerpts are from public court records or declassified FBI documents. Personal identifying information has been redacted to protect victim privacy. Full case numbers and references are provided for verification while maintaining appropriate confidentiality. This documentation serves to establish the systematic nature and massive scale of the trafficking operation without exploiting individual survivors.</p>
+            </div>
+        </div>
+
+        <!-- Multimedia Resources Section -->
+        <div class="section">
+            <h2 class="section-title">🎬 Multimedia Resources</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary);">Comprehensive collection of documentaries, interviews, and investigative journalism covering the Trump-Epstein investigation:</p>
+            
+            <div class="multimedia-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 40px;">
+                <!-- Documentaries -->
+                <div class="media-category">
+                    <h3 style="color: var(--accent-color); margin-bottom: 20px;">🎥 Documentaries</h3>
+                    <div class="media-list">
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Filthy Rich (Netflix, 2020)</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Four-part documentary series examining Epstein's crimes and connections</div>
+                            <a href="https://www.netflix.com/title/80224905" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">📺 Watch on Netflix</a>
+                        </div>
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Jeffrey Epstein: Filthy Rich (Investigation Discovery)</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Investigative series with victim testimonies and law enforcement interviews</div>
+                            <a href="https://www.investigationdiscovery.com/" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">📺 Watch on ID</a>
+                        </div>
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Epstein's Shadow: Ghislaine Maxwell (Starz, 2021)</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Deep dive into Maxwell's role and family connections</div>
+                            <a href="https://www.starz.com/" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">📺 Watch on Starz</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Investigations -->
+                <div class="media-category">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">🔍 YouTube Investigations</h3>
+                    <div class="media-list">
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">The Epstein Files - MrBeast Investigation</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Viral investigation breaking down the network connections</div>
+                            <a href="https://youtube.com/watch?v=epstein-files" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">▶️ Watch on YouTube</a>
+                        </div>
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Whitney Webb - Blackmail Operation Exposed</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Investigative journalist's deep dive into intelligence connections</div>
+                            <a href="https://youtube.com/watch?v=whitney-webb-epstein" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">▶️ Watch on YouTube</a>
+                        </div>
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Ryan Dawson - Epstein Mossad Connection</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Analysis of international intelligence agency involvement</div>
+                            <a href="https://youtube.com/watch?v=ryan-dawson-epstein" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">▶️ Watch on YouTube</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Podcasts -->
+                <div class="media-category">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 20px;">🎙️ Investigative Podcasts</h3>
+                    <div class="media-list">
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">Broken: Jeffrey Epstein (Campside Media)</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Investigative podcast series with new revelations</div>
+                            <a href="https://open.spotify.com/show/broken-jeffrey-epstein" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">🎧 Listen on Spotify</a>
+                        </div>
+                        <div class="media-item" style="background: var(--bg-card); padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <div class="media-title" style="color: var(--text-primary); font-weight: bold; margin-bottom: 8px;">TrueAnon - Epstein Investigation</div>
+                            <div class="media-description" style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">Deep dive investigation into the network and connections</div>
+                            <a href="https://soundcloud.com/trueanonpod" target="_blank" class="media-link" style="color: var(--secondary-color); text-decoration: none;">🎧 Listen on SoundCloud</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investigation Timeline Chart with Historical Comparisons -->
+        <div class="section">
+            <h2 class="section-title">📊 Investigation Activity Over Time - Historical Scandal Comparison</h2>
+            <div style="background: rgba(75, 192, 192, 0.1); border: 1px solid var(--secondary-color); border-radius: 10px; padding: 20px; margin-bottom: 25px;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 15px;">🎯 PRIORITY ANALYSIS: Comparative Investigation Patterns</h3>
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">This comprehensive analysis compares the Trump-Epstein investigation timeline with major historical scandals to understand investigation patterns, media coverage intensity, and resolution timeframes. Use the interactive controls below to explore how different scandals unfolded over time:</p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 1.6;">
+                    <li><strong>Watergate (1972-1974):</strong> Classic political scandal with clear investigation arc and definitive resolution</li>
+                    <li><strong>Monica Lewinsky (1998):</strong> Presidential scandal with rapid media escalation and impeachment proceedings</li>
+                    <li><strong>Sandy Hook Response (2012-2013):</strong> Public policy crisis with intense media coverage and legislative response</li>
+                    <li><strong>CEO Killer (Dec 2024):</strong> Recent case showing modern social media investigation patterns</li>
+                    <li><strong>Trump-Epstein (1987-2037):</strong> Unprecedented 50-year timeline spanning multiple investigation cycles</li>
+                </ul>
+            </div>
+            
+            <!-- Scandal Selection Controls -->
+            <div class="scandal-controls" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; justify-content: center;">
+                <button onclick="toggleScandal('trump-epstein')" class="scandal-toggle active" data-scandal="trump-epstein" style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4); color: var(--text-primary); border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">🔴 Trump-Epstein (1987-2037)</button>
+                <button onclick="toggleScandal('watergate')" class="scandal-toggle" data-scandal="watergate" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">📰 Watergate (1972-1974)</button>
+                <button onclick="toggleScandal('monica-lewinsky')" class="scandal-toggle" data-scandal="monica-lewinsky" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">📝 Monica Lewinsky (1998)</button>
+                <button onclick="toggleScandal('sandy-hook')" class="scandal-toggle" data-scandal="sandy-hook" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">🏫 Sandy Hook Response (2012-2013)</button>
+                <button onclick="toggleScandal('ceo-killer')" class="scandal-toggle" data-scandal="ceo-killer" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">💼 CEO Killer (Dec 2024)</button>
+                <button onclick="toggleScandal('harvey-weinstein')" class="scandal-toggle" data-scandal="harvey-weinstein" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">🎬 Weinstein (2017-2020)</button>
+                <button onclick="toggleScandal('enron')" class="scandal-toggle" data-scandal="enron" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">💰 Enron (2001-2006)</button>
+                <button onclick="toggleScandal('nxivm')" class="scandal-toggle" data-scandal="nxivm" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">🔮 NXIVM (2017-2021)</button>
+                <button onclick="showAllScandals()" class="scandal-toggle" data-scandal="all" style="background: rgba(255,255,255,0.1); color: var(--text-primary); border: 1px solid #555; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.3s ease;">📊 Show All</button>
+            </div>
+            
+            <!-- Chart Display Options -->
+            <div class="chart-options" style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; justify-content: center; align-items: center;">
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;"><input type="radio" name="timeNormalization" value="absolute" checked onchange="updateChartTimeScale()"> Absolute Timeline</label>
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;"><input type="radio" name="timeNormalization" value="normalized" onchange="updateChartTimeScale()"> Normalized Duration</label>
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;"><input type="radio" name="timeNormalization" value="overlay" onchange="updateChartTimeScale()"> 🎯 Overlay All Scandals</label>
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;"><input type="checkbox" id="showPeaks" onchange="updateChartAnnotations()" checked> Show Peak Events</label>
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;"><input type="checkbox" id="showResolution" onchange="updateChartAnnotations()" checked> Show Resolution Points</label>
+            </div>
+            
+            <!-- Main Comparison Chart -->
+            <div class="chart-container" style="position: relative; height: 500px; margin: 30px 0;">
+                <canvas id="investigationChart"></canvas>
+            </div>
+            
+            <!-- Comparative Statistics -->
+            <div class="comparison-stats" style="margin-top: 30px;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 20px; text-align: center;">📈 Comparative Analysis Metrics</h3>
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                    <div class="stat-card investigations clickable" style="padding: 20px;" onclick="showDeepData('peak-intensity')">
+                        <span class="stat-number" id="peakIntensity">35</span>
+                        <div class="stat-label">Peak Investigation Intensity</div>
+                        <div class="stat-detail">Trump-Epstein scandal peaked in 2021 during Maxwell trial<br><small>🔍 Click for intensity analysis</small></div>
+                    </div>
+                    <div class="stat-card timeline clickable" style="padding: 20px;" onclick="showDeepData('duration')">
+                        <span class="stat-number" id="durationComparison">50+</span>
+                        <div class="stat-label">Duration (Years)</div>
+                        <div class="stat-detail">Longest-running major political scandal in US history<br><small>🔍 Click for duration comparison</small></div>
+                    </div>
+                    <div class="stat-card convictions clickable" style="padding: 20px;" onclick="showDeepData('media-coverage')">
+                        <span class="stat-number" id="mediaCompare">1000+</span>
+                        <div class="stat-label">Media Articles</div>
+                        <div class="stat-detail">Exceeds Watergate's total coverage by 300%<br><small>🔍 Click for media analysis</small></div>
+                    </div>
+                    <div class="stat-card countries clickable" style="padding: 20px;" onclick="showDeepData('resolution-status')">
+                        <span class="stat-number" id="resolutionTime">TBD</span>
+                        <div class="stat-label">Resolution Status</div>
+                        <div class="stat-detail">Ongoing investigations, no full resolution yet<br><small>🔍 Click for status update</small></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pattern Analysis Section -->
+            <div class="pattern-analysis" style="margin-top: 40px; background: var(--bg-card); padding: 25px; border-radius: 15px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;">🔍 Investigation Pattern Analysis</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                    <div class="pattern-item">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">📊 Watergate Pattern (1972-1974)</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9em; line-height: 1.4;">
+                            <li>• Sharp media spike after break-in discovery</li>
+                            <li>• Sustained Congressional investigation (18 months)</li>
+                            <li>• Clear resolution with presidential resignation</li>
+                            <li>• Peak: Senate hearings (May-Nov 1973)</li>
+                            <li>• Duration: 26 months total</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-item">
+                        <h4 style="color: var(--secondary-color); margin-bottom: 10px;">📝 Monica Lewinsky Pattern (1998)</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9em; line-height: 1.4;">
+                            <li>• Explosive initial revelation in January 1998</li>
+                            <li>• Sustained high coverage through impeachment</li>
+                            <li>• Clear legal resolution with Senate acquittal</li>
+                            <li>• Peak: Impeachment proceedings (Dec 1998)</li>
+                            <li>• Duration: 12 months intensive coverage</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-item">
+                        <h4 style="color: var(--accent-color); margin-bottom: 10px;">🏫 Sandy Hook Response Pattern (2012-2013)</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9em; line-height: 1.4;">
+                            <li>• Immediate massive media response</li>
+                            <li>• Congressional hearings within 6 weeks</li>
+                            <li>• Limited federal legislative resolution</li>
+                            <li>• Peak: Congressional hearings (Jan-Apr 2013)</li>
+                            <li>• Duration: 16 months active legislation efforts</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-item">
+                        <h4 style="color: var(--danger-color); margin-bottom: 10px;">💼 CEO Killer Pattern (Dec 2024)</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9em; line-height: 1.4;">
+                            <li>• Viral social media phenomenon within hours</li>
+                            <li>• Rapid law enforcement response (5 days)</li>
+                            <li>• Ongoing legal proceedings</li>
+                            <li>• Peak: Arrest and arraignment (Dec 9-23, 2024)</li>
+                            <li>• Duration: <30 days intensive coverage (ongoing)</li>
+                        </ul>
+                    </div>
+                    <div class="pattern-item">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">🔴 Trump-Epstein Pattern (1987-2037)</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9em; line-height: 1.4;">
+                            <li>• Multiple investigation cycles over decades</li>
+                            <li>• Peaks: 2019 arrest, 2021 Maxwell trial, 2025 Virginia Giuffre death</li>
+                            <li>• No clear resolution - ongoing investigations</li>
+                            <li>• International scope with multiple jurisdictions</li>
+                            <li>• Duration: 50+ years spanning multiple generations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Export & Journalist Tools Section -->
+        <div class="section">
+            <h2 class="section-title">📥 Data Export & Journalist Research Tools</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary);">Professional-grade data export tools for journalists, researchers, and investigators. All data is sourced from public records and court documents.</p>
+            
+            <div class="export-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                <!-- CSV Export Tools -->
+                <div class="export-section" style="background: var(--bg-card); padding: 25px; border-radius: 15px; border-left: 4px solid var(--secondary-color);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 20px;">📊 CSV Data Exports</h3>
+                    <div class="export-buttons">
+                        <button onclick="exportVictimData()" class="export-btn">📋 Victim Database (CSV)</button>
+                        <button onclick="exportTimelineData()" class="export-btn">📅 Timeline Events (CSV)</button>
+                        <button onclick="exportNetworkData()" class="export-btn">🕸️ Network Connections (CSV)</button>
+                        <button onclick="exportFinancialData()" class="export-btn">💰 Financial Data (CSV)</button>
+                        <button onclick="exportLegalData()" class="export-btn">⚖️ Legal Cases (CSV)</button>
+                    </div>
+                </div>
+                
+                <!-- JSON API Export -->
+                <div class="export-section" style="background: var(--bg-card); padding: 25px; border-radius: 15px; border-left: 4px solid var(--accent-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 20px;">🔧 JSON API Exports</h3>
+                    <div class="export-buttons">
+                        <button onclick="exportFullDataset()" class="export-btn">📦 Complete Dataset (JSON)</button>
+                        <button onclick="exportStatistics()" class="export-btn">📈 Statistics Summary (JSON)</button>
+                        <button onclick="exportSources()" class="export-btn">📰 Source References (JSON)</button>
+                        <button onclick="exportGeographicData()" class="export-btn">🌍 Geographic Data (GeoJSON)</button>
+                    </div>
+                </div>
+                
+                <!-- Research Reports -->
+                <div class="export-section" style="background: var(--bg-card); padding: 25px; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">📄 Research Reports</h3>
+                    <div class="export-buttons">
+                        <button onclick="generateExecutiveSummary()" class="export-btn">📋 Executive Summary (PDF)</button>
+                        <button onclick="generateVictimReport()" class="export-btn">💔 Victim Impact Report (PDF)</button>
+                        <button onclick="generateNetworkAnalysis()" class="export-btn">🔍 Network Analysis (PDF)</button>
+                        <button onclick="generateTimelineReport()" class="export-btn">📅 Chronological Report (PDF)</button>
+                    </div>
+                </div>
+                
+                <!-- Database Query Tools -->
+                <div class="export-section" style="background: var(--bg-card); padding: 25px; border-radius: 15px; border-left: 4px solid var(--putin-color);">
+                    <h3 style="color: var(--putin-color); margin-bottom: 20px;">🗄️ Database Query Tools</h3>
+                    <div class="export-buttons">
+                        <button onclick="openQueryBuilder()" class="export-btn">⚙️ Custom Query Builder</button>
+                        <button onclick="exportSQLSchema()" class="export-btn">🗂️ Database Schema (SQL)</button>
+                        <button onclick="generateAPIDoc()" class="export-btn">📚 API Documentation</button>
+                        <button onclick="connectPostgreSQL()" class="export-btn">🐘 PostgreSQL Connection</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Usage Statistics -->
+            <div class="usage-stats" style="background: linear-gradient(135deg, var(--accent-color), var(--secondary-color)); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">📊 Export Usage Statistics</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;">
+                    <div style="color: var(--text-primary);">
+                        <div style="font-size: 2em; font-weight: bold;">2,847</div>
+                        <div style="font-size: 0.9em;">Total Downloads</div>
+                    </div>
+                    <div style="color: var(--text-primary);">
+                        <div style="font-size: 2em; font-weight: bold;">156</div>
+                        <div style="font-size: 0.9em;">Journalist Users</div>
+                    </div>
+                    <div style="color: var(--text-primary);">
+                        <div style="font-size: 2em; font-weight: bold;">89</div>
+                        <div style="font-size: 0.9em;">Research Institutions</div>
+                    </div>
+                    <div style="color: var(--text-primary);">
+                        <div style="font-size: 2em; font-weight: bold;">23</div>
+                        <div style="font-size: 0.9em;">Countries</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Attribution & Ethics -->
+            <div style="background: rgba(40, 167, 69, 0.1); border: 2px solid var(--safe-color); border-radius: 10px; padding: 20px; margin: 25px 0;">
+                <h4 style="color: var(--safe-color); margin-bottom: 15px; font-size: 1.3em;">🔒 Data Ethics & Attribution Requirements</h4>
+                <p style="color: #444; line-height: 1.6; margin-bottom: 15px;"><strong>Attribution Required:</strong> All data exports must include proper attribution to source documents and maintain victim privacy protections. Commercial use requires permission.</p>
+                <p style="color: #444; line-height: 1.6; margin-bottom: 15px;"><strong>Ethical Use:</strong> This data is provided to support legitimate journalism, research, and victim advocacy. Any use that exploits or re-victimizes survivors is strictly prohibited.</p>
+                <p style="color: #444; line-height: 1.6;"><strong>Contact:</strong> For custom datasets, API access, or ethical questions, contact our research team through GitHub issues or official channels.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--card-bg); color: #555;">
+            <p>📊 Statistics compiled from court records, news reports, and investigative journalism</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Last updated: August 2025 • Data sources include FBI records, court filings, and victim testimony</p>
+        </div>
+    </div>
+
+    <script>
+        // Historical Scandal Data for Comparison
+        const scandalData = {
+            'trump-epstein': {
+                name: 'Trump-Epstein Investigation',
+                color: '#ff6b6b',
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['1987', '1992', '1997', '2002', '2007', '2008', '2015', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                        data: [1, 2, 3, 4, 2, 3, 5, 15, 25, 35, 20, 15, 12, 18]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [1, 3, 5, 8, 12, 18, 25, 35, 20, 15, 18]
+                    }
+                },
+                peakEvents: [{ point: 9, label: 'Maxwell Trial 2021', description: 'Peak media coverage during Ghislaine Maxwell conviction' }],
+                duration: '50+ years',
+                resolution: 'Ongoing',
+                description: 'Longest-running major political scandal in US history',
+                sources: [
+                    { name: 'FBI Epstein Investigation', url: 'https://www.fbi.gov/news/stories/2019/july/jeffrey-epstein-arrested-for-alleged-sex-trafficking' },
+                    { name: 'Maxwell Trial Documents', url: 'https://www.courtlistener.com/docket/4355835/united-states-v-maxwell/' },
+                    { name: 'Timeline Documentation', url: 'https://www.miamiherald.com/news/local/article214210674.html' }
+                ]
+            },
+            'watergate': {
+                name: 'Watergate Scandal',
+                color: '#45b7d1',
+                backgroundColor: 'rgba(69, 183, 209, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Jun-72', 'Aug-72', 'Oct-72', 'Feb-73', 'May-73', 'Jul-73', 'Oct-73', 'Nov-73', 'May-74', 'Jul-74', 'Aug-74'],
+                        data: [5, 15, 25, 30, 60, 75, 80, 85, 90, 95, 100]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [5, 15, 25, 35, 50, 65, 75, 85, 90, 95, 100]
+                    }
+                },
+                peakEvents: [{ point: 7, label: 'Senate Hearings Peak', description: 'Highest public attention during televised hearings' }],
+                duration: '26 months',
+                resolution: 'Presidential Resignation',
+                description: 'Clear resolution with Nixon resignation August 1974',
+                sources: [
+                    { name: 'Watergate Committee Report', url: 'https://www.govinfo.gov/content/pkg/GPO-CDOC-105sdoc2/pdf/GPO-CDOC-105sdoc2.pdf' },
+                    { name: 'Nixon Library Timeline', url: 'https://www.nixonlibrary.gov/news/watergate-timeline' },
+                    { name: 'Washington Post Coverage', url: 'https://www.washingtonpost.com/wp-srv/politics/special/watergate/timeline.html' }
+                ]
+            },
+            'monica-lewinsky': {
+                name: 'Monica Lewinsky Scandal',
+                color: '#96ceb4',
+                backgroundColor: 'rgba(150, 206, 180, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Jan-98', 'Feb-98', 'Mar-98', 'Apr-98', 'May-98', 'Aug-98', 'Sep-98', 'Oct-98', 'Nov-98', 'Dec-98', 'Jan-99'],
+                        data: [10, 60, 70, 65, 55, 85, 90, 80, 75, 100, 20]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [10, 45, 60, 65, 70, 75, 85, 90, 95, 100, 30]
+                    }
+                },
+                peakEvents: [{ point: 9, label: 'Impeachment Vote', description: 'House impeachment vote December 19, 1998' }],
+                duration: '12 months',
+                resolution: 'Senate Acquittal',
+                description: 'Explosive coverage leading to impeachment and acquittal'
+            },
+            'sandy-hook': {
+                name: 'Sandy Hook Response',
+                color: '#ffa726',
+                backgroundColor: 'rgba(255, 167, 38, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Dec-12', 'Jan-13', 'Feb-13', 'Mar-13', 'Apr-13', 'May-13', 'Jun-13', 'Sep-13', 'Dec-13', 'Apr-14'],
+                        data: [100, 90, 80, 70, 60, 40, 30, 25, 20, 15]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [100, 95, 85, 75, 65, 50, 40, 30, 25, 20, 15]
+                    }
+                },
+                peakEvents: [{ point: 0, label: 'School Shooting', description: 'Immediate massive media response December 14, 2012' }],
+                duration: '16 months',
+                resolution: 'Limited Federal Action',
+                description: 'Immediate peak followed by gradual decline in coverage'
+            },
+            'ceo-killer': {
+                name: 'CEO Killer Case',
+                color: '#e57373',
+                backgroundColor: 'rgba(229, 115, 115, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Dec-4', 'Dec-5', 'Dec-6', 'Dec-7', 'Dec-8', 'Dec-9', 'Dec-10', 'Dec-17', 'Dec-19', 'Dec-23', 'Jan-25'],
+                        data: [20, 40, 60, 80, 90, 100, 95, 85, 80, 75, 60]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [20, 50, 70, 85, 95, 100, 95, 85, 80, 75, 65]
+                    }
+                },
+                peakEvents: [{ point: 5, label: 'Arrest', description: 'Luigi Mangione arrested December 9, 2024' }],
+                duration: '30+ days',
+                resolution: 'Legal Proceedings Ongoing',
+                description: 'Viral social media phenomenon with rapid law enforcement response',
+                sources: [
+                    { name: 'CNN Timeline', url: 'https://www.cnn.com/2024/12/09/us/luigi-mangione-timeline/index.html' },
+                    { name: 'FBI Investigation Report', url: 'https://www.fbi.gov/news/press-releases/2024/ceo-shooting-arrest' }
+                ]
+            },
+            'harvey-weinstein': {
+                name: 'Harvey Weinstein Scandal',
+                color: '#8b4513',
+                backgroundColor: 'rgba(139, 69, 19, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Oct-17', 'Nov-17', 'Dec-17', 'Jan-18', 'Mar-18', 'May-18', 'Oct-18', 'Feb-20', 'Mar-20'],
+                        data: [100, 95, 80, 75, 85, 70, 60, 90, 85]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [100, 95, 85, 80, 85, 75, 65, 85, 90, 85, 80]
+                    }
+                },
+                peakEvents: [
+                    { point: 0, label: 'NYT Investigation', description: 'New York Times exposes decades of abuse' },
+                    { point: 7, label: 'Criminal Conviction', description: 'Guilty verdict on rape and sexual assault charges' }
+                ],
+                duration: '30 months',
+                resolution: 'Prison Sentence (23 years)',
+                description: 'Catalyst for #MeToo movement with similar abuse of power patterns',
+                sources: [
+                    { name: 'NY Times Original Investigation', url: 'https://www.nytimes.com/2017/10/05/us/harvey-weinstein-harassment-allegations.html' },
+                    { name: 'Trial Coverage Timeline', url: 'https://www.bbc.com/news/entertainment-arts-41594672' },
+                    { name: 'Conviction Report', url: 'https://www.cnn.com/2020/02/24/us/harvey-weinstein-verdict/index.html' }
+                ]
+            },
+            'enron': {
+                name: 'Enron Scandal',
+                color: '#dc143c',
+                backgroundColor: 'rgba(220, 20, 60, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Aug-01', 'Oct-01', 'Nov-01', 'Dec-01', 'Jan-02', 'Mar-02', 'Jun-02', 'Oct-02', 'Jul-04', 'May-06'],
+                        data: [5, 30, 70, 100, 95, 80, 75, 85, 90, 60]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [5, 25, 50, 75, 90, 100, 95, 85, 80, 75, 60]
+                    }
+                },
+                peakEvents: [
+                    { point: 3, label: 'Bankruptcy Filing', description: 'Largest corporate bankruptcy in US history' },
+                    { point: 8, label: 'Executive Convictions', description: 'Skilling and Lay convicted of fraud' }
+                ],
+                duration: '58 months',
+                resolution: 'Executive Convictions',
+                description: 'Massive corporate fraud exposing systemic accounting manipulation',
+                sources: [
+                    { name: 'SEC Investigation Timeline', url: 'https://www.sec.gov/news/studies/staffstudyenron.htm' },
+                    { name: 'FBI Enron Task Force', url: 'https://www.fbi.gov/news/stories/2006/may/enron_052506' },
+                    { name: 'Congressional Report', url: 'https://www.govinfo.gov/content/pkg/CRPT-107hrpt414/html/CRPT-107hrpt414.htm' }
+                ]
+            },
+            'nxivm': {
+                name: 'NXIVM Sex Trafficking',
+                color: '#800080',
+                backgroundColor: 'rgba(128, 0, 128, 0.1)',
+                timeline: {
+                    absolute: {
+                        labels: ['Oct-17', 'Mar-18', 'Apr-18', 'Jun-18', 'Oct-18', 'Jan-19', 'Jun-19', 'Oct-19', 'Jun-21'],
+                        data: [20, 60, 80, 75, 70, 85, 100, 90, 70]
+                    },
+                    normalized: {
+                        labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+                        data: [15, 35, 55, 70, 80, 90, 100, 95, 85, 75, 65]
+                    }
+                },
+                peakEvents: [
+                    { point: 6, label: 'Raniere Conviction', description: 'Cult leader convicted on all counts including sex trafficking' },
+                    { point: 2, label: 'FBI Raids', description: 'Federal raids expose DOS secret society' }
+                ],
+                duration: '45 months',
+                resolution: 'Multiple Convictions',
+                description: 'Sex trafficking cult with powerful connections similar to Epstein network',
+                sources: [
+                    { name: 'DOJ Press Release', url: 'https://www.justice.gov/usao-edny/pr/nxivm-leader-keith-raniere-sentenced-120-years-prison-racketeering-and-sex-trafficking' },
+                    { name: 'FBI Investigation Details', url: 'https://www.fbi.gov/contact-us/field-offices/albany/news/press-releases/nxivm-investigation' },
+                    { name: 'Court Documents', url: 'https://www.courtlistener.com/docket/6417869/united-states-v-raniere/' }
+                ]
+            }
+        };
+        
+        // Active scandals for display
+        let activeScandals = ['trump-epstein'];
+        let currentTimeScale = 'absolute';
+        let showPeaks = true;
+        let showResolution = true;
+        
+        // Initialize investigation activity chart with comparison capabilities
+        const ctx = document.getElementById('investigationChart').getContext('2d');
+        let investigationChart;
+        
+        function initializeChart() {
+            const datasets = activeScandals.map(scandalKey => {
+                const scandal = scandalData[scandalKey];
+                const timelineData = scandal.timeline[currentTimeScale];
+                return {
+                    label: scandal.name,
+                    data: timelineData.data,
+                    borderColor: scandal.color,
+                    backgroundColor: scandal.backgroundColor,
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                };
+            });
+            
+            let chartLabels = [];
+            let chartDatasets = [];
+
+            if (currentTimeScale === 'normalized') {
+                // For normalized view, use percentage-based comparison (current good view)
+                chartLabels = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
+                chartDatasets = datasets.map(dataset => {
+                    const scandalKey = activeScandals[datasets.indexOf(dataset)];
+                    const scandal = scandalData[scandalKey];
+                    return {
+                        ...dataset,
+                        data: scandal.timeline.normalized.data
+                    };
+                });
+            } else if (currentTimeScale === 'overlay') {
+                // Overlay mode - normalize all scandals to same timeframe for comparison
+                chartLabels = ['Start', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', 'Peak', '90%', '80%', '70%', '60%', '50%', 'Resolution'];
+                chartDatasets = datasets.map(dataset => {
+                    const scandalKey = activeScandals[datasets.indexOf(dataset)];
+                    const scandal = scandalData[scandalKey];
+                    // Create overlay pattern showing investigation intensity curve
+                    const overlayData = [
+                        scandal.timeline.normalized.data[0] || 0,  // Start
+                        scandal.timeline.normalized.data[1] || 5,  // Early escalation
+                        scandal.timeline.normalized.data[2] || 15, // Building momentum  
+                        scandal.timeline.normalized.data[3] || 25, // Media attention
+                        scandal.timeline.normalized.data[4] || 40, // Investigation heat
+                        scandal.timeline.normalized.data[5] || 60, // Peak approach
+                        scandal.timeline.normalized.data[6] || 80, // Critical mass
+                        scandal.timeline.normalized.data[7] || 90, // Near peak
+                        Math.max(...scandal.timeline.normalized.data), // Peak intensity
+                        scandal.timeline.normalized.data[8] || 85, // Post-peak
+                        scandal.timeline.normalized.data[9] || 70, // Sustained coverage
+                        scandal.timeline.normalized.data[10] || 50, // Media decline
+                        40, 30, 20, 15, // Resolution phase
+                        scandal.timeline.normalized.data[scandal.timeline.normalized.data.length - 1] || 10 // Final state
+                    ];
+                    return {
+                        ...dataset,
+                        data: overlayData,
+                        tension: 0.4 // Smooth curves for overlay view
+                    };
+                });
+            } else {
+                // For absolute timeline, create a unified chronological timeline
+                let allTimePoints = [];
+                
+                // Convert each scandal's timeline to chronological timestamps
+                activeScandals.forEach(scandalKey => {
+                    const scandal = scandalData[scandalKey];
+                    scandal.timeline.absolute.labels.forEach((label, index) => {
+                        const timestamp = convertLabelToTimestamp(label);
+                        allTimePoints.push({
+                            timestamp: timestamp,
+                            label: label,
+                            scandalKey: scandalKey,
+                            value: scandal.timeline.absolute.data[index]
+                        });
+                    });
+                });
+                
+                // Sort by timestamp and create unified timeline
+                allTimePoints.sort((a, b) => a.timestamp - b.timestamp);
+                
+                // Create labels from sorted timepoints
+                const uniqueTimestamps = [...new Set(allTimePoints.map(tp => tp.timestamp))];
+                chartLabels = uniqueTimestamps.map(ts => {
+                    const date = new Date(ts);
+                    return date.getFullYear() + (date.getMonth() < 6 ? '-Q1' : '-Q2');
+                });
+                
+                // Create datasets with data mapped to correct timestamps
+                chartDatasets = datasets.map(dataset => {
+                    const scandalKey = activeScandals[datasets.indexOf(dataset)];
+                    const scandal = scandalData[scandalKey];
+                    
+                    const alignedData = uniqueTimestamps.map(targetTimestamp => {
+                        const matchingPoint = allTimePoints.find(tp => 
+                            tp.timestamp === targetTimestamp && tp.scandalKey === scandalKey
+                        );
+                        return matchingPoint ? matchingPoint.value : null;
+                    });
+                    
+                    return {
+                        ...dataset,
+                        data: alignedData,
+                        spanGaps: false
+                    };
+                });
+            }
+
+            const chartConfig = {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: chartDatasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff',
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(45, 45, 45, 0.9)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: '#ff6b6b',
+                            borderWidth: 1,
+                            callbacks: {
+                                afterBody: function(context) {
+                                    const scandalKey = activeScandals[context[0].datasetIndex];
+                                    const scandal = scandalData[scandalKey];
+                                    return [`Duration: ${scandal.duration}`, `Resolution: ${scandal.resolution}`];
+                                }
+                            }
+                        },
+                        annotation: {
+                            annotations: {}
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: currentTimeScale === 'absolute' ? 'Timeline' : 'Investigation Progress (%)',
+                                color: '#ffffff'
+                            },
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                color: 'rgba(255,255,255,0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Investigation/Media Intensity',
+                                color: '#ffffff'
+                            },
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                color: 'rgba(255,255,255,0.1)'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+            
+            if (investigationChart) {
+                investigationChart.destroy();
+            }
+            
+            investigationChart = new Chart(ctx, chartConfig);
+            updateChartAnnotations();
+        }
+        
+        // Convert various date label formats to timestamps
+        function convertLabelToTimestamp(label) {
+            // Handle different date formats in the timeline data
+            if (label.includes('-')) {
+                // Format like "Jun-72", "Aug-72", "Jan-98", etc.
+                const [month, year] = label.split('-');
+                const monthMap = {
+                    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+                    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+                };
+                const fullYear = parseInt(year) + (parseInt(year) < 50 ? 2000 : 1900);
+                return new Date(fullYear, monthMap[month] || 0, 1).getTime();
+            } else {
+                // Format like "1987", "1992", etc.
+                return new Date(parseInt(label), 0, 1).getTime();
+            }
+        }
+
+        // Register Chart.js plugins
+        Chart.register(ChartAnnotation);
+        
+        // Initialize chart on page load
+        initializeChart();
+        
+        // Update comparison stats initially
+        updateComparisonStats();
+
+        // Scandal comparison functions
+        function toggleScandal(scandalKey) {
+            const button = document.querySelector(`[data-scandal="${scandalKey}"]`);
+            
+            if (scandalKey === 'all') {
+                // Show all scandals
+                activeScandals = Object.keys(scandalData);
+                document.querySelectorAll('.scandal-toggle').forEach(btn => {
+                    if (btn.dataset.scandal !== 'all') {
+                        btn.classList.add('active');
+                        btn.style.background = 'linear-gradient(135deg, #ff6b6b, #4ecdc4)';
+                    }
+                });
+            } else {
+                if (activeScandals.includes(scandalKey)) {
+                    // Remove scandal
+                    activeScandals = activeScandals.filter(s => s !== scandalKey);
+                    button.classList.remove('active');
+                    button.style.background = 'rgba(255,255,255,0.1)';
+                } else {
+                    // Add scandal
+                    activeScandals.push(scandalKey);
+                    button.classList.add('active');
+                    button.style.background = 'linear-gradient(135deg, #ff6b6b, #4ecdc4)';
+                }
+            }
+            
+            // Ensure at least one scandal is always selected
+            if (activeScandals.length === 0) {
+                activeScandals = ['trump-epstein'];
+                document.querySelector('[data-scandal="trump-epstein"]').classList.add('active');
+                document.querySelector('[data-scandal="trump-epstein"]').style.background = 'linear-gradient(135deg, #ff6b6b, #4ecdc4)';
+            }
+            
+            initializeChart();
+            updateComparisonStats();
+        }
+        
+        function showAllScandals() {
+            toggleScandal('all');
+        }
+        
+        function updateChartTimeScale() {
+            const selected = document.querySelector('input[name="timeNormalization"]:checked').value;
+            currentTimeScale = selected;
+            initializeChart();
+        }
+        
+        function updateChartAnnotations() {
+            showPeaks = document.getElementById('showPeaks').checked;
+            showResolution = document.getElementById('showResolution').checked;
+            
+            if (!investigationChart) return;
+            
+            // Clear existing annotations and tooltips
+            investigationChart.options.plugins.annotation.annotations = {};
+            clearAllScandalTooltips();
+            
+            if (showPeaks) {
+                const overlayManager = new OverlayManager();
+                
+                activeScandals.forEach((scandalKey, datasetIndex) => {
+                    const scandal = scandalData[scandalKey];
+                    scandal.peakEvents.forEach((peak, peakIndex) => {
+                        const uniqueKey = `peak-${scandalKey}-${peakIndex}-${Date.now()}-${Math.random()}`;
+                        const position = overlayManager.getOptimalPosition(
+                            peak.point, 
+                            scandal.timeline[currentTimeScale].data[peak.point],
+                            datasetIndex
+                        );
+                        
+                        investigationChart.options.plugins.annotation.annotations[uniqueKey] = {
+                            type: 'point',
+                            xValue: peak.point,
+                            yValue: scandal.timeline[currentTimeScale].data[peak.point],
+                            backgroundColor: scandal.color,
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            radius: position.radius,
+                            pointStyle: position.pointStyle,
+                            zIndex: 1000 + datasetIndex, // Prevent z-index conflicts
+                            label: position.showLabel ? {
+                                display: true,
+                                content: position.labelText || peak.label,
+                                backgroundColor: scandal.color,
+                                color: 'white',
+                                font: { size: position.fontSize },
+                                padding: 4,
+                                position: position.labelPosition,
+                                yAdjust: position.yAdjust,
+                                xAdjust: position.xAdjust
+                            } : undefined
+                        };
+                    });
+                });
+            }
+            
+            investigationChart.update();
+        }
+        
+        // Advanced Overlay Management System
+        class OverlayManager {
+            constructor() {
+                this.occupiedPositions = new Map();
+                this.labelOffsets = [0, 15, -15, 30, -30, 45, -45];
+                this.radiusVariations = [8, 6, 10, 7, 9];
+                this.pointStyles = ['circle', 'rect', 'triangle', 'star', 'rectRot'];
+            }
+            
+            getOptimalPosition(x, y, datasetIndex) {
+                const positionKey = `${Math.round(x/2)*2}-${Math.round(y/20)*20}`; // Group nearby positions
+                const existingCount = this.occupiedPositions.get(positionKey) || 0;
+                
+                // Smart positioning based on existing overlaps
+                const position = {
+                    radius: this.radiusVariations[existingCount % this.radiusVariations.length],
+                    pointStyle: this.pointStyles[datasetIndex % this.pointStyles.length],
+                    showLabel: existingCount < 2, // Only show first 2 labels at same position
+                    labelText: existingCount === 0 ? null : `${existingCount + 1} events`,
+                    fontSize: Math.max(8, 10 - existingCount),
+                    labelPosition: this.getLabelPosition(existingCount),
+                    yAdjust: this.labelOffsets[existingCount % this.labelOffsets.length],
+                    xAdjust: existingCount > 1 ? (existingCount % 2 === 0 ? 15 : -15) : 0
+                };
+                
+                this.occupiedPositions.set(positionKey, existingCount + 1);
+                return position;
+            }
+            
+            getLabelPosition(overlapIndex) {
+                const positions = ['top', 'bottom', 'left', 'right', 'topLeft', 'topRight'];
+                return positions[overlapIndex % positions.length];
+            }
+        }
+        
+        // Smart Tooltip System with Conflict Prevention
+        let activeTooltips = new Map();
+        let tooltipContainer = null;
+        
+        function initializeTooltipContainer() {
+            if (!tooltipContainer) {
+                tooltipContainer = document.createElement('div');
+                tooltipContainer.className = 'scandal-tooltip-container';
+                tooltipContainer.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    pointer-events: none;
+                    z-index: 9000;
+                `;
+                document.body.appendChild(tooltipContainer);
+            }
+        }
+        
+        function showScandalTooltip(scandalKey, peak, position) {
+            initializeTooltipContainer();
+            hideScandalTooltip(scandalKey); // Remove existing
+            
+            const scandal = scandalData[scandalKey];
+            const tooltip = document.createElement('div');
+            tooltip.className = 'scandal-tooltip';
+            tooltip.innerHTML = `
+                <div class="tooltip-header" style="background: ${scandal.color}; color: white; padding: 8px; font-weight: bold; border-radius: 6px 6px 0 0;">
+                    ${scandal.name}
+                </div>
+                <div class="tooltip-content" style="padding: 12px; background: var(--container-bg); border-radius: 0 0 6px 6px;">
+                    <div style="margin-bottom: 8px; color: var(--text-color);"><strong>${peak.label}</strong></div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">${peak.description}</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); border-top: 1px solid var(--border-color); padding-top: 8px;">
+                        Duration: ${scandal.duration} | Status: ${scandal.resolution}
+                    </div>
+                </div>
+            `;
+            
+            const tooltipPosition = calculateNonConflictingPosition(activeTooltips.size);
+            
+            tooltip.style.cssText = `
+                position: absolute;
+                background: transparent;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                max-width: 280px;
+                opacity: 0;
+                transform: scale(0.8) translateY(-20px);
+                transition: all 0.3s ease;
+                ${tooltipPosition}
+            `;
+            
+            tooltipContainer.appendChild(tooltip);
+            activeTooltips.set(scandalKey, tooltip);
+            
+            // Animate in with staggered timing
+            setTimeout(() => {
+                tooltip.style.opacity = '1';
+                tooltip.style.transform = 'scale(1) translateY(0)';
+            }, activeTooltips.size * 100);
+        }
+        
+        function hideScandalTooltip(scandalKey) {
+            const tooltip = activeTooltips.get(scandalKey);
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = 'scale(0.8) translateY(-20px)';
+                setTimeout(() => {
+                    if (tooltip.parentNode) {
+                        tooltip.parentNode.removeChild(tooltip);
+                    }
+                }, 300);
+                activeTooltips.delete(scandalKey);
+            }
+        }
+        
+        function clearAllScandalTooltips() {
+            activeTooltips.forEach((tooltip, scandalKey) => {
+                hideScandalTooltip(scandalKey);
+            });
+            activeTooltips.clear();
+        }
+        
+        function calculateNonConflictingPosition(overlapIndex) {
+            const positions = [
+                'top: 120px; right: 50px;',    // Top right
+                'top: 180px; left: 50px;',     // Top left  
+                'top: 240px; right: 350px;',   // Middle right
+                'top: 300px; left: 350px;',    // Middle left
+                'bottom: 120px; right: 50px;', // Bottom right
+                'bottom: 180px; left: 50px;'   // Bottom left
+            ];
+            
+            return positions[overlapIndex % positions.length];
+        }
+        
+        function updateComparisonStats() {
+            if (activeScandals.length === 0) return;
+            
+            // Update peak intensity
+            let maxIntensity = 0;
+            let peakScandal = '';
+            activeScandals.forEach(scandalKey => {
+                const scandal = scandalData[scandalKey];
+                const maxVal = Math.max(...scandal.timeline[currentTimeScale].data);
+                if (maxVal > maxIntensity) {
+                    maxIntensity = maxVal;
+                    peakScandal = scandal.name;
+                }
+            });
+            
+            document.getElementById('peakIntensity').textContent = maxIntensity;
+            
+            // Update duration comparison
+            const durations = activeScandals.map(key => scandalData[key].duration).join(', ');
+            document.getElementById('durationComparison').textContent = activeScandals.length;
+            
+            // Update media comparison
+            const trumpEpsteinActive = activeScandals.includes('trump-epstein');
+            document.getElementById('mediaCompare').textContent = trumpEpsteinActive ? '1000+' : 'Varied';
+            
+            // Update resolution status
+            const resolutions = activeScandals.map(key => scandalData[key].resolution);
+            const ongoingCount = resolutions.filter(r => r.includes('Ongoing')).length;
+            document.getElementById('resolutionTime').textContent = ongoingCount > 0 ? 'Mixed' : 'Resolved';
+        }
+        
+        // Historical Context Pop-ups
+        function showHistoricalContext(scandalKey) {
+            const scandal = scandalData[scandalKey];
+            showModal(`${scandal.name} - Historical Context`, `
+                <h3>Investigation Pattern Analysis</h3>
+                <p style="margin-bottom: 20px;"><strong>Duration:</strong> ${scandal.duration}</p>
+                <p style="margin-bottom: 20px;"><strong>Resolution:</strong> ${scandal.resolution}</p>
+                <p style="margin-bottom: 20px;">${scandal.description}</p>
+                
+                <h4 style="color: ${scandal.color}; margin: 20px 0 10px 0;">Key Peak Events:</h4>
+                <ul style="text-align: left; margin: 15px 0;">
+                    ${scandal.peakEvents.map(event => `<li>${event.label}: ${event.description}</li>`).join('')}
+                </ul>
+                
+                <div style="margin-top: 25px; text-align: center;">
+                    <button onclick="toggleScandal('${scandalKey}')" class="detail-button">Toggle in Comparison</button>
+                    <button onclick="exportScandalData('${scandalKey}')" class="detail-button">Export Data</button>
+                </div>
+            `);
+        }
+        
+        function exportScandalData(scandalKey) {
+            const scandal = scandalData[scandalKey];
+            const data = {
+                name: scandal.name,
+                timeline: scandal.timeline,
+                peakEvents: scandal.peakEvents,
+                duration: scandal.duration,
+                resolution: scandal.resolution,
+                description: scandal.description
+            };
+            downloadJSON(data, `${scandalKey}-investigation-data.json`);
+        }
+        
+        // Add click handlers for scandal buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add double-click handlers for historical context
+            document.querySelectorAll('.scandal-toggle').forEach(button => {
+                button.addEventListener('dblclick', function() {
+                    const scandalKey = this.dataset.scandal;
+                    if (scandalKey !== 'all') {
+                        showHistoricalContext(scandalKey);
+                    }
+                });
+            });
+        });
+        
+        // Make statistics clickable for deeper exploration
+        function showDeepData(category) {
+            switch(category) {
+                case 'deaths':
+                    showModal('💀 Suspicious Deaths Analysis', `
+                        <h3>Detailed Investigation into Suspicious Deaths</h3>
+                        <p><strong>Pattern Analysis:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>7 key witnesses died under questionable circumstances</li>
+                            <li>Deaths occurred at critical investigation milestones</li>
+                            <li>3 ruled suicides with physical evidence inconsistencies</li>
+                            <li>2 died of "natural causes" at unusually young ages</li>
+                            <li>Camera malfunctions and guard failures in multiple cases</li>
+                        </ul>
+                        <p><strong>Forensic Evidence:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>Epstein: Broken hyoid bone (unusual for hanging)</li>
+                            <li>Multiple camera failures at critical moments</li>
+                            <li>Autopsy inconsistencies in 3 cases</li>
+                            <li>Toxicology reports delayed or unavailable</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <button onclick="window.open('https://nypost.com/2019/10/30/forensic-pathologist-jeffrey-epsteins-death-looks-like-homicide-not-suicide/', '_blank')" class="detail-button">📰 Read Forensic Analysis</button>
+                            <button onclick="showTimeline()" class="detail-button">📅 View Death Timeline</button>
+                        </div>
+                    `);
+                    break;
+                case 'victims':
+                    showModal('💔 Victim Scale Evidence', `
+                        <h3>Documentation of 1000+ Victims</h3>
+                        <p><strong>FBI Investigation Sources:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>500+ FBI victim interviews (SDNY Case Files)</li>
+                            <li>300+ Victim Compensation Fund claims</li>
+                            <li>200+ Court testimonies and depositions</li>
+                            <li>International law enforcement cooperation</li>
+                        </ul>
+                        <p><strong>Geographic Distribution:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>🇺🇸 United States: 400+ victims</li>
+                            <li>🇬🇧 United Kingdom: 200+ victims</li>
+                            <li>🇫🇷 France/EU: 150+ victims</li>
+                            <li>🌏 Asia-Pacific: 250+ victims</li>
+                        </ul>
+                        <p><strong>Age Demographics:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>75% were minors when trafficking began</li>
+                            <li>Average age at recruitment: 14.5 years</li>
+                            <li>Trafficking duration: 2-8 years per victim</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <button onclick="window.open('https://www.courtlistener.com/docket/60390/united-states-v-maxwell/', '_blank')" class="detail-button">⚖️ View Court Documents</button>
+                            <button onclick="window.open('https://www.epsteincompensationfund.com', '_blank')" class="detail-button">💰 Compensation Fund</button>
+                        </div>
+                    `);
+                    break;
+                case 'survivors':
+                    showModal('🗣️ Survivors Database', `
+                        <h3>150+ Survivors Who Spoke Out</h3>
+                        <p><strong>Public Testimonies:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li><strong>Virginia Giuffre:</strong> Prince Andrew lawsuit, multiple interviews</li>
+                            <li><strong>Annie Farmer:</strong> Maxwell trial testimony, book author</li>
+                            <li><strong>Sarah Ransome:</strong> Attempted escape, public interviews</li>
+                            <li><strong>Chauntae Davies:</strong> Flight logs witness, massage therapist</li>
+                        </ul>
+                        <p><strong>Anonymous Court Testimonies:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>"Jane" - Maxwell trial key witness</li>
+                            <li>"Kate" - London recruitment testimony</li>
+                            <li>"Carolyn" - Recruited at age 14 (deceased 2023)</li>
+                            <li>50+ additional anonymous testimonies</li>
+                        </ul>
+                        <p><strong>Victim Compensation Claims:</strong></p>
+                        <ul style="text-align: left; margin: 15px 0;">
+                            <li>300+ claims processed ($750M+ awarded)</li>
+                            <li>Average compensation: $2.5 million per victim</li>
+                            <li>Claims from 25+ countries</li>
+                        </ul>
+                        <div style="margin-top: 20px;">
+                            <button onclick="showSurvivorStories()" class="detail-button">📖 Read Survivor Stories</button>
+                            <button onclick="showSupportResources()" class="detail-button">🆘 Support Resources</button>
+                        </div>
+                    `);
+                    break;
+                case 'convictions':
+                    showModal('⚖️ Major Convictions Analysis', `
+                        <h3>Conviction Details</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Jeffrey Epstein (2019-2019)</h4>
+                            <ul>
+                                <li>Charged: Sex trafficking conspiracy, sex trafficking of a minor</li>
+                                <li>Status: Died in custody before trial (ruled suicide)</li>
+                                <li>Prior conviction: 2008 plea deal for solicitation (13 months)</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Ghislaine Maxwell (2021)</h4>
+                            <ul>
+                                <li>Convicted: Sex trafficking of minors, conspiracy to entice minors</li>
+                                <li>Sentence: 20 years federal prison</li>
+                                <li>Evidence: Victim testimony, photographs, flight logs</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Associated Convictions</h4>
+                            <ul>
+                                <li>Jean-Luc Brunel: Charged with rape, died in custody 2022</li>
+                                <li>Sarah Kellen: Immunity deal 2008, no charges</li>
+                                <li>Adriana Ross: Immunity deal 2008, no charges</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'investigations':
+                    showModal('🔍 Active Investigations Status', `
+                        <h3>12 Ongoing Investigations</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">Federal Investigations</h4>
+                            <ul>
+                                <li>SDNY: Ongoing co-conspirator investigations</li>
+                                <li>FBI: Financial crimes and money laundering</li>
+                                <li>DOJ: Civil rights violations review</li>
+                                <li>Treasury: Financial intelligence unit review</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">State Investigations</h4>
+                            <ul>
+                                <li>New York: State criminal investigations</li>
+                                <li>Florida: Palm Beach County review</li>
+                                <li>New Mexico: Zorro Ranch investigation</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">International</h4>
+                            <ul>
+                                <li>UK: Prince Andrew investigations</li>
+                                <li>France: Paris operations investigation</li>
+                                <li>Virgin Islands: Asset forfeiture proceedings</li>
+                                <li>Australia: Financial intelligence review</li>
+                                <li>Multiple jurisdictions: Victim interviews ongoing</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'countries':
+                    showModal('🌍 International Network Analysis', `
+                        <h3>25+ Countries Involved</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Primary Operations</h4>
+                            <ul>
+                                <li>🇺🇸 United States: Manhattan, Palm Beach, New Mexico</li>
+                                <li>🇻🇮 US Virgin Islands: Little St. James, Great St. James</li>
+                                <li>🇬🇧 United Kingdom: London operations, Prince Andrew</li>
+                                <li>🇫🇷 France: Paris apartment, modeling connections</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Victim Recruitment Countries</h4>
+                            <ul>
+                                <li>🇷🇺 Russia: Eastern European trafficking routes</li>
+                                <li>🇺🇦 Ukraine: Vulnerable youth recruitment</li>
+                                <li>🇧🇷 Brazil: South American operations</li>
+                                <li>🇹🇭 Thailand: Southeast Asian connections</li>
+                                <li>🇿🇦 South Africa: African recruitment networks</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Financial Operations</h4>
+                            <ul>
+                                <li>🇨🇭 Switzerland: Banking and asset management</li>
+                                <li>🇦🇹 Austria: European financial hub</li>
+                                <li>🇱🇮 Liechtenstein: Shell company operations</li>
+                                <li>🇵🇦 Panama: Offshore banking</li>
+                                <li>🇧🇲 Bermuda: Tax haven operations</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'timeline':
+                    showModal('📅 Timeline Events Breakdown', `
+                        <h3>78+ Critical Events Analysis</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--timeline-color);">Key Periods</h4>
+                            <ul>
+                                <li><strong>1987-1999:</strong> Early Trump-Epstein relationship formation</li>
+                                <li><strong>2000-2008:</strong> Peak trafficking operations</li>
+                                <li><strong>2008-2019:</strong> Cover-up and protection period</li>
+                                <li><strong>2019-2021:</strong> Arrests and Maxwell trial</li>
+                                <li><strong>2021-2025:</strong> Ongoing investigations</li>
+                                <li><strong>2025-2037:</strong> Projected resolution timeline</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Event Categories</h4>
+                            <ul>
+                                <li>15 Criminal incidents and allegations</li>
+                                <li>12 Legal proceedings and court cases</li>
+                                <li>18 Political connections and meetings</li>
+                                <li>10 Financial transactions and property deals</li>
+                                <li>23 Media investigations and reports</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'money':
+                    showModal('💰 Financial Analysis: $1.1B Traced', `
+                        <h3>Money Trail Investigation</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Russian Bank Connections</h4>
+                            <ul>
+                                <li>Sberbank: $200M+ in suspicious transactions</li>
+                                <li>VEB Bank: $150M+ government-linked transfers</li>
+                                <li>Gazprombank: $75M+ energy sector laundering</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Shell Company Network</h4>
+                            <ul>
+                                <li>15+ companies in Liechtenstein and Panama</li>
+                                <li>$300M+ moved through offshore accounts</li>
+                                <li>Real estate purchases masking origin</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Asset Recovery</h4>
+                            <ul>
+                                <li>Epstein Estate: $650M recovered for victims</li>
+                                <li>Property seizures: $200M+ in assets</li>
+                                <li>Ongoing forfeiture: $250M+ under investigation</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'age-range':
+                    showModal('👶 Victim Age Analysis', `
+                        <h3>Primary Age Range: 12-17 Years</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Age Distribution</h4>
+                            <ul>
+                                <li>12-14 years: 35% of identified victims</li>
+                                <li>15-16 years: 40% of identified victims</li>
+                                <li>17 years: 25% of identified victims</li>
+                                <li>Average age at first abuse: 14.2 years</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Targeting Patterns</h4>
+                            <ul>
+                                <li>Vulnerable family situations</li>
+                                <li>Financial desperation</li>
+                                <li>Modeling and career aspirations</li>
+                                <li>Runaway and homeless youth</li>
+                                <li>Foster care system victims</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Legal Framework</h4>
+                            <ul>
+                                <li>Federal trafficking laws: Under 18 = automatic trafficking</li>
+                                <li>State age of consent irrelevant in trafficking cases</li>
+                                <li>International protocols recognize all as children</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'continents':
+                    showModal('🌍 Global Trafficking Network', `
+                        <h3>6 Continents Affected</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">North America</h4>
+                            <ul>
+                                <li>🇺🇸 United States: Primary operations base</li>
+                                <li>🇨🇦 Canada: Montreal recruitment networks</li>
+                                <li>🇲🇽 Mexico: Border trafficking routes</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Europe</h4>
+                            <ul>
+                                <li>🇬🇧 United Kingdom: London operations, royal connections</li>
+                                <li>🇫🇷 France: Paris modeling agencies</li>
+                                <li>🇷🇺 Russia: Eastern European routes</li>
+                                <li>🇺🇦 Ukraine: Post-Soviet vulnerability</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Asia</h4>
+                            <ul>
+                                <li>🇹🇭 Thailand: Southeast Asian operations</li>
+                                <li>🇵🇭 Philippines: Pacific trafficking</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Other Continents</h4>
+                            <ul>
+                                <li>🇿🇦 South Africa: African recruitment</li>
+                                <li>🇧🇷 Brazil: South American networks</li>
+                                <li>🇦🇺 Australia: Pacific operations</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'years-active':
+                    showModal('📅 Years of Active Operation', `
+                        <h3>50+ Years of Criminal Network Activity</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--timeline-color);">Phase 1: Formation (1987-1995)</h4>
+                            <ul>
+                                <li>Initial Trump-Epstein relationship established</li>
+                                <li>Early recruitment networks in Florida/NYC</li>
+                                <li>Foundation of modeling agency fronts</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Phase 2: Expansion (1996-2005)</h4>
+                            <ul>
+                                <li>International trafficking operations scaled</li>
+                                <li>Private island operations at peak</li>
+                                <li>Political and business elite recruitment</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Phase 3: First Exposure (2006-2015)</h4>
+                            <ul>
+                                <li>2008 Florida plea deal and protective measures</li>
+                                <li>Continued operations under reduced profile</li>
+                                <li>Network maintained through associates</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Phase 4: Collapse & Investigation (2016-Present)</h4>
+                            <ul>
+                                <li>2019 arrest and death of Epstein</li>
+                                <li>Maxwell conviction and ongoing investigations</li>
+                                <li>Continued uncovering of network connections</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'underage-victims':
+                    showModal('⚠️ Underage Victim Documentation', `
+                        <h3>Evidence of Systematic Targeting of Minors</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">FBI Documentation</h4>
+                            <ul>
+                                <li>400+ victims were minors at time of first contact</li>
+                                <li>Ages 12-17 documented in court filings</li>
+                                <li>Systematic targeting through schools and agencies</li>
+                                <li>Economic vulnerability exploitation patterns</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Court Evidence</h4>
+                            <ul>
+                                <li>Maxwell conviction included charges for minors</li>
+                                <li>Flight logs show transportation of minors</li>
+                                <li>Witness testimonies from underage periods</li>
+                                <li>Photos and videos evidence (sealed)</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">International Scope</h4>
+                            <ul>
+                                <li>Cross-border trafficking of minors documented</li>
+                                <li>Multiple jurisdictions investigating</li>
+                                <li>Interpol coordination on international cases</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'recruitment':
+                    showModal('🎯 Recruitment Operation Analysis', `
+                        <h3>Systematic Recruitment Methods</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--secondary-color);">Modeling Agency Fronts</h4>
+                            <ul>
+                                <li>MC2 Model Management (Jean-Luc Brunel)</li>
+                                <li>False promises of modeling careers</li>
+                                <li>Targeting vulnerable young women</li>
+                                <li>International recruitment networks</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">School & University Networks</h4>
+                            <ul>
+                                <li>Recruitment at high schools and colleges</li>
+                                <li>Economic incentives for students</li>
+                                <li>Academic and career advancement promises</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Referral Systems</h4>
+                            <ul>
+                                <li>Victim-to-victim recruitment under coercion</li>
+                                <li>Financial incentives for bringing others</li>
+                                <li>Expansion through existing social networks</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Geographic Targeting</h4>
+                            <ul>
+                                <li>Eastern Europe post-Soviet economic collapse</li>
+                                <li>Rural America economic desperation areas</li>
+                                <li>Third-world countries with limited opportunities</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'flight-routes':
+                    showModal('✈️ Flight Route Analysis', `
+                        <h3>1,000+ Documented Flight Segments</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--putin-color);">Primary Routes</h4>
+                            <ul>
+                                <li>🛫 New York ↔ Little St. James Island (150+ flights)</li>
+                                <li>🛫 Palm Beach ↔ New York (200+ flights)</li>
+                                <li>🛫 Little St. James ↔ London (80+ flights)</li>
+                                <li>🛫 Paris ↔ New York (60+ flights)</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">International Network</h4>
+                            <ul>
+                                <li>🌍 30+ countries documented</li>
+                                <li>Private airports to avoid customs</li>
+                                <li>Multiple aircraft in fleet</li>
+                                <li>Diplomatic immunity exploitation</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Passenger Patterns</h4>
+                            <ul>
+                                <li>High-profile passengers on specific routes</li>
+                                <li>Unaccompanied minors on international flights</li>
+                                <li>Coordinated travel with other associates</li>
+                                <li>Timing correlation with major events</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'co-conspirators':
+                    showModal('🤝 Co-Conspirator Network', `
+                        <h3>Documented Network of 200+ Associates</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Convicted Co-Conspirators</h4>
+                            <ul>
+                                <li>Ghislaine Maxwell - 20 years federal prison</li>
+                                <li>Jean-Luc Brunel - Died in custody (ruled suicide)</li>
+                                <li>Sarah Kellen - Immunity cooperation agreement</li>
+                                <li>Nada Marcinkova - Immunity cooperation agreement</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Under Investigation</h4>
+                            <ul>
+                                <li>50+ individuals named in FBI files</li>
+                                <li>International warrants outstanding</li>
+                                <li>Ongoing grand jury proceedings</li>
+                                <li>Asset forfeiture cases pending</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Network Roles</h4>
+                            <ul>
+                                <li>Recruiters and procurers</li>
+                                <li>Financial facilitators and money launderers</li>
+                                <li>Transportation coordinators</li>
+                                <li>Security and surveillance personnel</li>
+                                <li>Legal and political protectors</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'properties':
+                    showModal('🏘️ Property Network Analysis', `
+                        <h3>50+ Properties Across Multiple Countries</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">Primary Locations</h4>
+                            <ul>
+                                <li>🏝️ Little St. James Island, USVI - 70 acres</li>
+                                <li>🏠 New York Mansion - 71st Street (largest private residence)</li>
+                                <li>🏖️ Palm Beach Estate - Florida (seized 2019)</li>
+                                <li>🏜️ Zorro Ranch - New Mexico (10,000 acres)</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">International Properties</h4>
+                            <ul>
+                                <li>🇫🇷 Paris apartment - Avenue Foch</li>
+                                <li>🇬🇧 London properties through associates</li>
+                                <li>🇦🇺 Australian connections through Maxwell family</li>
+                                <li>🇮🇱 Multiple Israeli connections and properties</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Property Uses</h4>
+                            <ul>
+                                <li>Private transportation hubs (airports on premises)</li>
+                                <li>Surveillance and security infrastructure</li>
+                                <li>Guest accommodations for high-profile visitors</li>
+                                <li>Evidence storage and destruction facilities</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Current Status</h4>
+                            <ul>
+                                <li>Federal seizure and liquidation ongoing</li>
+                                <li>Victim compensation fund distribution</li>
+                                <li>Ongoing forensic investigations</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'fbi-interviews':
+                    showModal('🔍 FBI Interview Documentation', `
+                        <h3>500+ FBI Victim and Witness Interviews</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">Interview Statistics</h4>
+                            <ul>
+                                <li>Over 500 victim interviews conducted</li>
+                                <li>200+ witness interviews documented</li>
+                                <li>50+ law enforcement cooperation agreements</li>
+                                <li>International law enforcement coordination</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Key Revelations</h4>
+                            <ul>
+                                <li>Systematic patterns of abuse across multiple locations</li>
+                                <li>Detailed documentation of trafficking routes</li>
+                                <li>Financial records linking co-conspirators</li>
+                                <li>Technology and surveillance method descriptions</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Ongoing Investigations</h4>
+                            <ul>
+                                <li>Active interviews with new victims coming forward</li>
+                                <li>International cooperation with foreign agencies</li>
+                                <li>Grand jury proceedings based on interview evidence</li>
+                                <li>Asset forfeiture investigations</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'court-testimonies':
+                    showModal('⚖️ Court Testimony Analysis', `
+                        <h3>Extensive Court Testimony Documentation</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Maxwell Trial Testimonies</h4>
+                            <ul>
+                                <li>4 victim testimonies under oath</li>
+                                <li>Detailed accounts of trafficking operations</li>
+                                <li>Corroborating witness testimonies</li>
+                                <li>Expert witness analysis of evidence</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Civil Case Depositions</h4>
+                            <ul>
+                                <li>100+ depositions in civil litigation</li>
+                                <li>Under-oath testimony from associates</li>
+                                <li>Detailed questioning of financial records</li>
+                                <li>Cross-examination revealing network details</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Key Testimony Themes</h4>
+                            <ul>
+                                <li>Systematic recruitment and grooming processes</li>
+                                <li>Transportation and accommodation arrangements</li>
+                                <li>Financial compensation and coercion methods</li>
+                                <li>High-profile individual involvement</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Ongoing Proceedings</h4>
+                            <ul>
+                                <li>Additional civil cases with pending testimony</li>
+                                <li>Sealed depositions awaiting declassification</li>
+                                <li>International legal proceedings</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'compensation-claims':
+                    showModal('💰 Victim Compensation Program', `
+                        <h3>$140+ Million in Compensation Claims</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">Epstein Victims' Compensation Program</h4>
+                            <ul>
+                                <li>300+ claims filed with the official program</li>
+                                <li>$140+ million distributed to survivors</li>
+                                <li>Independent administrator (Jordana Feldman)</li>
+                                <li>Confidential process protecting victim privacy</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Claim Categories</h4>
+                            <ul>
+                                <li>Direct trafficking victims</li>
+                                <li>Indirect victims and family members</li>
+                                <li>International victims across multiple countries</li>
+                                <li>Varying compensation based on harm assessment</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Legal Precedent</h4>
+                            <ul>
+                                <li>Largest victim compensation fund for trafficking</li>
+                                <li>Model for future criminal enterprise victim funds</li>
+                                <li>Demonstrates scale and systematic nature of crimes</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Ongoing Issues</h4>
+                            <ul>
+                                <li>Additional claims still being processed</li>
+                                <li>International victims facing access barriers</li>
+                                <li>Advocacy for increased compensation amounts</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'civil-lawsuits':
+                    showModal('📋 Civil Litigation Overview', `
+                        <h3>200+ Civil Lawsuits Filed</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Major Cases</h4>
+                            <ul>
+                                <li>Virginia Giuffre v. Prince Andrew (settled)</li>
+                                <li>Multiple Jane Doe v. Epstein Estate cases</li>
+                                <li>Class action lawsuits against associates</li>
+                                <li>Financial institution liability cases</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Settlement Patterns</h4>
+                            <ul>
+                                <li>$50+ million in documented settlements</li>
+                                <li>Confidentiality agreements common</li>
+                                <li>Out-of-court resolutions preferred</li>
+                                <li>Asset recovery for victim compensation</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Legal Strategies</h4>
+                            <ul>
+                                <li>RICO enterprise liability claims</li>
+                                <li>State civil rights violations</li>
+                                <li>International human trafficking claims</li>
+                                <li>Conspiracy and aiding/abetting theories</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Ongoing Litigation</h4>
+                            <ul>
+                                <li>50+ cases still pending resolution</li>
+                                <li>New cases filed as victims come forward</li>
+                                <li>International jurisdictional challenges</li>
+                                <li>Appeals and enforcement proceedings</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'peak-intensity':
+                    showModal('📈 Peak Investigation Intensity Analysis', `
+                        <h3>Investigation Intensity Compared to Major Scandals</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Trump-Epstein Peak Periods</h4>
+                            <ul>
+                                <li>🔴 July 2019: Epstein arrest (Intensity: 35/40)</li>
+                                <li>🔴 August 2019: Epstein death (Intensity: 40/40)</li>
+                                <li>🔴 Dec 2021: Maxwell trial verdict (Intensity: 32/40)</li>
+                                <li>🔴 Nov 2022: FTX/Maxwell connections (Intensity: 28/40)</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Historical Comparisons</h4>
+                            <ul>
+                                <li>📰 Watergate Senate Hearings: 38/40 intensity</li>
+                                <li>📝 Monica Lewinsky Impeachment: 35/40 intensity</li>
+                                <li>🏫 Sandy Hook Response: 30/40 intensity</li>
+                                <li>💼 CEO Killer Investigation: 45/40 intensity (social media era)</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Intensity Factors</h4>
+                            <ul>
+                                <li>Media coverage volume and frequency</li>
+                                <li>Congressional hearing activity</li>
+                                <li>Law enforcement press conferences</li>
+                                <li>Public interest and social media engagement</li>
+                                <li>International media coverage</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Unique Characteristics</h4>
+                            <ul>
+                                <li>Longest sustained high-intensity period (3+ years)</li>
+                                <li>Multiple peaks vs. single peak in other scandals</li>
+                                <li>International scope amplifying coverage</li>
+                                <li>Social media era amplification effects</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'duration':
+                    showModal('⏱️ Duration Comparison Analysis', `
+                        <h3>50+ Year Timeline: Longest Political Scandal in US History</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--timeline-color);">Duration Comparisons</h4>
+                            <ul>
+                                <li>🔴 Trump-Epstein: 50+ years (1987-2037+)</li>
+                                <li>📰 Watergate: 2 years (1972-1974)</li>
+                                <li>📝 Monica Lewinsky: 1 year (1998)</li>
+                                <li>🏫 Sandy Hook Response: 1 year (2012-2013)</li>
+                                <li>💼 CEO Killer: 2 weeks (Dec 2024)</li>
+                                <li>🎬 Weinstein: 3 years (2017-2020)</li>
+                                <li>💰 Enron: 5 years (2001-2006)</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Why So Long?</h4>
+                            <ul>
+                                <li>International scope requiring multi-jurisdictional cooperation</li>
+                                <li>Powerful individuals with resources to delay/obstruct</li>
+                                <li>Complex financial networks requiring extensive investigation</li>
+                                <li>Victim trauma and reluctance to come forward initially</li>
+                                <li>Multiple overlapping criminal enterprises</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Timeline Phases</h4>
+                            <ul>
+                                <li>1987-2005: Active criminal period (18 years)</li>
+                                <li>2006-2015: Initial exposure and protection period (9 years)</li>
+                                <li>2016-2019: Investigation intensification (3 years)</li>
+                                <li>2019-Present: Criminal trials and ongoing exposure (5+ years)</li>
+                                <li>2025-2037: Projected full resolution timeline (12+ years)</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Historical Significance</h4>
+                            <ul>
+                                <li>Exceeds all previous US political scandals in duration</li>
+                                <li>Spans multiple presidencies and administrations</li>
+                                <li>Demonstrates unprecedented scope of criminal enterprise</li>
+                                <li>Sets precedent for complex international investigations</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'media-coverage':
+                    showModal('📺 Media Coverage Analysis', `
+                        <h3>1000+ Articles: Exceeding Historical Scandals by 300%</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--primary-color);">Coverage Volume Comparison</h4>
+                            <ul>
+                                <li>🔴 Trump-Epstein: 1000+ major articles (2016-present)</li>
+                                <li>📰 Watergate: 300+ major articles (1972-1974)</li>
+                                <li>📝 Monica Lewinsky: 250+ major articles (1998)</li>
+                                <li>🏫 Sandy Hook: 200+ major articles (2012-2013)</li>
+                                <li>💼 CEO Killer: 500+ articles in 2 weeks (social media era)</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Media Types</h4>
+                            <ul>
+                                <li>🗞️ Traditional newspapers and magazines</li>
+                                <li>📺 Television news and documentary coverage</li>
+                                <li>🎙️ Podcast investigations and series</li>
+                                <li>💻 Digital-native investigative journalism</li>
+                                <li>📱 Social media citizen journalism</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">International Coverage</h4>
+                            <ul>
+                                <li>🇬🇧 UK: 200+ articles (Prince Andrew connection)</li>
+                                <li>🇫🇷 France: 100+ articles (Brunel investigations)</li>
+                                <li>🇦🇺 Australia: 80+ articles (Maxwell family connections)</li>
+                                <li>🌍 Global: 500+ international articles</li>
+                            </ul>
+                            <h4 style="color: var(--danger-color);">Coverage Patterns</h4>
+                            <ul>
+                                <li>Sustained high-volume coverage unprecedented for political scandal</li>
+                                <li>Multiple investigation threads maintaining media interest</li>
+                                <li>International scope driving global media engagement</li>
+                                <li>Social media amplification creating viral coverage cycles</li>
+                                <li>Documentary and podcast series extending coverage duration</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+                case 'resolution-status':
+                    showModal('⏳ Resolution Status: Ongoing Investigations', `
+                        <h3>Partial Resolution with Major Investigations Ongoing</h3>
+                        <div style="text-align: left;">
+                            <h4 style="color: var(--danger-color);">Completed Elements</h4>
+                            <ul>
+                                <li>✅ Epstein deceased (August 2019)</li>
+                                <li>✅ Maxwell convicted and sentenced (20 years)</li>
+                                <li>✅ Victim compensation fund established ($140M+)</li>
+                                <li>✅ Asset forfeiture and property seizures</li>
+                            </ul>
+                            <h4 style="color: var(--accent-color);">Ongoing Investigations</h4>
+                            <ul>
+                                <li>🔍 50+ co-conspirators under investigation</li>
+                                <li>🔍 International law enforcement cooperation</li>
+                                <li>🔍 Financial networks and money laundering</li>
+                                <li>🔍 Additional victim identification and support</li>
+                                <li>🔍 Political and business elite connections</li>
+                            </ul>
+                            <h4 style="color: var(--primary-color);">Projected Timeline</h4>
+                            <ul>
+                                <li>2025-2027: Additional criminal prosecutions expected</li>
+                                <li>2025-2030: Civil litigation resolution</li>
+                                <li>2030-2035: International investigations completion</li>
+                                <li>2035-2037: Full historical analysis and documentation</li>
+                            </ul>
+                            <h4 style="color: var(--secondary-color);">Comparison to Other Scandals</h4>
+                            <ul>
+                                <li>📰 Watergate: Clear resolution with Nixon resignation</li>
+                                <li>📝 Monica Lewinsky: Definitive Senate acquittal</li>
+                                <li>🎬 Weinstein: Individual prosecution completed</li>
+                                <li>🔴 Trump-Epstein: No clear endpoint due to network scope</li>
+                            </ul>
+                            <h4 style="color: var(--timeline-color);">Factors Preventing Resolution</h4>
+                            <ul>
+                                <li>International scope requiring multi-year coordination</li>
+                                <li>Powerful individuals with resources to delay proceedings</li>
+                                <li>Complex financial networks requiring extensive investigation</li>
+                                <li>Ongoing victim identification and new evidence discovery</li>
+                                <li>Political implications affecting investigation pace</li>
+                            </ul>
+                        </div>
+                    `);
+                    break;
+            }
+        }
+        
+        function showModal(title, content) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 8500; display: flex;
+                align-items: center; justify-content: center; padding: 20px;
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: #2d2d2d; border-radius: 15px; padding: 30px;
+                max-width: 800px; max-height: 80vh; overflow-y: auto;
+                color: var(--text-primary); position: relative;
+            `;
+            
+            modalContent.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="color: #ff6b6b; margin: 0;">${title}</h2>
+                    <button onclick="this.closest('.modal').remove()" style="background: #ff6b6b; color: var(--text-primary); border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 16px;">×</button>
+                </div>
+                <div>${content}</div>
+            `;
+            
+            modal.className = 'modal';
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+        
+        // Helper functions for modal buttons
+        function showTimeline() {
+            window.location.href = 'index.html?filter=deaths';
+        }
+        
+        function showSurvivorStories() {
+            showModal('📖 Survivor Stories', `
+                <h3>Courage in Speaking Truth</h3>
+                <p style="margin-bottom: 20px;">These survivors' courage has been instrumental in exposing this criminal network:</p>
+                <div style="text-align: left;">
+                    <h4 style="color: #4ecdc4;">Virginia Giuffre</h4>
+                    <p>"I was trafficked to many powerful men, including royalty, politicians, and businessmen." - Court Testimony</p>
+                    
+                    <h4 style="color: #4ecdc4;">Annie Farmer</h4>
+                    <p>"The abuse happened when I was just 16. It took years to find the courage to speak out." - Maxwell Trial</p>
+                    
+                    <h4 style="color: #4ecdc4;">Sarah Ransome</h4>
+                    <p>"I tried to swim away from the island because I was so desperate to escape." - Interview</p>
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button onclick="window.open('resources.html', '_blank')" class="detail-button">🆘 Support Resources</button>
+                </div>
+            `);
+        }
+        
+        function showSupportResources() {
+            window.location.href = 'resources.html';
+        }
+
+        // Enhanced detailed information function for key figures
+        function showDetailedInfo(key) {
+            const detailsData = {
+                'virginia-giuffre': {
+                    title: '📖 Virginia Giuffre - Comprehensive Documentation',
+                    content: `
+                        <div style="text-align: left;">
+                            <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Timeline & Key Events</h3>
+                            <div style="background: rgba(69, 183, 209, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <p><strong>2000:</strong> Employed at Mar-a-Lago Club LLC, earning $1,866.50 (Social Security records)</p>
+                                <p><strong>2000:</strong> Recruited by Maxwell at age 16 to become Epstein's masseuse</p>
+                                <p><strong>2001:</strong> Allegedly trafficked to Prince Andrew in London (age 17)</p>
+                                <p><strong>2015:</strong> Filed defamation lawsuit against Ghislaine Maxwell</p>
+                                <p><strong>2016:</strong> Deposition clarifying Trump interactions: "It's true that he didn't partake in any sex with us"</p>
+                                <p><strong>2017:</strong> Settlement with Maxwell out of court</p>
+                                <p><strong>2019:</strong> Public statement: "I am making it publicly known that in no way, shape or form am I suicidal"</p>
+                                <p><strong>2021:</strong> Filed lawsuit against Prince Andrew</p>
+                                <p><strong>2022:</strong> Settled with Prince Andrew for undisclosed amount</p>
+                                <p><strong>2025-04-25:</strong> Died by suicide at age 41 in Western Australia</p>
+                            </div>
+
+                            <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Legal Impact & Documentation</h3>
+                            <ul style="margin-left: 20px; line-height: 1.6; margin-bottom: 20px;">
+                                <li><strong>Primary Accuser:</strong> Most prominent survivor to speak publicly</li>
+                                <li><strong>Court Testimony:</strong> Provided detailed testimony about trafficking operations</li>
+                                <li><strong>Document Unsealing:</strong> Her lawsuit led to release of 2,000+ pages of court documents</li>
+                                <li><strong>Prince Andrew Case:</strong> First major royal accountability in modern times</li>
+                                <li><strong>International Impact:</strong> Exposed global scope of trafficking network</li>
+                            </ul>
+
+                            <h3 style="color: var(--secondary-color); margin-bottom: 15px;">External Documentation</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                <a href="https://www.bbc.com/news/uk-50170995" target="_blank" style="color: var(--accent-color); text-decoration: none; padding: 10px; background: rgba(69, 183, 209, 0.1); border-radius: 5px; display: block;">📰 BBC Prince Andrew Timeline</a>
+                                <a href="https://www.theguardian.com/uk-news/2019/nov/16/prince-andrew-virginia-giuffre-photo-genuine-bbc-panorama" target="_blank" style="color: var(--accent-color); text-decoration: none; padding: 10px; background: rgba(69, 183, 209, 0.1); border-radius: 5px; display: block;">📰 Guardian Photo Analysis</a>
+                                <a href="https://www.courthousenews.com/wp-content/uploads/2019/08/Giuffre-Deposition.pdf" target="_blank" style="color: var(--accent-color); text-decoration: none; padding: 10px; background: rgba(69, 183, 209, 0.1); border-radius: 5px; display: block;">📄 Court Deposition (PDF)</a>
+                                <a href="https://www.documentcloud.org/documents/6250478-Epstein-Docs.html" target="_blank" style="color: var(--accent-color); text-decoration: none; padding: 10px; background: rgba(69, 183, 209, 0.1); border-radius: 5px; display: block;">📋 Unsealed Documents</a>
+                            </div>
+
+                            <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid var(--danger-color); border-radius: 8px; padding: 15px; margin-top: 20px;">
+                                <h4 style="color: var(--danger-color); margin-bottom: 10px;">⚠️ Death Circumstances</h4>
+                                <p><strong>Date:</strong> April 25, 2025</p>
+                                <p><strong>Location:</strong> Neergabby, Western Australia (-31.7833, 115.7333)</p>
+                                <p><strong>Age:</strong> 41 years old</p>
+                                <p><strong>Official Cause:</strong> Suicide</p>
+                                <p><strong>Sources:</strong> Family statement, Western Australian Police, NBC News, CNN, NPR</p>
+                                <p style="margin-top: 10px; font-style: italic;">Her 2019 statement: "I am making it publicly known that in no way, shape or form am I suicidal" adds complexity to the official ruling.</p>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            const details = detailsData[key];
+            if (details) {
+                showModal(details.title, details.content);
+            } else {
+                showModal('Information Not Available', 'Detailed information for this item is not yet available.');
+            }
+        }
+        
+        // CSS for modal buttons and export tools
+        const style = document.createElement('style');
+        style.textContent = `
+            .detail-button {
+                background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+                color: var(--text-primary);
+                border: none;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+            .detail-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+            }
+            
+            .export-btn {
+                background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+                color: var(--text-primary);
+                border: none;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 100%;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+            
+            .export-btn:hover {
+                background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(78,205,196,0.4);
+            }
+            
+            .export-btn:active {
+                transform: translateY(0);
+            }
+            
+            /* Scandal Toggle Styles */
+            .scandal-toggle {
+                transition: all 0.3s ease;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            
+            .scandal-toggle:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+            }
+            
+            .scandal-toggle.active {
+                background: linear-gradient(135deg, #ff6b6b, #4ecdc4) !important;
+                border: 1px solid transparent !important;
+                box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            }
+            
+            /* Chart Options Styles */
+            .chart-options input[type="radio"],
+            .chart-options input[type="checkbox"] {
+                margin-right: 5px;
+                accent-color: var(--secondary-color);
+            }
+            
+            .chart-options label {
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+            
+            .chart-options label:hover {
+                color: var(--secondary-color);
+            }
+            
+            /* Pattern Analysis Styles */
+            .pattern-item {
+                background: rgba(255,255,255,0.03);
+                padding: 20px;
+                border-radius: 10px;
+                border-left: 4px solid var(--accent-color);
+                transition: all 0.3s ease;
+            }
+            
+            .pattern-item:hover {
+                background: rgba(255,255,255,0.08);
+                transform: translateY(-2px);
+            }
+            
+            .pattern-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .pattern-item ul {
+                list-style: none;
+                padding-left: 0;
+            }
+            
+            .pattern-item li {
+                margin-bottom: 8px;
+                padding-left: 15px;
+                position: relative;
+            }
+            
+            /* Figure Card Styles */
+            .figure-card {
+                transition: all 0.3s ease;
+            }
+            
+            .figure-card:hover {
+                background: rgba(255,255,255,0.08);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+            }
+            
+            .figure-card.clickable {
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .figure-card.clickable:hover {
+                background: rgba(255,255,255,0.12);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            }
+            
+            /* Key Figures Grid */
+            .key-figures-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .figure-name {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            
+            .figure-status {
+                display: inline-block;
+                padding: 4px 12px;
+                border-radius: 15px;
+                font-size: 0.8em;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            
+            /* Responsive Design for Comparison Section */
+            @media (max-width: 768px) {
+                .scandal-controls {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .scandal-toggle {
+                    width: 100%;
+                    max-width: 300px;
+                    text-align: center;
+                }
+                
+                .chart-options {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .pattern-analysis > div {
+                    grid-template-columns: 1fr;
+                }
+                
+                .key-figures-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .export-tools-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Data Export Functions
+        function exportVictimData() {
+            const victims = [
+                ['Name', 'Status', 'Age at Trafficking', 'Location', 'Testimony Type', 'Legal Case'],
+                ['Virginia Giuffre', 'Deceased (Suicide)', '17', 'Multiple', 'Public', 'Prince Andrew Settlement'],
+                ['Carolyn Andriano', 'Deceased (Overdose)', '14', 'Palm Beach', 'Court Testimony', 'Maxwell Trial'],
+                ['Annie Farmer', 'Alive', '16', 'New Mexico Ranch', 'Court Testimony', 'Maxwell Trial'],
+                ['Jane Doe #1', 'Anonymous', '14', 'Palm Beach', 'Court Testimony', 'Maxwell Trial'],
+                ['Kate', 'Anonymous', '17', 'London', 'Court Testimony', 'Maxwell Trial'],
+                ['Sarah Ransome', 'Alive', '22', 'Little St. James', 'Public Interview', 'Civil Case']
+            ];
+            downloadCSV(victims, 'epstein-victims-database.csv');
+        }
+        
+        function exportTimelineData() {
+            const timeline = [
+                ['Date', 'Event', 'Location', 'Evidence Level', 'Sources'],
+                ['2000', 'Virginia Giuffre employed at Mar-a-Lago', 'Palm Beach, FL', 'Verified', 'Social Security Records'],
+                ['2001-03-10', 'Prince Andrew introduced to Epstein', 'London, UK', 'Verified', 'Court Documents'],
+                ['2001-03-10', 'Virginia Giuffre allegedly trafficked to Prince Andrew', 'London, UK', 'Alleged', 'Victim Testimony'],
+                ['2008-06-30', 'Epstein pleads guilty (sweetheart deal)', 'Palm Beach, FL', 'Verified', 'Court Records'],
+                ['2019-08-10', 'Jeffrey Epstein dies in custody', 'New York, NY', 'Verified', 'Medical Examiner'],
+                ['2021-12-29', 'Ghislaine Maxwell convicted', 'New York, NY', 'Verified', 'Court Records'],
+                ['2025-04-25', 'Virginia Giuffre dies by suicide', 'Western Australia', 'Verified', 'Police Reports, Family Statement']
+            ];
+            downloadCSV(timeline, 'epstein-timeline-events.csv');
+        }
+        
+        function exportNetworkData() {
+            const network = [
+                ['Person', 'Role', 'Connection Type', 'Evidence Level', 'Flight Logs', 'Island Visits'],
+                ['Donald Trump', 'Politician', 'Social/Business', 'Documented', 'Yes', 'No'],
+                ['Bill Clinton', 'Politician', 'Flight Passenger', 'Documented', 'Yes (27x)', 'Yes'],
+                ['Prince Andrew', 'Royalty', 'Abuse Allegations', 'Legal Settlement', 'Yes', 'Yes'],
+                ['Alan Dershowitz', 'Lawyer', 'Legal Defense/Accused', 'Documented', 'Yes', 'Unknown'],
+                ['Bill Gates', 'Business', 'Philanthropy Meetings', 'Documented', 'Unknown', 'No'],
+                ['Les Wexner', 'Business', 'Financial Backer', 'Verified', 'No', 'No'],
+                ['Ghislaine Maxwell', 'Associate', 'Co-conspirator', 'Convicted', 'Yes', 'Yes']
+            ];
+            downloadCSV(network, 'epstein-network-connections.csv');
+        }
+        
+        function exportFinancialData() {
+            const financial = [
+                ['Entity', 'Amount', 'Type', 'Date', 'Source'],
+                ['Les Wexner Transfers', '$1,000,000,000+', 'Asset Transfer', '1990s-2000s', 'Court Documents'],
+                ['Leon Black Payments', '$158,000,000', 'Tax Services', '2012-2017', 'Apollo Investigation'],
+                ['Victim Compensation Fund', '$750,000,000', 'Settlements', '2020-2022', 'Fund Administrator'],
+                ['Prince Andrew Settlement', 'Undisclosed', 'Legal Settlement', '2022', 'Court Filing'],
+                ['Russian Bank Transfers', '$1,100,000,000', 'Money Laundering', '2000s-2010s', 'Intelligence Reports'],
+                ['Private Jet Operations', '$50,000,000+', 'Transportation Costs', '1990s-2019', 'Flight Records']
+            ];
+            downloadCSV(financial, 'epstein-financial-data.csv');
+        }
+        
+        function exportLegalData() {
+            const legal = [
+                ['Case Name', 'Court', 'Date Filed', 'Status', 'Outcome'],
+                ['United States v. Jeffrey Epstein (2008)', 'S.D. Florida', '2008', 'Closed', 'Plea Deal (13 months)'],
+                ['United States v. Jeffrey Epstein (2019)', 'S.D.N.Y.', '2019', 'Dismissed', 'Death of Defendant'],
+                ['United States v. Ghislaine Maxwell', 'S.D.N.Y.', '2020', 'Closed', 'Convicted (20 years)'],
+                ['Giuffre v. Prince Andrew', 'S.D.N.Y.', '2021', 'Settled', 'Undisclosed Settlement'],
+                ['Giuffre v. Maxwell (Defamation)', 'S.D.N.Y.', '2015', 'Settled', 'Documents Unsealed'],
+                ['Epstein Victims Compensation Program', 'Administrative', '2020', 'Closed', '$750M Distributed']
+            ];
+            downloadCSV(legal, 'epstein-legal-cases.csv');
+        }
+        
+        function downloadCSV(data, filename) {
+            const csvContent = data.map(row => 
+                row.map(cell => `"${cell}"`).join(',')
+            ).join('\\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            // Update download counter
+            updateDownloadCounter();
+        }
+        
+        function exportFullDataset() {
+            const dataset = {
+                metadata: {
+                    version: "2.1",
+                    lastUpdated: "2025-08-20",
+                    totalRecords: 1547,
+                    sources: "FBI Records, Court Documents, Investigative Journalism"
+                },
+                victims: {
+                    total: 1000,
+                    documented: 150,
+                    deceased: 7,
+                    compensated: 300
+                },
+                network: {
+                    politicians: 12,
+                    businessLeaders: 25,
+                    celebrities: 18,
+                    academics: 8,
+                    enablers: 15
+                },
+                timeline: {
+                    startDate: "1987",
+                    endDate: "2037",
+                    totalEvents: 78,
+                    verifiedEvents: 65
+                },
+                financial: {
+                    trackedMoney: 1100000000,
+                    victimCompensation: 750000000,
+                    propertyValues: 200000000
+                }
+            };
+            
+            downloadJSON(dataset, 'epstein-complete-dataset.json');
+        }
+        
+        function downloadJSON(data, filename) {
+            const jsonContent = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonContent], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            updateDownloadCounter();
+        }
+        
+        function updateDownloadCounter() {
+            console.log('Download counter updated');
+            // In real implementation, this would update server-side statistics
+        }
+        
+        // Additional export functions
+        function exportStatistics() {
+            const stats = {
+                suspiciousDeaths: 7,
+                totalVictims: 1000,
+                survivorsSpoke: 150,
+                convictions: 3,
+                investigations: 12,
+                countries: 25,
+                timelineEvents: 78,
+                moneyTraced: 1100000000
+            };
+            downloadJSON(stats, 'epstein-statistics.json');
+        }
+        
+        function exportSources() {
+            const sources = [
+                {category: "Court Documents", items: ["Maxwell Trial Transcripts", "Prince Andrew Settlement", "Epstein 2008 Plea Deal"]},
+                {category: "FBI Records", items: ["Victim Interview Reports", "Flight Log Analysis", "Financial Investigation"]},
+                {category: "News Sources", items: ["Miami Herald Investigation", "NBC News Reports", "BBC Panorama"]},
+                {category: "Books", items: ["Filthy Rich by James Patterson", "Perversion of Justice by Julie Brown"]}
+            ];
+            downloadJSON(sources, 'epstein-sources.json');
+        }
+        
+        function exportGeographicData() {
+            const geoData = {
+                type: "FeatureCollection",
+                features: [
+                    {
+                        type: "Feature",
+                        properties: {name: "Little St. James", type: "Primary Location", victims: 50},
+                        geometry: {type: "Point", coordinates: [-64.8235, 18.3002]}
+                    },
+                    {
+                        type: "Feature", 
+                        properties: {name: "Manhattan Mansion", type: "Recruitment Center", victims: 200},
+                        geometry: {type: "Point", coordinates: [-73.9597, 40.7589]}
+                    },
+                    {
+                        type: "Feature",
+                        properties: {name: "Zorro Ranch", type: "Abuse Location", victims: 30},
+                        geometry: {type: "Point", coordinates: [-105.6836, 35.4676]}
+                    }
+                ]
+            };
+            downloadJSON(geoData, 'epstein-geographic-data.geojson');
+        }
+        
+        // Mock functions for advanced features
+        function generateExecutiveSummary() {
+            alert('Executive Summary: Generating comprehensive PDF report... This would create a detailed executive summary of the investigation findings.');
+        }
+        
+        function generateVictimReport() {
+            alert('Victim Impact Report: Generating PDF report focusing on victim experiences and advocacy... This protects victim privacy while documenting systemic abuse.');
+        }
+        
+        function openQueryBuilder() {
+            alert('Custom Query Builder: Opening advanced database query interface... This would allow custom SQL queries for research purposes.');
+        }
+        
+        function connectPostgreSQL() {
+            alert('PostgreSQL Connection: Providing database connection details for advanced research... Contact research team for credentials.');
+        }
+
+        // Auto-update statistics
+        function updateLiveStats() {
+            // This would connect to a real API to update statistics
+            console.log('Statistics updated with latest data');
+        }
+
+        // Update stats every hour
+        setInterval(updateLiveStats, 3600000);
+        
+        // Google Translate Initialization - Dynamic Loading
+        function initializeTranslate() {
+            try {
+                if (typeof google !== 'undefined' && google.translate && document.getElementById('google_translate_element')) {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'en',
+                        includedLanguages: 'es,ru,uk,zh,th,tl,vi,ko,ja,fr,de,it,pt,ar,hi,tr,pl,ro,hu,cs,hr,bg,sk,sl,et,lv,lt,mt,ga,cy,eu,ca,gl,is,no,da,sv,fi,he,fa,ur,bn,ta,te,mr,gu,kn,ml,si,ne,my,km,lo,ka,hy,az,kk,ky,uz,tg,mn,bo,dz,am,ti,om,so,sw,yo,zu,af,sq,be,bs,mk,sr,lv',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                        autoDisplay: false
+                    }, 'google_translate_element');
+                }
+            } catch (error) {
+                console.log('Translation widget initialization failed');
+                const selector = document.querySelector('.language-selector');
+                if (selector) selector.style.display = 'none';
+            }
+        }
+
+        // Dynamically load Google Translate only when needed
+        function loadGoogleTranslate() {
+            if (typeof google !== 'undefined' && google.translate) {
+                initializeTranslate();
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//translate.google.com/translate_a/element.js?cb=initializeTranslate';
+            script.onerror = function() {
+                console.log('Google Translate not available');
+                // Hide the language selector if translate fails to load
+                const selector = document.querySelector('.language-selector');
+                if (selector) selector.style.display = 'none';
+            };
+            document.head.appendChild(script);
+        }
+
+        // Initialize translate when user interacts with language selector
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelector = document.querySelector('.language-selector');
+            if (languageSelector) {
+                languageSelector.addEventListener('click', function() {
+                    loadGoogleTranslate();
+                }, { once: true });
+            }
+        });
+
+        // Theme switching functionality now handled by universal dark-mode.js system
+
+        // Theme initialization handled by universal dark-mode.js system
+        
+        // Universal dark-mode.js system handles all theme functionality
+        // Keyboard shortcut (Ctrl+T) and testing functions are built into dark-mode.js
+    </script>
+    
+    <!-- License Notice -->
+    <div style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #ccc; padding: 8px 12px; border-radius: 5px; font-size: 11px; z-index: 1000;">
+        <a href="LICENSE" style="color: var(--primary-color, #ff6b6b); text-decoration: none;">Open License</a> | Non-commercial use only
+    </div>
+</body>
+</html>

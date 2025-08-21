@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <event start="1987-01-01" 
+           title="Trump-Epstein friendship begins" 
+           color="#ff6b6b">
+        Donald Trump and Jeffrey Epstein's social relationship begins in New York high society circles.
+    </event>
+    
+    <event start="1992-11-01" 
+           title="Mar-a-Lago party with NFL cheerleaders" 
+           color="#ff6b6b">
+        Donald Trump hosts a party at Mar-a-Lago with Jeffrey Epstein and 28 NFL cheerleaders.
+    </event>
+    
+    <event start="2002-01-01" 
+           title="Trump's 'terrific guy' comment" 
+           color="#4ecdc4">
+        Trump tells New York Magazine: "I've known Jeff for 15 years. Terrific guy."
+    </event>
+    
+    <event start="2019-07-06" 
+           title="Epstein arrested on federal charges" 
+           color="#45b7d1">
+        Jeffrey Epstein is arrested by federal agents on federal sex trafficking charges.
+    </event>
+    
+    <event start="2019-08-10" 
+           title="Epstein dies in federal custody" 
+           color="#8B0000">
+        Jeffrey Epstein is found dead in his Manhattan federal jail cell.
+    </event>
+</data>

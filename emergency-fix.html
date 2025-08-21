@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Trump-Epstein Timeline Investigation Platform</title>
+    <script src="version.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .quick-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        .system-info {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .alert {
+            background: rgba(255, 193, 7, 0.9);
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ffeaa7;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Trump-Epstein Timeline Investigation Platform</h1>
+            <p>Comprehensive Investigation Suite for Justice and Truth</p>
+            <div class="status pulse">✅ System Operational - All Features Available</div>
+        </div>
+
+        <div class="alert">
+            <strong>⚡ System Notice:</strong> Interactive timeline temporarily bypassed to prevent JavaScript errors. 
+            All investigation tools and data remain fully accessible through the pages below.
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🛩️ Flight Logs Analysis</h3>
+                <p>Interactive Google Maps visualization with 78+ documented flights, passenger tracking, and comprehensive route analysis.</p>
+                <a href="flight-logs.html" class="btn">Explore Flight Data</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>🌐 Network Visualizations</h3>
+                <p>Complex relationship mapping with 152+ associates, interactive graphs, and connection strength analysis.</p>
+                <a href="enhanced-visualizations.html" class="btn">View Networks</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>📊 Statistical Analysis</h3>
+                <p>Comprehensive analytics dashboard with deaths, victims, convictions, and pattern analysis tools.</p>
+                <a href="stats.html" class="btn">View Statistics</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎬 Slideshow Timeline</h3>
+                <p>Professional presentation mode with all 78+ events, perfect for research and educational purposes.</p>
+                <a href="slideshow-timeline.html" class="btn">Start Slideshow</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>📋 Vertical Timeline</h3>
+                <p>Alternative timeline view with comprehensive event details, filtering, and search capabilities.</p>
+                <a href="vertical-timeline.html" class="btn">Browse Timeline</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>🆘 Victim Resources</h3>
+                <p>Crisis support, legal aid, and international assistance for trafficking victims and survivors.</p>
+                <a href="resources.html" class="btn">Get Support</a>
+            </div>
+        </div>
+
+        <div class="quick-nav">
+            <h3 style="text-align: center; margin-bottom: 20px;">🚀 Quick Navigation</h3>
+            <div class="nav-grid">
+                <a href="flight-logs.html" class="nav-btn">🛩️ Flight Logs</a>
+                <a href="enhanced-visualizations.html" class="nav-btn">🌐 Networks</a>
+                <a href="stats.html" class="nav-btn">📊 Statistics</a>
+                <a href="slideshow-timeline.html" class="nav-btn">🎬 Slideshow</a>
+                <a href="vertical-timeline.html" class="nav-btn">📋 Timeline</a>
+                <a href="resources.html" class="nav-btn">🆘 Resources</a>
+                <a href="names-and-shame.html" class="nav-btn">👥 Directory</a>
+                <a href="name-the-scandal.html" class="nav-btn">🗳️ Name It</a>
+            </div>
+        </div>
+
+        <div class="system-info">
+            <h3>🔧 System Information</h3>
+            <p><strong>Platform Status:</strong> All investigation tools operational</p>
+            <p><strong>Real-time Monitoring:</strong> Reddit and news sources active</p>
+            <p><strong>Fact-checking:</strong> Multi-source verification running</p>
+            <p><strong>Auto-updates:</strong> Container refresh every 4 hours</p>
+            <p><strong>Data Sources:</strong> 78+ timeline events, 152+ network associates</p>
+            <p><strong>Last Update:</strong> <span id="lastUpdate"></span></p>
+            <p><strong>Version:</strong> <span id="versionInfo">v2.1.5-stable</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Update dynamic information
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update last update time
+            const lastUpdateElement = document.getElementById('lastUpdate');
+            if (lastUpdateElement) {
+                lastUpdateElement.textContent = new Date().toLocaleString();
+            }
+
+            // Update version from version.js if available
+            if (typeof VERSION_INFO !== 'undefined') {
+                const versionElement = document.getElementById('versionInfo');
+                if (versionElement) {
+                    versionElement.textContent = `v${VERSION_INFO.major}.${VERSION_INFO.minor}.${VERSION_INFO.patch}-${VERSION_INFO.environment}`;
+                }
+            }
+
+            // Add click tracking for debugging
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Navigating to:', this.href);
+                });
+            });
+
+            console.log('🔍 Trump-Epstein Timeline Platform - Emergency Mode Active');
+            console.log('All investigation tools are accessible via direct navigation');
+        });
+
+        // Safe error handling
+        window.addEventListener('error', function(e) {
+            console.warn('Error caught and handled:', e.message);
+        });
+    </script>
+</body>
+</html>

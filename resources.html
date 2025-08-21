@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources for Survivors - Trump-Epstein Investigation</title>
+    <!-- Version tracking system -->
+    <script src="version.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --danger-color: #8B0000;
+            --putin-color: #800080;
+            --future-color: #32CD32;
+            --bg-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --card-bg: #2d2d2d;
+            --safe-color: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Universal Navigation */
+        .universal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            border-bottom: 2px solid var(--secondary-color);
+            padding: 10px 0;
+        }
+        .nav-container-universal {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-link-universal {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .nav-link-universal:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .nav-link-universal.active {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-bar {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-link.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .nav-icon {
+            font-size: 14px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: var(--safe-color);
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .emergency-section {
+            background: linear-gradient(135deg, var(--danger-color), #dc3545);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid #ff4757;
+        }
+
+        .emergency-title {
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .emergency-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .emergency-text {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            color: var(--safe-color);
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--safe-color);
+            padding-bottom: 10px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .resource-card {
+            background: rgba(40, 167, 69, 0.1);
+            border: 2px solid var(--safe-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(40, 167, 69, 0.3);
+        }
+
+        .resource-title {
+            color: var(--safe-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .resource-contact {
+            background: var(--safe-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .resource-description {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .resource-hours {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ff9500, #ff6b35);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .warning-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .legal-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .legal-card {
+            background: rgba(69, 183, 209, 0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .legal-title {
+            color: var(--accent-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-button {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .international-section {
+            margin-top: 40px;
+        }
+
+        .country-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .country-card {
+            background: rgba(128, 0, 128, 0.1);
+            border: 2px solid var(--putin-color);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .country-name {
+            color: var(--putin-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .research-links {
+            margin: 30px 0;
+        }
+
+        .research-link-card {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .research-link-title {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .privacy-notice {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid var(--safe-color);
+        }
+
+        .privacy-title {
+            color: var(--safe-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page-title {
+                font-size: 2.2em;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emergency-number {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Footer Navigation Menu */
+        .footer-nav {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .footer-nav-title {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .footer-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-nav-section {
+            text-align: left;
+        }
+        
+        .footer-nav-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+        
+        .footer-nav-links {
+            list-style: none;
+        }
+        
+        .footer-nav-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.5);
+            margin-top: 60px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .footer-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+        
+        .back-to-top:hover {
+            background: var(--danger-color);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Universal Navigation -->
+    <nav class="universal-nav">
+        <div class="nav-container-universal">
+            <a href="index.html" class="nav-brand">
+                🔍 Trump-Epstein Investigation
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link-universal">Home</a>
+                <a href="timeline.html" class="nav-link-universal">Timeline</a>
+                <a href="enhanced-visualizations.html" class="nav-link-universal">Network</a>
+                <a href="flight-logs.html" class="nav-link-universal">Flight Logs</a>
+                <a href="vertical-timeline.html" class="nav-link-universal">Vertical</a>
+                <a href="stats.html" class="nav-link-universal">Statistics</a>
+                <a href="names-and-shame.html" class="nav-link-universal">Associates</a>
+                <a href="resources.html" class="nav-link-universal active">🆘 Resources</a>
+                <a href="name-the-scandal.html" class="nav-link-universal">🏆 Name It!</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">🆘 Resources for Survivors</h1>
+        <p class="page-subtitle">Support, Help, and Justice for 1000+ Victims of the Epstein-Trump Trafficking Network</p>
+        
+        <!-- Scale Recognition Section -->
+        <div class="section" style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4); margin-bottom: 30px; padding: 15px;">
+            <h2 style="color: white; text-align: center; margin-bottom: 10px; font-size: 1.4em;">🌍 Massive Scale Recognition</h2>
+            <div style="text-align: center; color: white; font-size: 1em; line-height: 1.5;">
+                <p><strong>This criminal enterprise affected over 1000 victims across 25+ countries over 30+ years.</strong></p>
+                <p style="margin-top: 8px; font-weight: bold;">🚨 No survivor should face this alone. Help is available. Justice is possible. 🚨</p>
+            </div>
+        </div>
+
+        <!-- Emergency Section -->
+        <div class="emergency-section">
+            <h2 class="emergency-title">🚨 IMMEDIATE HELP</h2>
+            <div class="emergency-number">1-888-373-7888</div>
+            <div class="emergency-text">National Human Trafficking Hotline</div>
+            <div class="emergency-text">Available 24/7 • Confidential • Multilingual</div>
+            <div class="emergency-text">Text: 233733 (BEFREE)</div>
+        </div>
+
+        <!-- Crisis Support -->
+        <div class="section">
+            <h2 class="section-title">🆘 Crisis Support & Immediate Help</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-title">National Sexual Assault Hotline</div>
+                    <div class="resource-contact">1-800-656-HOPE (4673)</div>
+                    <div class="resource-description">Free, confidential support 24/7. Connects you with trained staff at a local sexual assault service provider.</div>
+                    <div class="resource-hours">Available: 24/7/365</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Crisis Text Line</div>
+                    <div class="resource-contact">Text HOME to 741741</div>
+                    <div class="resource-description">Free, 24/7 support for people in crisis. Text with a trained crisis counselor.</div>
+                    <div class="resource-hours">Available: 24/7/365</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">National Suicide Prevention Lifeline</div>
+                    <div class="resource-contact">988</div>
+                    <div class="resource-description">Free and confidential emotional support for people in suicidal crisis or emotional distress.</div>
+                    <div class="resource-hours">Available: 24/7/365</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Childhelp National Child Abuse Hotline</div>
+                    <div class="resource-contact">1-800-422-4453</div>
+                    <div class="resource-description">Professional crisis counselors available to help in over 170 languages.</div>
+                    <div class="resource-hours">Available: 24/7/365</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Class Action & Mass Tort Legal Resources -->
+        <div class="section">
+            <h2 class="section-title">⚖️ Class Action Legal Support & Mass Tort Cases</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">Given the massive scale of 1000+ victims, class action lawsuits and mass tort cases provide powerful legal remedies:</p>
+            
+            <div class="legal-resources">
+                <div class="legal-card">
+                    <div class="legal-title">Class Action Trafficking Lawyers</div>
+                    <div class="resource-description">Specialized attorneys handling mass tort cases for trafficking victims. Experienced with large-scale operations affecting hundreds of victims.</div>
+                    <div class="contact-methods">
+                        <a href="tel:1-800-LAW-FIRM" class="contact-button">📞 Class Action Attorneys</a>
+                        <a href="https://www.classaction.org" class="contact-button" target="_blank">🔍 Mass Tort Lawyers</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">International Legal Aid</div>
+                    <div class="resource-description">Legal support for victims in multiple countries. Coordination between international courts and jurisdictions.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.unodc.org/unodc/en/human-trafficking/" class="contact-button" target="_blank">🌍 UN Trafficking Protocol</a>
+                        <a href="https://www.interpol.int/Crimes/Human-trafficking" class="contact-button" target="_blank">🚪 Interpol Support</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">Multiple Victim Compensation Funds</div>
+                    <div class="resource-description">Epstein Estate Fund ($750M+), Crime Victims Compensation, and international victim funds for trafficking survivors.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.epsteincompensationfund.com" class="contact-button" target="_blank">💰 Epstein Fund</a>
+                        <a href="https://www.justice.gov/criminal-vns/victims-rights-act" class="contact-button" target="_blank">📋 Federal Victims Rights</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">Asset Recovery & Forfeiture</div>
+                    <div class="resource-description">Legal assistance with recovering assets from criminal enterprises for victim compensation.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.justice.gov/afp" class="contact-button" target="_blank">🏦 Asset Forfeiture</a>
+                        <a href="tel:1-800-CALL-FBI" class="contact-button">📞 FBI Financial Crimes</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">FBI Victim Services</div>
+                    <div class="resource-description">Report crimes and access victim services through federal law enforcement.</div>
+                    <div class="contact-methods">
+                        <a href="tel:1-800-CALL-FBI" class="contact-button">📞 1-800-CALL-FBI</a>
+                        <a href="https://tips.fbi.gov" class="contact-button" target="_blank">💻 Submit Tip</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialized Trafficking Victim Support -->
+        <div class="section">
+            <h2 class="section-title">🚪 Specialized Trafficking Victim Support</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">Specialized services for victims of large-scale trafficking operations:</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-title">Polaris Project</div>
+                    <div class="resource-contact">polarisproject.org</div>
+                    <div class="resource-description">Leading anti-trafficking organization with comprehensive victim services, legal aid, and safe housing programs.</div>
+                    <div class="resource-hours">24/7 National Hotline: 1-888-373-7888</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">International Justice Mission</div>
+                    <div class="resource-contact">ijm.org</div>
+                    <div class="resource-description">Global organization combating trafficking with aftercare services for survivors worldwide.</div>
+                    <div class="resource-hours">International operations</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Trafficking Victims Assistance Program</div>
+                    <div class="resource-contact">TVAP through HHS</div>
+                    <div class="resource-description">Federal program providing comprehensive services including housing, medical care, legal aid, and case management.</div>
+                    <div class="resource-hours">Contact: 1-202-401-9200</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Survivors of Trafficking Safe Housing</div>
+                    <div class="resource-contact">Multiple locations</div>
+                    <div class="resource-description">Secure housing specifically for trafficking survivors with trauma-informed care and long-term support.</div>
+                    <div class="resource-hours">Referral through TVAP or local services</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trauma-Informed Therapy & Healing -->
+        <div class="section">
+            <h2 class="section-title">🌱 Trauma-Informed Therapy & Healing</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">Specialized therapy for complex trauma from systematic abuse and trafficking:</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-title">Psychology Today</div>
+                    <div class="resource-contact">psychologytoday.com</div>
+                    <div class="resource-description">Find therapists specializing in trauma, PTSD, and sexual abuse recovery. Filter by insurance and location.</div>
+                    <div class="resource-hours">Search available 24/7</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">EMDR Therapy for Trafficking Survivors</div>
+                    <div class="resource-contact">emdria.org</div>
+                    <div class="resource-description">Eye Movement Desensitization and Reprocessing specifically adapted for complex trafficking trauma and systematic abuse.</div>
+                    <div class="resource-hours">Trauma specialists available worldwide</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Complex PTSD Treatment Centers</div>
+                    <div class="resource-contact">Multiple locations</div>
+                    <div class="resource-description">Specialized treatment for Complex PTSD from prolonged trafficking and systematic abuse situations.</div>
+                    <div class="resource-hours">Inpatient and outpatient options</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">Trauma Recovery Network</div>
+                    <div class="resource-contact">traumarecoverynetwork.org</div>
+                    <div class="resource-description">Resources and support for trauma survivors including group therapy and peer support.</div>
+                    <div class="resource-hours">Multiple program options</div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-title">BetterHelp Online Therapy</div>
+                    <div class="resource-contact">betterhelp.com</div>
+                    <div class="resource-description">Convenient online therapy with licensed professionals. Affordable options and financial aid available.</div>
+                    <div class="resource-hours">Available: 24/7 messaging</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- International Trafficking Support -->
+        <div class="section international-section">
+            <h2 class="section-title">🌍 International Trafficking Support</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">International resources for trafficking survivors, recognizing the global scale of this criminal enterprise:</p>
+            
+            <div class="country-resources">
+                <div class="country-card">
+                    <div class="country-name">🇬🇧 United Kingdom</div>
+                    <div class="resource-description"><strong>National Modern Slavery Helpline:</strong> 08000 121 700</div>
+                    <div class="resource-description"><strong>Samaritans:</strong> 116 123</div>
+                    <div class="resource-description"><strong>Rape Crisis:</strong> 0808 802 9999</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇫🇷 France</div>
+                    <div class="resource-description"><strong>National Trafficking Helpline:</strong> 0 800 752 365</div>
+                    <div class="resource-description"><strong>SOS Viol:</strong> 0 800 05 95 95</div>
+                    <div class="resource-description"><strong>SOS Suicide Phénix:</strong> 01 40 44 46 45</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇮🇱 Israel</div>
+                    <div class="resource-description"><strong>Elem Crisis Hotline:</strong> 1201</div>
+                    <div class="resource-description"><strong>ERAN Emotional Support:</strong> 1201</div>
+                    <div class="resource-description"><strong>Task Force on Human Trafficking:</strong> *6742</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇷🇺 Russia</div>
+                    <div class="resource-description"><strong>Angel Coalition:</strong> +7 (495) 629-31-31</div>
+                    <div class="resource-description"><strong>Crisis Center for Women:</strong> +7 (495) 282-88-13</div>
+                    <div class="resource-description"><strong>Deti-404 (LGBTQ+ Youth):</strong> Telegram @deti404</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇸🇦 Saudi Arabia</div>
+                    <div class="resource-description"><strong>Family Safety Program:</strong> 1919</div>
+                    <div class="resource-description"><strong>Mariam Center:</strong> 8001245005</div>
+                    <div class="resource-description"><strong>King Abdulaziz Center:</strong> +966 13 333 0000</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇦🇺 Australia</div>
+                    <div class="resource-description"><strong>Australian Human Trafficking Helpline:</strong> 131 237</div>
+                    <div class="resource-description"><strong>Lifeline:</strong> 13 11 14</div>
+                    <div class="resource-description"><strong>1800RESPECT:</strong> 1800 737 732</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name"> Netherlands</div>
+                    <div class="resource-description"><strong>CoMensha (Trafficking Coordination Center):</strong> +31 33 448 1186</div>
+                    <div class="resource-description"><strong>Victim Support Netherlands:</strong> 0900 0101</div>
+                    <div class="resource-description"><strong>Safe reporting trafficking:</strong> 0800 5040</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇨🇦 Canada</div>
+                    <div class="resource-description"><strong>Canadian Human Trafficking Hotline:</strong> 1-833-900-1010</div>
+                    <div class="resource-description"><strong>Kids Help Phone:</strong> 1-800-668-6868</div>
+                    <div class="resource-description"><strong>Talk Suicide Canada:</strong> 1-833-456-4566</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇩🇪 Germany</div>
+                    <div class="resource-description"><strong>KOK (Trafficking Coordination Office):</strong> +49 331 280 1660</div>
+                    <div class="resource-description"><strong>Telefonseelsorge:</strong> 0800 111 0 111</div>
+                    <div class="resource-description"><strong>Violence Against Women:</strong> 08000 116 016</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇮🇹 Italy</div>
+                    <div class="resource-description"><strong>Anti-Trafficking Number:</strong> 800 290 290</div>
+                    <div class="resource-description"><strong>Telefono Azzurro:</strong> 19696</div>
+                    <div class="resource-description"><strong>Violence & Stalking:</strong> 1522</div>
+                </div>
+                
+                <div class="country-card">
+                    <div class="country-name">🇯🇵 Japan</div>
+                    <div class="resource-description"><strong>Women's Consultation Center:</strong> #8891</div>
+                    <div class="resource-description"><strong>Trafficking Victim Support:</strong> 0120-279-338</div>
+                    <div class="resource-description"><strong>TELL Lifeline:</strong> 03-5774-0992</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FBI & Federal Investigation Cooperation -->
+        <div class="section">
+            <h2 class="section-title">🔎 FBI & Federal Investigation Cooperation</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">Resources for victims to cooperate with ongoing federal investigations into the trafficking network:</p>
+            
+            <div class="legal-resources">
+                <div class="legal-card">
+                    <div class="legal-title">FBI Victim Witness Assistance</div>
+                    <div class="resource-description">Specialized support for victims cooperating with federal trafficking investigations.</div>
+                    <div class="contact-methods">
+                        <a href="tel:1-800-CALL-FBI" class="contact-button">📞 FBI Victim Services</a>
+                        <a href="https://www.fbi.gov/investigate/violent-crime/human-trafficking" class="contact-button" target="_blank">🚪 FBI Trafficking Unit</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">Federal Witness Protection</div>
+                    <div class="resource-description">Protection services for victims providing testimony in federal trafficking cases.</div>
+                    <div class="contact-methods">
+                        <a href="tel:1-800-CALL-FBI" class="contact-button">🛡️ Witness Security</a>
+                    </div>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-title">U.S. Attorney Victim Witness Coordinators</div>
+                    <div class="resource-description">Federal prosecutors' offices with specialized coordinators for trafficking victim support.</div>
+                    <div class="contact-methods">
+                        <a href="https://www.justice.gov/usao" class="contact-button" target="_blank">⚖️ Find U.S. Attorney Office</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research & Documentation Resources -->
+        <div class="section">
+            <h2 class="section-title">🔍 Research & Documentation Resources</h2>
+            <p style="margin-bottom: 25px; color: #ccc;">Resources for understanding the scope and seeking accountability:</p>
+            
+            <div class="research-links">
+                <div class="research-link-card">
+                    <div class="research-link-title">Miami Herald - Perversion of Justice</div>
+                    <div class="resource-description">Julie K. Brown's Pulitzer Prize-winning investigation that reopened the Epstein case.</div>
+                    <a href="https://www.miamiherald.com/news/local/article220097825.html" class="contact-button" target="_blank">📰 Read Investigation</a>
+                </div>
+                
+                <div class="research-link-card">
+                    <div class="research-link-title">Court Documents & Filings</div>
+                    <div class="resource-description">PACER system for federal court documents, including Epstein and Maxwell case files.</div>
+                    <a href="https://pacer.uscourts.gov" class="contact-button" target="_blank">⚖️ Access PACER</a>
+                </div>
+                
+                <div class="research-link-card">
+                    <div class="research-link-title">FBI Records: The Vault</div>
+                    <div class="resource-description">Freedom of Information Act releases on Epstein case.</div>
+                    <a href="https://vault.fbi.gov/jeffrey-epstein" class="contact-button" target="_blank">🏛️ FBI Files</a>
+                </div>
+                
+                <div class="research-link-card">
+                    <div class="research-link-title">Epstein Research Repositories</div>
+                    <div class="resource-description">Comprehensive GitHub repositories with timeline data and evidence collections.</div>
+                    <a href="https://github.com/search?q=jeffrey+epstein&type=repositories" class="contact-button" target="_blank">💻 GitHub Research</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy & Safety -->
+        <div class="section">
+            <h2 class="section-title">🔒 Privacy & Safety</h2>
+            
+            <div class="privacy-notice">
+                <div class="privacy-title">🛡️ Protecting Your Privacy</div>
+                <div class="resource-description">
+                    <strong>Important Safety Measures:</strong><br>
+                    • Use private/incognito browser mode when accessing these resources<br>
+                    • Consider using a VPN for additional privacy<br>
+                    • Clear browser history after visiting sensitive sites<br>
+                    • Use a trusted device, not a shared or monitored computer<br>
+                    • Save important numbers in a secure app or with trusted friends<br>
+                    • Trust your instincts - if something feels unsafe, prioritize your safety
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <div class="warning-title">⚠️ Safety Warning</div>
+                <div>If you are in immediate danger, call 911 (US) or your local emergency number. If you cannot speak safely, many areas allow text-to-911. Trust your instincts and prioritize your immediate safety above all else.</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--card-bg); color: #888;">
+            <p>🆘 This resource page is dedicated to supporting survivors and seeking justice</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">If you are a survivor, you are believed, you are valued, and you deserve support and justice</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Last updated: August 2025 • Please verify current contact information</p>
+        </div>
+    </div>
+
+    <!-- Footer Navigation Menu -->
+    <div class="footer-nav">
+        <h3 class="footer-nav-title">🧭 Site Navigation</h3>
+        <div class="footer-nav-grid">
+            <div class="footer-nav-section">
+                <h4>🔍 Investigation Tools</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="timeline.html">📅 Interactive Timeline</a></li>
+                    <li><a href="vertical-timeline.html">📜 Vertical Timeline</a></li>
+                    <li><a href="enhanced-visualizations.html">🌐 Network Analysis</a></li>
+                    <li><a href="flight-logs.html">✈️ Flight Log Analysis</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>📊 Data & Statistics</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="stats.html">📊 Investigation Statistics</a></li>
+                    <li><a href="names-and-shame.html">👥 Associates Directory</a></li>
+                    <li><a href="slideshow-timeline.html">🎬 Slideshow Presentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🎯 Resources & Support</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="resources.html">🆘 Victim Resources</a></li>
+                    <li><a href="index.html#documentation">📖 Documentation</a></li>
+                    <li><a href="name-the-scandal.html">🏆 Name The Scandal</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-section">
+                <h4>🔗 External Links</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="https://github.com/yourusername/trumpstein-timeline" target="_blank">💻 GitHub Repository</a></li>
+                    <li><a href="https://www.epsteincompensationfund.com" target="_blank">💰 Victim Compensation</a></li>
+                    <li><a href="https://www.courtlistener.com" target="_blank">⚖️ Court Documents</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html#documentation" class="footer-link">Documentation</a>
+            <a href="resources.html" class="footer-link">Resources</a>
+            <a href="https://github.com/yourusername/trumpstein-timeline" class="footer-link">GitHub</a>
+            <a href="#" class="footer-link">Report Issue</a>
+        </div>
+        <p style="color: #666;">© 2025 Trump-Epstein Investigation | For Truth and Justice</p>
+        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+            This resource compiles publicly available information for educational and journalistic purposes.
+        </p>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Back to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- License Notice -->
+    <div style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #ccc; padding: 8px 12px; border-radius: 5px; font-size: 11px; z-index: 1000;">
+        <a href="LICENSE" style="color: #ff6b6b; text-decoration: none;">Open License</a> | Non-commercial use only
+    </div>
+</body>
+</html>

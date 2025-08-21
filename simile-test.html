@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIMILE Timeline Test</title>
+    <script>
+        // Set up Timeline configuration for local hosting
+        window.Timeline_ajax_url = "simile-timeline/simile-ajax-api.js";
+        window.Timeline_urlPrefix = "simile-timeline/api/";
+    </script>
+    <script src="simile-timeline/simile-ajax-api.js"></script>
+    <script src="simile-timeline/api/timeline-api.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #timeline { height: 400px; border: 1px solid #aaa; }
+        .status { padding: 10px; background: #f0f0f0; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>SIMILE Timeline Test</h1>
+    <div class="status" id="status">Loading Timeline API...</div>
+    <div id="timeline"></div>
+    
+    <script>
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+            console.log(message);
+        }
+        
+        function testTimeline() {
+            updateStatus("Testing Timeline API availability...");
+            
+            if (typeof SimileAjax === 'undefined') {
+                updateStatus("ERROR: SimileAjax not available");
+                return;
+            }
+            
+            if (typeof Timeline === 'undefined') {
+                updateStatus("ERROR: Timeline not available");
+                return;
+            }
+            
+            updateStatus("✓ Both SimileAjax and Timeline APIs loaded successfully!");
+            
+            try {
+                // Create a simple test timeline
+                var eventSource = new Timeline.DefaultEventSource();
+                
+                // Create test data
+                var events = [
+                    {
+                        start: new Date(2019, 0, 1),
+                        title: "Test Event 1",
+                        description: "This is a test event",
+                        instant: true
+                    },
+                    {
+                        start: new Date(2020, 5, 15),
+                        title: "Test Event 2", 
+                        description: "Another test event",
+                        instant: true
+                    }
+                ];
+                
+                // Add events to source
+                for (var i = 0; i < events.length; i++) {
+                    var event = new Timeline.DefaultEventSource.Event({
+                        start: events[i].start,
+                        instant: events[i].instant,
+                        text: events[i].title,
+                        description: events[i].description
+                    });
+                    eventSource.add(event);
+                }
+                
+                // Create bands
+                var bandInfos = [
+                    Timeline.createBandInfo({
+                        eventSource: eventSource,
+                        date: new Date(2019, 6, 1),
+                        width: "70%",
+                        intervalUnit: Timeline.DateTime.MONTH,
+                        intervalPixels: 100
+                    }),
+                    Timeline.createBandInfo({
+                        eventSource: eventSource,
+                        date: new Date(2019, 6, 1),
+                        width: "30%",
+                        intervalUnit: Timeline.DateTime.YEAR,
+                        intervalPixels: 200
+                    })
+                ];
+                
+                // Sync the bands
+                bandInfos[1].syncWith = 0;
+                bandInfos[1].highlight = true;
+                
+                // Create timeline
+                var timeline = Timeline.create(document.getElementById("timeline"), bandInfos);
+                
+                updateStatus("✓ SIMILE Timeline created successfully! Test events loaded.");
+                
+            } catch (error) {
+                updateStatus("ERROR creating timeline: " + error.message);
+                console.error("Timeline creation error:", error);
+            }
+        }
+        
+        // Wait for everything to load
+        window.addEventListener('load', function() {
+            setTimeout(testTimeline, 1000);
+        });
+    </script>
+</body>
+</html>
