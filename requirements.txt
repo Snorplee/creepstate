@@ -1,4 +1,4 @@
-# Python dependencies for Trumpstein Timeline Flight Logs System
+# Python dependencies for Creepstate Investigation Platform Flight Logs System
 
 # Web Framework
 fastapi==0.104.1

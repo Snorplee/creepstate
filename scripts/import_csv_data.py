@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CSV Flight Data Import Script for Trumpstein Timeline Database
+CSV Flight Data Import Script for Creepstate Investigation Platform Database
 Reads the flight_flights_table.csv file and imports all data into PostgreSQL
 """
 

@@ -120,7 +120,7 @@ server { \
 
 # Create startup script that runs both nginx and the API
 RUN echo '#!/bin/sh \
-echo "Starting Trumpstein Timeline services..." \
+echo "Starting Creepstate Investigation Platform services..." \
 # Start Python API in background \
 cd /app && python3 api/flight_api.py & \
 API_PID=$! \

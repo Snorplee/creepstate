@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /mnt/c/Users/jackspace/Documents/Dropbox/apps/trumpstein-timeline/photo-env
+set -gx VIRTUAL_ENV /mnt/c/Users/jackspace/Documents/Dropbox/apps/SNORPLEE/apps/creepstate/photo-env
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

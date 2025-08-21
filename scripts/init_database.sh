@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Database Initialization Script for Trumpstein Timeline
+# Database Initialization Script for Creepstate Investigation Platform
 # Waits for PostgreSQL to be ready and imports flight data
 
 set -e
