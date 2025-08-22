@@ -194,6 +194,13 @@
             text-align: center;
         }
 
+        .keyboard-hint {
+            text-align: center;
+            margin-top: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -203,6 +210,7 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 1rem;
             }
 
             .timeline-header h1 {
@@ -215,6 +223,40 @@
 
             #timeline-container {
                 height: 400px;
+            }
+
+            .timeline-controls {
+                gap: 0.5rem;
+            }
+
+            .control-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .keyboard-hint {
+                display: none; /* Hide keyboard hints on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            #timeline-container {
+                height: 350px;
             }
         }
     </style>
@@ -241,12 +283,14 @@
         </div>
 
         <div class="timeline-controls">
+            <button class="control-btn" onclick="goToDate('1946-01-01')">1940s</button>
             <button class="control-btn" onclick="goToDate('1990-01-01')">1990s</button>
             <button class="control-btn" onclick="goToDate('2000-01-01')">2000s</button>
             <button class="control-btn" onclick="goToDate('2010-01-01')">2010s</button>
             <button class="control-btn" onclick="goToDate('2020-01-01')">2020s</button>
             <button class="control-btn" onclick="centerTimeline()">Center View</button>
-            <button class="control-btn" onclick="showAllEvents()">Show All</button>
+            <button class="control-btn" onclick="zoomOut()">Zoom Out</button>
+            <button class="control-btn" onclick="zoomIn()">Zoom In</button>
         </div>
 
         <div id="timeline-container">
@@ -255,6 +299,10 @@
                 <p>Loading SIMILE Timeline...</p>
                 <p><small>Initializing timeline with 100+ events</small></p>
             </div>
+        </div>
+
+        <div class="keyboard-hint">
+            💡 <strong>Pro tip:</strong> Use arrow keys to scroll, +/- to zoom, or Home to center the timeline
         </div>
 
         <div class="timeline-info">
@@ -274,7 +322,11 @@
                 </div>
                 <div class="info-card">
                     <h3>🌐 Interactive Features</h3>
-                    <p>Click events for details, zoom timeline, filter by categories</p>
+                    <p>Click events for details, drag to scroll, mouse wheel to zoom</p>
+                </div>
+                <div class="info-card">
+                    <h3>⌨️ Keyboard Controls</h3>
+                    <p>Arrow keys: scroll | +/-: zoom | Home: center view</p>
                 </div>
             </div>
         </div>
@@ -353,18 +405,20 @@
                     }
                     
                     console.log('✅ XML data loaded successfully');
+                    console.log('XML document:', xml);
+                    console.log('Event count:', xml.getElementsByTagName('event').length);
                     
                     // Fill the event source with data
                     eventSource.loadXML(xml, url);
+                    console.log('✅ Event source populated with XML data');
                     
-                    // Create timeline bands
+                    // Create timeline bands with simpler configuration
                     const bandInfos = [
                         Timeline.createBandInfo({
                             eventSource: eventSource,
                             width: "70%",
                             intervalUnit: Timeline.DateTime.YEAR,
-                            intervalPixels: 100,
-                            theme: Timeline.ClassicTheme.create()
+                            intervalPixels: 100
                         }),
                         Timeline.createBandInfo({
                             eventSource: eventSource,
@@ -372,7 +426,6 @@
                             intervalUnit: Timeline.DateTime.DECADE,
                             intervalPixels: 200,
                             showEventText: false,
-                            theme: Timeline.ClassicTheme.create(),
                             layout: 'overview'
                         })
                     ];
@@ -382,13 +435,21 @@
                     bandInfos[1].highlight = true;
                     
                     // Create the timeline
+                    console.log('🎯 Creating timeline with bands...');
                     timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
                     
+                    if (!timeline) {
+                        throw new Error('Timeline.create returned null');
+                    }
+                    
                     console.log('🎉 Timeline created successfully!');
+                    console.log('Timeline object:', timeline);
+                    console.log('Timeline bands:', timeline.getBandCount());
                     
                     // Center timeline on important events (around 2000s)
                     const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
                     timeline.getBand(0).setCenterVisibleDate(centerDate);
+                    console.log('🎯 Timeline centered on:', centerDate);
                     
                 } catch (error) {
                     console.error('❌ Error processing timeline data:', error);
@@ -417,13 +478,50 @@
             }
         }
         
-        function showAllEvents() {
+        function zoomOut() {
             if (timeline) {
-                // Zoom out to show broader time range
-                timeline.getBand(0).zoom(0.5);
-                console.log('🔍 Zoomed out to show more events');
+                timeline.getBand(0).zoom(false, 0, 0.5);
+                console.log('🔍 Zoomed out');
             }
         }
+        
+        function zoomIn() {
+            if (timeline) {
+                timeline.getBand(0).zoom(true, 0, 2.0);
+                console.log('🔍 Zoomed in');
+            }
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (!timeline) return;
+            
+            switch(event.key) {
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    timeline.getBand(0).scrollToPreviousPage();
+                    console.log('⬅️ Scrolled left');
+                    break;
+                case 'ArrowRight':
+                    event.preventDefault();
+                    timeline.getBand(0).scrollToNextPage();
+                    console.log('➡️ Scrolled right');
+                    break;
+                case '+':
+                case '=':
+                    event.preventDefault();
+                    zoomIn();
+                    break;
+                case '-':
+                    event.preventDefault();
+                    zoomOut();
+                    break;
+                case 'Home':
+                    event.preventDefault();
+                    centerTimeline();
+                    break;
+            }
+        });
         
         function showError(message) {
             const container = document.getElementById('timeline-container');
