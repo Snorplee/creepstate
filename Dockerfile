@@ -33,8 +33,8 @@ RUN pip3 install --break-system-packages \
     python-dateutil==2.8.2
 
 # Copy timeline files to nginx html directory
-COPY home.html /usr/share/nginx/html/
 COPY index.html /usr/share/nginx/html/
+COPY timeline.html /usr/share/nginx/html/
 COPY enhanced-visualizations.html /usr/share/nginx/html/
 COPY slideshow-timeline.html /usr/share/nginx/html/
 COPY documentation.html /usr/share/nginx/html/
