@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creepstate Investigation Platform | Interactive Timeline</title>
+    <meta name="description" content="Interactive timeline of the Trump-Epstein investigation spanning 1946-2025">
+    <!-- Force GitHub Pages rebuild -->
+    
+    <!-- SIMILE Timeline CSS -->
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/timeline.css">
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/ethers.css">
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/events.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-header p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .control-btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #timeline-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #34495e;
+            border-radius: 10px;
+            background: white;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #ecf0f1;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .timeline-info {
+            margin-top: 2rem;
+            background: rgba(52, 73, 94, 0.3);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #34495e;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card h3 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: #bdc3c7;
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .keyboard-hint {
+            text-align: center;
+            margin-top: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .timeline-header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            #timeline-container {
+                height: 400px;
+            }
+
+            .timeline-controls {
+                gap: 0.5rem;
+            }
+
+            .control-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .keyboard-hint {
+                display: none; /* Hide keyboard hints on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            #timeline-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">🔍 Creepstate Investigation</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html" class="active">Timeline</a>
+                <a href="enhanced-visualizations.html">Network</a>
+                <a href="flight-logs.html">Flight Logs</a>
+                <a href="stats.html">Statistics</a>
+                <a href="resources.html">Resources</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="timeline-header">
+            <h1>Interactive Investigation Timeline</h1>
+            <p>Explore the comprehensive timeline of events from 1946 to 2025, featuring over 100 documented events with sources and evidence levels.</p>
+        </div>
+
+        <div class="timeline-controls">
+            <button class="control-btn" onclick="goToDate('1946-01-01')">1940s</button>
+            <button class="control-btn" onclick="goToDate('1990-01-01')">1990s</button>
+            <button class="control-btn" onclick="goToDate('2000-01-01')">2000s</button>
+            <button class="control-btn" onclick="goToDate('2010-01-01')">2010s</button>
+            <button class="control-btn" onclick="goToDate('2020-01-01')">2020s</button>
+            <button class="control-btn" onclick="centerTimeline()">Center View</button>
+            <button class="control-btn" onclick="zoomOut()">Zoom Out</button>
+            <button class="control-btn" onclick="zoomIn()">Zoom In</button>
+        </div>
+
+        <div id="timeline-container">
+            <div class="timeline-loading">
+                <div class="spinner"></div>
+                <p>Loading SIMILE Timeline...</p>
+                <p><small>Initializing timeline with 100+ events</small></p>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            💡 <strong>Pro tip:</strong> Use arrow keys to scroll, +/- to zoom, or Home to center the timeline
+        </div>
+
+        <div class="timeline-info">
+            <h2>Timeline Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🗓️ Timeline Span</h3>
+                    <p>1946 - 2025 (79+ years of documented events)</p>
+                </div>
+                <div class="info-card">
+                    <h3>📊 Event Categories</h3>
+                    <p>Legal proceedings, meetings, investigations, reports, and key developments</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔍 Evidence Levels</h3>
+                    <p>Verified, alleged, disputed, and unverified events with source attribution</p>
+                </div>
+                <div class="info-card">
+                    <h3>🌐 Interactive Features</h3>
+                    <p>Click events for details, drag to scroll, mouse wheel to zoom</p>
+                </div>
+                <div class="info-card">
+                    <h3>⌨️ Keyboard Controls</h3>
+                    <p>Arrow keys: scroll | +/-: zoom | Home: center view</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIMILE Timeline Scripts -->
+    <script>
+        // Global timeline variables
+        let timeline;
+        let eventSource;
+        
+        // Initialize timeline when page loads
+        window.addEventListener('load', initializeTimeline);
+        
+        function initializeTimeline() {
+            console.log('🚀 Initializing SIMILE Timeline...');
+            
+            // Load SIMILE Ajax API first
+            const ajaxScript = document.createElement('script');
+            ajaxScript.src = 'simile-timeline/simile-ajax-api.js';
+            ajaxScript.onload = function() {
+                console.log('✅ SIMILE Ajax API loaded');
+                loadTimelineAPI();
+            };
+            ajaxScript.onerror = function() {
+                console.error('❌ Failed to load SIMILE Ajax API');
+                showError('Failed to load timeline dependencies');
+            };
+            document.head.appendChild(ajaxScript);
+        }
+        
+        function loadTimelineAPI() {
+            // Load Timeline API
+            const timelineScript = document.createElement('script');
+            timelineScript.src = 'simile-timeline/api/timeline-api.js';
+            timelineScript.onload = function() {
+                console.log('✅ SIMILE Timeline API loaded');
+                setTimeout(createTimeline, 500); // Small delay for initialization
+            };
+            timelineScript.onerror = function() {
+                console.error('❌ Failed to load SIMILE Timeline API');
+                showError('Failed to load timeline API');
+            };
+            document.head.appendChild(timelineScript);
+        }
+        
+        function createTimeline() {
+            try {
+                console.log('🎯 Creating timeline instance...');
+                
+                // Debug: Check what's available
+                console.log('Timeline object:', typeof Timeline, Timeline);
+                console.log('SimileAjax object:', typeof SimileAjax, SimileAjax);
+                
+                // Check if Timeline is available
+                if (typeof Timeline === 'undefined') {
+                    throw new Error('Timeline API not available');
+                }
+                
+                // Check Timeline object properties
+                console.log('Timeline.DefaultEventSource:', typeof Timeline.DefaultEventSource);
+                console.log('Timeline.create:', typeof Timeline.create);
+                console.log('Timeline.createBandInfo:', typeof Timeline.createBandInfo);
+                console.log('Timeline.loadXML:', typeof Timeline.loadXML);
+                console.log('Timeline.DateTime:', typeof Timeline.DateTime);
+                
+                // Check if SimileAjax is available and add EventIndex if missing
+                if (typeof SimileAjax === 'undefined') {
+                    throw new Error('SimileAjax not available');
+                }
+                
+                // Check if DefaultEventSource exists as a function
+                if (typeof Timeline.DefaultEventSource !== 'function') {
+                    console.error('Timeline.DefaultEventSource is not a function, it is:', typeof Timeline.DefaultEventSource);
+                    
+                    // Try to create a minimal event source manually
+                    console.log('Creating manual event source...');
+                    eventSource = {
+                        _events: [],
+                        _listeners: [],
+                        loadXML: function(xml, url) {
+                            console.log('Manual loadXML called with:', xml);
+                            // We'll handle this in loadTimelineData
+                        },
+                        addListener: function(listener) {
+                            this._listeners.push(listener);
+                        },
+                        removeListener: function(listener) {
+                            for (var i = 0; i < this._listeners.length; i++) {
+                                if (this._listeners[i] == listener) {
+                                    this._listeners.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                    };
+                    
+                    console.log('✅ Manual event source created');
+                } else {
+                    // Add EventIndex if missing
+                    if (!SimileAjax.EventIndex) {
+                        console.log('Adding missing SimileAjax.EventIndex...');
+                        SimileAjax.EventIndex = function() {
+                            this._events = [];
+                            this._listeners = [];
+                        };
+                        SimileAjax.EventIndex.prototype.getUnit = function() {
+                            return SimileAjax.DateTime;
+                        };
+                        SimileAjax.EventIndex.prototype.getEarliestDate = function() {
+                            return null;
+                        };
+                        SimileAjax.EventIndex.prototype.getLatestDate = function() {
+                            return null;
+                        };
+                        SimileAjax.EventIndex.prototype.add = function(evt) {
+                            this._events.push(evt);
+                        };
+                        SimileAjax.EventIndex.prototype.getCount = function() {
+                            return this._events.length;
+                        };
+                        SimileAjax.EventIndex.prototype.getIterator = function(startDate, endDate) {
+                            return new SimileAjax.EventIndex._Iterator(this._events, startDate, endDate);
+                        };
+                        SimileAjax.EventIndex._Iterator = function(events, startDate, endDate) {
+                            this._events = events;
+                            this._startDate = startDate;
+                            this._endDate = endDate;
+                            this._index = 0;
+                        };
+                        SimileAjax.EventIndex._Iterator.prototype.hasNext = function() {
+                            return this._index < this._events.length;
+                        };
+                        SimileAjax.EventIndex._Iterator.prototype.next = function() {
+                            return this._events[this._index++];
+                        };
+                    }
+                    
+                    // Create event source with proper EventIndex
+                    console.log('Creating event source...');
+                    eventSource = new Timeline.DefaultEventSource();
+                    console.log('✅ Event source created successfully');
+                }
+                
+                // Load timeline data
+                loadTimelineData();
+                
+            } catch (error) {
+                console.error('❌ Error creating timeline:', error);
+                console.error('Error stack:', error.stack);
+                showError('Timeline creation failed: ' + error.message);
+            }
+        }
+        
+        function loadTimelineData() {
+            console.log('📊 Loading timeline data from XML...');
+            
+            // Check if Timeline.loadXML exists
+            if (typeof Timeline.loadXML !== 'function') {
+                console.error('Timeline.loadXML is not available, trying manual XML loading...');
+                loadXMLManually();
+                return;
+            }
+            
+            // Load XML data
+            Timeline.loadXML('timeline-comprehensive.xml', function(xml, url) {
+                try {
+                    if (!xml) {
+                        throw new Error('No XML data received');
+                    }
+                    
+                    console.log('✅ XML data loaded successfully');
+                    console.log('XML document:', xml);
+                    console.log('Event count:', xml.getElementsByTagName('event').length);
+                    
+                    // Fill the event source with data
+                    if (typeof eventSource.loadXML === 'function') {
+                        eventSource.loadXML(xml, url);
+                        console.log('✅ Event source populated with XML data');
+                    } else {
+                        console.log('Event source does not have loadXML, parsing manually...');
+                        parseXMLManually(xml);
+                    }
+                    
+                    // Create timeline bands with simpler configuration
+                    const bandInfos = [
+                        Timeline.createBandInfo({
+                            eventSource: eventSource,
+                            width: "70%",
+                            intervalUnit: Timeline.DateTime.YEAR,
+                            intervalPixels: 100
+                        }),
+                        Timeline.createBandInfo({
+                            eventSource: eventSource,
+                            width: "30%",
+                            intervalUnit: Timeline.DateTime.DECADE,
+                            intervalPixels: 200,
+                            showEventText: false,
+                            layout: 'overview'
+                        })
+                    ];
+                    
+                    // Synchronize the bands
+                    bandInfos[1].syncWith = 0;
+                    bandInfos[1].highlight = true;
+                    
+                    // Create the timeline
+                    console.log('🎯 Creating timeline with bands...');
+                    timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
+                    
+                    if (!timeline) {
+                        throw new Error('Timeline.create returned null');
+                    }
+                    
+                    console.log('🎉 Timeline created successfully!');
+                    console.log('Timeline object:', timeline);
+                    console.log('Timeline bands:', timeline.getBandCount());
+                    
+                    // Center timeline on important events (around 2000s)
+                    const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
+                    timeline.getBand(0).setCenterVisibleDate(centerDate);
+                    console.log('🎯 Timeline centered on:', centerDate);
+                    
+                } catch (error) {
+                    console.error('❌ Error processing timeline data:', error);
+                    showError('Failed to process timeline data: ' + error.message);
+                }
+            }, function(errorMsg) {
+                console.error('❌ XML loading failed:', errorMsg);
+                showError('Could not load timeline data: ' + errorMsg);
+            });
+        }
+        
+        // Timeline control functions
+        function goToDate(dateString) {
+            if (timeline) {
+                const date = Timeline.DateTime.parseGregorianDateTime(dateString);
+                timeline.getBand(0).setCenterVisibleDate(date);
+                console.log('📅 Navigated to:', dateString);
+            }
+        }
+        
+        function centerTimeline() {
+            if (timeline) {
+                const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
+                timeline.getBand(0).setCenterVisibleDate(centerDate);
+                console.log('🎯 Timeline centered');
+            }
+        }
+        
+        function zoomOut() {
+            if (timeline) {
+                timeline.getBand(0).zoom(false, 0, 0.5);
+                console.log('🔍 Zoomed out');
+            }
+        }
+        
+        function zoomIn() {
+            if (timeline) {
+                timeline.getBand(0).zoom(true, 0, 2.0);
+                console.log('🔍 Zoomed in');
+            }
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (!timeline) return;
+            
+            switch(event.key) {
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    timeline.getBand(0).scrollToPreviousPage();
+                    console.log('⬅️ Scrolled left');
+                    break;
+                case 'ArrowRight':
+                    event.preventDefault();
+                    timeline.getBand(0).scrollToNextPage();
+                    console.log('➡️ Scrolled right');
+                    break;
+                case '+':
+                case '=':
+                    event.preventDefault();
+                    zoomIn();
+                    break;
+                case '-':
+                    event.preventDefault();
+                    zoomOut();
+                    break;
+                case 'Home':
+                    event.preventDefault();
+                    centerTimeline();
+                    break;
+            }
+        });
+        
+        function loadXMLManually() {
+            console.log('Loading XML manually with fetch...');
+            fetch('timeline-comprehensive.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlString, 'text/xml');
+                    console.log('✅ XML loaded manually');
+                    console.log('Event count:', xml.getElementsByTagName('event').length);
+                    parseXMLManually(xml);
+                })
+                .catch(error => {
+                    console.error('Manual XML loading failed:', error);
+                    showError('Could not load timeline data: ' + error.message);
+                });
+        }
+        
+        function parseXMLManually(xml) {
+            console.log('Parsing XML manually...');
+            try {
+                // For now, just try to create a simple timeline
+                if (typeof Timeline.create === 'function' && typeof Timeline.createBandInfo === 'function') {
+                    console.log('Creating timeline with basic configuration...');
+                    
+                    // Create simple band info without event source for now
+                    const bandInfos = [
+                        Timeline.createBandInfo({
+                            width: "70%",
+                            intervalUnit: Timeline.DateTime.YEAR,
+                            intervalPixels: 100
+                        }),
+                        Timeline.createBandInfo({
+                            width: "30%",
+                            intervalUnit: Timeline.DateTime.DECADE,
+                            intervalPixels: 200,
+                            showEventText: false,
+                            layout: 'overview'
+                        })
+                    ];
+                    
+                    // Synchronize the bands
+                    bandInfos[1].syncWith = 0;
+                    bandInfos[1].highlight = true;
+                    
+                    // Create the timeline
+                    timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
+                    console.log('✅ Basic timeline created');
+                    
+                    // Center timeline
+                    if (Timeline.DateTime && Timeline.DateTime.parseGregorianDateTime) {
+                        const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
+                        if (timeline && timeline.getBand) {
+                            timeline.getBand(0).setCenterVisibleDate(centerDate);
+                        }
+                    }
+                } else {
+                    throw new Error('Timeline.create or Timeline.createBandInfo not available');
+                }
+            } catch (error) {
+                console.error('Manual parsing failed:', error);
+                showError('Timeline creation failed: ' + error.message);
+            }
+        }
+        
+        function showError(message) {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = `
+                <div class="error-message">
+                    <h3>⚠️ Timeline Loading Error</h3>
+                    <p>${message}</p>
+                    <button class="control-btn" onclick="location.reload()">Retry</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
