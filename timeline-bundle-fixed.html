@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creepstate Investigation Platform | Interactive Timeline</title>
+    
+    <!-- Timeline Styles -->
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/timeline-bundle.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #timeline-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #34495e;
+            border-radius: 10px;
+            background: white;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .control-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">🔍 Creepstate Investigation</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html" class="active">Timeline</a>
+                <a href="enhanced-visualizations.html">Network</a>
+                <a href="flight-logs.html">Flight Logs</a>
+                <a href="stats.html">Statistics</a>
+                <a href="resources.html">Resources</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="timeline-header">
+            <h1>Interactive Investigation Timeline</h1>
+            <p>Testing SIMILE Timeline with manual event creation (no XML loading)</p>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <button class="control-btn" onclick="goToDate(1990)">1990s</button>
+            <button class="control-btn" onclick="goToDate(2000)">2000s</button>
+            <button class="control-btn" onclick="goToDate(2010)">2010s</button>
+            <button class="control-btn" onclick="goToDate(2020)">2020s</button>
+        </div>
+
+        <div id="timeline-container"></div>
+        
+        <div id="status" style="background: rgba(0,0,0,0.5); padding: 10px; margin: 20px 0; border-radius: 5px; font-family: monospace;"></div>
+    </div>
+
+    <!-- Load Timeline Bundle ONLY - it should contain everything including SimileAjax -->
+    <script src="simile-timeline/api/timeline-bundle.js"></script>
+    
+    <script>
+        let timeline;
+        let eventSource;
+        
+        function log(msg) {
+            const status = document.getElementById('status');
+            status.innerHTML += `[${new Date().toISOString().split('T')[1].split('.')[0]}] ${msg}<br>`;
+            console.log(msg);
+        }
+        
+        function initTimeline() {
+            try {
+                log('Checking Timeline availability...');
+                
+                if (typeof Timeline === 'undefined') {
+                    throw new Error('Timeline not loaded');
+                }
+                
+                log(`Timeline: ${typeof Timeline}`);
+                log(`Timeline.DefaultEventSource: ${typeof Timeline.DefaultEventSource}`);
+                
+                // Create event source WITHOUT using SimileAjax.EventIndex
+                if (typeof Timeline.DefaultEventSource !== 'function') {
+                    throw new Error('Timeline.DefaultEventSource is not a constructor');
+                }
+                
+                eventSource = new Timeline.DefaultEventSource();
+                log('✅ Event source created');
+                
+                // Manually create timeline events (like simile-test.html does)
+                const events = [
+                    // 1990s
+                    { year: 1992, month: 2, day: 15, title: "Mar-a-Lago Party", description: "Trump and Epstein at party" },
+                    { year: 1993, month: 10, day: 1, title: "Trump Wedding", description: "Epstein attends Trump's wedding" },
+                    { year: 1997, month: 11, day: 1, title: "Victoria's Secret Event", description: "Trump and Epstein together" },
+                    
+                    // 2000s
+                    { year: 2000, month: 0, day: 10, title: "Epstein at Mar-a-Lago", description: "Documented visit" },
+                    { year: 2002, month: 9, day: 1, title: "Trump Comments", description: "Trump speaks about Epstein" },
+                    { year: 2004, month: 10, day: 1, title: "Falling Out", description: "Trump-Epstein relationship ends" },
+                    { year: 2005, month: 2, day: 1, title: "Palm Beach Investigation", description: "Police begin investigation" },
+                    { year: 2008, month: 5, day: 1, title: "Plea Deal", description: "Epstein plea deal with Acosta" },
+                    
+                    // 2010s
+                    { year: 2015, month: 0, day: 1, title: "Giuffre Lawsuit", description: "Virginia Giuffre files lawsuit" },
+                    { year: 2016, month: 9, day: 1, title: "Trump Deposition", description: "Trump deposed in case" },
+                    { year: 2019, month: 6, day: 6, title: "Epstein Arrested", description: "Arrested at Teterboro" },
+                    { year: 2019, month: 7, day: 10, title: "Epstein Death", description: "Found dead in cell" },
+                    
+                    // 2020s
+                    { year: 2020, month: 6, day: 2, title: "Maxwell Arrested", description: "Ghislaine Maxwell arrested" },
+                    { year: 2021, month: 11, day: 29, title: "Maxwell Verdict", description: "Found guilty on 5 counts" },
+                    { year: 2024, month: 0, day: 3, title: "Documents Released", description: "Court documents unsealed" },
+                    { year: 2025, month: 0, day: 15, title: "House Investigation", description: "Congressional investigation announced" }
+                ];
+                
+                // Add events to source
+                let addedCount = 0;
+                for (const evt of events) {
+                    try {
+                        const date = new Date(evt.year, evt.month, evt.day);
+                        const timelineEvent = new Timeline.DefaultEventSource.Event({
+                            start: date,
+                            instant: true,
+                            text: evt.title,
+                            description: evt.description,
+                            color: evt.year < 2000 ? '#ff6b6b' : evt.year < 2010 ? '#4ecdc4' : evt.year < 2020 ? '#45b7d1' : '#96ceb4'
+                        });
+                        eventSource.add(timelineEvent);
+                        addedCount++;
+                    } catch (e) {
+                        log(`Warning: Could not add event ${evt.title}: ${e.message}`);
+                    }
+                }
+                log(`✅ Added ${addedCount} events`);
+                
+                // Create timeline bands
+                const bandInfos = [
+                    Timeline.createBandInfo({
+                        eventSource: eventSource,
+                        date: new Date(2010, 0, 1),
+                        width: "70%",
+                        intervalUnit: Timeline.DateTime.YEAR,
+                        intervalPixels: 100
+                    }),
+                    Timeline.createBandInfo({
+                        eventSource: eventSource,
+                        date: new Date(2010, 0, 1),
+                        width: "30%",
+                        intervalUnit: Timeline.DateTime.DECADE,
+                        intervalPixels: 200,
+                        overview: true
+                    })
+                ];
+                
+                // Sync bands
+                bandInfos[1].syncWith = 0;
+                bandInfos[1].highlight = true;
+                
+                log('✅ Band configurations created');
+                
+                // Create timeline
+                timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
+                
+                if (timeline) {
+                    log('🎉 TIMELINE CREATED SUCCESSFULLY!');
+                } else {
+                    throw new Error('Timeline.create returned null');
+                }
+                
+            } catch (error) {
+                log(`❌ Error: ${error.message}`);
+                console.error(error);
+            }
+        }
+        
+        function goToDate(year) {
+            if (timeline) {
+                const date = new Date(year, 0, 1);
+                timeline.getBand(0).setCenterVisibleDate(date);
+            }
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            // Give the bundle time to initialize
+            setTimeout(initTimeline, 1000);
+        });
+    </script>
+</body>
+</html>

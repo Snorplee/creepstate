@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMILE Timeline Debug - Script Loading Order</title>
+    
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #0f0; }
+        .log { margin: 5px 0; padding: 5px; background: #000; }
+        .error { color: #f00; }
+        .success { color: #0f0; }
+        .warning { color: #ff0; }
+        #timeline-container { height: 400px; border: 1px solid #333; background: white; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>SIMILE Timeline Script Loading Debug</h1>
+    <div id="log-container"></div>
+    <div id="timeline-container"></div>
+    
+    <script>
+        const log = (msg, type = '') => {
+            const div = document.createElement('div');
+            div.className = `log ${type}`;
+            div.textContent = `[${new Date().toISOString().split('T')[1].split('.')[0]}] ${msg}`;
+            document.getElementById('log-container').appendChild(div);
+            console.log(msg);
+        };
+        
+        // Check initial state
+        log('=== INITIAL STATE ===', 'warning');
+        log(`window.SimileAjax: ${typeof window.SimileAjax}`);
+        log(`window.Timeline: ${typeof window.Timeline}`);
+        
+        // Set configuration
+        window.Timeline_ajax_url = "simile-timeline/simile-ajax-api.js";
+        window.Timeline_urlPrefix = "simile-timeline/api/";
+        window.Timeline_parameters = "bundle=false";
+        log('Configuration set', 'success');
+    </script>
+    
+    <!-- Load SimileAjax and check -->
+    <script src="simile-timeline/simile-ajax-api.js"></script>
+    <script>
+        log('=== AFTER SIMILE-AJAX-API.JS ===', 'warning');
+        log(`SimileAjax: ${typeof SimileAjax}`);
+        log(`SimileAjax.EventIndex: ${typeof SimileAjax.EventIndex}`);
+        if (typeof SimileAjax.EventIndex === 'function') {
+            log('✅ EventIndex is a constructor!', 'success');
+            // Save reference
+            window.OriginalEventIndex = SimileAjax.EventIndex;
+        } else {
+            log('❌ EventIndex NOT a constructor', 'error');
+        }
+    </script>
+    
+    <!-- Load Timeline API and check what it does -->
+    <script>
+        // Monitor SimileAjax changes
+        let eventIndexChecker = setInterval(() => {
+            if (typeof SimileAjax !== 'undefined' && typeof SimileAjax.EventIndex !== typeof window.OriginalEventIndex) {
+                log(`⚠️ SimileAjax.EventIndex changed! Now: ${typeof SimileAjax.EventIndex}`, 'error');
+                clearInterval(eventIndexChecker);
+            }
+        }, 10);
+    </script>
+    
+    <script src="simile-timeline/api/timeline-api.js"></script>
+    <script>
+        log('=== AFTER TIMELINE-API.JS ===', 'warning');
+        log(`Timeline: ${typeof Timeline}`);
+        log(`SimileAjax.EventIndex: ${typeof SimileAjax.EventIndex}`);
+        log(`Timeline.DefaultEventSource: ${typeof Timeline.DefaultEventSource}`);
+        
+        // Clear the checker
+        if (eventIndexChecker) clearInterval(eventIndexChecker);
+        
+        // Check if EventIndex was overwritten
+        if (typeof SimileAjax.EventIndex !== 'function') {
+            log('❌ timeline-api.js OVERWROTE SimileAjax.EventIndex!', 'error');
+            
+            // Try to restore it
+            if (window.OriginalEventIndex) {
+                SimileAjax.EventIndex = window.OriginalEventIndex;
+                log('🔧 Restored EventIndex from backup', 'success');
+            }
+        }
+    </script>
+    
+    <!-- Now load individual Timeline scripts if needed -->
+    <script>
+        // Wait for Timeline to fully initialize
+        setTimeout(() => {
+            log('=== FINAL STATE CHECK ===', 'warning');
+            log(`SimileAjax: ${typeof SimileAjax}`);
+            log(`SimileAjax.EventIndex: ${typeof SimileAjax.EventIndex}`);
+            log(`Timeline: ${typeof Timeline}`);
+            log(`Timeline.DefaultEventSource: ${typeof Timeline.DefaultEventSource}`);
+            log(`Timeline.create: ${typeof Timeline.create}`);
+            log(`Timeline.loadXML: ${typeof Timeline.loadXML}`);
+            
+            // Try to create a simple timeline
+            if (typeof Timeline !== 'undefined' && typeof Timeline.DefaultEventSource === 'function') {
+                try {
+                    log('=== ATTEMPTING TIMELINE CREATION ===', 'warning');
+                    
+                    // Create event source
+                    const eventSource = new Timeline.DefaultEventSource();
+                    log('✅ Event source created', 'success');
+                    
+                    // Add a test event manually
+                    const testEvent = new Timeline.DefaultEventSource.Event({
+                        start: new Date(2020, 0, 1),
+                        instant: true,
+                        text: "Test Event",
+                        description: "This is a test"
+                    });
+                    eventSource.add(testEvent);
+                    log('✅ Test event added', 'success');
+                    
+                    // Create timeline bands
+                    const bandInfos = [
+                        Timeline.createBandInfo({
+                            eventSource: eventSource,
+                            date: new Date(2020, 0, 1),
+                            width: "100%",
+                            intervalUnit: Timeline.DateTime.MONTH,
+                            intervalPixels: 100
+                        })
+                    ];
+                    log('✅ Band configuration created', 'success');
+                    
+                    // Create timeline
+                    const timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
+                    if (timeline) {
+                        log('🎉 TIMELINE CREATED SUCCESSFULLY!', 'success');
+                    } else {
+                        log('❌ Timeline.create returned null', 'error');
+                    }
+                    
+                } catch (error) {
+                    log(`❌ Error creating timeline: ${error.message}`, 'error');
+                    log(`Stack: ${error.stack}`, 'error');
+                }
+            } else {
+                log('❌ Timeline API not properly loaded', 'error');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
