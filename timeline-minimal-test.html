@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal SIMILE Timeline Test</title>
+    <script>
+        // SIMILE configuration
+        window.Timeline_ajax_url = "simile-timeline/simile-ajax-api.js";
+        window.Timeline_urlPrefix = "simile-timeline/api/";
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #timeline { height: 400px; border: 2px solid #333; background: white; }
+        .log { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Minimal SIMILE Timeline Test</h1>
+    <div id="log" class="log">Starting test...</div>
+    <div id="timeline"></div>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += '<br>' + new Date().toISOString() + ': ' + message;
+            console.log(message);
+        }
+        
+        // Step 1: Load SIMILE Ajax API
+        log('Loading SIMILE Ajax API...');
+        const ajaxScript = document.createElement('script');
+        ajaxScript.src = 'simile-timeline/simile-ajax-api.js';
+        ajaxScript.onload = function() {
+            log('✅ SIMILE Ajax API loaded');
+            log('SimileAjax available: ' + (typeof SimileAjax !== 'undefined'));
+            
+            // Step 2: Load Timeline API
+            log('Loading SIMILE Timeline API...');
+            const timelineScript = document.createElement('script');
+            timelineScript.src = 'simile-timeline/api/timeline-api.js';
+            timelineScript.onload = function() {
+                log('✅ SIMILE Timeline API loaded');
+                log('Timeline available: ' + (typeof Timeline !== 'undefined'));
+                
+                if (typeof Timeline !== 'undefined') {
+                    log('Timeline.DefaultEventSource: ' + typeof Timeline.DefaultEventSource);
+                    log('Timeline.create: ' + typeof Timeline.create);
+                    log('Timeline.loadXML: ' + typeof Timeline.loadXML);
+                    
+                    // Step 3: Test basic timeline creation
+                    setTimeout(testTimeline, 500);
+                } else {
+                    log('❌ Timeline API not available');
+                }
+            };
+            timelineScript.onerror = function() {
+                log('❌ Failed to load Timeline API');
+            };
+            document.head.appendChild(timelineScript);
+        };
+        ajaxScript.onerror = function() {
+            log('❌ Failed to load Ajax API');
+        };
+        document.head.appendChild(ajaxScript);
+        
+        function testTimeline() {
+            try {
+                log('Creating timeline...');
+                
+                // Create event source
+                const eventSource = new Timeline.DefaultEventSource();
+                log('✅ Event source created');
+                
+                // Add test event
+                const testEvent = new Timeline.DefaultEventSource.Event({
+                    start: new Date(2020, 0, 1),
+                    instant: true,
+                    text: "Test Event",
+                    description: "This is a test event"
+                });
+                eventSource.add(testEvent);
+                log('✅ Test event added');
+                
+                // Create bands
+                const bandInfos = [
+                    Timeline.createBandInfo({
+                        eventSource: eventSource,
+                        date: new Date(2020, 0, 1),
+                        width: "100%",
+                        intervalUnit: Timeline.DateTime.MONTH,
+                        intervalPixels: 100
+                    })
+                ];
+                log('✅ Band info created');
+                
+                // Create timeline
+                const timeline = Timeline.create(document.getElementById("timeline"), bandInfos);
+                log('🎉 Timeline created successfully!');
+                
+            } catch (error) {
+                log('❌ Error: ' + error.message);
+                log('❌ Stack: ' + error.stack);
+            }
+        }
+    </script>
+</body>
+</html>
