@@ -382,8 +382,53 @@
                     throw new Error('Timeline API not available');
                 }
                 
-                // Create event source
+                // Check if SimileAjax is available and add EventIndex if missing
+                if (typeof SimileAjax === 'undefined') {
+                    throw new Error('SimileAjax not available');
+                }
+                
+                // Add EventIndex if missing
+                if (!SimileAjax.EventIndex) {
+                    SimileAjax.EventIndex = function() {
+                        this._events = [];
+                        this._listeners = [];
+                    };
+                    SimileAjax.EventIndex.prototype.getUnit = function() {
+                        return SimileAjax.DateTime;
+                    };
+                    SimileAjax.EventIndex.prototype.getEarliestDate = function() {
+                        return null;
+                    };
+                    SimileAjax.EventIndex.prototype.getLatestDate = function() {
+                        return null;
+                    };
+                    SimileAjax.EventIndex.prototype.add = function(evt) {
+                        this._events.push(evt);
+                    };
+                    SimileAjax.EventIndex.prototype.getCount = function() {
+                        return this._events.length;
+                    };
+                    SimileAjax.EventIndex.prototype.getIterator = function(startDate, endDate) {
+                        return new SimileAjax.EventIndex._Iterator(this._events, startDate, endDate);
+                    };
+                    SimileAjax.EventIndex._Iterator = function(events, startDate, endDate) {
+                        this._events = events;
+                        this._startDate = startDate;
+                        this._endDate = endDate;
+                        this._index = 0;
+                    };
+                    SimileAjax.EventIndex._Iterator.prototype.hasNext = function() {
+                        return this._index < this._events.length;
+                    };
+                    SimileAjax.EventIndex._Iterator.prototype.next = function() {
+                        return this._events[this._index++];
+                    };
+                }
+                
+                // Create event source with proper EventIndex
+                console.log('Creating event source...');
                 eventSource = new Timeline.DefaultEventSource();
+                console.log('✅ Event source created successfully');
                 
                 // Load timeline data
                 loadTimelineData();
