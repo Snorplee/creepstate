@@ -295,6 +295,95 @@ window.SimileAjax = {
         link.setAttribute("type", "text/css");
         link.setAttribute("href", url);
         doc.getElementsByTagName("head")[0].appendChild(link);
+    },
+    
+    // EventIndex implementation for Timeline
+    EventIndex: function(unit) {
+        this._unit = unit || SimileAjax.NativeDateUnit;
+        this._events = [];
+        this._index = {};
+    }
+};
+
+// Add EventIndex prototype methods
+SimileAjax.EventIndex.prototype = {
+    getUnit: function() {
+        return this._unit;
+    },
+    
+    add: function(evt) {
+        this._events.push(evt);
+        this._index[evt.getID()] = evt;
+    },
+    
+    removeAll: function() {
+        this._events = [];
+        this._index = {};
+    },
+    
+    getCount: function() {
+        return this._events.length;
+    },
+    
+    getIterator: function(startDate, endDate) {
+        return new SimileAjax.EventIndex._Iterator(this._events, startDate, endDate, this._unit);
+    },
+    
+    getAllIterator: function() {
+        return new SimileAjax.EventIndex._Iterator(this._events, null, null, this._unit);
+    },
+    
+    getEarliestDate: function() {
+        var evt = this._events[0];
+        return evt == null ? null : evt.getStart();
+    },
+    
+    getLatestDate: function() {
+        var evt = this._events[this._events.length - 1];
+        return evt == null ? null : evt.getEnd();
+    }
+};
+
+// Iterator for EventIndex
+SimileAjax.EventIndex._Iterator = function(events, startDate, endDate, unit) {
+    this._events = events;
+    this._startDate = startDate;
+    this._endDate = endDate;
+    this._unit = unit;
+    this._index = 0;
+};
+
+SimileAjax.EventIndex._Iterator.prototype = {
+    hasNext: function() {
+        return this._index < this._events.length;
+    },
+    
+    next: function() {
+        return this._index < this._events.length ? this._events[this._index++] : null;
+    },
+    
+    reset: function() {
+        this._index = 0;
+    }
+};
+
+// Add NativeDateUnit
+SimileAjax.NativeDateUnit = {
+    getParser: function(format) {
+        return SimileAjax.DateTime.parseGregorianDateTime;
+    }
+};
+
+// Add includeJavascriptFiles and includeCssFiles (plural) methods
+SimileAjax.includeJavascriptFiles = function(doc, urlPrefix, filenames) {
+    for (var i = 0; i < filenames.length; i++) {
+        SimileAjax.includeJavascriptFile(doc, urlPrefix + filenames[i]);
+    }
+};
+
+SimileAjax.includeCssFiles = function(doc, urlPrefix, filenames) {
+    for (var i = 0; i < filenames.length; i++) {
+        SimileAjax.includeCssFile(doc, urlPrefix + filenames[i]);
     }
 };
 
@@ -303,4 +392,4 @@ if (typeof window.Timeline === 'undefined') {
     window.Timeline = {};
 }
 
-console.log("Simile Ajax API (minimal) loaded successfully");
+console.log("Simile Ajax API (enhanced) loaded successfully");

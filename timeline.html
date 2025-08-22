@@ -6,9 +6,10 @@
     <title>Creepstate Investigation Platform | Interactive Timeline</title>
     <meta name="description" content="Interactive timeline of the Trump-Epstein investigation spanning 1946-2025">
     
-    <!-- SIMILE Timeline Bundle - All-in-one approach -->
-    <link rel="stylesheet" type="text/css" href="simile-timeline/api/timeline-bundle.css">
-    <script src="simile-timeline/api/timeline-bundle.js"></script>
+    <!-- SIMILE Timeline CSS -->
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/timeline.css">
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/ethers.css">
+    <link rel="stylesheet" type="text/css" href="simile-timeline/api/styles/events.css">
     
     <style>
         body {
@@ -326,6 +327,32 @@
         </div>
     </div>
 
+    <!-- Load SIMILE Timeline Scripts Manually in Correct Order -->
+    <script>
+        // Set configuration before loading
+        window.Timeline_ajax_url = "simile-timeline/simile-ajax-api.js";
+        window.Timeline_urlPrefix = "simile-timeline/api/";
+        window.Timeline_parameters = "bundle=false"; // Use individual files for debugging
+    </script>
+    
+    <!-- 1. Load SimileAjax first -->
+    <script src="simile-timeline/simile-ajax-api.js"></script>
+    
+    <!-- 2. Load Timeline core files in order -->
+    <script src="simile-timeline/api/scripts/timeline.js"></script>
+    <script src="simile-timeline/api/scripts/band.js"></script>
+    <script src="simile-timeline/api/scripts/themes.js"></script>
+    <script src="simile-timeline/api/scripts/ethers.js"></script>
+    <script src="simile-timeline/api/scripts/ether-painters.js"></script>
+    <script src="simile-timeline/api/scripts/event-utils.js"></script>
+    <script src="simile-timeline/api/scripts/labellers.js"></script>
+    <script src="simile-timeline/api/scripts/sources.js"></script>
+    <script src="simile-timeline/api/scripts/original-painter.js"></script>
+    <script src="simile-timeline/api/scripts/detailed-painter.js"></script>
+    <script src="simile-timeline/api/scripts/overview-painter.js"></script>
+    <script src="simile-timeline/api/scripts/compact-painter.js"></script>
+    <script src="simile-timeline/api/scripts/decorators.js"></script>
+
     <script>
         // Global timeline variables
         let timeline;
@@ -353,8 +380,8 @@
                 return div;
             })();
             
-            logDiv.innerHTML = debugMessages.slice(-20).join('<br>'); // Show last 20 messages
-            logDiv.scrollTop = logDiv.scrollHeight; // Scroll to bottom
+            logDiv.innerHTML = debugMessages.slice(-20).join('<br>');
+            logDiv.scrollTop = logDiv.scrollHeight;
         }
         
         function showMessage(message, type = 'info') {
@@ -375,49 +402,41 @@
             buttons.forEach(btn => btn.disabled = false);
         }
         
-        // Initialize timeline when page loads
-        window.addEventListener('load', initializeTimeline);
+        // Initialize when everything is loaded
+        window.addEventListener('load', function() {
+            debugLog('🚀 Page loaded, checking SIMILE APIs...');
+            
+            // Give scripts time to initialize
+            setTimeout(function() {
+                initializeTimeline();
+            }, 1000);
+        });
         
         function initializeTimeline() {
-            debugLog('🚀 Starting SIMILE Timeline initialization...');
-            
-            // Check if SIMILE Timeline is available (should be loaded by bundle)
-            setTimeout(checkTimelineAPI, 500);
-        }
-        
-        function checkTimelineAPI() {
-            debugLog('🔍 Checking Timeline API availability...');
-            
-            if (typeof SimileAjax === 'undefined') {
-                debugLog('❌ SimileAjax not available');
-                showMessage('Timeline dependencies not loaded (SimileAjax)', 'error');
-                return;
-            }
-            
-            if (typeof Timeline === 'undefined') {
-                debugLog('❌ Timeline API not available');
-                showMessage('Timeline API not loaded', 'error');
-                return;
-            }
-            
-            debugLog('✅ SimileAjax available: ' + typeof SimileAjax);
-            debugLog('✅ Timeline available: ' + typeof Timeline);
-            debugLog('✅ Timeline.DefaultEventSource: ' + typeof Timeline.DefaultEventSource);
-            debugLog('✅ Timeline.create: ' + typeof Timeline.create);
-            debugLog('✅ Timeline.loadXML: ' + typeof Timeline.loadXML);
-            
-            // Proceed to create timeline
-            setTimeout(createTimeline, 100);
-        }
-        
-        function createTimeline() {
             try {
-                debugLog('🎯 Creating SIMILE Timeline...');
+                debugLog('🎯 Starting timeline initialization...');
                 
-                // Verify Timeline.DefaultEventSource is a constructor
-                if (typeof Timeline.DefaultEventSource !== 'function') {
-                    throw new Error('Timeline.DefaultEventSource is not a constructor');
+                // Check API availability
+                if (typeof SimileAjax === 'undefined') {
+                    throw new Error('SimileAjax is not available');
                 }
+                if (typeof Timeline === 'undefined') {
+                    throw new Error('Timeline is not available');
+                }
+                
+                debugLog('✅ SimileAjax loaded');
+                debugLog('✅ Timeline loaded');
+                
+                // Check for required Timeline components
+                if (typeof Timeline.DefaultEventSource !== 'function') {
+                    debugLog('❌ Timeline.DefaultEventSource not found, retrying in 1 second...');
+                    setTimeout(initializeTimeline, 1000);
+                    return;
+                }
+                
+                debugLog('✅ Timeline.DefaultEventSource available');
+                debugLog('✅ Timeline.loadXML available');
+                debugLog('✅ Timeline.create available');
                 
                 // Create event source
                 eventSource = new Timeline.DefaultEventSource();
@@ -427,39 +446,50 @@
                 loadTimelineData();
                 
             } catch (error) {
-                debugLog('❌ Error creating timeline: ' + error.message);
-                showMessage('Timeline creation failed: ' + error.message, 'error');
+                debugLog('❌ Error: ' + error.message);
+                showMessage('Timeline initialization failed: ' + error.message, 'error');
             }
         }
         
         function loadTimelineData() {
             debugLog('📊 Loading timeline XML data...');
             
-            Timeline.loadXML('timeline-comprehensive.xml', function(xml, url) {
-                try {
-                    if (!xml) {
-                        throw new Error('No XML data received');
+            // Load the XML file
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'timeline-comprehensive.xml', true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    try {
+                        const xml = xhr.responseXML;
+                        if (!xml) {
+                            throw new Error('Failed to parse XML');
+                        }
+                        
+                        debugLog('✅ XML loaded successfully');
+                        const events = xml.getElementsByTagName('event');
+                        debugLog(`📊 Found ${events.length} events in XML`);
+                        
+                        // Load events into event source
+                        eventSource.loadXML(xml, 'timeline-comprehensive.xml');
+                        debugLog('✅ Events loaded into event source');
+                        
+                        // Create timeline
+                        createTimelineBands();
+                        
+                    } catch (error) {
+                        debugLog('❌ Error processing XML: ' + error.message);
+                        showMessage('Failed to process timeline data', 'error');
                     }
-                    
-                    debugLog('✅ XML data loaded successfully');
-                    const eventCount = xml.getElementsByTagName('event').length;
-                    debugLog(`📊 Found ${eventCount} events in XML`);
-                    
-                    // Load XML into event source
-                    eventSource.loadXML(xml, url);
-                    debugLog('✅ Events loaded into event source');
-                    
-                    // Create timeline bands
-                    createTimelineBands();
-                    
-                } catch (error) {
-                    debugLog('❌ Error processing XML data: ' + error.message);
-                    showMessage('Failed to process timeline data: ' + error.message, 'error');
+                } else {
+                    debugLog('❌ Failed to load XML: HTTP ' + xhr.status);
+                    showMessage('Failed to load timeline data', 'error');
                 }
-            }, function(errorMsg) {
-                debugLog('❌ XML loading failed: ' + errorMsg);
-                showMessage('Could not load timeline data: ' + errorMsg, 'error');
-            });
+            };
+            xhr.onerror = function() {
+                debugLog('❌ Network error loading XML');
+                showMessage('Network error loading timeline data', 'error');
+            };
+            xhr.send();
         }
         
         function createTimelineBands() {
@@ -472,7 +502,7 @@
                         eventSource: eventSource,
                         width: "70%",
                         intervalUnit: Timeline.DateTime.YEAR,
-                        intervalPixels: 120,
+                        intervalPixels: 100,
                         date: new Date(2000, 0, 1)
                     }),
                     Timeline.createBandInfo({
@@ -481,8 +511,7 @@
                         intervalUnit: Timeline.DateTime.DECADE,
                         intervalPixels: 200,
                         date: new Date(2000, 0, 1),
-                        overview: true,
-                        showEventText: false
+                        overview: true
                     })
                 ];
                 
@@ -492,33 +521,31 @@
                 
                 debugLog('✅ Band configurations created');
                 
-                // Create the actual timeline
+                // Create timeline
                 timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
                 
                 if (!timeline) {
-                    throw new Error('Timeline.create returned null');
+                    throw new Error('Failed to create timeline');
                 }
                 
                 debugLog('🎉 SIMILE Timeline created successfully!');
                 
-                // Center timeline on year 2000
-                const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
-                timeline.getBand(0).setCenterVisibleDate(centerDate);
-                
+                // Center on year 2000
+                timeline.getBand(0).setCenterVisibleDate(new Date(2000, 0, 1));
                 debugLog('🎯 Timeline centered on year 2000');
                 
                 // Enable controls
                 enableControls();
+                debugLog('✅ Controls enabled');
                 
-                // Show success message briefly, then hide
-                showMessage('Timeline loaded successfully with ' + eventSource.getEventCount() + ' events!', 'success');
+                // Hide debug log after 5 seconds
                 setTimeout(() => {
-                    const successMsg = document.querySelector('.success-message');
-                    if (successMsg) successMsg.style.display = 'none';
-                }, 3000);
+                    const debugDiv = document.querySelector('.debug-log');
+                    if (debugDiv) debugDiv.style.display = 'none';
+                }, 5000);
                 
             } catch (error) {
-                debugLog('❌ Error creating timeline bands: ' + error.message);
+                debugLog('❌ Error creating timeline: ' + error.message);
                 showMessage('Timeline creation failed: ' + error.message, 'error');
             }
         }
@@ -526,7 +553,8 @@
         // Timeline control functions
         function goToDate(dateString) {
             if (timeline) {
-                const date = Timeline.DateTime.parseGregorianDateTime(dateString);
+                const parts = dateString.split('-');
+                const date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
                 timeline.getBand(0).setCenterVisibleDate(date);
                 debugLog('📅 Navigated to: ' + dateString);
             }
@@ -534,22 +562,27 @@
         
         function centerTimeline() {
             if (timeline) {
-                const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
-                timeline.getBand(0).setCenterVisibleDate(centerDate);
+                timeline.getBand(0).setCenterVisibleDate(new Date(2000, 0, 1));
                 debugLog('🎯 Timeline centered');
             }
         }
         
         function zoomOut() {
             if (timeline) {
-                timeline.getBand(0).zoom(false, 0, 0.5);
+                const band = timeline.getBand(0);
+                const ether = band._ether;
+                ether.zoom(false);
+                band.paint();
                 debugLog('🔍 Zoomed out');
             }
         }
         
         function zoomIn() {
             if (timeline) {
-                timeline.getBand(0).zoom(true, 0, 2.0);
+                const band = timeline.getBand(0);
+                const ether = band._ether;
+                ether.zoom(true);
+                band.paint();
                 debugLog('🔍 Zoomed in');
             }
         }
@@ -558,15 +591,17 @@
         document.addEventListener('keydown', function(event) {
             if (!timeline) return;
             
+            const band = timeline.getBand(0);
+            
             switch(event.key) {
                 case 'ArrowLeft':
                     event.preventDefault();
-                    timeline.getBand(0).scrollToPreviousPage();
+                    band.scrollToCenter(band.getCenterVisibleDate() - 365*24*60*60*1000);
                     debugLog('⬅️ Scrolled left');
                     break;
                 case 'ArrowRight':
                     event.preventDefault();
-                    timeline.getBand(0).scrollToNextPage();
+                    band.scrollToCenter(band.getCenterVisibleDate() + 365*24*60*60*1000);
                     debugLog('➡️ Scrolled right');
                     break;
                 case '+':
