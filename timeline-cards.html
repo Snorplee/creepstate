@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creepstate Investigation Platform | Timeline</title>
+    <!-- Working timeline v2 -->
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-event {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-event:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .event-date {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ecf0f1;
+        }
+
+        .event-description {
+            color: #bdc3c7;
+            line-height: 1.6;
+        }
+
+        .event-category {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #ecf0f1;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .timeline-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">🔍 Creepstate Investigation</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html" class="active">Timeline</a>
+                <a href="enhanced-visualizations.html">Network</a>
+                <a href="flight-logs.html">Flight Logs</a>
+                <a href="stats.html">Statistics</a>
+                <a href="resources.html">Resources</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="timeline-header">
+            <h1>Investigation Timeline</h1>
+            <p>Comprehensive timeline of events from 1946 to 2025 with 100+ documented events</p>
+        </div>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" onclick="filterEvents('all')">All Events</button>
+            <button class="filter-btn" onclick="filterEvents('legal')">Legal</button>
+            <button class="filter-btn" onclick="filterEvents('meetings')">Meetings</button>
+            <button class="filter-btn" onclick="filterEvents('investigations')">Investigations</button>
+            <button class="filter-btn" onclick="filterEvents('deaths')">Deaths</button>
+        </div>
+
+        <div id="timeline-container">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading timeline events...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allEvents = [];
+        let currentFilter = 'all';
+
+        // Load timeline data when page loads
+        window.addEventListener('load', loadTimelineData);
+
+        function loadTimelineData() {
+            console.log('Loading timeline XML data...');
+            
+            fetch('timeline-comprehensive.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlString, 'text/xml');
+                    
+                    if (xml.getElementsByTagName("parsererror").length > 0) {
+                        throw new Error('XML parsing failed');
+                    }
+                    
+                    console.log('XML parsed successfully');
+                    parseEvents(xml);
+                })
+                .catch(error => {
+                    console.error('Failed to load timeline data:', error);
+                    document.getElementById('timeline-container').innerHTML = `
+                        <div style="text-align: center; color: #e74c3c; padding: 2rem;">
+                            <h3>⚠️ Could not load timeline data</h3>
+                            <p>${error.message}</p>
+                            <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Retry</button>
+                        </div>
+                    `;
+                });
+        }
+
+        function parseEvents(xml) {
+            const eventElements = xml.getElementsByTagName('event');
+            allEvents = [];
+            
+            for (let i = 0; i < eventElements.length; i++) {
+                const event = eventElements[i];
+                
+                const eventData = {
+                    start: event.getAttribute('start') || '',
+                    title: event.getAttribute('title') || 'Untitled Event',
+                    color: event.getAttribute('color') || '#3498db',
+                    className: event.getAttribute('classname') || 'general',
+                    evidenceLevel: event.getAttribute('evidence-level') || 'unverified',
+                    location: event.getAttribute('geographic-location') || '',
+                    sources: event.getAttribute('sources') || '',
+                    description: event.textContent || ''
+                };
+                
+                // Clean up description (remove HTML entities)
+                eventData.description = eventData.description
+                    .replace(/&lt;br\/&gt;/g, '\n')
+                    .replace(/&lt;.*?&gt;/g, '')
+                    .replace(/&amp;/g, '&')
+                    .trim();
+                
+                allEvents.push(eventData);
+            }
+            
+            // Sort events by date
+            allEvents.sort((a, b) => new Date(a.start) - new Date(b.start));
+            
+            console.log(`Loaded ${allEvents.length} events`);
+            displayEvents();
+        }
+
+        function displayEvents() {
+            const container = document.getElementById('timeline-container');
+            let filteredEvents = allEvents;
+            
+            if (currentFilter !== 'all') {
+                filteredEvents = allEvents.filter(event => 
+                    event.className.includes(currentFilter) || 
+                    event.title.toLowerCase().includes(currentFilter)
+                );
+            }
+            
+            if (filteredEvents.length === 0) {
+                container.innerHTML = '<div class="loading"><p>No events found for current filter</p></div>';
+                return;
+            }
+            
+            const timelineHTML = filteredEvents.map(event => {
+                const date = new Date(event.start);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                return `
+                    <div class="timeline-event" data-category="${event.className}">
+                        <div class="event-date">${formattedDate}</div>
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-description">${event.description.substring(0, 300)}${event.description.length > 300 ? '...' : ''}</div>
+                        <div class="event-category">${event.className}</div>
+                        ${event.evidenceLevel ? `<div class="event-category" style="background: rgba(231, 76, 60, 0.2); color: #e74c3c;">${event.evidenceLevel}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = `<div class="timeline-grid">${timelineHTML}</div>`;
+        }
+
+        function filterEvents(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            displayEvents();
+        }
+    </script>
+</body>
+</html>
