@@ -378,70 +378,119 @@
             try {
                 console.log('🎯 Creating timeline instance...');
                 
+                // Debug: Check what's available
+                console.log('Timeline object:', typeof Timeline, Timeline);
+                console.log('SimileAjax object:', typeof SimileAjax, SimileAjax);
+                
                 // Check if Timeline is available
                 if (typeof Timeline === 'undefined') {
                     throw new Error('Timeline API not available');
                 }
+                
+                // Check Timeline object properties
+                console.log('Timeline.DefaultEventSource:', typeof Timeline.DefaultEventSource);
+                console.log('Timeline.create:', typeof Timeline.create);
+                console.log('Timeline.createBandInfo:', typeof Timeline.createBandInfo);
+                console.log('Timeline.loadXML:', typeof Timeline.loadXML);
+                console.log('Timeline.DateTime:', typeof Timeline.DateTime);
                 
                 // Check if SimileAjax is available and add EventIndex if missing
                 if (typeof SimileAjax === 'undefined') {
                     throw new Error('SimileAjax not available');
                 }
                 
-                // Add EventIndex if missing
-                if (!SimileAjax.EventIndex) {
-                    SimileAjax.EventIndex = function() {
-                        this._events = [];
-                        this._listeners = [];
+                // Check if DefaultEventSource exists as a function
+                if (typeof Timeline.DefaultEventSource !== 'function') {
+                    console.error('Timeline.DefaultEventSource is not a function, it is:', typeof Timeline.DefaultEventSource);
+                    
+                    // Try to create a minimal event source manually
+                    console.log('Creating manual event source...');
+                    eventSource = {
+                        _events: [],
+                        _listeners: [],
+                        loadXML: function(xml, url) {
+                            console.log('Manual loadXML called with:', xml);
+                            // We'll handle this in loadTimelineData
+                        },
+                        addListener: function(listener) {
+                            this._listeners.push(listener);
+                        },
+                        removeListener: function(listener) {
+                            for (var i = 0; i < this._listeners.length; i++) {
+                                if (this._listeners[i] == listener) {
+                                    this._listeners.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
                     };
-                    SimileAjax.EventIndex.prototype.getUnit = function() {
-                        return SimileAjax.DateTime;
-                    };
-                    SimileAjax.EventIndex.prototype.getEarliestDate = function() {
-                        return null;
-                    };
-                    SimileAjax.EventIndex.prototype.getLatestDate = function() {
-                        return null;
-                    };
-                    SimileAjax.EventIndex.prototype.add = function(evt) {
-                        this._events.push(evt);
-                    };
-                    SimileAjax.EventIndex.prototype.getCount = function() {
-                        return this._events.length;
-                    };
-                    SimileAjax.EventIndex.prototype.getIterator = function(startDate, endDate) {
-                        return new SimileAjax.EventIndex._Iterator(this._events, startDate, endDate);
-                    };
-                    SimileAjax.EventIndex._Iterator = function(events, startDate, endDate) {
-                        this._events = events;
-                        this._startDate = startDate;
-                        this._endDate = endDate;
-                        this._index = 0;
-                    };
-                    SimileAjax.EventIndex._Iterator.prototype.hasNext = function() {
-                        return this._index < this._events.length;
-                    };
-                    SimileAjax.EventIndex._Iterator.prototype.next = function() {
-                        return this._events[this._index++];
-                    };
+                    
+                    console.log('✅ Manual event source created');
+                } else {
+                    // Add EventIndex if missing
+                    if (!SimileAjax.EventIndex) {
+                        console.log('Adding missing SimileAjax.EventIndex...');
+                        SimileAjax.EventIndex = function() {
+                            this._events = [];
+                            this._listeners = [];
+                        };
+                        SimileAjax.EventIndex.prototype.getUnit = function() {
+                            return SimileAjax.DateTime;
+                        };
+                        SimileAjax.EventIndex.prototype.getEarliestDate = function() {
+                            return null;
+                        };
+                        SimileAjax.EventIndex.prototype.getLatestDate = function() {
+                            return null;
+                        };
+                        SimileAjax.EventIndex.prototype.add = function(evt) {
+                            this._events.push(evt);
+                        };
+                        SimileAjax.EventIndex.prototype.getCount = function() {
+                            return this._events.length;
+                        };
+                        SimileAjax.EventIndex.prototype.getIterator = function(startDate, endDate) {
+                            return new SimileAjax.EventIndex._Iterator(this._events, startDate, endDate);
+                        };
+                        SimileAjax.EventIndex._Iterator = function(events, startDate, endDate) {
+                            this._events = events;
+                            this._startDate = startDate;
+                            this._endDate = endDate;
+                            this._index = 0;
+                        };
+                        SimileAjax.EventIndex._Iterator.prototype.hasNext = function() {
+                            return this._index < this._events.length;
+                        };
+                        SimileAjax.EventIndex._Iterator.prototype.next = function() {
+                            return this._events[this._index++];
+                        };
+                    }
+                    
+                    // Create event source with proper EventIndex
+                    console.log('Creating event source...');
+                    eventSource = new Timeline.DefaultEventSource();
+                    console.log('✅ Event source created successfully');
                 }
-                
-                // Create event source with proper EventIndex
-                console.log('Creating event source...');
-                eventSource = new Timeline.DefaultEventSource();
-                console.log('✅ Event source created successfully');
                 
                 // Load timeline data
                 loadTimelineData();
                 
             } catch (error) {
                 console.error('❌ Error creating timeline:', error);
+                console.error('Error stack:', error.stack);
                 showError('Timeline creation failed: ' + error.message);
             }
         }
         
         function loadTimelineData() {
             console.log('📊 Loading timeline data from XML...');
+            
+            // Check if Timeline.loadXML exists
+            if (typeof Timeline.loadXML !== 'function') {
+                console.error('Timeline.loadXML is not available, trying manual XML loading...');
+                loadXMLManually();
+                return;
+            }
             
             // Load XML data
             Timeline.loadXML('timeline-comprehensive.xml', function(xml, url) {
@@ -455,8 +504,13 @@
                     console.log('Event count:', xml.getElementsByTagName('event').length);
                     
                     // Fill the event source with data
-                    eventSource.loadXML(xml, url);
-                    console.log('✅ Event source populated with XML data');
+                    if (typeof eventSource.loadXML === 'function') {
+                        eventSource.loadXML(xml, url);
+                        console.log('✅ Event source populated with XML data');
+                    } else {
+                        console.log('Event source does not have loadXML, parsing manually...');
+                        parseXMLManually(xml);
+                    }
                     
                     // Create timeline bands with simpler configuration
                     const bandInfos = [
@@ -568,6 +622,70 @@
                     break;
             }
         });
+        
+        function loadXMLManually() {
+            console.log('Loading XML manually with fetch...');
+            fetch('timeline-comprehensive.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlString, 'text/xml');
+                    console.log('✅ XML loaded manually');
+                    console.log('Event count:', xml.getElementsByTagName('event').length);
+                    parseXMLManually(xml);
+                })
+                .catch(error => {
+                    console.error('Manual XML loading failed:', error);
+                    showError('Could not load timeline data: ' + error.message);
+                });
+        }
+        
+        function parseXMLManually(xml) {
+            console.log('Parsing XML manually...');
+            try {
+                // For now, just try to create a simple timeline
+                if (typeof Timeline.create === 'function' && typeof Timeline.createBandInfo === 'function') {
+                    console.log('Creating timeline with basic configuration...');
+                    
+                    // Create simple band info without event source for now
+                    const bandInfos = [
+                        Timeline.createBandInfo({
+                            width: "70%",
+                            intervalUnit: Timeline.DateTime.YEAR,
+                            intervalPixels: 100
+                        }),
+                        Timeline.createBandInfo({
+                            width: "30%",
+                            intervalUnit: Timeline.DateTime.DECADE,
+                            intervalPixels: 200,
+                            showEventText: false,
+                            layout: 'overview'
+                        })
+                    ];
+                    
+                    // Synchronize the bands
+                    bandInfos[1].syncWith = 0;
+                    bandInfos[1].highlight = true;
+                    
+                    // Create the timeline
+                    timeline = Timeline.create(document.getElementById("timeline-container"), bandInfos);
+                    console.log('✅ Basic timeline created');
+                    
+                    // Center timeline
+                    if (Timeline.DateTime && Timeline.DateTime.parseGregorianDateTime) {
+                        const centerDate = Timeline.DateTime.parseGregorianDateTime("2000-01-01");
+                        if (timeline && timeline.getBand) {
+                            timeline.getBand(0).setCenterVisibleDate(centerDate);
+                        }
+                    }
+                } else {
+                    throw new Error('Timeline.create or Timeline.createBandInfo not available');
+                }
+            } catch (error) {
+                console.error('Manual parsing failed:', error);
+                showError('Timeline creation failed: ' + error.message);
+            }
+        }
         
         function showError(message) {
             const container = document.getElementById('timeline-container');
